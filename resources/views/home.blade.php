@@ -36,41 +36,64 @@
 
     <section id="about-us" class="py-5 " role="region" aria-labelledby="about-heading">
         <div class="container">
+
             <div class="row align-items-center">
 
-                <!-- Text Content -->
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 id="about-heading" class="section-heading">
+                <!-- Left Column (Heading + Text) -->
+                <div class="col-lg-6 order-2 order-lg-1">
+
+                    <!-- Heading always above text -->
+                    <h2 id="about-heading" class="section-heading mb-4">
                         About Fusioncentrix Solutions
                     </h2>
+
                     <p class="lead text-muted">
                         At <strong>Fusioncentrix Solutions</strong>, we are your one-stop destination for high-quality IT
-                        services — proudly based in India and powering large-scale digital projects across the <strong>US,
-                            Canada, and global markets</strong>.
+                        services — proudly based in India and powering large-scale digital projects across the
+                        <strong>US, Canada, and global markets</strong>.
                     </p>
                     <p class="text-muted">
                         From <strong>custom web/app development</strong> to <strong>SEO, digital branding, and
                             marketing</strong>, our expert team blends creativity with technology to deliver impactful
-                        solutions. Whether it's sleek websites, high-converting campaigns, or brand-defining visuals — we
-                        help businesses grow and inspire from every bit.
+                        solutions. Whether it's sleek websites, high-converting campaigns, or brand-defining visuals —
+                        we help businesses grow and inspire from every bit.
                     </p>
-                    <a href="/contact" class="btn btn-gradient mt-3">
-                        Let’s Collaborate
-                    </a>
+                    <div class="w-100 collab-btn">
+                        <a href="/contact" class="btn btn-gradient mt-3">
+                            Let’s Collaborate
+                        </a>
+                    </div>
 
                 </div>
 
-                <!-- Image/Illustration -->
-                <div class="col-lg-6 text-center">
+                <!-- Right Column (Image) -->
+                <div class="col-lg-6 text-center order-1 order-lg-2 mb-3 mb-lg-0">
                     <img src="{{ asset('assets/images/about.png') }}" alt="Fusioncentrix team working on digital solutions"
-                        class="img-fluid" loading="lazy" style="max-height: 400px;">
+                        class="img-fluid mx-auto" loading="lazy" style="max-height: 400px;">
                 </div>
 
             </div>
+
         </div>
+
     </section>
 
-    @include('includes.services')
+    <!-- Services -->
+    <section class="services py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-heading">Our Services</h2>
+                <p class="section-description text-muted">
+                    We empower businesses through expertly crafted <strong>web & app development</strong>,
+                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
+                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
+                    scalable and performance-driven digital services tailored to your vision.
+                </p>
+            </div>
+            @include('includes.services')
+
+        </div>
+    </section>
 
     <section class="testimonials py-5 section-bg" id="testimonials">
         <div class="container">
@@ -110,7 +133,8 @@
                             <div class="mb-3">
                                 <i class="bi bi-chat-quote-fill fs-1 text-primary"></i>
                             </div>
-                            <p class="text-muted small mb-4">“We hired Fusioncentrix for branding and UI design. They really
+                            <p class="text-muted small mb-4">“We hired Fusioncentrix for branding and UI design. They
+                                really
                                 understood our industry and gave us a sleek, modern identity that stood out. Highly
                                 recommend
                                 their design team.”</p>
@@ -201,7 +225,7 @@
     @include('includes.why-choose-us')
 
 
-    <section class="get-quote-section py-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden">
+    <section class="get-quote-section pb-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden">
         <div class="container">
             <h4 class="mb-2 fw-semibold">Ready to Elevate Your Brand?</h4>
             <p class="mb-3 lead">Let’s create something powerful together. Get your free quote today — fast, tailored, and
@@ -212,72 +236,71 @@
         </div>
     </section>
 
-    <section class=" featured-project py-5">
-        <div class="container">
-            <div class="row align-items-center">
+ <section class="featured-project py-5">
+    <div class="container">
+        <h2 class="section-heading mb-3">Featured Project</h2>
+        <div class="row align-items-center">
 
-                <!-- Left Text -->
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h2 class=" section-heading mb-3">Featured Project</h2>
-                    <p class="text-muted">
-                        We developed this high-performance mobile app solution by fusing modern UI/UX, a scalable custom
-                        backend, and advanced security. Designed to deliver seamless user experiences, this project
-                        showcases our ability to create apps that are fast, reliable, and built for growth.
-                    </p>
+            <!-- Left Text -->
+            <div class="col-md-6 mb-4 mb-md-0 order-2 order-md-1">
+                <p class="text-muted">
+                    We developed this high-performance mobile app solution by fusing modern UI/UX, a scalable custom
+                    backend, and advanced security. Designed to deliver seamless user experiences, this project
+                    showcases our ability to create apps that are fast, reliable, and built for growth.
+                </p>
 
-                    <ul class="list-unstyled mt-3">
-                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Mobile-first, fully
-                            responsive design
-                        </li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Tailored admin dashboard
-                            for real-time control
-                        </li>
-                        <li><i class="fas fa-check-circle text-primary me-2"></i> Optimized for speed and scalability</li>
-                    </ul>
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Mobile-first, fully
+                        responsive design
+                    </li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Tailored admin dashboard
+                        for real-time control
+                    </li>
+                    <li><i class="fas fa-check-circle text-primary me-2"></i> Optimized for speed and scalability</li>
+                </ul>
 
-                    <!-- CTA Button -->
-                    <a href="{{ url('/portfolio') }}" class="btn btn-gradient mt-4 me-2">
-                        See More Projects
-                    </a>
-                    <a href="{{ url('/contact-us') }}" class="btn btn-gradient mt-4">
-                        Start Your Project
-                    </a>
-                </div>
+                <!-- CTA Button -->
+                <a href="{{ url('/portfolio') }}" class="btn btn-gradient mt-4 me-2">
+                    See More Projects
+                </a>
+                <a href="{{ url('/contact-us') }}" class="btn btn-gradient mt-4">
+                    Start Your Project
+                </a>
+            </div>
 
-                <!-- Right Image -->
-                <div class="col-md-6">
-                    <div class=" home-portfolio-box swiper swiper-portfolio">
-                        <div class="header swiper-wrapper">
-                            <div class="project-image  overflow-hidden swiper-slide">
-                                <img src="{{ asset('assets/images/portfolio/image1.jpg') }}" alt="Featured Project"
-                                    class="img-fluid w-100">
-                            </div>
-                            <div class="project-image rounded  overflow-hidden swiper-slide">
-                                <img src="{{ asset('assets/images/portfolio/image2.jpg') }}" alt="Featured Project"
-                                    class="img-fluid w-100">
-                            </div>
-                            <div class="project-image rounded  overflow-hidden swiper-slide">
-                                <img src="{{ asset('assets/images/portfolio/image3.jpg') }}" alt="Featured Project"
-                                    class="img-fluid w-100">
-                            </div>
-                            <div class="project-image rounded  overflow-hidden swiper-slide">
-                                <img src="{{ asset('assets/images/portfolio/image4.jpg') }}" alt="Featured Project"
-                                    class="img-fluid w-100">
-                            </div>
-                            <div class="project-image  overflow-hidden swiper-slide">
-                                <img src="{{ asset('assets/images/portfolio/image5.jpg') }}" alt="Featured Project"
-                                    class="img-fluid w-100">
-                            </div>
+            <!-- Right Image -->
+            <div class="col-md-6 order-1 order-md-2">
+                <div class="home-portfolio-box swiper swiper-portfolio">
+                    <div class="header swiper-wrapper">
+                        <div class="project-image overflow-hidden swiper-slide">
+                            <img src="{{ asset('assets/images/portfolio/image1.jpg') }}" alt="Featured Project"
+                                class="img-fluid w-100">
                         </div>
-                        <div class="swiper-pagination">
+                        <div class="project-image rounded overflow-hidden swiper-slide">
+                            <img src="{{ asset('assets/images/portfolio/image2.jpg') }}" alt="Featured Project"
+                                class="img-fluid w-100">
+                        </div>
+                        <div class="project-image rounded overflow-hidden swiper-slide">
+                            <img src="{{ asset('assets/images/portfolio/image3.jpg') }}" alt="Featured Project"
+                                class="img-fluid w-100">
+                        </div>
+                        <div class="project-image rounded overflow-hidden swiper-slide">
+                            <img src="{{ asset('assets/images/portfolio/image4.jpg') }}" alt="Featured Project"
+                                class="img-fluid w-100">
+                        </div>
+                        <div class="project-image overflow-hidden swiper-slide">
+                            <img src="{{ asset('assets/images/portfolio/image5.jpg') }}" alt="Featured Project"
+                                class="img-fluid w-100">
                         </div>
                     </div>
-
+                    <div class="swiper-pagination"></div>
                 </div>
-
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section class="technologies py-5">
         <div class="container">
@@ -395,7 +418,7 @@
                 },
                 move: {
                     enable: true,
-                    speed: 3,
+                    speed: 2,
                     direction: "none",
                     random: false,
                     straight: false,
@@ -447,6 +470,17 @@
                         delay: 3000,
                         disableOnInteraction: false,
                     },
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1
+                        }, // mobile
+                        768: {
+                            slidesPerView: 2
+                        }, // tablet
+                        1024: {
+                            slidesPerView: 3
+                        } // desktop
+                    }
                 });
             });
             document.querySelectorAll('.swiper-portfolio').forEach(function(swiperEl, index) {

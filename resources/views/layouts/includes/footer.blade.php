@@ -1,8 +1,7 @@
-<button class="btn consult-helper border-0" data-bs-toggle="modal" data-bs-target="#quoteModal">
+<button id="mobileHelper" class="btn consult-helper border-0" data-bs-toggle="modal" data-bs-target="#quoteModal">
   <img src="{{ asset('assets/images/help-robot.png') }}" alt="Helper" class="helper-img">
   <div class="helper-speech">Hi! Need help?</div>
 </button>
-
 <!-- Get a Quote Modal -->
 <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

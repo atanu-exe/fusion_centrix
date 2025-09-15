@@ -17,7 +17,7 @@
             <div class="row align-items-center g-4">
 
                 <!-- Text Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-1 order-md-1">
                     <h2 class="mb-3">Custom E-commerce Platforms</h2>
                     <p class="text-muted lead">
                         We build <strong>custom e-commerce platforms</strong> tailored to your business needs, ensuring
@@ -30,8 +30,8 @@
                 </div>
 
                 <!-- Image Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
-                    <img src="{{ asset('assets/images/custom-ecommerce.png') }}" class="img-fluid"
+                <div class="col-md-6 order-2 order-md-2">
+                    <img src="{{ asset('assets/images/custom-ecomerce.png') }}" class="img-fluid"
                         alt="Custom E-commerce Platforms">
                 </div>
 
@@ -43,13 +43,13 @@
             <div class="row align-items-center g-4">
 
                 <!-- Image Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-2 order-md-1">
                     <img src="{{ asset('assets/images/woocommerce-shopify.png') }}" class="img-fluid"
                         alt="WooCommerce and Shopify Development">
                 </div>
 
                 <!-- Text Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
+                <div class="col-md-6 order-1 order-md-2">
                     <h2 class="mb-3">WooCommerce & Shopify Development</h2>
                     <p class="text-muted lead">
                         Build scalable online stores using <strong>WooCommerce</strong> and <strong>Shopify</strong> with
@@ -69,7 +69,7 @@
             <div class="row align-items-center g-4">
 
                 <!-- Text Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-1 order-md-1">
                     <h2 class="mb-3">Inventory & Order Management Systems</h2>
                     <p class="text-muted lead">
                         Streamline your stock and order processes with <strong>efficient inventory management
@@ -82,7 +82,7 @@
                 </div>
 
                 <!-- Image Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
+                <div class="col-md-6 order-2 order-md-2">
                     <img src="{{ asset('assets/images/inventory-management.png') }}" class="img-fluid"
                         alt="Inventory & Order Management Systems">
                 </div>
@@ -95,13 +95,13 @@
             <div class="row align-items-center g-4">
 
                 <!-- Image Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-2 order-md-1">
                     <img src="{{ asset('assets/images/multi-vendor.png') }}" class="img-fluid"
                         alt="Multi-vendor Marketplace Setup">
                 </div>
 
                 <!-- Text Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
+                <div class="col-md-6 order-1 order-md-2">
                     <h2 class="mb-3">Multi-vendor Marketplace Setup</h2>
                     <p class="text-muted lead">
                         Launch <strong>multi-vendor marketplaces</strong> where multiple sellers can showcase products under
@@ -167,78 +167,18 @@
         </div>
     </section>
     <!-- Related Services -->
-    <section>
+        <section class="services py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-heading">Related Services</h2>
+                <h2 class="section-heading">Other Services</h2>
+                <p class="section-description text-muted">
+                    We empower businesses through expertly crafted <strong>web & app development</strong>,
+                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
+                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
+                    scalable and performance-driven digital services tailored to your vision.
+                </p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Custom online shops with intuitive UX, mobile optimization, and fast-loading
-                                backend infrastructure.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-shopping-cart fa-2x mb-3 text-success"></i>
-                        <h3 class="h5">E-Commerce</h3>
-                        <p class="text-muted lead">Sell smarter with secure, seamless stores</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Full-funnel digital marketing, SEO campaigns, and brand amplification for
-                                measurable growth.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-bullhorn fa-2x mb-3 text-warning"></i>
-                        <h3 class="h5">Marketing</h3>
-                        <p class="text-muted lead">Boost visibility with strategic marketing</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Enterprise-ready tools for workflow optimization, scalable processes, and
-                                data-driven decision-making.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-cogs fa-2x mb-3 text-info"></i>
-                        <h3 class="h5">Custom Software</h3>
-                        <p class="text-muted lead">Automate smarter. Operate better</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Modern UI/UX, brand identity, and creative storytelling — from logos to full
-                                digital design systems.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-paint-brush fa-2x mb-3 text-danger"></i>
-                        <h3 class="h5">Graphics &amp; UI</h3>
-                        <p class="text-muted lead">Designs that speak your brand</p>
-                    </div>
-                </div>
-            </div>
+            @include('includes.services')
         </div>
-
     </section>
 @endsection

@@ -6,16 +6,71 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    function index()
+    public function index()
     {
-        return view('home');
+        $page_title = 'Web, App, E-commerce & Digital Marketing Services';
+        $meta_description = 'Fusioncentrix Solutions offers full-cycle web, app, e-commerce, and digital marketing services tailored to modern business needs.';
+$meta_keywords = 'Fusioncentrix Solutions, digital agency India, web development, mobile app development, e-commerce solutions, SEO services, digital marketing, branding, custom software, IT solutions';
+
+
+        $jsonLd = [
+            "@context" => "https://schema.org",
+            "@type" => "Organization",
+            "name" => "Fusioncentrix Solutions",
+            "url" => url('/'),
+            "logo" => asset('assets/images/logo.png'), // adjust path as needed
+            "sameAs" => [
+                "https://www.facebook.com/fusioncentrix",
+                "https://www.linkedin.com/company/fusioncentrix",
+                "https://www.instagram.com/fusioncentrix"
+            ],
+            "description" => $meta_description,
+        ];
+
+        return view('home', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords'));
     }
-    function about()
+
+    public function about()
     {
-        return view('about');
+        $page_title = 'About Us – IT Solutions for Web, App & Digital Growth';
+        $meta_description = 'Learn more about Fusioncentrix Solutions — your one-stop provider for digital and IT solutions focused on innovation, performance, and long-term success.';
+       $meta_keywords = 'about Fusioncentrix, IT company profile, digital solutions provider, software agency India, web agency background, team of developers, company values';
+
+
+        $jsonLd = [
+            "@context" => "https://schema.org",
+            "@type" => "AboutPage",
+            "name" => $page_title,
+            "description" => $meta_description,
+            "url" => url('/about'),
+            "mainEntityOfPage" => url('/about'),
+        ];
+
+        return view('about', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords'));
     }
-    function contact_us()
+
+    public function contact_us()
     {
-        return view('contact_us');
+        $page_title = 'Contact Fusioncentrix Solutions – Let’s Build Something Great Together';
+        $meta_description = 'Get in touch with Fusioncentrix Solutions for white-label development, digital marketing, or custom IT solutions. We’re here to help your business grow.';
+       $meta_keywords = 'contact Fusioncentrix, digital agency contact, IT services inquiry, request a quote, web development quote, get in touch, tech support, business consultation';
+
+
+        $jsonLd = [
+            "@context" => "https://schema.org",
+            "@type" => "ContactPage",
+            "name" => $page_title,
+            "description" => $meta_description,
+            "url" => url('/contact-us'),
+            "contactPoint" => [
+                "@type" => "ContactPoint",
+                "telephone" => "+1-555-555-5555",  // Replace with your phone number
+                "contactType" => "Customer Service",
+                "areaServed" => ["US", "CA", "IN"],
+                "availableLanguage" => ["English"]
+            ]
+        ];
+
+        return view('contact_us', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords'));
     }
 }

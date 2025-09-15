@@ -6,7 +6,9 @@
         <div class="container">
             <h1 class="display-5 fw-bold">Professional Web & App Development Services</h1>
             <p class="lead">
-                Delivering <b>custom web and mobile app development</b> for businesses in the US, Canada, India, and globally. We build <b>scalable, SEO-friendly, and high-performance websites and apps</b> tailored to your audience and business goals.
+                Delivering <b>custom web and mobile app development</b> for businesses in the US, Canada, India, and
+                globally. We build <b>scalable, SEO-friendly, and high-performance websites and apps</b> tailored to your
+                audience and business goals.
             </p>
         </div>
     </section>
@@ -15,28 +17,37 @@
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center g-4">
-                <div class="col-md-6">
-                    <img src="{{ asset('assets/images/web-1.png') }}" class="img-fluid" alt="Web & App Development">
+
+                <!-- Image -->
+                <div class="col-md-6 order-2 order-md-1">
+                    <img src="{{ asset('assets/images/web-service.png') }}" class="img-fluid" alt="Web & App Development">
                 </div>
-                <div class="col-md-6">
+
+                <!-- Text -->
+                <div class="col-md-6 order-1 order-md-2">
                     <h2 class="mb-3">Web & App Development</h2>
-                    <p class="text-muted lead">Build fast, scalable, and secure websites and mobile apps that deliver
-                        exceptional
+                    <p class="text-muted lead">
+                        Build fast, scalable, and secure websites and mobile apps that deliver exceptional
                         user experiences. We specialize in custom development tailored for global businesses targeting the
-                        U.S., Canada, and beyond.</p>
-                    <p class="text-muted">From concept to deployment, we ensure your product stands out with clean code,
-                        intuitive UI, and seamless functionality.</p>
+                        U.S., Canada, and beyond.
+                    </p>
+                    <p class="text-muted">
+                        From concept to deployment, we ensure your product stands out with clean code,
+                        intuitive UI, and seamless functionality.
+                    </p>
                     <a href="{{ url('contact-us') }}" class="btn btn-gradient mt-3">Get a Free Consultation</a>
                 </div>
+
             </div>
         </div>
+
     </section>
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center g-4">
 
                 <!-- Text Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-1 order-md-1">
                     <h2 class="mb-3">Expert CMS Development Services</h2>
                     <p class="text-muted lead">
                         Our <strong>CMS development</strong> services empower businesses to manage content
@@ -52,14 +63,15 @@
                     </p>
                 </div>
 
-                <!-- Image Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
-                    <img src="{{ asset('assets/images/cms-development.png') }}" class="img-fluid"
+                <!-- Image Column (right on desktop, top on mobile) -->
+                <div class="col-md-6 order-2 order-md-2 text-center">
+                    <img src="{{ asset('assets/images/cms-service.png') }}" class="img-fluid"
                         alt="CMS Development Services for Businesses">
                 </div>
 
             </div>
         </div>
+
     </section>
 
     <section class="py-5">
@@ -67,7 +79,7 @@
             <div class="row align-items-center g-4">
 
                 <!-- Text Column (left on desktop) -->
-                <div class="col-md-6 order-md-2">
+                <div class="col-md-6 order-1 order-md-2">
                     <h2 class="mb-3">Professional Website Maintenance &amp; Optimization Services</h2>
                     <p class="text-muted lead">
                         Ensure your website is always fast, secure, and performing at its best with our
@@ -84,7 +96,7 @@
                 </div>
 
                 <!-- Image Column (right on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-2 order-md-1">
                     <img src="{{ asset('assets/images/website-maintenance.png') }}" class="img-fluid"
                         alt="Professional Website Maintenance and Optimization Services">
                 </div>
@@ -97,7 +109,7 @@
             <div class="row align-items-center g-4">
 
                 <!-- Text Column (left on desktop) -->
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 order-1 order-md-1">
                     <h2 class="mb-3">Responsive Web Design Services</h2>
                     <p class="text-muted lead">
                         Our <strong>responsive web design</strong> services ensure your website looks and functions
@@ -115,8 +127,8 @@
                 </div>
 
                 <!-- Image Column (right on desktop) -->
-                <div class="col-md-6 order-md-2">
-                    <img src="{{ asset('assets/images/responsive-web-design.png') }}" class="img-fluid"
+                <div class="col-md-6 order-2 order-md-2">
+                    <img src="{{ asset('assets/images/web-1.png') }}" class="img-fluid"
                         alt="Responsive Web Design Services">
                 </div>
 
@@ -172,78 +184,18 @@
         </div>
     </section>
     <!-- Related Services -->
-    <section>
+    <section class="services py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-heading">Related Services</h2>
+                <h2 class="section-heading">Other Services</h2>
+                <p class="section-description text-muted">
+                    We empower businesses through expertly crafted <strong>web & app development</strong>,
+                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
+                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
+                    scalable and performance-driven digital services tailored to your vision.
+                </p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Custom online shops with intuitive UX, mobile optimization, and fast-loading
-                                backend infrastructure.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-shopping-cart fa-2x mb-3 text-success"></i>
-                        <h3 class="h5">E-Commerce</h3>
-                        <p class="text-muted lead">Sell smarter with secure, seamless stores</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Full-funnel digital marketing, SEO campaigns, and brand amplification for
-                                measurable growth.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-bullhorn fa-2x mb-3 text-warning"></i>
-                        <h3 class="h5">Marketing</h3>
-                        <p class="text-muted lead">Boost visibility with strategic marketing</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Enterprise-ready tools for workflow optimization, scalable processes, and
-                                data-driven decision-making.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-cogs fa-2x mb-3 text-info"></i>
-                        <h3 class="h5">Custom Software</h3>
-                        <p class="text-muted lead">Automate smarter. Operate better</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card service-card text-center p-4 bg-white shadow rounded">
-                        <div class="hover-overlay p-4">
-                            <p class="text-white mb-3">
-                                Modern UI/UX, brand identity, and creative storytelling — from logos to full
-                                digital design systems.
-                            </p>
-                            <a href="{{ url('/services/web-app-development') }}" class="btn btn-gradient btn-sm">
-                                Click to Read More
-                            </a>
-                        </div>
-                        <i class="fas fa-paint-brush fa-2x mb-3 text-danger"></i>
-                        <h3 class="h5">Graphics &amp; UI</h3>
-                        <p class="text-muted lead">Designs that speak your brand</p>
-                    </div>
-                </div>
-            </div>
+            @include('includes.services')
         </div>
-
     </section>
 @endsection

@@ -23,6 +23,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+   padding-top: 70px;
 }
 
 /* Optional: Extra Utility */
@@ -182,10 +183,12 @@ body {
 nav {
   height: 90px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
 }
 
 nav ul {
-  justify-content: space-between;
   gap: 40px;
 }
 
@@ -194,11 +197,39 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
-  text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
+
+/* Mobile styles */
+@media (max-width: 991px) {
+  #mainMenu {
+    display: none !important;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    top: 70px;
+    /* adjust to match nav height */
+    right: 20px;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+
+  #mainMenu.show {
+    display: flex !important;
+  }
+
+  #mainMenu li {
+    margin-bottom: 10px;
+  }
+
+  #mainMenu li:last-child {
+    margin-bottom: 0;
+  }
+}
+
 
 /* hero section chatgpt  */
 .hero-section {
@@ -207,15 +238,7 @@ nav ul li a {
   padding: 60px 0px;
 }
 
-/* .hero-section .btn-consult{
-background-color: #00ffe1;
-  color: black;
-  padding: 10px 25px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background 0.3s;
-} */
+
 .button-consult {
   background-color: #00ffe0;
   /* Original color */
@@ -305,49 +328,6 @@ background-color: #00ffe1;
   opacity: 1;
 }
 
-/* .icon i {
-  background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-
-/* .portfolio-card {
-  position: relative;
-  border-radius: 2rem;
-  overflow: hidden;
-  transition: transform 0.4s ease;
-}
-
-.portfolio-card:hover {
-  transform: scale(1.02);
-}
-
-.portfolio-card .overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 136, 255, 0.9) 0%, rgba(0, 76, 255, 0.95) 100%);
-  transform: scale(0);
-  opacity: 0;
-  transition: all 0.5s ease;
-  z-index: 2;
-}
-
-.portfolio-card:hover .overlay {
-  transform: scale(1.2);
-  opacity: 1;
-}
-
-.portfolio-card .text {
-  z-index: 3;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.4s ease 0.1s;
-}
-
-.portfolio-card:hover .text {
-  opacity: 1;
-  transform: translateY(0);
-} */
 
 .portfolio-card img {
   width: 100%;
@@ -373,7 +353,8 @@ background-color: #00ffe1;
 .home-portfolio-box .project-image img {
   height: 100%;
   width: 100%;
-  object-fit: contain; /* ✅ show full image, no cropping */
+  object-fit: contain;
+  /* ✅ show full image, no cropping */
 }
 
 
@@ -538,5 +519,94 @@ background-color: #00ffe1;
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+#mobileHelper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  pointer-events: auto;
+  /* clickable always */
+  transition: opacity 0.3s ease;
+}
+
+.helper-img {
+  width: 40px;
+  height: auto;
+}
+
+/* Smooth speech bubble */
+.helper-speech {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.helper-speech.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+/* Tablet (≤991px) */
+/* @media (max-width: 991px) {
+  .navbar {
+    font-size: 16px;
+  }
+} */
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+
+  /* .section-heading {
+    font-size: 1.8rem;
+  }
+.lead{
+  font-size: 1rem;
+}
+p{
+  font-size: 0.8rem;
+} */
+  #hero-section img {
+    display: none;
+  }
+
+  #about-us img {
+    max-height: 250px !important;
+  }
+
+  #about-us .collab-btn,
+  .commitment-section .btn-wrap {
+    text-align: center;
+  }
+
+  .home-portfolio-box {
+    margin: 20px auto;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  .services .card .text-muted {
+    text-align: center !important;
+  }
+
+  .step-box p {
+    text-align: center;
+    font-weight: 900 !important;
   }
 }
