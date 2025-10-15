@@ -1,88 +1,93 @@
 @extends('layouts.app')
-
 @section('content')
-<style>
-    .step-box {
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        
-        color: #fff;
-        font-size: 18px;
-        font-weight: 600;
-        position: relative;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .step-circle {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: #fff;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        font-weight: bold;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        flex-shrink: 0;
-    }
-
-    .step-circle span {
-        font-size: 12px;
-        font-weight: normal;
-        color: #555;
-    }
-
-    .step-text {
-        flex: 1;
-        padding-left: 20px;
-    }
-
-    /* Step colors */
-    .step1 { background: #66bb2b; } /* Green */
-    .step2 { background: #f9b41b; } /* Yellow */
-    .step3 { background: #00acc1; } /* Blue */
-    .step4 { background: #ad2a8d; } /* Purple */
-
-    /* -------- Mobile Style -------- */
-    /* @media (max-width: 768px) {
+    <style>
         .step-box {
-            flex-direction: column;
-            border-radius: 20px;
-            text-align: center;
-            padding: 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease-in-out;
         }
         .step-circle {
-            margin-bottom: 10px;
-            position: relative;
-            right: 0;
-            top: 0;
-            transform: none;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+        .step-circle span {
+            font-size: 12px;
+            font-weight: normal;
+            color: #555;
         }
         .step-text {
-            padding-left: 0;
+            flex: 1;
+            padding-left: 20px;
         }
-    } */
-</style>
+        /* Step colors */
+        .step1 {
+            background: #66bb2b;
+        }
+        /* Green */
+        .step2 {
+            background: #f9b41b;
+        }
+        /* Yellow */
+        .step3 {
+            background: #00acc1;
+        }
+        /* Blue */
+        .step4 {
+            background: #ad2a8d;
+        }
+        /* Purple */
+        /* -------- Mobile Style -------- */
+        /* @media (max-width: 768px) {
+            .step-box {
+                flex-direction: column;
+                border-radius: 20px;
+                text-align: center;
+                padding: 20px;
+            }
+            .step-circle {
+                margin-bottom: 10px;
+                position: relative;
+                right: 0;
+                top: 0;
+                transform: none;
+            }
+            .step-text {
+                padding-left: 0;
+            }
+        } */
+    </style>
     <!-- Hero Banner -->
-    <section class="mb-5 text-center  sub-hero">
+    <section class="mb-5 text-center about_bnr sub-hero">
         <div class="container">
-            <h1 class="display-5 fw-bold ">About Fusioncentrix Solutions</h1>
+            <h1 class="display-5 fw-bold ">About Fusioncentrix</h1>
             <p class="lead">One-stop IT solutions crafted for scale, speed, and success.</p>
         </div>
     </section>
-
     <!-- Company Introduction -->
     <section class="pb-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="{{ asset('assets/images/about-team.png') }}" class="img-fluid mx-auto" alt="About Illustration">
+                    <img src="{{ asset('assets/images/about-team.webp') }}" class="img-fluid mx-auto" alt="About Illustration"
+                        loading="lazy">
                 </div>
                 <div class="col-md-6">
                     <h2 class="section-heading">Who We Are</h2>
@@ -99,7 +104,6 @@
             </div>
         </div>
     </section>
-
     <!-- Mission & Vision -->
     <section class="py-5 services">
         <div class="container">
@@ -107,8 +111,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="p-4 shadow rounded h-100 bg-white">
                         <h3 class="fw-bold mb-3">Our Mission</h3>
-                        <img src="{{ asset('assets/images/mission.png') }}" alt="" class="mx-auto"
-                            style=" height: 200px;">
+                        <img src="{{ asset('assets/images/mission.webp') }}" alt="" class="mx-auto"
+                            style=" height: 200px;" loading="lazy">
                         <p class="text-muted">To empower global businesses with scalable, secure, and intelligent digital
                             solutions — from custom software and web platforms to automation and IT consulting — that solve
                             real-world challenges and deliver measurable impact.</p>
@@ -117,8 +121,8 @@
                 <div class="col-md-6 mb-4">
                     <div class="p-4 shadow rounded h-100 bg-white">
                         <h3 class="fw-bold mb-3">Our Vision</h3>
-                        <img src="{{ asset('assets/images/vision.png') }}" alt="" class="mx-auto"
-                            style=" height: 200px;">
+                        <img src="{{ asset('assets/images/vision.webp') }}" alt="" class="mx-auto"
+                            style=" height: 200px;" loading="lazy">
                         <p class="text-muted">To be a trusted global technology partner, known for innovation, transparency,
                             and consistent delivery of high-performance IT services that help brands grow and succeed in the
                             digital era.</p>
@@ -127,7 +131,6 @@
             </div>
         </div>
     </section>
-
     <!-- Core Values -->
     <section class="py-5 bg-light">
         <div class="container text-center">
@@ -135,30 +138,26 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow h-100">
-                        <img src="{{ asset('assets/images/innovation.png') }}" alt="Innovation" class="mb-3 mx-auto"
-                            style="height: 100px;">
+                        <img src="{{ asset('assets/images/innovation.webp') }}" alt="Innovation" class="mb-3 mx-auto"
+                            style="height: 100px;" loading="lazy">
                         <h5 class="fw-bold">Innovation</h5>
-
                         <p class="text-muted">We turn bold ideas into cutting-edge solutions with future-ready technologies.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow h-100">
-                        <img src="{{ asset('assets/images/collabration.png') }}" alt="Innovation" class="mb-3 mx-auto"
-                            style="height: 100px;">
+                        <img src="{{ asset('assets/images/collabration.webp') }}" alt="Innovation" class="mb-3 mx-auto"
+                            style="height: 100px;" loading="lazy">
                         <h5 class="fw-bold">Collaboration</h5>
-
                         <p class="text-muted">We co-create with clients, blending vision and expertise for real impact.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow h-100">
-                        <img src="{{ asset('assets/images/integrity.png') }}" alt="Innovation" class="mb-3 mx-auto"
-                            style="height: 100px;">
+                        <img src="{{ asset('assets/images/integrity.webp') }}" alt="Innovation" class="mb-3 mx-auto"
+                            style="height: 100px;" loading="lazy">
                         <h5 class="fw-bold">Integrity</h5>
-
-
                         <p class="text-muted">We operate with transparency, ethics, and unwavering commitment to quality.
                         </p>
                     </div>
@@ -167,52 +166,48 @@
         </div>
     </section>
     {{-- why we are best  --}}
-  <section class="technologies py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-heading">Why We Are The Best</h2>
-            <p class="text-muted text-left">
-                <strong>Fusioncentrix Solutions</strong> is a leading <strong>global IT solutions provider</strong> 
-                and <strong>digital transformation partner</strong>. We specialize in 
-                <strong>web and mobile app development, e-commerce solutions, branding, marketing, and custom software</strong> 
-                that help businesses grow worldwide. As a <strong>one-stop IT company</strong>, we combine 
-                innovation, reliability, and expertise to deliver scalable results. 
-                Our mission is simple — <strong>maintain quality, empower businesses, and drive sustainable growth</strong>.
-            </p>
-        </div>
-
-        <!-- Our Process Steps -->
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
-
-                <!-- Step 1 -->
-                <div class="step-box step1 mb-4">
-                    <div class="step-circle">01 <span>STEP</span></div>
-                    <span class="step-text">Planning & Strategy</span>
+    <section class="technologies py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-heading">Why We Are The Best</h2>
+                <p class="text-muted text-left">
+                    <strong>Fusioncentrix Solutions</strong> is a leading <strong>global IT solutions provider</strong>
+                    and <strong>digital transformation partner</strong>. We specialize in
+                    <strong>web and mobile app development, e-commerce solutions, branding, marketing, and custom
+                        software</strong>
+                    that help businesses grow worldwide. As a <strong>one-stop IT company</strong>, we combine
+                    innovation, reliability, and expertise to deliver scalable results.
+                    Our mission is simple — <strong>maintain quality, empower businesses, and drive sustainable
+                        growth</strong>.
+                </p>
+            </div>
+            <!-- Our Process Steps -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <!-- Step 1 -->
+                    <div class="step-box step1 mb-4">
+                        <div class="step-circle">01 <span>STEP</span></div>
+                        <span class="step-text">Planning & Strategy</span>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-box step2 mb-4">
+                        <div class="step-circle">02 <span>STEP</span></div>
+                        <span class="step-text">Design & Prototyping</span>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-box step3 mb-4">
+                        <div class="step-circle">03 <span>STEP</span></div>
+                        <span class="step-text">Development</span>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-box step4">
+                        <div class="step-circle">04 <span>STEP</span></div>
+                        <span class="step-text">Testing & Launch</span>
+                    </div>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="step-box step2 mb-4">
-                    <div class="step-circle">02 <span>STEP</span></div>
-                    <span class="step-text">Design & Prototyping</span>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="step-box step3 mb-4">
-                    <div class="step-circle">03 <span>STEP</span></div>
-                    <span class="step-text">Development</span>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="step-box step4">
-                    <div class="step-circle">04 <span>STEP</span></div>
-                    <span class="step-text">Testing & Launch</span>
-                </div>
-
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <!-- Call To Action -->
     <section class="get-quote-section py-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden">
         <div class="container">
@@ -230,7 +225,6 @@
         <div class="container">
             <h2 class="mb-4 text-center">Frequently Asked Questions</h2>
             <div class="accordion" id="aboutFaqAccordion">
-
                 <!-- FAQ 1 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading1">
@@ -242,13 +236,13 @@
                     <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
                         data-bs-parent="#aboutFaqAccordion">
                         <div class="accordion-body">
-                            We offer <b>web & app development, e-commerce solutions, digital marketing, UI/UX design, custom
-                                software,</b> and <b>branding & identity services</b> for businesses in the US, Canada,
+                            We offer <b>web &amp; app development, e-commerce solutions, digital marketing, UI/UX design,
+                                custom
+                                software,</b> and <b>branding &amp; identity services</b> for businesses in the US, Canada,
                             India, and globally.
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ 2 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading2">
@@ -265,7 +259,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ 3 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading3">
@@ -282,7 +275,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ 4 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading4">
@@ -299,7 +291,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ 5 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading5">
@@ -316,7 +307,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FAQ 6 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faqHeading6">
@@ -333,8 +323,7 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
+            </div> <!-- /.accordion -->
         </div>
     </section>
 @endsection

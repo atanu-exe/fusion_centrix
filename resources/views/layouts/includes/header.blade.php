@@ -11,47 +11,36 @@
         content="{{ isset($meta_description) && $meta_description ? $meta_description : 'Fusion Centrix Solutions provides professional IT services including web and app development, e-commerce solutions, digital marketing, UI/UX design, branding, and custom software for businesses in the US, Canada, India, and worldwide. Delivering scalable, SEO-friendly, and high-performance solutions to drive growth and engagement.' }}">
     <meta name="keywords"
         content="{{ $meta_keywords ?? 'Fusioncentrix, digital marketing India, SEO, branding, app development, social media marketing, logo design, advertising agency' }}">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     {{-- bootstrap  --}}
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-icons.css') }}">
-
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}">
-
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}">
-
     <!-- Bootstrap Icons CDN -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}">
-
-
     {{-- custom css  --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const toggleBtn = document.getElementById("menuToggle");
             const menu = document.getElementById("mainMenu");
-
             toggleBtn.addEventListener("click", function() {
                 menu.classList.toggle("active");
             });
         });
     </script>
     <script src="{{ asset('assets/plugins/swiper/swiper-bundle.min.js') }}" defer></script>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Structured Data for Google -->
-
     @if (!empty($jsonLd))
         <script type="application/ld+json">
 {!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
@@ -63,9 +52,9 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Fusioncentrix Solutions",
-  "image": "https://www.fusioncentrix.com/assets/images/logo.png",
+  "image": "https://www.fusioncentrix.com/logo.png",
   "url": "https://www.fusioncentrix.com",
-  "telephone": "+91-9876543210",
+  "telephone": "+91-9477614409",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Sector V, Salt Lake",
@@ -90,67 +79,22 @@
 </script>
         @endverbatim
     @endif
-
-
 </head>
 
 <body style="background-color: #f4f6f8;">
-    {{-- <header>
-        <nav class="d-flex justify-content-between px-5 bg-gradient-dark" role="navigation"
-            aria-label="Main Navigation">
-            <div class="brand d-flex"><a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo.png') }}"
-                        alt="fusion centrix logo"></a></div>
-            <ul class="d-flex list-unstyled align-items-center desktop-menu">
-                <li><a href="{{ url('') }}" class="text-decoration-none">Home</a></li>
-                <li><a href="{{ url('about') }}" class="text-decoration-none">About Us</a></li>
-                <li><a href="{{ url('services') }}" class="text-decoration-none">Services</a></li>
-                <li><a href="{{ url('portfolio') }}" class="text-decoration-none">Portfolio</a></li>
-                <li><a href="{{ url('blog') }}" class="text-decoration-none">Blog</a></li>
-                <li><a href="{{ url('contact-us') }}" class="text-decoration-none">Contact</a></li>
-            </ul>
-        </nav>
-        <nav class="d-flex justify-content-between align-items-center px-5 bg-gradient-dark" role="navigation"
-            aria-label="Main Navigation">
-            <!-- Logo -->
-            <div class="brand d-flex">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="fusion centrix logo" height="50">
-                </a>
-            </div>
-
-            <!-- Hamburger button (visible only on mobile) -->
-            <button id="menuToggle" class="menu-toggle d-lg-none btn text-white fs-3 border-0 bg-transparent">
-                ☰
-            </button>
-
-            <!-- Menu -->
-            <ul class="d-flex list-unstyled align-items-center mb-0 desktop-menu">
-                <li><a href="{{ url('') }}" class="text-decoration-none text-white">Home</a></li>
-                <li><a href="{{ url('about') }}" class="text-decoration-none text-white">About Us</a></li>
-                <li><a href="{{ url('services') }}" class="text-decoration-none text-white">Services</a></li>
-                <li><a href="{{ url('portfolio') }}" class="text-decoration-none text-white">Portfolio</a></li>
-                <li><a href="{{ url('blog') }}" class="text-decoration-none text-white">Blog</a></li>
-                <li><a href="{{ url('contact-us') }}" class="text-decoration-none text-white">Contact</a></li>
-            </ul>
-        </nav>
-
-    </header> --}}
     <header>
         <nav class="d-flex justify-content-between align-items-center px-5 bg-gradient-dark fixed-top" role="navigation"
             aria-label="Main Navigation">
-
             <!-- Logo -->
             <div class="brand d-flex">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="fusion centrix logo" height="50">
+                    <img src="{{ asset('logo.png') }}" alt="fusion centrix logo" height="50">
                 </a>
             </div>
-
             <!-- Hamburger button (mobile only) -->
             <button id="menuToggle" class="menu-toggle-btn d-lg-none btn text-white fs-3 border-0 bg-transparent">
                 ☰
             </button>
-
             <!-- Menu -->
             <ul id="mainMenu" class="d-flex list-unstyled align-items-center mb-0 desktop-menu">
                 <li><a href="{{ url('') }}" class="text-decoration-none text-white">Home</a></li>
@@ -158,9 +102,8 @@
                 <li><a href="{{ url('services') }}" class="text-decoration-none text-white">Services</a></li>
                 <li><a href="{{ url('portfolio') }}" class="text-decoration-none text-white">Portfolio</a></li>
                 <li><a href="{{ url('blog') }}" class="text-decoration-none text-white">Blog</a></li>
-                <li><a href="{{ url('contact-us') }}" class="text-decoration-none text-white">Contact</a></li>
+                <li><a href="{{ url('contact-us') }}" class="text-decoration-none text-white">Contact Us</a></li>
             </ul>
         </nav>
     </header>
-
     <div>

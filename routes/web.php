@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
@@ -12,6 +13,8 @@ Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/reseller-program', [ResellerController::class, 'index'])->name('resellers');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
+Route::post('/contact-us', [HomeController::class, 'contact_us_submit'])->name('contact.submit');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 Route::get('/services/web-app-development', [ServicesController::class, 'web_and_app_development'])->name('services.web_app_development');
 Route::get('/services/e-commerce-development', [ServicesController::class, 'e_commerce'])->name('services.e_commerce');

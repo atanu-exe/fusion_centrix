@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://www.fusioncentrix.com/</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/about</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/reseller-program</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/portfolio</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/contact-us</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/blog</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Service Sub-pages -->
+    <url>
+        <loc>https://www.fusioncentrix.com/services/web-app-development</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services/e-commerce-development</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services/digital-marketing</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services/custom-software-development</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services/ui-ux-design</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.fusioncentrix.com/services/branding-identity</loc>
+        <lastmod>2025-10-12T00:00:00+05:30</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>
