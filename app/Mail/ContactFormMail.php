@@ -9,16 +9,23 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
+
 class ContactFormMail extends Mailable
 {
     use Queueable, SerializesModels;
- public $mailData;
+    public $name;
+    public $email;
+    public $subject;
+    public $user_message;
     /**
      * Create a new message instance.
      */
-     public function __construct($mailData)
+    public function __construct($mailData)
     {
-        $this->mailData = $mailData;
+        $this->name = $mailData->name;
+        $this->email = $mailData->email;
+        $this->subject = $mailData->subject;
+        $this->user_message = $mailData->message;
     }
 
     /**
@@ -27,8 +34,8 @@ class ContactFormMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-           subject: $this->mailData['subject'] ?? 'New Contact Form Message',
-        from: new Address($this->mailData['email'], $this->mailData['name'])
+             from: new Address($this->email,  $this->name),
+            subject: 'Contact form - '.$this->subject ?? 'New Contact Form Message',
         );
     }
 
@@ -39,6 +46,12 @@ class ContactFormMail extends Mailable
     {
         return new Content(
             view: 'emails.contact', // your Blade view
+            with: [
+                'name' => $this->name,
+                'email' => $this->email,
+                'subject' => $this->subject,
+                'user_message' => $this->user_message,
+            ],
         );
     }
 

@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9ZFLYSZ8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V9ZFLYSZ8K');
+    </script>
     <meta charset="UTF-8">
     <title>
         {{ isset($page_title) && $page_title ? $page_title . ' | ' : '' }}

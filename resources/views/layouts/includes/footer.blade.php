@@ -1,8 +1,8 @@
-<button id="mobileHelper" class="btn consult-helper border-0" data-bs-toggle="modal" data-bs-target="#quoteModal">
+<button id="mobileHelper" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn consult-helper border-0" adata-bs-toggle="modal" adata-bs-target="#quoteModal">
 
     <img src="{{ asset('assets/images/help-robot.webp') }}" alt="Helper" class="helper-img">
 
-    <div class="helper-speech">Hi! Need help?</div>
+    <div class="helper-speech">📅 Book Your Free Consultation</div>
 
 </button>
 
@@ -215,8 +215,11 @@
 <!-- Bootstrap JS Bundle (with Popper) -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+{{-- <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">free consultations</a> --}}
+<!-- Calendly link widget end -->
 
 </body>
 

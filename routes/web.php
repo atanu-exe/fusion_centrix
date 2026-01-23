@@ -14,7 +14,13 @@ Route::get('/reseller-program', [ResellerController::class, 'index'])->name('res
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::post('/contact-us', [HomeController::class, 'contact_us_submit'])->name('contact.submit');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
+
+// Blog routes
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/category/{category}', [BlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/load-more', [BlogController::class, 'loadMore'])->name('blog.load-more');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/services/web-app-development', [ServicesController::class, 'web_and_app_development'])->name('services.web_app_development');
 Route::get('/services/e-commerce-development', [ServicesController::class, 'e_commerce'])->name('services.e_commerce');

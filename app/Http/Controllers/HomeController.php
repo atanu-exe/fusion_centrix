@@ -20,7 +20,7 @@ class HomeController extends Controller
             "@type" => "Organization",
             "name" => "Fusioncentrix Solutions",
             "url" => url('/'),
-            "logo" => asset('assets/images/logo.png'), // adjust path as needed
+            "logo" => asset('logo.png'), // adjust path as needed
             "sameAs" => [
                 "https://www.facebook.com/fusioncentrix",
                 "https://www.linkedin.com/company/fusioncentrix",
@@ -66,7 +66,7 @@ class HomeController extends Controller
             "url" => url('/contact-us'),
             "contactPoint" => [
                 "@type" => "ContactPoint",
-                "telephone" => "+1-555-555-5555",  // Replace with your phone number
+                "telephone" => "+9830107481",  // Replace with your phone number
                 "contactType" => "Customer Service",
                 "areaServed" => ["US", "CA", "IN"],
                 "availableLanguage" => ["English"]
@@ -79,20 +79,20 @@ class HomeController extends Controller
     function contact_us_submit(Request $request)
     {
         // ✅ 1. Validate input
-        $data = $request->validate([
+        $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'required|email',
             'subject' => 'nullable|string|max:255',
             'message' => 'required|string',
         ]);
-
-// phpinfo();die;
+        $filter_data = $request;
+        // phpinfo();die;
         // ✅ 3. Send email (you can use your domain mail)
         try {
-            Mail::to('info@fusioncentrix.com')->send(new ContactFormMail($data));
-         
+            Mail::to('info@fusioncentrix.com')->send(new ContactFormMail($filter_data));
+
             return back()->with('success', 'Thank you for contacting us! We’ll get back to you soon.');
-        } catch (\Exception $e) {   dd($e);
+        } catch (\Exception $e) {
             return back()->with('error', 'Something went wrong while sending your message. Please try again later.');
         }
     }

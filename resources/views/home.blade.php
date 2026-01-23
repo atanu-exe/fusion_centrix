@@ -97,7 +97,7 @@
                                 clear
                                 and timelines were met.”</p>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/client.webp') }}" alt="Client"
+                                <img src="{{ asset('assets/images/devid.webp') }}" alt="Client"
                                     class="rounded-circle me-3"  loading="lazy">
                                 <div>
                                     <strong class="text-dark">David Miller</strong><span> – Austin, USA</span><br>
@@ -119,7 +119,7 @@
                                 recommend
                                 their design team.”</p>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/client.webp') }}" alt="Client"
+                                <img src="{{ asset('assets/images/jessica.webp') }}" alt="Client"
                                     class="rounded-circle me-3"  loading="lazy">
                                 <div>
                                     <strong class="text-dark">Jessica Li</strong><span> – Vancouver, Canada</span><br>
@@ -140,7 +140,7 @@
                                 not
                                 just promises.”</p>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/client.webp') }}" alt="Client"
+                                <img src="{{ asset('assets/images/natalie.webp') }}" alt="Client"
                                     class="rounded-circle me-3"  loading="lazy">
                                 <div>
                                     <strong class="text-dark">Natalie Cruz</strong><span> – Miami, USA</span><br>
@@ -162,7 +162,7 @@
                                 and
                                 dependable.”</p>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/client.webp') }}" alt="Client"
+                                <img src="{{ asset('assets/images/abhisekh-sharma.webp') }}" alt="Client"
                                     class="rounded-circle me-3"  loading="lazy">
                                 <div>
                                     <strong class="text-dark">Abhishek Sharma</strong><span> – Mumbai, India</span><br>
@@ -184,7 +184,7 @@
                                 hitting
                                 our quarterly goals.”</p>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/client.webp') }}" alt="Client"
+                                <img src="{{ asset('assets/images/alexntra.webp') }}" alt="Client"
                                     class="rounded-circle me-3"  loading="lazy">
                                 <div>
                                     <strong class="text-dark">Alexandra R.</strong> <span> – Dubai, UAE</span><br>
