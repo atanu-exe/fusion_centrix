@@ -5,23 +5,18 @@
 @section('content')
 
     <!-- Hero Banner -->
-
-    <section class="py-5 text-center sub-hero bg-light">
-
+ <section class="fc-header">
         <div class="container">
-
-            <h1 class="display-5 fw-bold">Comprehensive Digital Marketing Services</h1>
-
-            <p class="lead">
-
-                Boost your online presence with <b>SEO, social media marketing, PPC advertising, email automation, and content marketing</b> for businesses in the US, Canada, India, and globally. We help you generate <b>leads, increase conversions, and maximize ROI</b>.
-
-            </p>
-
+            <div class="fc-header-content">
+                <h1>Comprehensive Digital Marketing Services</h1>
+                <p>Boost your online presence with <b>SEO, social media marketing, PPC advertising, email automation, and content marketing</b> for businesses in the US, Canada, India, and globally. We help you generate <b>leads, increase conversions, and maximize ROI</b>.
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
 
 
     <!-- Service Overview -->

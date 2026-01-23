@@ -6,23 +6,18 @@
 
     <!-- Hero Banner -->
 
-    <section class="py-5 text-center sub-hero bg-light">
-
+ <section class="fc-header">
         <div class="container">
-
-            <h1 class="display-5 fw-bold">Professional UI/UX Design Services</h1>
-
-            <p class="lead">
-
-               Create <b>intuitive web and mobile interfaces</b> with <b>UX research, wireframing, prototyping, and design systems</b> for businesses in the US, Canada, India, and globally. We focus on <b>user engagement, accessibility, and SEO-friendly design</b>.
-
-            </p>
-
+            <div class="fc-header-content">
+                <h1>Professional UI/UX Design Services</h1>
+                <p>Create <b>intuitive web and mobile interfaces</b> with <b>UX research, wireframing, prototyping, and design systems</b> for businesses in the US, Canada, India, and globally. We focus on <b>user engagement, accessibility, and SEO-friendly design</b>.
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
-
 
     <!-- Service Overview -->
 

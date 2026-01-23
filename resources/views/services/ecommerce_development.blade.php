@@ -3,25 +3,22 @@
 
 
 @section('content')
-
     <!-- Hero Banner -->
 
-    <section class="py-5 text-center sub-hero bg-light">
-
+    <section class="fc-header">
         <div class="container">
-
-            <h1 class="display-5 fw-bold">Expert E-commerce Development Services</h1>
-
-            <p class="lead">
-
-                Build <b>custom e-commerce platforms</b> including <b>WooCommerce</b> and <b>Shopify</b> for businesses in the US, Canada, India, and worldwide. Our solutions ensure <b>secure transactions, optimized user experience, and SEO-friendly product listings</b>
-
-            </p>
-
+            <div class="fc-header-content">
+                <h1>Expert E-commerce Development Services</h1>
+                <p>Build <b>custom e-commerce platforms</b> including <b>WooCommerce</b> and <b>Shopify</b> for businesses
+                    in the US, Canada, India, and worldwide. Our solutions ensure <b>secure transactions, optimized user
+                        experience, and SEO-friendly product listings</b>
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
 
 
     <!-- Service Overview -->
@@ -65,8 +62,7 @@
                 <div class="col-md-6 order-2 order-md-2">
 
                     <img src="{{ asset('assets/images/custom-ecomerce.webp') }}" class="img-fluid"
-
-                        alt="Custom E-commerce Platforms"  loading="lazy">
+                        alt="Custom E-commerce Platforms" loading="lazy">
 
                 </div>
 
@@ -91,8 +87,7 @@
                 <div class="col-md-6 order-2 order-md-1">
 
                     <img src="{{ asset('assets/images/woocommerce-shopify.webp') }}" class="img-fluid"
-
-                        alt="WooCommerce and Shopify Development"  loading="lazy">
+                        alt="WooCommerce and Shopify Development" loading="lazy">
 
                 </div>
 
@@ -169,8 +164,7 @@
                 <div class="col-md-6 order-2 order-md-2">
 
                     <img src="{{ asset('assets/images/inventory-management.webp') }}" class="img-fluid"
-
-                        alt="Inventory & Order Management Systems"  loading="lazy">
+                        alt="Inventory & Order Management Systems" loading="lazy">
 
                 </div>
 
@@ -195,8 +189,7 @@
                 <div class="col-md-6 order-2 order-md-1">
 
                     <img src="{{ asset('assets/images/multi-vendor.webp') }}" class="img-fluid"
-
-                        alt="Multi-vendor Marketplace Setup"  loading="lazy">
+                        alt="Multi-vendor Marketplace Setup" loading="lazy">
 
                 </div>
 
@@ -336,7 +329,7 @@
 
     <!-- Related Services -->
 
-        <section class="services py-5 bg-light">
+    <section class="services py-5 bg-light">
 
         <div class="container">
 
@@ -363,6 +356,4 @@
         </div>
 
     </section>
-
 @endsection
-

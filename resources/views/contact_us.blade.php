@@ -2,108 +2,174 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="position-relative text-center sub-hero py-5" style="">
-    <div class="container position-relative z-2">
-        <h1 class="display-5 fw-bold mb-3">Get in Touch</h1>
-        <p class="lead mb-0">
-            Let’s build something great together. Whether it’s a new project, partnership, or just a hello — we’d love to hear from you.
-        </p>
-    </div>
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient opacity-25"></div>
-</section>
 
+  <section class="fc-header">
+        <div class="container">
+            <div class="fc-header-content">
+                <h1>Get in Touch</h1>
+                <p>Let’s build something great together. Whether it’s a new project, partnership, or just a hello — we’d love to hear from you.</p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- Contact Section -->
-<section class="py-5 bg-light">
+<section id="contact-us" class="fc-contact-section py-5">
     <div class="container">
-        <div class="row align-items-stretch gy-5">
-            
-            <!-- Contact Form -->
-            <div class="col-lg-7 order-2 order-lg-1">
-                <div class="p-4 p-md-5 bg-white shadow-lg rounded-4 h-100 animate__animated animate__fadeInLeft">
-                    <h3 class="mb-4 fw-bold section-heading">Send Us a Message</h3>
-                    
-                    <form method="POST" action="{{ route('contact.submit') }}">
+        <div class="row align-items-start gy-4">
+            <!-- Left: Info -->
+            <div class="col-lg-5">
+                <div class="contact-intro">
+                    <span class="contact-badge">Contact</span>
+                    <h2 class="section-heading">Let’s plan your next launch</h2>
+                    <p class="section-description text-muted">Tell us about your goals and we’ll tailor a roadmap—whether
+                        it’s a new build, modernization, or ongoing support.</p>
+
+                    <div class="contact-stats">
+                        <div class="stat">
+                            <div class="stat-number">180+</div>
+                            <div class="stat-label">Projects shipped</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support coverage</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">4–12 wks</div>
+                            <div class="stat-label">Typical timeline</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <div class="label">Location</div>
+                                <div class="value">Salt Lake, Kolkata, India</div>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <div class="label">Email</div>
+                                <a class="value" href="mailto:sales@fusioncentrix.com">sales@fusioncentrix.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <div class="label">Phone</div>
+                                <a class="value" href="tel:+919477614409">+91 9477614409</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <div class="label">Follow us</div>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/fusioncentrix" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/fusioncentrix" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <div class="label">Working hours</div>
+                        <p class="text-muted mb-1">Mon – Fri: 9:00 AM – 6:00 PM</p>
+                        <p class="text-muted mb-0">Sat: 10:00 AM – 2:00 PM</p>
+                        <div class="response"><i class="fas fa-bolt"></i> Avg. response: within 24 hours</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="col-lg-7">
+                <div class="contact-form-card">
+                    <div class="form-head">
+                        <div>
+                            <span class="form-chip">Project inquiry</span>
+                            <h3>Tell us what you need</h3>
+                            <p class="text-muted">Share a few details and we’ll follow up with a tailored plan.</p>
+                        </div>
+                        <div class="form-help">
+                            <i class="fas fa-clock"></i>
+                            <span>Response in 24 hours</span>
+                        </div>
+                    </div>
+
+                    <form method="POST" action="{{ route('contact.submit') }}" class="fc-contact-form">
                         @csrf
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" required
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="John Doe">
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" required
+                                    class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com">
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" name="subject" id="subject" value="{{ old('subject') }}"
+                                    class="form-control @error('subject') is-invalid @enderror" placeholder="Project inquiry">
+                                @error('subject')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="message" class="form-label">Project Type *</label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <label class="chip-input"><input type="radio" name="project_type" value="Web" checked><span>Web</span></label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="chip-input"><input type="radio" name="project_type" value="Mobile"><span>Mobile</span></label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="chip-input"><input type="radio" name="project_type" value="E-commerce"><span>E-commerce</span></label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="chip-input"><input type="radio" name="project_type" value="Other"><span>Other</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea name="message" id="message" rows="5" required
+                                    class="form-control @error('message') is-invalid @enderror"
+                                    placeholder="Tell us about your project, goals, and timeline">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 d-flex flex-column flex-md-row align-items-md-center gap-3">
+                                <button type="submit" class="btn btn-gradient px-4">Send Message</button>
+                                <span class="form-note"><i class="fas fa-lock"></i> We keep your information private.</span>
+                            </div>
 
-                        {{-- Name --}}
-                        <div class="mb-3">
-                            <label for="name" class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
-                            <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                                class="form-control @error('name') is-invalid @enderror" placeholder="John Doe">
-                            @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                            @if (session('success'))
+                                <div class="col-12">
+                                    <div class="alert alert-success text-center mt-2">{{ session('success') }}</div>
+                                </div>
+                            @endif
+                            @if (session('error'))
+                                <div class="col-12">
+                                    <div class="alert alert-danger text-center mt-2">{{ session('error') }}</div>
+                                </div>
+                            @endif
                         </div>
-
-                        {{-- Email --}}
-                        <div class="mb-3">
-                            <label for="email" class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
-                            <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                                class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com">
-                            @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        {{-- Subject --}}
-                        <div class="mb-3">
-                            <label for="subject" class="form-label fw-semibold">Subject</label>
-                            <input type="text" name="subject" id="subject" value="{{ old('subject') }}"
-                                class="form-control @error('subject') is-invalid @enderror" placeholder="Project Inquiry">
-                            @error('subject')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        {{-- Message --}}
-                        <div class="mb-3">
-                            <label for="message" class="form-label fw-semibold">Message <span class="text-danger">*</span></label>
-                            <textarea name="message" id="message" rows="5" required
-                                class="form-control @error('message') is-invalid @enderror"
-                                placeholder="Tell us about your project...">{{ old('message') }}</textarea>
-                            @error('message')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        {{-- Submit --}}
-                        <button type="submit" class="btn btn-gradient w-100 py-2 mt-3">Send Message</button>
-
-                        {{-- Flash Messages --}}
-                        @if (session('success'))
-                            <div class="alert alert-success text-center mt-3">{{ session('success') }}</div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger text-center mt-3">{{ session('error') }}</div>
-                        @endif
                     </form>
                 </div>
             </div>
-
-            <!-- Contact Info -->
-            <div class="col-lg-5 order-1 order-lg-2">
-                <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg h-100 animate__animated animate__fadeInRight">
-                    <h3 class="fw-bold mb-4 section-heading">Contact Information</h3>
-                    <p><i class="fas fa-map-marker-alt text-primary me-2"></i> Salt Lake, Kolkata, India</p>
-                    <p><i class="fas fa-envelope text-primary me-2"></i> sales@fusioncentrix.com</p>
-                    <p><i class="fas fa-phone-alt text-primary me-2"></i> +91 9477614409</p>
-
-                    <h5 class="fw-semibold mt-4">Follow Us</h5>
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="https://www.facebook.com/fusioncentrix" class="fs-4 text-primary" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/fusioncentrix" class="fs-4 text-danger" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/fusioncentrix" class="fs-4 text-info" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </div>
-
-                    <div class="mt-5">
-                        <h5 class="fw-semibold">Working Hours</h5>
-                        <p class="text-muted mb-2">Mon – Fri: 9:00 AM – 6:00 PM</p>
-                        <p class="text-muted mb-4">Sat: 10:00 AM – 2:00 PM</p>
-                        <h6><i class="fas fa-envelope-open text-warning me-2"></i> Avg. Response: <b>within 24 hours</b></h6>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>

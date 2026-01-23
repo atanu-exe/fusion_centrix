@@ -3,29 +3,24 @@
 
 
 @section('content')
-
     <!-- Hero Banner -->
 
-    <section class="py-5 text-center sub-hero bg-light">
-
+    <section class="fc-header">
         <div class="container">
+            <div class="fc-header-content">
+                <h1>Creative Branding & Identity Services</h1>
+                <p>Build a strong brand with <b>logo design, brand strategy, social media branding, business stationery, and
 
-            <h1 class="display-5 fw-bold">Creative Branding & Identity Services</h1>
+                        marketing collateral</b> for businesses in the US, Canada, India, and globally. Our solutions are
 
-            <p class="lead">
-
-                Build a strong brand with <b>logo design, brand strategy, social media branding, business stationery, and
-
-                    marketing collateral</b> for businesses in the US, Canada, India, and globally. Our solutions are
-
-                <b>consistent, professional, and SEO-conscious</b>.
-
-            </p>
-
+                    <b>consistent, professional, and SEO-conscious</b>.
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
 
 
     <!-- Service Overview -->
@@ -68,7 +63,8 @@
 
                 <div class="col-md-6 order-2 order-md-2">
 
-                    <img src="{{ asset('assets/images/logo-design.webp') }}" class="img-fluid" alt="Logo Design"  loading="lazy">
+                    <img src="{{ asset('assets/images/logo-design.webp') }}" class="img-fluid" alt="Logo Design"
+                        loading="lazy">
 
                 </div>
 
@@ -93,8 +89,7 @@
                 <div class="col-md-6 order-2 order-md-1">
 
                     <img src="{{ asset('assets/images/brand-strategy.webp') }}" class="img-fluid"
-
-                        alt="Brand Strategy & Guidelines"  loading="lazy">
+                        alt="Brand Strategy & Guidelines" loading="lazy">
 
                 </div>
 
@@ -171,8 +166,7 @@
                 <div class="col-md-6 order-2 order-md-2">
 
                     <img src="{{ asset('assets/images/branding-collateral.webp') }}" class="img-fluid"
-
-                        alt="Business Cards, Stationery, Marketing Collateral"  loading="lazy">
+                        alt="Business Cards, Stationery, Marketing Collateral" loading="lazy">
 
                 </div>
 
@@ -313,6 +307,4 @@
         </div>
 
     </section>
-
 @endsection
-

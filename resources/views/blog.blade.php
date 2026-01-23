@@ -12,12 +12,12 @@
 <div class="fc-blog">
 
   <!-- MODERN BLOG HEADER -->
-  <section class="fc-blog-header">
+  <section class="fc-header">
     <div class="container">
-      <div class="fc-blog-header-content">
+      <div class="fc-header-content">
         <h1>Discover Our Blog</h1>
         <p>Stay updated with the latest insights, tips, and stories from our team</p>
-        <div class="fc-blog-breadcrumb">
+        <div class="fc-breadcrumb">
           <a href="/">Home</a> / <span>Blog</span>
         </div>
       </div>
@@ -25,7 +25,7 @@
   </section>
 
   <!-- FILTER & CONTROLS -->
-  <section class="fc-blog-controls">
+  <section class="fc-controls">
     <div class="container">
       <div class="fc-controls-wrapper">
         <div class="fc-search-box">

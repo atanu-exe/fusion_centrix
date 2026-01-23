@@ -3,29 +3,27 @@
 
 
 @section('content')
-
     <!-- Hero Banner -->
 
-    <section class="py-5 text-center sub-hero bg-light">
 
+    <section class="fc-header">
         <div class="container">
+            <div class="fc-header-content">
+                <h1>Professional Web & App Development Services</h1>
+                <p>elivering <b>custom web and mobile app development</b> for businesses in the US, Canada, India, and
 
-            <h1 class="display-5 fw-bold">Professional Web & App Development Services</h1>
+                    globally. We build <b>scalable, SEO-friendly, and high-performance websites and apps</b> tailored to
+                    your
 
-            <p class="lead">
-
-                Delivering <b>custom web and mobile app development</b> for businesses in the US, Canada, India, and
-
-                globally. We build <b>scalable, SEO-friendly, and high-performance websites and apps</b> tailored to your
-
-                audience and business goals.
-
-            </p>
-
+                    audience and business goals.
+                    </b>.
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
 
 
     <!-- Service Overview -->
@@ -133,8 +131,7 @@
                 <div class="col-md-6 order-2 order-md-2 text-center">
 
                     <img src="{{ asset('assets/images/cms-service.webp') }}" class="img-fluid"
-
-                        alt="CMS Development Services for Businesses"  loading="lazy">
+                        alt="CMS Development Services for Businesses" loading="lazy">
 
                 </div>
 
@@ -197,8 +194,7 @@
                 <div class="col-md-6 order-2 order-md-1">
 
                     <img src="{{ asset('assets/images/website-maintenance.webp') }}" class="img-fluid"
-
-                        alt="Professional Website Maintenance and Optimization Services"  loading="lazy">
+                        alt="Professional Website Maintenance and Optimization Services" loading="lazy">
 
                 </div>
 
@@ -259,8 +255,7 @@
                 <div class="col-md-6 order-2 order-md-2">
 
                     <img src="{{ asset('assets/images/web-1.webp') }}" class="img-fluid"
-
-                        alt="Responsive Web Design Services"  loading="lazy">
+                        alt="Responsive Web Design Services" loading="lazy">
 
                 </div>
 
@@ -397,6 +392,4 @@
         </div>
 
     </section>
-
 @endsection
-

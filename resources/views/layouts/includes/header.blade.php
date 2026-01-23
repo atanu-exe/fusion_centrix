@@ -44,8 +44,29 @@
         document.addEventListener("DOMContentLoaded", function() {
             const toggleBtn = document.getElementById("menuToggle");
             const menu = document.getElementById("mainMenu");
+            const overlay = document.getElementById("menuOverlay");
+            
             toggleBtn.addEventListener("click", function() {
                 menu.classList.toggle("active");
+                overlay.classList.toggle("active");
+                document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
+            });
+
+            // Close menu when clicking overlay
+            overlay.addEventListener("click", function() {
+                menu.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.style.overflow = "auto";
+            });
+
+            // Close menu when clicking a link
+            const menuLinks = menu.querySelectorAll("a");
+            menuLinks.forEach(link => {
+                link.addEventListener("click", function() {
+                    menu.classList.remove("active");
+                    overlay.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                });
             });
         });
     </script>
@@ -94,27 +115,34 @@
 
 <body style="background-color: #f4f6f8;">
     <header>
-        <nav class="d-flex justify-content-between align-items-center px-5 bg-gradient-dark fixed-top" role="navigation"
-            aria-label="Main Navigation">
-            <!-- Logo -->
-            <div class="brand d-flex">
-                <a href="{{ url('/') }}">
-                    <img src="{{ asset('logo.png') }}" alt="fusion centrix logo" height="50">
-                </a>
+        <nav class="fc-navbar" role="navigation" aria-label="Main Navigation">
+            <div class="fc-navbar-container">
+                <!-- Logo -->
+                <div class="fc-navbar-brand">
+                    <a href="{{ url('/') }}" class="fc-brand-link">
+                        <img src="{{ asset('logo.png') }}" alt="fusion centrix logo" class="fc-brand-logo">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <ul class="fc-navbar-menu" id="mainMenu">
+                    <li class="fc-nav-item"><a href="{{ url('') }}" class="fc-nav-link">Home</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('about') }}" class="fc-nav-link">About Us</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('services') }}" class="fc-nav-link">Services</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('portfolio') }}" class="fc-nav-link">Portfolio</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('blog') }}" class="fc-nav-link">Blog</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('contact-us') }}" class="fc-nav-link">Contact Us</a></li>
+                </ul>
+
+                <!-- Hamburger Menu Button -->
+                <button id="menuToggle" class="fc-menu-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <!-- Hamburger button (mobile only) -->
-            <button id="menuToggle" class="menu-toggle-btn d-lg-none btn text-white fs-3 border-0 bg-transparent">
-                ☰
-            </button>
-            <!-- Menu -->
-            <ul id="mainMenu" class="d-flex list-unstyled align-items-center mb-0 desktop-menu">
-                <li><a href="{{ url('') }}" class="text-decoration-none text-white">Home</a></li>
-                <li><a href="{{ url('about') }}" class="text-decoration-none text-white">About Us</a></li>
-                <li><a href="{{ url('services') }}" class="text-decoration-none text-white">Services</a></li>
-                <li><a href="{{ url('portfolio') }}" class="text-decoration-none text-white">Portfolio</a></li>
-                <li><a href="{{ url('blog') }}" class="text-decoration-none text-white">Blog</a></li>
-                <li><a href="{{ url('contact-us') }}" class="text-decoration-none text-white">Contact Us</a></li>
-            </ul>
         </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="menuOverlay" class="fc-menu-overlay"></div>
     </header>
     <div>

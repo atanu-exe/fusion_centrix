@@ -1,228 +1,168 @@
-<button id="mobileHelper" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="btn consult-helper border-0" adata-bs-toggle="modal" adata-bs-target="#quoteModal">
+<!-- Mobile Helper Button -->
+{{-- <button id="mobileHelper" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="fc-mobile-helper">
+    <img src="{{ asset('assets/images/help-robot.webp') }}" alt="Helper" class="fc-helper-img">
+    <div class="fc-helper-speech">📅 Free Consultation</div>
+</button> --}}
 
-    <img src="{{ asset('assets/images/help-robot.webp') }}" alt="Helper" class="helper-img">
-
-    <div class="helper-speech">📅 Book Your Free Consultation</div>
-
-</button>
-
-<!-- Get a Quote Modal -->
-
+<!-- Quote Modal -->
 <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
-
     <div class="modal-dialog modal-dialog-centered">
-
-        <div class="modal-content rounded-4">
-
-            <div class="modal-header bg-primary text-white rounded-top-4">
-
+        <div class="modal-content fc-modal-content">
+            <div class="modal-header fc-modal-header">
                 <h5 class="modal-title" id="quoteModalLabel">Request a Free Quote</h5>
-
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <form method="POST" action="/submit-quote">
-
                 <div class="modal-body p-4">
-
                     <div class="mb-3">
-
-                        <label for="quoteName" class="form-label">Your Name</label>
-
+                        <label for="quoteName" class="form-label fw-semibold">Your Name</label>
                         <input type="text" class="form-control" id="quoteName" name="name" required>
-
                     </div>
-
                     <div class="mb-3">
-
-                        <label for="quoteEmail" class="form-label">Email address</label>
-
+                        <label for="quoteEmail" class="form-label fw-semibold">Email Address</label>
                         <input type="email" class="form-control" id="quoteEmail" name="email" required>
-
                     </div>
-
                     <div class="mb-3">
-
-                        <label for="quotePhone" class="form-label">Phone Number</label>
-
-                        <input type="text" class="form-control" id="quotePhone" name="phone">
-
+                        <label for="quotePhone" class="form-label fw-semibold">Phone Number</label>
+                        <input type="tel" class="form-control" id="quotePhone" name="phone">
                     </div>
-
                     <div class="mb-3">
-
-                        <label for="quoteService" class="form-label">Service</label>
-
+                        <label for="quoteService" class="form-label fw-semibold">Service</label>
                         <select class="form-select" id="quoteService" name="service" required>
-
                             <option value="" selected disabled>Select a service</option>
-
                             <option>Web & App Development</option>
-
-                            <option>eCommerce Solutions</option>
-
+                            <option>E-Commerce Solutions</option>
+                            <option>Digital Marketing</option>
                             <option>Custom Software</option>
-
-                            <option>Brand Merchandise</option>
-
-                            <option>Logo & Graphics Design</option>
-
+                            <option>Branding & Identity</option>
                         </select>
-
                     </div>
-
                     <div class="mb-3">
-
-                        <label for="quoteMessage" class="form-label">Your Message</label>
-
+                        <label for="quoteMessage" class="form-label fw-semibold">Your Message</label>
                         <textarea class="form-control" id="quoteMessage" rows="3" name="message" required></textarea>
-
                     </div>
-
                 </div>
-
                 <div class="modal-footer p-3">
-
-                    <button type="submit" class="btn btn-success w-100">Submit Request</button>
-
+                    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
                 </div>
-
             </form>
-
         </div>
-
     </div>
-
 </div>
-
-
-
-
 
 </main>
 
-<footer class="footer mt-5 pt-3 text-white bg-gradient-dark">
-
-    <div class="container py-5">
-
-        <div class="row">
-
-            <!-- Brand -->
-
-            <div class="col-md-3 mb-4">
-
-                <img src="{{ asset('logo.png') }}" alt="Fusioncentrix Logo" style="width: 160px;">
-
-                <p class="mt-3">Fusioncentrix Solutions is your one-stop IT partner — Web, SEO, Marketing, Design &
-
-                    more.</p>
-
+<!-- Modern Footer -->
+<footer class="fc-footer">
+    <div class="container-fluid px-4 px-lg-5">
+        <!-- Footer Grid -->
+        <div class="row g-5 mb-5 pb-4">
+            
+            <!-- Brand Section -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="fc-footer-brand">
+                    <div class="fc-logo-footer">
+                        <span class="fc-logo-icon-footer">FC</span>
+                        <span class="fc-logo-text-footer">Fusioncentrix</span>
+                    </div>
+                    <p class="fc-footer-desc">Fusioncentrix Solutions is your one-stop IT partner — Web, App, SEO, Marketing, Design & more.</p>
+                    <div class="fc-social-footer">
+                        <a href="https://www.facebook.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Facebook" class="fc-social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Instagram" class="fc-social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="fc-social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Twitter" class="fc-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-
 
             <!-- Quick Links -->
-
-            <div class="col-md-3 mb-4">
-
-                <h5 class="footer-heading">Quick Links</h5>
-
-                <ul class="list-unstyled">
-                    <li><a href="{{ url('') }}" class="footer-link">Home</a></li>
-                    <li><a href="{{ url('about') }}" class="footer-link">About Us</a></li>
-                    <li><a href="{{ url('services') }}" class="footer-link">Services</a></li>
-                    <li><a href="{{ url('portfolio') }}" class="footer-link">Portfolio</a></li>
-                    <li><a href="{{ url('blog') }}" class="footer-link">Blog</a></li>
-                    <li><a href="{{ url('contact-us') }}" class="footer-link">Contact Us</a></li>
-
+            <div class="col-lg-2 col-md-6 col-sm-12">
+                <h5 class="fc-footer-title">Quick Links</h5>
+                <ul class="fc-footer-links">
+                    <li><a href="{{ url('') }}">Home</a></li>
+                    <li><a href="{{ url('about') }}">About Us</a></li>
+                    <li><a href="{{ url('services') }}">Services</a></li>
+                    <li><a href="{{ url('portfolio') }}">Portfolio</a></li>
+                    <li><a href="{{ url('blog') }}">Blog</a></li>
+                    <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
                 </ul>
-
             </div>
 
-
-
-            <!-- Services -->
-
-            <div class="col-md-3 mb-4">
-
-                <h5 class="footer-heading">Services</h5>
-
-                <ul class="list-unstyled">
-
-                    <li><a href="{{ route('services.web_app_development') }}" class="footer-link">Web & App Development</a></li>
-                    <li><a href="{{ route('services.e_commerce') }}" class="footer-link">E-commerce</a></li>
-
-                    <li><a href="{{ route('services.digital_marketing') }}" class="footer-link">Digital Marketing</a></li>
-                    <li><a href="{{ route('services.custom_software') }}" class="footer-link">Custom Software</a></li>
-
-                    <li><a href="{{ route('services.ui_ux_design') }}" class="footer-link">Branding & Identity</a></li>
-
-                    <li><a href="{{ route('services.branding_identity') }}" class="footer-link">Graphics & Logo</a></li>
-
+            <!-- Services Links -->
+            <div class="col-lg-2 col-md-6 col-sm-12">
+                <h5 class="fc-footer-title">Services</h5>
+                <ul class="fc-footer-links">
+                    <li><a href="{{ route('services.web_app_development') }}">Web & App Dev</a></li>
+                    <li><a href="{{ route('services.e_commerce') }}">E-Commerce</a></li>
+                    <li><a href="{{ route('services.digital_marketing') }}">Digital Marketing</a></li>
+                    <li><a href="{{ route('services.custom_software') }}">Custom Software</a></li>
+                    <li><a href="{{ route('services.ui_ux_design') }}">UI/UX Design</a></li>
+                    <li><a href="{{ route('services.branding_identity') }}">Branding</a></li>
                 </ul>
-
             </div>
 
-
-
-            <!-- Contact -->
-
-            <div class="col-md-3 mb-4">
-
-                <h5 class="footer-heading">Contact</h5>
-
-                <p class="mb-1">Sector V, Salt Lake, Kolkata</p>
-
-                <p class="mb-1">West Bengal, India - 700091</p>
-
-                <p class="mb-1">📞 +91 9477614409</p>
-
-                <p class="mb-1">📧 contact@fusioncentrix.com</p>
-
-
-
-                <div class="social-icons mt-3">
-
-                    <a href="https://www.facebook.com/fusioncentrix" target="_blank"><i
-                            class="fab fa-facebook-f"></i></a>
-
-                    <a href="https://www.instagram.com/fusioncentrix" target="_blank"><i
-                            class="fab fa-instagram"></i></a>
-
-                    {{-- <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a> --}}
-
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h5 class="fc-footer-title">Get in Touch</h5>
+                <div class="fc-contact-info">
+                    <div class="fc-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p class="fc-contact-label">Address</p>
+                            <p>Sector V, Salt Lake<br>Kolkata, India - 700091</p>
+                        </div>
+                    </div>
+                    <div class="fc-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p class="fc-contact-label">Email</p>
+                            <p><a href="mailto:contact@fusioncentrix.com">contact@fusioncentrix.com</a></p>
+                        </div>
+                    </div>
+                    <div class="fc-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p class="fc-contact-label">Phone</p>
+                            <p><a href="tel:+919477614409">+91 9477614409</a></p>
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
         </div>
 
+        <!-- Footer Bottom -->
+        <div class="fc-footer-bottom">
+            <div class="row align-items-center gy-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="fc-footer-copyright">&copy; {{ date('Y') }} Fusioncentrix Solutions. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="fc-footer-bottom-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-    <div class="text-center py-3 bg-dark">
-
-        <small>&copy; {{ date('Y') }} Fusioncentrix Solutions. All rights reserved.</small>
-
-    </div>
-
 </footer>
 
-<!-- Bootstrap JS Bundle (with Popper) -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Calendly link widget begin -->
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Calendly Integration -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-{{-- <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">free consultations</a> --}}
-<!-- Calendly link widget end -->
 
 </body>
-
-
 
 </html>

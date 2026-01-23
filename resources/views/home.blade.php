@@ -1,72 +1,135 @@
 @extends('layouts.app')
 @section('content')
     <script src="{{ asset('assets/js/particles.min.js') }}"></script>
-    <section id="hero-section" class="hero-section position-relative text-white bg-gradient-dark d-flex align-items-center"
+    <section id="hero-section" class="fc-hero-section position-relative text-white d-flex align-items-center justify-content-center overflow-hidden"
         role="banner" aria-label="Fusioncentrix Solutions Hero">
-        <!-- Particles.js container -->
-        <div id="particle-hero" class="position-absolute w-100 h-100 z-0" style="top: 0; left: 0;"></div>
-        <img src="{{ asset('assets/images/hero-robot.webp') }}"
-            alt="Illustration of digital services including development, SEO, and marketing" class="img-fluid" fetchpriority="high">
-        <!-- Content over particles -->
-        <div class="container position-relative z-1">
+        <!-- Animated Background -->
+        {{-- <div id="particle-hero" class="position-absolute w-100 h-100 z-0" style="top: 0; left: 0;"></div> --}}
+        
+        <!-- Gradient Overlay -->
+        <div id="particle-hero" class="fc-hero-overlay position-absolute w-100 h-100 z-1"></div>
+
+        <!-- Hero Content -->
+        <div class="container position-relative z-2">
             <div class="row align-items-center">
                 <!-- Text Content -->
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold">
+                <div class="col-lg-6 fc-hero-content mb-4 mb-lg-0">
+                    <div class="fc-hero-badge mb-4">
+                        <span>🚀 Digital Excellence</span>
+                    </div>
+                    <h1 class="fc-hero-title mb-3">
                         Your Global IT Partner for Web, App Development, SEO & Brand Growth
                     </h1>
-                    <p class="lead mt-3">
-                        Delivering top-tier websites, apps, SEO, and brand promotion strategies — trusted by US, Canadian,
-                        and global businesses, powered by our expert India-based team.
+                    <p class="fc-hero-subtitle mb-4">
+                        Delivering top-tier websites, apps, SEO, and brand promotion strategies — trusted by US, Canadian, and global businesses, powered by our expert India-based team.
                     </p>
-                    <a href="{{url('contact-us')}}" class="btn  btn-lg mt-4 button-consult" aria-label="Contact Fusioncentrix">Get Free
-                        Consultation</a>
+                    <div class="fc-hero-cta d-flex gap-3 flex-wrap">
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary" aria-label="Get Free Consultation">
+                            <span>Get Free Consultation</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-secondary" aria-label="View Our Work">
+                            <span>View Our Work</span>
+                            <i class="fas fa-external-link-alt ms-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Stats Section -->
+                    {{-- <div class="fc-hero-stats mt-5 pt-4 border-top border-secondary border-opacity-25">
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="fc-stat">
+                                    <h3 class="fc-stat-number">500+</h3>
+                                    <p class="fc-stat-label">Projects Delivered</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="fc-stat">
+                                    <h3 class="fc-stat-number">98%</h3>
+                                    <p class="fc-stat-label">Client Satisfaction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
-                <!-- Image -->
-                <div class="col-lg-6 text-center mt-4 mt-lg-0">
+
+                <!-- Hero Image -->
+                <div class="col-lg-6 text-center fc-hero-image">
+                    <div class="fc-hero-image-wrapper">
+                        <!-- Bubble Effects -->
+                        {{-- <div class="fc-bubble fc-bubble-1"></div>
+                        <div class="fc-bubble fc-bubble-2"></div>
+                        <div class="fc-bubble fc-bubble-3"></div>
+                        <div class="fc-bubble fc-bubble-4"></div>
+                        <div class="fc-bubble fc-bubble-5"></div> --}}
+                        
+                        <img src="{{ asset('assets/images/hero-robot.webp') }}"
+                            alt="Illustration of digital services including development, SEO, and marketing" class="img-fluid fc-hero-img-fixed" fetchpriority="high">
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Floating Elements -->
+        <div class="fc-hero-float fc-float-1"></div>
+        <div class="fc-hero-float fc-float-2"></div>
+        <div class="fc-hero-float fc-float-3"></div>
+
+        <!-- Scroll Indicator -->
+        <div class="fc-scroll-indicator">
+            <span></span>
+        </div>
     </section>
+    
     <section id="about-us" class="py-5 " role="region" aria-labelledby="about-heading">
         <div class="container">
-            <div class="row align-items-center">
-                <!-- Left Column (Heading + Text) -->
-                <div class="col-lg-6 order-2 order-lg-1">
-                    <!-- Heading always above text -->
+            <div class="row align-items-center gy-4">
+                <!-- Image Column - Comes First on Mobile -->
+                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                    <div class="about-image-wrapper">
+                        <img src="{{ asset('assets/images/about.webp') }}" 
+                             alt="Fusioncentrix team working on digital solutions"
+                             class="img-fluid about-image" 
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Text Column -->
+                <div class="col-lg-7 col-md-6">
+                    <!-- Heading -->
                     <h2 id="about-heading" class="section-heading mb-4">
                         About Fusioncentrix
                     </h2>
-                    <p class="lead text-muted">
+                    
+                    <!-- Description -->
+                    <p class="lead text-muted mb-3">
                         At <strong>Fusioncentrix Solutions</strong>, we are your one-stop destination for high-quality IT
                         services — proudly based in India and powering large-scale digital projects across the
                         <strong>US, Canada, and global markets</strong>.
                     </p>
-                    <p class="text-muted">
+                    
+                    <p class="text-muted mb-4">
                         From <strong>custom web/app development</strong> to <strong>SEO, digital branding, and
                             marketing</strong>, our expert team blends creativity with technology to deliver impactful
                         solutions. Whether it's sleek websites, high-converting campaigns, or brand-defining visuals —
                         we help businesses grow and inspire from every bit.
                     </p>
-                    <div class="w-100 collab-btn">
-                        <a href="{{url('contact-us')}}" class="btn btn-gradient mt-3">
-                            Let’s Collaborate
+                    
+                    <!-- CTA Button -->
+                    <div class="collab-btn">
+                        <a href="{{url('contact-us')}}" class="btn btn-gradient">
+                            Let's Collaborate
                         </a>
                     </div>
-                </div>
-                <!-- Right Column (Image) -->
-                <div class="col-lg-6 text-center order-1 order-lg-2 mb-3 mb-lg-0">
-                    <img src="{{ asset('assets/images/about.webp') }}" alt="Fusioncentrix team working on digital solutions"
-                        class="img-fluid mx-auto" loading="lazy" style="max-height: 400px;"  loading="lazy">
                 </div>
             </div>
         </div>
     </section>
     <!-- Services -->
-    <section class="services py-5 bg-light">
+    <section id="services" class="services py-5 bg-light" role="region" aria-labelledby="services-heading">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-heading">Our Services</h2>
+            <div class="text-center mb-5 services-header">
+                <h2 id="services-heading" class="section-heading">Our Services</h2>
                 <p class="section-description text-muted">
                     We empower businesses through expertly crafted <strong>web & app development</strong>,
                     <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
@@ -74,121 +137,80 @@
                     scalable and performance-driven digital services tailored to your vision.
                 </p>
             </div>
-            @include('includes.services')
+            <div class="services-grid">
+                @include('includes.services')
+            </div>
         </div>
     </section>
-    <section class="testimonials py-5 section-bg" id="testimonials">
+    <section class="testimonials py-5" id="testimonials">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-heading">What Our Clients Say</h2>
-                <p class="lead text-muted">We’re proud to partner with global brands and startups alike — delivering
-                    technology that drives business growth.</p>
+                <p class="section-description text-muted">We partner with global brands and startups to deliver technology that drives business growth.</p>
             </div>
             <div class="card-wrap swiper swiper-testimonials">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="card swiper-slide" role="group" aria-label="1 / 5" data-swiper-slide-index="0">
-                        <div class="testimonial-card p-4 rounded shadow-sm bg-light position-relative h-100">
-                            <div class="mb-3">
-                                <i class="bi bi-chat-quote-fill fs-1 text-success"></i>
-                            </div>
-                            <p class="text-muted small mb-4">“Working with Fusioncentrix was seamless from day one. They
-                                delivered a clean, fast-loading web app that matched our goals exactly. Communication was
-                                clear
-                                and timelines were met.”</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/devid.webp') }}" alt="Client"
-                                    class="rounded-circle me-3"  loading="lazy">
+                    <div class="card swiper-slide" role="group" aria-label="1 / 5">
+                        <div class="testimonial-card">
+                            <span class="quote-icon text-success"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="testimonial-text">“Working with Fusioncentrix was seamless from day one. They delivered a clean, fast-loading web app that matched our goals exactly. Communication was clear and timelines were met.”</p>
+                            <div class="testimonial-author">
+                                <img src="{{ asset('assets/images/devid.webp') }}" alt="David Miller" loading="lazy">
                                 <div>
-                                    <strong class="text-dark">David Miller</strong><span> – Austin, USA</span><br>
-                                    <small class="text-muted">Product Manager, <em>NovaSync Systems</em></small>
+                                    <strong>David Miller</strong><span> – Austin, USA</span>
+                                    <small>Product Manager, <em>NovaSync Systems</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
-                    <div class="card swiper-slide" style="" role="group" aria-label="2 / 5"
-                        data-swiper-slide-index="1">
-                        <div class="testimonial-card p-4 rounded shadow-sm bg-light position-relative h-100">
-                            <div class="mb-3">
-                                <i class="bi bi-chat-quote-fill fs-1 text-primary"></i>
-                            </div>
-                            <p class="text-muted small mb-4">“We hired Fusioncentrix for branding and UI design. They
-                                really
-                                understood our industry and gave us a sleek, modern identity that stood out. Highly
-                                recommend
-                                their design team.”</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/jessica.webp') }}" alt="Client"
-                                    class="rounded-circle me-3"  loading="lazy">
+                    <div class="card swiper-slide" role="group" aria-label="2 / 5">
+                        <div class="testimonial-card">
+                            <span class="quote-icon text-primary"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="testimonial-text">“We hired Fusioncentrix for branding and UI design. They really understood our industry and gave us a sleek, modern identity that stood out. Highly recommend their design team.”</p>
+                            <div class="testimonial-author">
+                                <img src="{{ asset('assets/images/jessica.webp') }}" alt="Jessica Li" loading="lazy">
                                 <div>
-                                    <strong class="text-dark">Jessica Li</strong><span> – Vancouver, Canada</span><br>
-                                    <small class="text-muted">Founder, <em>Brightflow Software</em></small>
+                                    <strong>Jessica Li</strong><span> – Vancouver, Canada</span>
+                                    <small>Founder, <em>Brightflow Software</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
-                    <div class="card swiper-slide" style="" role="group" aria-label="3 / 5"
-                        data-swiper-slide-index="2">
-                        <div class="testimonial-card p-4 rounded shadow-sm bg-light position-relative h-100">
-                            <div class="mb-3">
-                                <i class="bi bi-chat-quote-fill fs-1 text-warning"></i>
-                            </div>
-                            <p class="text-muted small mb-4">“Our Google rankings improved noticeably within the first few
-                                weeks. The SEO strategy from Fusioncentrix is clearly built on experience and real results,
-                                not
-                                just promises.”</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/natalie.webp') }}" alt="Client"
-                                    class="rounded-circle me-3"  loading="lazy">
+                    <div class="card swiper-slide" role="group" aria-label="3 / 5">
+                        <div class="testimonial-card">
+                            <span class="quote-icon text-warning"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="testimonial-text">“Our Google rankings improved noticeably within the first few weeks. The SEO strategy from Fusioncentrix is clearly built on experience and real results, not just promises.”</p>
+                            <div class="testimonial-author">
+                                <img src="{{ asset('assets/images/natalie.webp') }}" alt="Natalie Cruz" loading="lazy">
                                 <div>
-                                    <strong class="text-dark">Natalie Cruz</strong><span> – Miami, USA</span><br>
-                                    <small class="text-muted">Marketing Lead, <em>Verda Naturals</em></small>
+                                    <strong>Natalie Cruz</strong><span> – Miami, USA</span>
+                                    <small>Marketing Lead, <em>Verda Naturals</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 4 -->
-                    <div class="card swiper-slide" style="" role="group" aria-label="4 / 5"
-                        data-swiper-slide-index="3">
-                        <div class="testimonial-card p-4 rounded shadow-sm bg-light position-relative h-100">
-                            <div class="mb-3">
-                                <i class="bi bi-chat-quote-fill fs-1 text-danger"></i>
-                            </div>
-                            <p class="text-muted small mb-4">“Being based in India, it was great to work with a
-                                professional
-                                local team that delivered international-quality results. Their support post-launch was quick
-                                and
-                                dependable.”</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/abhisekh-sharma.webp') }}" alt="Client"
-                                    class="rounded-circle me-3"  loading="lazy">
+                    <div class="card swiper-slide" role="group" aria-label="4 / 5">
+                        <div class="testimonial-card">
+                            <span class="quote-icon text-danger"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="testimonial-text">“Being based in India, it was great to work with a professional local team that delivered international-quality results. Their support post-launch was quick and dependable.”</p>
+                            <div class="testimonial-author">
+                                <img src="{{ asset('assets/images/abhisekh-sharma.webp') }}" alt="Abhishek Sharma" loading="lazy">
                                 <div>
-                                    <strong class="text-dark">Abhishek Sharma</strong><span> – Mumbai, India</span><br>
-                                    <small class="text-muted">Director, <em>LogiXpert Technologies</em></small>
+                                    <strong>Abhishek Sharma</strong><span> – Mumbai, India</span>
+                                    <small>Director, <em>LogiXpert Technologies</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 5 -->
-                    <div class="card swiper-slide" style="" role="group" aria-label="5 / 5"
-                        data-swiper-slide-index="4">
-                        <div class="testimonial-card p-4 rounded shadow-sm bg-light position-relative h-100">
-                            <div class="mb-3">
-                                <i class="bi bi-chat-quote-fill fs-1 text-info"></i>
-                            </div>
-                            <p class="text-muted small mb-4">“Fusioncentrix helped us clarify our digital marketing
-                                strategy.
-                                The campaign analytics, creative ads, and timely reporting made all the difference in
-                                hitting
-                                our quarterly goals.”</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('assets/images/alexntra.webp') }}" alt="Client"
-                                    class="rounded-circle me-3"  loading="lazy">
+                    <div class="card swiper-slide" role="group" aria-label="5 / 5">
+                        <div class="testimonial-card">
+                            <span class="quote-icon text-info"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="testimonial-text">“Fusioncentrix clarified our digital marketing strategy. The campaign analytics, creative ads, and timely reporting made all the difference in hitting our quarterly goals.”</p>
+                            <div class="testimonial-author">
+                                <img src="{{ asset('assets/images/alexntra.webp') }}" alt="Alexandra R." loading="lazy">
                                 <div>
-                                    <strong class="text-dark">Alexandra R.</strong> <span> – Dubai, UAE</span><br>
-                                    <small class="text-muted">CMO, <em>Luxora Global</em></small>
+                                    <strong>Alexandra R.</strong><span> – Dubai, UAE</span>
+                                    <small>CMO, <em>Luxora Global</em></small>
                                 </div>
                             </div>
                         </div>
@@ -199,132 +221,147 @@
         </div>
     </section>
     @include('includes.why-choose-us')
-    <section class="get-quote-section pb-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden">
+    <section class="get-quote-section" id="get-quote">
         <div class="container">
-            <h4 class="mb-2 mt-3 fw-semibold">Ready to Elevate Your Brand?</h4>
-            <p class="mb-3 lead">Let’s create something powerful together. Get your free quote today — fast, tailored, and
-                results-driven.</p>
-            <a href="{{ url('contact-us') }}" class="btn btn-light text-dark fw-bold px-4 py-2 rounded-pill shadow-sm">Get
-                a Free
-                Quote</a>
-        </div>
-    </section>
- <section class="featured-project pb-5">
-    <div class="container">
-        <h2 class="section-heading mb-5">Featured Project</h2>
-        <div class="row align-items-center">
-            <!-- Left Text -->
-            <div class="col-md-6 mb-4 mb-md-0 order-2 order-md-1">
-                <p class="text-muted">
-                    We developed this high-performance mobile app solution by fusing modern UI/UX, a scalable custom
-                    backend, and advanced security. Designed to deliver seamless user experiences, this project
-                    showcases our ability to create apps that are fast, reliable, and built for growth.
-                </p>
-                <ul class="list-unstyled mt-3">
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Mobile-first, fully
-                        responsive design
-                    </li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Tailored admin dashboard
-                        for real-time control
-                    </li>
-                    <li><i class="fas fa-check-circle text-primary me-2"></i> Optimized for speed and scalability</li>
-                </ul>
-                <!-- CTA Button -->
-                <a href="{{ url('/portfolio') }}" class="btn btn-gradient mt-4 me-2">
-                    See More Projects
-                </a>
-                <a href="{{ url('/contact-us') }}" class="btn btn-gradient mt-4">
-                    Start Your Project
-                </a>
-            </div>
-            <!-- Right Image -->
-            <div class="col-md-6 order-1 order-md-2">
-                <div class="home-portfolio-box swiper swiper-portfolio">
-                    <div class="header swiper-wrapper">
-                        <div class="project-image overflow-hidden swiper-slide">
-                            <img src="{{ asset('assets/images/portfolio/image1.jpg') }}" alt="Featured Project"
-                                class="img-fluid w-100"  loading="lazy">
-                        </div>
-                        <div class="project-image rounded overflow-hidden swiper-slide">
-                            <img src="{{ asset('assets/images/portfolio/image2.jpg') }}" alt="Featured Project"
-                                class="img-fluid w-100"  loading="lazy">
-                        </div>
-                        <div class="project-image rounded overflow-hidden swiper-slide">
-                            <img src="{{ asset('assets/images/portfolio/image3.jpg') }}" alt="Featured Project"
-                                class="img-fluid w-100"  loading="lazy">
-                        </div>
-                        <div class="project-image rounded overflow-hidden swiper-slide">
-                            <img src="{{ asset('assets/images/portfolio/image4.jpg') }}" alt="Featured Project"
-                                class="img-fluid w-100"  loading="lazy">
-                        </div>
-                        <div class="project-image overflow-hidden swiper-slide">
-                            <img src="{{ asset('assets/images/portfolio/image5.jpg') }}" alt="Featured Project"
-                                class="img-fluid w-100"  loading="lazy">
+            <div class="quote-card">
+                <div class="row align-items-center gy-3">
+                    <div class="col-lg-8 text-center text-lg-start">
+                        <h3 class="mb-2">Ready to Elevate Your Brand?</h3>
+                        <p class="mb-0 text-white-50">Let’s create something powerful together. Fast, tailored, and results-driven.</p>
+                    </div>
+                    <div class="col-lg-4 text-center text-lg-end">
+                        <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
+                            <a href="{{ url('contact-us') }}" class="btn btn-gradient">Get a Free Quote</a>
+                            <a href="{{ url('portfolio') }}" class="btn btn-ghost-light">View Portfolio</a>
                         </div>
                     </div>
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    <section class="technologies py-5">
+    </section>
+    <section class="featured-project py-5" id="featured-project">
+        <div class="container">
+            <div class="fp-card">
+                <div class="row align-items-center gy-4">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <span class="fp-badge">Case Study</span>
+                        <h2 class="fp-title">High-Performance Mobile App</h2>
+                        <p class="fp-text">
+                            A scalable mobile experience combining modern UI/UX, a custom backend, and advanced security—built for growth and reliability.
+                        </p>
+                        <div class="fp-list">
+                            <div class="fp-item"><i class="fas fa-check-circle text-primary me-2"></i>Mobile-first, fully responsive</div>
+                            <div class="fp-item"><i class="fas fa-check-circle text-primary me-2"></i>Real-time admin dashboard</div>
+                            <div class="fp-item"><i class="fas fa-check-circle text-primary me-2"></i>Optimized for speed & scale</div>
+                        </div>
+                        <div class="d-flex gap-3 flex-wrap mt-4">
+                            <a href="{{ url('/portfolio') }}" class="btn btn-gradient">See More Projects</a>
+                            <a href="{{ url('/contact-us') }}" class="btn btn-ghost-light">Start Your Project</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2">
+                        <div class="fp-media swiper swiper-portfolio">
+                            <div class="swiper-wrapper">
+                                <div class="project-image overflow-hidden swiper-slide">
+                                    <img src="{{ asset('assets/images/portfolio/image1.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
+                                </div>
+                                <div class="project-image overflow-hidden swiper-slide">
+                                    <img src="{{ asset('assets/images/portfolio/image2.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
+                                </div>
+                                <div class="project-image overflow-hidden swiper-slide">
+                                    <img src="{{ asset('assets/images/portfolio/image3.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
+                                </div>
+                                <div class="project-image overflow-hidden swiper-slide">
+                                    <img src="{{ asset('assets/images/portfolio/image4.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
+                                </div>
+                                <div class="project-image overflow-hidden swiper-slide">
+                                    <img src="{{ asset('assets/images/portfolio/image5.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="technologies py-5" id="technologies">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-heading">Technologies We Work With</h2>
-                <p class="text-muted">From powerful backend frameworks to sleek frontend libraries, we leverage the latest
-                    and most reliable technologies to build fast, secure, and scalable digital solutions. Whether it’s a
-                    custom web app, a mobile-first platform, or cloud-based architecture — our tech stack is tailored to
-                    meet your business goals with precision.</p>
+                <h2 class="section-heading">Technologies & Capabilities</h2>
+                <p class="section-description text-muted">Full-stack delivery across web, apps, commerce, marketing, software, and brand experiences.</p>
             </div>
-            <div class="row text-center gy-4">
-                <!-- Tech Item -->
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-html5 fa-2x text-danger"></i>
-                        <p class="mt-2  text-center">HTML5</p>
+
+            <div class="tech-panels">
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Web</span>
+                        <small>SEO / Performance</small>
+                    </div>
+                    <h5>Web Development</h5>
+                    <p>High-performance, SEO-first sites built for global audiences.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Next.js</span><span class="tech-pill">Laravel</span><span class="tech-pill">Tailwind</span>
                     </div>
                 </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-css3-alt fa-2x text-primary"></i>
-                        <p class="mt-2  text-center">CSS3</p>
+
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Apps</span>
+                        <small>Cross-Platform</small>
+                    </div>
+                    <h5>App Development</h5>
+                    <p>Native-feel mobile apps with smooth UX and offline-ready flows.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">React Native</span><span class="tech-pill">Flutter</span><span class="tech-pill">API First</span>
                     </div>
                 </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-js-square fa-2x text-warning"></i>
-                        <p class="mt-2  text-center">JavaScript</p>
+
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Commerce</span>
+                        <small>Growth</small>
+                    </div>
+                    <h5>E-Commerce</h5>
+                    <p>Conversion-focused storefronts, funnels, and integrations.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Shopify</span><span class="tech-pill">WooCommerce</span><span class="tech-pill">Headless</span>
                     </div>
                 </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-laravel fa-2x text-danger"></i>
-                        <p class="mt-2  text-center">Laravel</p>
+
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Marketing</span>
+                        <small>Acquisition</small>
+                    </div>
+                    <h5>Digital Marketing</h5>
+                    <p>Campaigns, analytics, automation, and performance reporting.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">SEO</span><span class="tech-pill">SEM</span><span class="tech-pill">Automation</span>
                     </div>
                 </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-php fa-2x text-indigo"></i>
-                        <p class="mt-2  text-center">PHP</p>
+
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Software</span>
+                        <small>Custom</small>
+                    </div>
+                    <h5>Custom Software</h5>
+                    <p>APIs, platforms, and integrations tailored to your workflows.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Microservices</span><span class="tech-pill">Integrations</span><span class="tech-pill">Cloud</span>
                     </div>
                 </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-react fa-2x text-info"></i>
-                        <p class="mt-2  text-center">React</p>
+
+                <div class="tech-panel">
+                    <div class="tech-meta">
+                        <span class="tech-badge">Design</span>
+                        <small>Brand & UI/UX</small>
                     </div>
-                </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fab fa-node-js fa-2x text-success"></i>
-                        <p class="mt-2  text-center">Node.js</p>
-                    </div>
-                </div>
-                <div class="col-4 col-md-3">
-                    <div class="tech-icon">
-                        <i class="fas fa-database fa-2x text-secondary"></i>
-                        <p class="mt-2  text-center">MySQL</p>
+                    <h5>UI/UX & Branding</h5>
+                    <p>Identity, logos, posters, and design systems that resonate.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Figma</span><span class="tech-pill">Brand Kits</span><span class="tech-pill">Motion</span>
                     </div>
                 </div>
             </div>

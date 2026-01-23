@@ -6,22 +6,19 @@
 
     <!-- Hero Banner -->
 
-    <section class="py-5 text-center sub-hero bg-light">
 
+ <section class="fc-header">
         <div class="container">
-
-            <h1 class="display-5 fw-bold">Tailored Custom Software Development Services</h1>
-
-            <p class="lead">
-
-                Delivering <b>CRM, ERP, SaaS applications, LMS, and custom software solutions</b> for businesses in the US, Canada, India, and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly integrations</b> to streamline operations.
-
-            </p>
-
+            <div class="fc-header-content">
+                <h1>Tailored Custom Software Development Services</h1>
+                <p>Delivering <b>CRM, ERP, SaaS applications, LMS, and custom software solutions</b> for businesses in the US, Canada, India, and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly integrations</b> to streamline operations.
+                </p>
+                <div class="fc-breadcrumb">
+                    <a href="/">Home</a> / <span>Contact Us</span>
+                </div>
+            </div>
         </div>
-
     </section>
-
 
 
     <!-- Service Overview -->

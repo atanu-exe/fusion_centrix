@@ -1,144 +1,51 @@
-<section class="why-choose-steps  py-5">
-
+<section class="why-choose-steps py-5" id="why-choose-us">
     <div class="container">
-
-        <h2 class="section-heading mb-4">Why Choose Us</h2>
-
-        <div class="row align-items-center">
-
-
-
-            <!-- Left Image -->
-
-            <div class="col-md-6 mb-4 mb-md-0">
-
-                <img src="{{ asset('assets/images/bucket.webp') }}" alt="Team working" class="img-fluid ">
-
+        <div class="row align-items-center gy-4">
+            <!-- Text -->
+            <div class="col-lg-5 order-2 order-lg-1">
+                <h2 class="section-heading mb-3">Why Choose Us</h2>
+                <p class="section-description text-muted mb-4">
+                    Strategy, design, and engineering — delivered on time and ready for global scale.
+                </p>
+                <a href="{{ url('contact-us') }}" class="btn btn-gradient">Let’s Work Together</a>
             </div>
 
-
-
-            <!-- Right Steps -->
-
-            <div class="col-md-6 mt-3">
-
-
-
-
-
-                <div class="d-flex mb-4 align-items-start">
-
-                    <div class="step-number bg-primary text-white me-3">1</div>
-
-                    <div>
-
-                        <h5 class="mb-1">Client-Centric Approach</h5>
-
-                        <p class="text-muted mb-0">We listen, understand, and tailor every project to fit your specific
-
-                            needs and goals.</p>
-
+            <!-- Cards -->
+            <div class="col-lg-7 order-1 order-lg-2">
+                <div class="why-grid">
+                    <div class="why-card">
+                        <span class="why-icon bg-primary-subtle text-primary"><i class="fas fa-users"></i></span>
+                        <h5>Client-Centric Approach</h5>
+                        <p>We listen, understand, and tailor every project to your needs.</p>
                     </div>
-
-                </div>
-
-
-
-                <div class="d-flex mb-4 align-items-start">
-
-                    <div class="step-number bg-info text-white me-3">2</div>
-
-                    <div>
-
-                        <h5 class="mb-1">Experienced Team</h5>
-
-                        <p class="text-muted mb-0">Our experts bring years of experience across industries, ensuring
-
-                            smart, effective solutions.</p>
-
+                    <div class="why-card">
+                        <span class="why-icon bg-success-subtle text-success"><i class="fas fa-user-tie"></i></span>
+                        <h5>Experienced Team</h5>
+                        <p>Seasoned experts across industries deliver smart solutions.</p>
                     </div>
-
-                </div>
-
-
-
-                <div class="d-flex mb-4 align-items-start">
-
-                    <div class="step-number bg-warning text-white me-3">3</div>
-
-                    <div>
-
-                        <h5 class="mb-1">Quality Assurance</h5>
-
-                        <p class="text-muted mb-0">Rigorous testing and quality checks for bug-free and reliable
-
-                            performance.</p>
-
+                    <div class="why-card">
+                        <span class="why-icon bg-warning-subtle text-warning"><i class="fas fa-shield-alt"></i></span>
+                        <h5>Quality Assurance</h5>
+                        <p>Rigorous testing for reliability, security, and performance.</p>
                     </div>
-
-                </div>
-
-
-
-                <div class="d-flex mb-4 align-items-start">
-
-                    <div class="step-number bg-success text-white me-3">4</div>
-
-                    <div>
-
-                        <h5 class="mb-1">On-Time Delivery</h5>
-
-                        <p class="text-muted mb-0">We respect deadlines — your time is valuable, and we deliver
-
-                            accordingly.</p>
-
+                    <div class="why-card">
+                        <span class="why-icon bg-info-subtle text-info"><i class="fas fa-clock"></i></span>
+                        <h5>On-Time Delivery</h5>
+                        <p>Clear timelines and predictable delivery, every time.</p>
                     </div>
-
-                </div>
-
-
-
-                <div class="d-flex mb-4 align-items-start">
-
-                    <div class="step-number bg-danger text-white me-3">5</div>
-
-                    <div>
-
-                        <h5 class="mb-1">Multilingual & Global-Ready</h5>
-
-                        <p class="text-muted mb-0">We build apps tailored for multiple languages, currencies, and time
-
-                            zones to connect with users worldwide.
-
-                        </p>
-
+                    <div class="why-card">
+                        <span class="why-icon bg-danger-subtle text-danger"><i class="fas fa-globe"></i></span>
+                        <h5>Global-Ready</h5>
+                        <p>Built for multiple languages, currencies, and time zones.</p>
                     </div>
-
-                </div>
-
-                <div class="d-flex align-items-start">
-
-                    <div class="step-number bg-secondary text-white me-3">6</div>
-
-                    <div>
-
-                        <h5 class="mb-1">24/7 Support</h5>
-
-                        <p class="text-muted mb-0">Need help? Our dedicated support team is always ready to assist you.
-
-                        </p>
-
+                    <div class="why-card">
+                        <span class="why-icon bg-secondary-subtle text-secondary"><i class="fas fa-headset"></i></span>
+                        <h5>24/7 Support</h5>
+                        <p>Dedicated support to keep your business running smoothly.</p>
                     </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
