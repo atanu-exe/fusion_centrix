@@ -20,7 +20,7 @@
     <section id="mission-vission" class="fc-mission-vision py-5">
         <div class="container">
             <div class="mv-head text-center mb-5">
-                <span class="mv-badge">Mission & Vision</span>
+                {{-- <span class="mv-badge">Mission & Vision</span> --}}
                 <h2 class="section-heading">Building dependable tech, guided by purpose</h2>
                 <p class="section-description text-muted">We align strategy, delivery, and support to keep your business
                     shipping, scaling, and winning.</p>
@@ -100,7 +100,7 @@
     <section id="our-core-values" class="fc-values py-5">
         <div class="container">
             <div class="values-head text-center mb-5">
-                <span class="values-badge">Core Values</span>
+                {{-- <span class="values-badge">Core Values</span> --}}
                 <h2 class="section-heading">Built on trust, driven by impact</h2>
                 <p class="section-description text-muted">Six principles that shape how we partner, deliver, and grow with
                     our clients.</p>
@@ -187,7 +187,7 @@
     <section id="about-why-choose-us" class="fc-why-choose py-5">
         <div class="container">
             <div class="awc-head text-center mb-5">
-                <span class="awc-badge">Why Choose Us</span>
+                {{-- <span class="awc-badge">Why Choose Us</span> --}}
                 <h2 class="section-heading">Partners you can count on</h2>
                 <p class="section-description text-muted">Full-stack delivery, transparent process, and long-term support
                     across every engagement.</p>
@@ -274,7 +274,7 @@
     <section id="project-process" class="fc-process-section py-5">
         <div class="container">
             <div class="pp-head text-center mb-5">
-                <span class="pp-badge">Project Process</span>
+                {{-- <span class="pp-badge">Project Process</span> --}}
                 <h2 class="section-heading">From idea to launch, with clarity</h2>
                 <p class="section-description text-muted">A visible, trackable flow—each step builds momentum to
                     production.</p>
@@ -316,17 +316,17 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="get-quote-section" id="get-quote">
+    <section class="get-quote-section fc-primary-bg" id="get-quote">
         <div class="container">
             <div class="quote-card">
                 <div class="row align-items-center gy-3">
                     <div class="col-lg-8 text-center text-lg-start">
-                        <h3 class="mb-2">Ready to Transform Your Digital Presence?</h3>
-                        <p class="mb-0 text-white-50">Let's partner to create something extraordinary.</p>
+                        <h3 class="display-5 fw-bold mb-3">Ready to Transform Your Digital Presence?</h3>
+                        <p class="lead mb-4 opacity-90">Let's partner to create something extraordinary.</p>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
                         <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                            <a href="{{ url('contact-us') }}" class="btn btn-gradient">Get a Free Consultation</a>
+                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Get a Free Consultation</a>
                             {{-- <a href="{{ url('portfolio') }}" class="btn btn-ghost-light">View Portfolio</a> --}}
                         </div>
                     </div>

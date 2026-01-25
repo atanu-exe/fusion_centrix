@@ -1,7 +1,7 @@
 <!-- Services -->
-<div id="common-service-block">
+<div id="common-service-block" class="fc-primary-bg">
     <div class="service-lede">
-        <div class="lede-chip">Services</div>
+        {{-- <div class="lede-chip">Services</div> --}}
         <h2>Build, scale, and stand out.</h2>
         <p class="lede-copy">Cross-functional teams that ship polished products, sharpen brands, and keep revenue flowing.</p>
     </div>

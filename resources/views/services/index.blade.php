@@ -15,7 +15,7 @@
 
                  businesses.</p>
                 <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <span>What We Do</span>
+                    <a href="/">Home</a> / <span>Services</span>
                 </div>
             </div>
         </div>
@@ -26,20 +26,20 @@
      <section id="services" class="fc-services-section py-5">
          <div class="container">
              <div class="services-head text-center mb-4 mb-lg-5">
-                 <span class="services-badge">Services</span>
+                 {{-- <span class="services-badge">Services</span> --}}
                  <h2 class="section-heading">Strategy, design, build, and scale</h2>
-                 <p class="section-description text-muted">Dedicated squads for web, mobile, commerce, and custom software.
+                 <p class="section-description text-muted">Dedicated squads for <strong>web</strong>, <strong>mobile</strong>, <strong>commerce</strong>, and <strong>custom software</strong>.
                      We ship fast, run reliably, and optimize with you.</p>
              </div>
 
              <div class="row g-4 align-items-center mb-4">
-                 <div class="col-lg-8">
+                 {{-- <div class="col-lg-8">
                      <div class="service-stats">
                          <div class="stat"><span class="stat-number">180+</span><span class="stat-label">Projects delivered</span></div>
                          <div class="stat"><span class="stat-number">2x</span><span class="stat-label">Faster timelines</span></div>
                          <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Support & SLAs</span></div>
                      </div>
-                 </div>
+                 </div> --}}
                  {{-- <div class="col-lg-4 text-lg-end">
                      <div class="service-filters">
                          <span class="filter-chip active">All</span>
@@ -98,7 +98,7 @@
      <section id="service-process" class="fc-service-process py-5">
          <div class="container">
              <div class="text-center mb-5">
-                 <span class="process-badge">Process</span>
+                 {{-- <span class="process-badge">Process</span> --}}
                  <h2 class="section-heading">How we deliver, end to end</h2>
                  <p class="section-description text-muted">A visible, accountable flow—from discovery to launch and beyond.</p>
              </div>
@@ -146,17 +146,17 @@
 
      <!-- Call To Action -->
 
-     <section class="get-quote-section py-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden">
+     <section class="get-quote-section py-4 px-3 text-white text-center rounded-0 position-relative overflow-hidden fc-primary-bg">
 
          <div class="container">
 
-             <h4 class="mb-2 fw-semibold">Ready to Elevate Your Brand?</h4>
+             <h4 class="display-5 fw-bold mb-3">Ready to Elevate Your Brand?</h4>
 
              <p class="mb-3 lead">Let’s craft something amazing together. Request a free quote today — no hassle, just
 
                  results.</p>
 
-             <a href="{{url('contact-us')}}" class="btn btn-light text-dark fw-bold px-4 py-2 rounded-pill shadow-sm">Get a Free
+             <a href="{{url('contact-us')}}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">Get a Free
 
                  Quote</a>
 

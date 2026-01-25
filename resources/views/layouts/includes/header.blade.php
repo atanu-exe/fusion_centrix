@@ -45,10 +45,11 @@
             const toggleBtn = document.getElementById("menuToggle");
             const menu = document.getElementById("mainMenu");
             const overlay = document.getElementById("menuOverlay");
-            
+
             toggleBtn.addEventListener("click", function() {
                 menu.classList.toggle("active");
                 overlay.classList.toggle("active");
+                toggleBtn.classList.toggle("active");
                 document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
             });
 
@@ -56,6 +57,7 @@
             overlay.addEventListener("click", function() {
                 menu.classList.remove("active");
                 overlay.classList.remove("active");
+                toggleBtn.classList.remove("active");
                 document.body.style.overflow = "auto";
             });
 
@@ -65,6 +67,7 @@
                 link.addEventListener("click", function() {
                     menu.classList.remove("active");
                     overlay.classList.remove("active");
+                    toggleBtn.classList.remove("active");
                     document.body.style.overflow = "auto";
                 });
             });
@@ -116,6 +119,8 @@
 <body style="background-color: #f4f6f8;">
     <header>
         <nav class="fc-navbar" role="navigation" aria-label="Main Navigation">
+            <!-- Mobile Menu Overlay -->
+            <div id="menuOverlay" class="fc-menu-overlay"></div>
             <div class="fc-navbar-container">
                 <!-- Logo -->
                 <div class="fc-navbar-brand">
@@ -142,7 +147,6 @@
                 </button>
             </div>
         </nav>
-        <!-- Mobile Menu Overlay -->
-        <div id="menuOverlay" class="fc-menu-overlay"></div>
+
     </header>
     <div>

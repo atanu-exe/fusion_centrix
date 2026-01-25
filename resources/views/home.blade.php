@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <script src="{{ asset('assets/js/particles.min.js') }}"></script>
-    <section id="hero-section" class="fc-hero-section position-relative text-white d-flex align-items-center justify-content-center overflow-hidden"
+    <section id="home-hero-section" class="fc-hero-section position-relative text-white d-flex align-items-center justify-content-center overflow-hidden"
         role="banner" aria-label="Fusioncentrix Solutions Hero">
         <!-- Animated Background -->
         {{-- <div id="particle-hero" class="position-absolute w-100 h-100 z-0" style="top: 0; left: 0;"></div> --}}
@@ -221,18 +221,18 @@
         </div>
     </section>
     @include('includes.why-choose-us')
-    <section class="get-quote-section" id="get-quote">
+    <section class="get-quote-section fc-primary-bg" id="get-quote">
         <div class="container">
             <div class="quote-card">
                 <div class="row align-items-center gy-3">
                     <div class="col-lg-8 text-center text-lg-start">
-                        <h3 class="mb-2">Ready to Elevate Your Brand?</h3>
-                        <p class="mb-0 text-white-50">Let’s create something powerful together. Fast, tailored, and results-driven.</p>
+                        <h3 class="display-5 fw-bold mb-3">Ready to Elevate Your Brand?</h3>
+                        <p class="lead mb-4 opacity-90">Let’s create something powerful together. Fast, tailored, and results-driven.</p>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
                         <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                            <a href="{{ url('contact-us') }}" class="btn btn-gradient">Get a Free Quote</a>
-                            <a href="{{ url('portfolio') }}" class="btn btn-ghost-light">View Portfolio</a>
+                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Get a Free Quote</a>
+                            <a href="{{ url('portfolio') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">View Portfolio</a>
                         </div>
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="d-flex gap-3 flex-wrap mt-4">
                             <a href="{{ url('/portfolio') }}" class="btn btn-gradient">See More Projects</a>
-                            <a href="{{ url('/contact-us') }}" class="btn btn-ghost-light">Start Your Project</a>
+                            <a href="{{ url('/contact-us') }}" class="fc-btn fc-btn-secondary">Start Your Project</a>
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2">
