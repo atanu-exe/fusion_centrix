@@ -8,16 +8,57 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::with(['categories', 'creator'])
-            ->latest()
-            ->paginate(20);
+        $query = Blog::with(['categories', 'creator']);
         
-        return view('admin.blogs.index', compact('blogs'));
+        // Search filter
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+        
+        // Status filter
+        if ($request->filled('filter')) {
+            switch ($request->filter) {
+                case 'published':
+                    $query->where('is_published', true);
+                    break;
+                case 'draft':
+                    $query->where('is_published', false)->whereNull('scheduled_at');
+                    break;
+                case 'scheduled':
+                    $query->whereNotNull('scheduled_at')->where('is_published', false);
+                    break;
+            }
+        }
+        
+        // Category filter
+        if ($request->filled('category')) {
+            $query->whereHas('categories', function($q) use ($request) {
+                $q->where('blog_categories.id', $request->category);
+            });
+        }
+        
+        $blogs = $query->latest()->paginate(20)->withQueryString();
+        $categories = BlogCategory::all();
+        
+        // Stats for dashboard cards
+        $stats = [
+            'total' => Blog::count(),
+            'published' => Blog::where('is_published', true)->count(),
+            'draft' => Blog::where('is_published', false)->whereNull('scheduled_at')->count(),
+            'scheduled' => Blog::whereNotNull('scheduled_at')->where('is_published', false)->count(),
+        ];
+        
+        return view('admin.blogs.index', compact('blogs', 'categories', 'stats'));
     }
 
     public function create()
@@ -37,6 +78,7 @@ class BlogController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
             'thumbnail_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
             'is_published' => 'boolean',
+            'scheduled_at' => 'nullable|date|after:now',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:blog_categories,id',
         ]);
@@ -66,6 +108,12 @@ class BlogController extends Controller
         }
 
         $isPublished = $request->input('is_published') == '1';
+        $scheduledAt = $request->filled('scheduled_at') ? Carbon::parse($request->scheduled_at) : null;
+        
+        // If scheduled, don't publish yet
+        if ($scheduledAt) {
+            $isPublished = false;
+        }
 
         $blog = Blog::create([
             'title' => $validated['title'],
@@ -77,6 +125,7 @@ class BlogController extends Controller
             'featured_image' => $featuredImagePath,
             'thumbnail_image' => $thumbnailImagePath,
             'is_published' => $isPublished,
+            'scheduled_at' => $scheduledAt,
             'published_at' => $isPublished ? now() : null,
             'created_by' => Auth::id() ?? 1,
             'published_by' => $isPublished ? (Auth::id() ?? 1) : null,
@@ -86,7 +135,11 @@ class BlogController extends Controller
             $blog->categories()->sync($validated['categories']);
         }
 
-        return redirect()->route('admin.blogs.index')->with('success', 'Blog created successfully!');
+        $message = $scheduledAt 
+            ? 'Blog scheduled for ' . $scheduledAt->format('M d, Y h:i A') 
+            : 'Blog created successfully!';
+
+        return redirect()->route('admin.blogs.index')->with('success', $message);
     }
 
     private function uploadAndResizeImage($file, $type, $slug)
@@ -196,6 +249,7 @@ class BlogController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
             'thumbnail_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
             'is_published' => 'boolean',
+            'scheduled_at' => 'nullable|date',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:blog_categories,id',
         ]);
@@ -236,6 +290,12 @@ class BlogController extends Controller
         }
 
         $isPublished = $request->input('is_published') == '1';
+        $scheduledAt = $request->filled('scheduled_at') ? Carbon::parse($request->scheduled_at) : null;
+        
+        // If scheduling, don't publish yet
+        if ($scheduledAt && $scheduledAt->isFuture()) {
+            $isPublished = false;
+        }
 
         $blog->update([
             'title' => $validated['title'],
@@ -246,6 +306,7 @@ class BlogController extends Controller
             'featured_image' => $featuredImagePath,
             'thumbnail_image' => $thumbnailImagePath,
             'is_published' => $isPublished,
+            'scheduled_at' => $scheduledAt,
             'published_at' => $isPublished && !$blog->published_at ? now() : $blog->published_at,
             'last_edited_by' => Auth::id() ?? 1,
             'published_by' => $isPublished && !$blog->published_by ? (Auth::id() ?? 1) : $blog->published_by,
@@ -264,5 +325,55 @@ class BlogController extends Controller
     {
         $blog->delete();
         return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted successfully!');
+    }
+
+    /**
+     * Publish a scheduled blog immediately
+     */
+    public function publish(Blog $blog)
+    {
+        $blog->update([
+            'is_published' => true,
+            'published_at' => now(),
+            'scheduled_at' => null,
+            'published_by' => Auth::id() ?? 1,
+        ]);
+
+        return back()->with('success', 'Blog published successfully!');
+    }
+
+    /**
+     * Unpublish a blog
+     */
+    public function unpublish(Blog $blog)
+    {
+        $blog->update([
+            'is_published' => false,
+        ]);
+
+        return back()->with('success', 'Blog unpublished successfully!');
+    }
+
+    /**
+     * Duplicate a blog
+     */
+    public function duplicate(Blog $blog)
+    {
+        $newBlog = $blog->replicate();
+        $newBlog->title = $blog->title . ' (Copy)';
+        $newBlog->slug = Str::slug($newBlog->title) . '-' . time();
+        $newBlog->is_published = false;
+        $newBlog->published_at = null;
+        $newBlog->scheduled_at = null;
+        $newBlog->views = 0;
+        $newBlog->shares = 0;
+        $newBlog->created_by = Auth::id() ?? 1;
+        $newBlog->save();
+
+        // Copy categories
+        $newBlog->categories()->sync($blog->categories->pluck('id'));
+
+        return redirect()->route('admin.blogs.edit', $newBlog)
+            ->with('success', 'Blog duplicated successfully!');
     }
 }
