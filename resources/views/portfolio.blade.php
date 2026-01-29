@@ -3,18 +3,17 @@
 
 
 @section('content')
-
-  <section class="fc-header">
+    <section class="fc-header">
         <div class="container">
             <div class="fc-header-content">
                 <h1>Project Showcase</h1>
                 <p>Our portfolio showcases a diverse range of projects, including web applications,
 
-                e-commerce platforms, custom software, branding, and marketing campaigns.
+                    e-commerce platforms, custom software, branding, and marketing campaigns.
 
-                Each solution is designed to meet unique business needs while ensuring
+                    Each solution is designed to meet unique business needs while ensuring
 
-                performance, scalability, and a seamless user experience.</p>
+                    performance, scalability, and a seamless user experience.</p>
                 <div class="fc-breadcrumb">
                     <a href="/">Home</a> / <span>Project Showcase</span>
                 </div>
@@ -36,12 +35,15 @@
                     builds where we owned strategy, design, and engineering.</p>
             </div>
 
-            <div class="portfolio-meta row g-3 align-items-center mb-4">
+            {{-- <div class="portfolio-meta row g-3 align-items-center mb-4">
                 <div class="col-md-6">
                     <div class="portfolio-stats">
-                        <div class="stat"><span class="stat-number">180+</span><span class="stat-label">Projects delivered</span></div>
-                        <div class="stat"><span class="stat-number">12</span><span class="stat-label">Industries served</span></div>
-                        <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Support & SLAs</span></div>
+                        <div class="stat"><span class="stat-number">180+</span><span class="stat-label">Projects
+                                delivered</span></div>
+                        <div class="stat"><span class="stat-number">12</span><span class="stat-label">Industries
+                                served</span></div>
+                        <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Support &
+                                SLAs</span></div>
                     </div>
                 </div>
                 <div class="col-md-6 text-md-end">
@@ -53,11 +55,12 @@
                         <span class="filter-chip">Branding</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="portfolio-grid">
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image1.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image1.jpg') }}" alt="SaaS Dashboard" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image1.jpg') }}"
+                            alt="SaaS Dashboard" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">SaaS</div>
                         <h5>SaaS Analytics Dashboard</h5>
@@ -67,7 +70,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image2.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image2.jpg') }}" alt="E-commerce" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image2.jpg') }}"
+                            alt="E-commerce" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">E-commerce</div>
                         <h5>Headless Commerce Revamp</h5>
@@ -77,7 +81,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image3.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image3.jpg') }}" alt="Healthcare" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image3.jpg') }}"
+                            alt="Healthcare" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Healthcare</div>
                         <h5>Patient Engagement Portal</h5>
@@ -87,7 +92,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image4.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image4.jpg') }}" alt="LMS" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image4.jpg') }}"
+                            alt="LMS" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">LMS</div>
                         <h5>Learning Experience Platform</h5>
@@ -97,7 +103,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image5.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image5.jpg') }}" alt="Mobile app" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image5.jpg') }}"
+                            alt="Mobile app" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Mobile</div>
                         <h5>On-demand Services App</h5>
@@ -107,7 +114,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image6.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image6.jpg') }}" alt="Fintech" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image6.jpg') }}"
+                            alt="Fintech" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Fintech</div>
                         <h5>Digital Banking Suite</h5>
@@ -117,7 +125,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image7.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image7.jpg') }}" alt="Branding" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image7.jpg') }}"
+                            alt="Branding" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Branding</div>
                         <h5>Brand & Identity System</h5>
@@ -127,7 +136,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image8.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image8.jpg') }}" alt="Marketing" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image8.jpg') }}"
+                            alt="Marketing" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Marketing</div>
                         <h5>Performance Landing Suite</h5>
@@ -137,7 +147,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image9.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image9.jpg') }}" alt="Logistics" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image9.jpg') }}"
+                            alt="Logistics" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Logistics</div>
                         <h5>Fleet & Delivery Ops</h5>
@@ -147,7 +158,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image10.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image10.jpg') }}" alt="CRM" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image10.jpg') }}"
+                            alt="CRM" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">CRM</div>
                         <h5>Sales CRM Modernization</h5>
@@ -157,7 +169,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image11.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image11.jpg') }}" alt="Hospitality" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image11.jpg') }}"
+                            alt="Hospitality" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Hospitality</div>
                         <h5>Booking & Concierge</h5>
@@ -167,7 +180,8 @@
                 </a>
 
                 <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image12.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image12.jpg') }}" alt="Marketplace" loading="lazy"></div>
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image12.jpg') }}"
+                            alt="Marketplace" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Marketplace</div>
                         <h5>B2B Services Marketplace</h5>
@@ -176,22 +190,40 @@
                     </div>
                 </a>
 
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image13.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image13.jpg') }}" alt="Analytics" loading="lazy"></div>
+                {{-- <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image13.jpg') }}" target="_blank">
+                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image13.jpg') }}"
+                            alt="Analytics" loading="lazy"></div>
                     <div class="card-body">
                         <div class="card-chip">Analytics</div>
                         <h5>Embedded Analytics Suite</h5>
                         <p>White-label analytics with custom theming and permissions.</p>
                         <div class="card-meta">Web • React, Laravel, Supabase</div>
                     </div>
-                </a>
+                </a> --}}
             </div>
 
-            <div class="portfolio-cta text-center mt-5">
-                <h4>Want to see a detailed case study?</h4>
-                <p class="text-muted mb-3">Tell us your industry and we’ll share relevant work with metrics and demos.</p>
-                <a href="{{ url('contact-us') }}" class="btn btn-gradient">Request a case study</a>
-            </div>
+           
         </div>
     </section>
+     <section class="get-quote-section fc-primary-bg" id="get-quote">
+                <div class="container">
+                    <div class="quote-card">
+                        <div class="row align-items-center gy-3">
+                            <div class="col-lg-8 text-center text-lg-start">
+                                <h3 class="display-5 fw-bold mb-3">Want to see a detailed case study?</h3>
+                                <p class="lead mb-4 opacity-90">Tell us your industry and we’ll share relevant work with
+                                    metrics and demos.</p>
+                            </div>
+                            <div class="col-lg-4 text-center text-lg-end">
+                                <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
+                                    {{-- <a href="http://127.0.0.1:8000/contact-us" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Request a case study</a> --}}
+                                    <a href="http://127.0.0.1:8000/contact-us"
+                                        class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">Request a case
+                                        study</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 @endsection

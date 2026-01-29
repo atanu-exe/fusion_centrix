@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
@@ -29,4 +30,12 @@ Route::get('/services/custom-software-development', [ServicesController::class, 
 Route::get('/services/ui-ux-design', [ServicesController::class, 'graphics'])->name('services.ui_ux_design');
 Route::get('/services/branding-identity', [ServicesController::class, 'branding'])->name('services.branding_identity');
 
-
+// Admin Blog Management Routes
+Route::prefix('admin/blogs')->name('admin.blogs.')->group(function () {
+    Route::get('/', [AdminBlogController::class, 'index'])->name('index');
+    Route::get('/create', [AdminBlogController::class, 'create'])->name('create');
+    Route::post('/', [AdminBlogController::class, 'store'])->name('store');
+    Route::get('/{blog}/edit', [AdminBlogController::class, 'edit'])->name('edit');
+    Route::put('/{blog}', [AdminBlogController::class, 'update'])->name('update');
+    Route::delete('/{blog}', [AdminBlogController::class, 'destroy'])->name('destroy');
+});

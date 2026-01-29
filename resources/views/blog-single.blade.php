@@ -21,35 +21,35 @@
     <div class="fc-blog-detail">
 
         <!-- BLOG DETAIL HEADER -->
-        <section class="fc-detail-header">
+        <section class="fc-header">
             <div class="container">
-                <div class="fc-detail-header-content">
-                    <div class="fc-breadcrumb-detail">
+                <div class="fc-header-content">
+                    <div class="fc-breadcrumb">
                         <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> / <span>{{ $blog->title }}</span>
                     </div>
-                    <h1 class="fc-detail-title">{{ $blog->title }}</h1>
-                    <p class="fc-detail-subtitle">{{ $blog->meta_description }}</p>
+                    <h1 class="mb-3">{{ $blog->title }}</h1>
+                    <p class="mb-4 text-muted">{{ $blog->meta_description }}</p>
 
-                    <div class="fc-article-meta-detail">
-                        <div class="fc-author-info">
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
                             <img src="{{ $blog->creator?->profile_photo_url ?? 'https://via.placeholder.com/48' }}"
-                                alt="Author" class="fc-author-avatar">
+                                alt="Author" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
                             <div>
-                                <div class="fc-author-name">{{ $blog->creator?->name ?? 'Admin' }}</div>
-                                <div class="fc-author-title">Author</div>
+                                <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
+                                <div class="text-muted small">Author</div>
                             </div>
                         </div>
-                        <div class="fc-meta-separator">|</div>
-                        <div class="fc-article-stats-detail">
-                            <span class="fc-stat-badge">📅 {{ $blog->published_at->format('M d, Y') }}</span>
-                            <span class="fc-stat-badge">👁️ {{ number_format($blog->views) }} views</span>
-                            <span class="fc-stat-badge">⏱️ {{ $blog->reading_time }} min read</span>
+                        <span class="text-muted">•</span>
+                        <div class="d-flex flex-wrap align-items-center gap-2 text-muted small">
+                            <span class="badge bg-light text-dark border">📅 {{ $blog->published_at->format('M d, Y') }}</span>
+                            <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }} views</span>
+                            <span class="badge bg-light text-dark border">⏱️ {{ $blog->reading_time }} min read</span>
                         </div>
                     </div>
 
                     <!-- ARTICLE CATEGORIES -->
                     @if($blog->categories->isNotEmpty())
-                    <div class="fc-article-tags">
+                    <div class="mt-3 d-flex flex-wrap gap-2">
                         @foreach($blog->categories as $category)
                         <a href="{{ route('blog.category', $category->slug) }}" class="fc-tag" style="background-color: {{ $category->color }}20; color: {{ $category->color }}; border: 1px solid {{ $category->color }};">
                             {{ $category->icon ?? '📌' }} {{ $category->name }}
@@ -64,8 +64,10 @@
         <!-- FEATURED IMAGE -->
         <section class="fc-detail-featured-image">
             <div class="container">
-                <img src="{{ $blog->featured_image ?? 'https://via.placeholder.com/1200x600' }}"
-                    alt="{{ $blog->title }}" class="fc-featured-img">
+                <div class="bg-white rounded-4 shadow-sm overflow-hidden">
+                    <img src="{{ $blog->featured_image ?? 'https://via.placeholder.com/1200x600' }}"
+                        alt="{{ $blog->title }}" class="w-100" style="max-height: 520px; object-fit: cover;">
+                </div>
             </div>
         </section>
 
@@ -75,36 +77,38 @@
 
                 <!-- ARTICLE CONTENT -->
                 <div class="col-lg-8">
-                    <article class="fc-article-content">
+                    <article class="bg-white rounded-4 shadow-sm p-4 p-lg-5">
                         <!-- ARTICLE BODY -->
-                        {!! $blog->content !!}
+                        <div class="fc-article-content">
+                            {!! $blog->content !!}
+                        </div>
 
                         <!-- ARTICLE FOOTER -->
-                        <div class="fc-article-footer">
-                            <div class="fc-article-sharing">
-                                <span class="fc-share-label">Share this article:</span>
-                                <div class="fc-social-share">
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($seoData['url']) }}&text={{ urlencode($blog->title) }}" class="fc-share-btn fc-share-twitter" title="Share on Twitter" target="_blank" rel="noopener noreferrer">
-                                        <span>𝕏 Twitter</span>
+                        <div class="fc-article-footer mt-5">
+                            <div class="fc-article-sharing mb-4">
+                                <span class="fc-share-label d-block mb-2">Share this article:</span>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($seoData['url']) }}&text={{ urlencode($blog->title) }}" class="btn btn-outline-dark btn-sm" title="Share on Twitter" target="_blank" rel="noopener noreferrer">
+                                        𝕏 Twitter
                                     </a>
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoData['url']) }}" class="fc-share-btn fc-share-facebook" title="Share on Facebook" target="_blank" rel="noopener noreferrer">
-                                        <span>f Facebook</span>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoData['url']) }}" class="btn btn-outline-primary btn-sm" title="Share on Facebook" target="_blank" rel="noopener noreferrer">
+                                        Facebook
                                     </a>
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($seoData['url']) }}" class="fc-share-btn fc-share-linkedin" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
-                                        <span>in LinkedIn</span>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($seoData['url']) }}" class="btn btn-outline-info btn-sm" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                                        LinkedIn
                                     </a>
-                                    <a href="#" class="fc-share-btn fc-share-copy" title="Copy link" data-url="{{ $seoData['url'] }}">
-                                        <span>🔗 Copy Link</span>
+                                    <a href="#" class="btn btn-outline-secondary btn-sm fc-share-copy" title="Copy link" data-url="{{ $seoData['url'] }}">
+                                        🔗 Copy Link
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="fc-article-author-box">
+                            <div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light">
                                 <img src="{{ $blog->creator?->profile_photo_url ?? 'https://via.placeholder.com/100' }}"
-                                    alt="Author" class="fc-author-box-avatar">
+                                    alt="Author" class="rounded-circle" style="width: 72px; height: 72px; object-fit: cover;">
                                 <div>
-                                    <h4>{{ $blog->creator?->name ?? 'Admin' }}</h4>
-                                    <p>{{ $blog->creator?->bio ?? 'Content Author' }}</p>
+                                    <h5 class="mb-1">{{ $blog->creator?->name ?? 'Admin' }}</h5>
+                                    <p class="mb-0 text-muted small">{{ $blog->creator?->bio ?? 'Content Author' }}</p>
                                 </div>
                             </div>
                         </div>
@@ -116,54 +120,62 @@
                 <aside class="col-lg-4">
 
                     <!-- SEARCH BOX -->
-                    <div class="fc-sidebar-widget">
-                        <form action="{{ route('blog.index') }}" method="GET">
-                            <input type="text" name="search" placeholder="Search articles..." class="fc-search-input">
-                        </form>
+                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <form action="{{ route('blog.index') }}" method="GET">
+                                <input type="text" name="search" placeholder="Search articles..." class="form-control">
+                            </form>
+                        </div>
                     </div>
 
                     <!-- CATEGORIES -->
-                    <div class="fc-sidebar-widget">
-                        <h4 class="fc-widget-title">Categories</h4>
-                        <ul class="fc-category-list">
-                            @foreach($blog->categories as $category)
-                            <li>
-                                <a href="{{ route('blog.category', $category->slug) }}" style="color: {{ $category->color }};">
-                                    {{ $category->icon ?? '📌' }} {{ $category->name }}
-                                    <span class="fc-count">{{ $category->publishedBlogs()->count() }}</span>
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
+                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <h4 class="fc-widget-title">Categories</h4>
+                            <ul class="list-unstyled mb-0 fc-category-list">
+                                @foreach($blog->categories as $category)
+                                <li class="mb-2">
+                                    <a href="{{ route('blog.category', $category->slug) }}" style="color: {{ $category->color }};" class="d-flex justify-content-between align-items-center">
+                                        <span>{{ $category->icon ?? '📌' }} {{ $category->name }}</span>
+                                        <span class="badge bg-light text-dark border">{{ $category->publishedBlogs()->count() }}</span>
+                                    </a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- POPULAR POSTS -->
-                    <div class="fc-sidebar-widget">
-                        <h4 class="fc-widget-title">Popular Posts</h4>
-                        <div class="fc-popular-posts">
-                            @forelse($relatedArticles->take(3) as $related)
-                            <a href="{{ route('blog.show', $related->slug) }}" class="fc-popular-post">
-                                <img src="{{ $related->thumbnail_image ?? 'https://via.placeholder.com/80' }}"
-                                    alt="{{ $related->title }}">
-                                <div>
-                                    <h6>{{ Str::limit($related->title, 40) }}</h6>
-                                    <span class="fc-post-meta">{{ number_format($related->views) }} views</span>
-                                </div>
-                            </a>
-                            @empty
-                            <p class="text-muted">No posts available.</p>
-                            @endforelse
+                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <h4 class="fc-widget-title">Popular Posts</h4>
+                            <div class="fc-popular-posts">
+                                @forelse($relatedArticles->take(3) as $related)
+                                <a href="{{ route('blog.show', $related->slug) }}" class="fc-popular-post d-flex gap-3 align-items-center py-2">
+                                    <img src="{{ $related->thumbnail_image ?? 'https://via.placeholder.com/80' }}"
+                                        alt="{{ $related->title }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
+                                        <span class="fc-post-meta text-muted small">{{ number_format($related->views) }} views</span>
+                                    </div>
+                                </a>
+                                @empty
+                                <p class="text-muted">No posts available.</p>
+                                @endforelse
+                            </div>
                         </div>
                     </div>
 
                     <!-- NEWSLETTER -->
-                    <div class="fc-sidebar-widget fc-newsletter-widget">
-                        <h4 class="fc-widget-title">Subscribe to Updates</h4>
-                        <p class="fc-newsletter-desc">Get the latest articles delivered to your inbox</p>
-                        <form class="fc-newsletter-form">
-                            <input type="email" placeholder="Enter your email" required>
-                            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-                        </form>
+                    <div class="fc-sidebar-widget card shadow-sm border-0">
+                        <div class="card-body">
+                            <h4 class="fc-widget-title">Subscribe to Updates</h4>
+                            <p class="fc-newsletter-desc">Get the latest articles delivered to your inbox</p>
+                            <form class="fc-newsletter-form">
+                                <input type="email" placeholder="Enter your email" class="form-control mb-2" required>
+                                <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                            </form>
+                        </div>
                     </div>
 
                 </aside>

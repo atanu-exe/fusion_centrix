@@ -506,7 +506,7 @@
                         <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">
                             <i class="fas fa-chart-line me-2"></i>Get Marketing Audit
                         </a>
-                        <a href="{{ url('contact-us') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">
+                        <a href="{{ url('contact-us') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
                             <i class="fas fa-phone me-2"></i>Schedule Consultation
                         </a>
                     </div>

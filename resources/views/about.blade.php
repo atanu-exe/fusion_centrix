@@ -326,7 +326,7 @@
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
                         <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Get a Free Consultation</a>
+                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">Get a Free Consultation</a>
                             {{-- <a href="{{ url('portfolio') }}" class="btn btn-ghost-light">View Portfolio</a> --}}
                         </div>
                     </div>

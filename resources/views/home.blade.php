@@ -24,7 +24,7 @@
                         Delivering top-tier websites, apps, SEO, and brand promotion strategies — trusted by US, Canadian, and global businesses, powered by our expert India-based team.
                     </p>
                     <div class="fc-hero-cta d-flex gap-3 flex-wrap">
-                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary" aria-label="Get Free Consultation">
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary" aria-label="Get Free Consultation" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
                             <span>Get Free Consultation</span>
                             <i class="fas fa-arrow-right ms-2"></i>
                         </a>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
                         <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Get a Free Quote</a>
+                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg" >Get a Free Quote</a>
                             <a href="{{ url('portfolio') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">View Portfolio</a>
                         </div>
                     </div>

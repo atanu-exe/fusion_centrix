@@ -481,7 +481,7 @@
                         <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg hover-lift">
                             <i class="fas fa-rocket me-2"></i>Let's Get Started
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">
+                        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
                             <i class="fas fa-phone me-2"></i>Schedule a Call
                         </a>
                     </div>
