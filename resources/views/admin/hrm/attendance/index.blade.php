@@ -181,7 +181,7 @@
     @endif
 </div>
 
-@if(in_array(auth()->user()->user_type, ['admin', 'super_admin']))
+@if($isAdmin)
 <!-- Admin: All Team Attendance -->
 <div class="card mt-4">
     <div class="card-header">

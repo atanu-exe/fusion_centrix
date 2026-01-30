@@ -12,7 +12,15 @@ class AttendanceController extends Controller
 {
     public function index(Request $request)
     {
+        $user = auth()->user();
+        $isAdmin = $user->isSuperAdmin();
+        
         $query = Attendance::with('user');
+
+        // Non-admins can only see their own attendance
+        if (!$isAdmin) {
+            $query->where('user_id', $user->id);
+        }
 
         // Date filter
         if ($request->filled('date')) {
@@ -21,8 +29,8 @@ class AttendanceController extends Controller
             $query->whereDate('date', today());
         }
 
-        // User filter
-        if ($request->filled('user_id')) {
+        // User filter (only for admins)
+        if ($isAdmin && $request->filled('user_id')) {
             $query->where('user_id', $request->user_id);
         }
 
@@ -32,31 +40,50 @@ class AttendanceController extends Controller
         }
 
         $attendances = $query->orderBy('date', 'desc')->paginate(20);
-        $users = User::where('is_active', true)->orderBy('name')->get();
+        
+        // Users list only for admins
+        $users = $isAdmin ? User::where('is_active', true)->orderBy('name')->get() : collect();
 
-        // Today's stats
-        $todayStats = [
-            'present' => Attendance::whereDate('date', today())->whereIn('status', ['present', 'late'])->count(),
-            'absent' => Attendance::whereDate('date', today())->where('status', 'absent')->count(),
-            'late' => Attendance::whereDate('date', today())->where('status', 'late')->count(),
-            'on_leave' => Attendance::whereDate('date', today())->where('status', 'on_leave')->count(),
-        ];
+        // Today's stats (only for admins, show personal for employees)
+        if ($isAdmin) {
+            $todayStats = [
+                'present' => Attendance::whereDate('date', today())->whereIn('status', ['present', 'late'])->count(),
+                'absent' => Attendance::whereDate('date', today())->where('status', 'absent')->count(),
+                'late' => Attendance::whereDate('date', today())->where('status', 'late')->count(),
+                'on_leave' => Attendance::whereDate('date', today())->where('status', 'on_leave')->count(),
+            ];
+        } else {
+            // Personal stats for employees
+            $todayStats = [
+                'present' => Attendance::where('user_id', $user->id)->whereDate('date', today())->whereIn('status', ['present', 'late'])->count(),
+                'absent' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->where('status', 'absent')->count(),
+                'late' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->where('status', 'late')->count(),
+                'on_leave' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->where('status', 'on_leave')->count(),
+            ];
+        }
 
         // Current user's today attendance
-        $todayAttendance = Attendance::where('user_id', auth()->id())
+        $todayAttendance = Attendance::where('user_id', $user->id)
             ->whereDate('date', today())
             ->first();
 
         // Selected month for filtering
         $selectedMonth = $request->input('month', now()->format('Y-m'));
 
-        // Team attendance for today (all users)
-        $teamAttendance = Attendance::with('user')
-            ->whereDate('date', today())
-            ->orderBy('check_in', 'desc')
-            ->get();
+        // Monthly stats for the current user
+        $monthStats = [
+            'present' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->whereYear('date', now()->year)->whereIn('status', ['present', 'late'])->count(),
+            'absent' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->whereYear('date', now()->year)->where('status', 'absent')->count(),
+            'late' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->whereYear('date', now()->year)->where('status', 'late')->count(),
+            'hours' => Attendance::where('user_id', $user->id)->whereMonth('date', now()->month)->whereYear('date', now()->year)->sum('working_hours'),
+        ];
 
-        return view('admin.hrm.attendance.index', compact('attendances', 'users', 'todayStats', 'todayAttendance', 'selectedMonth', 'teamAttendance'));
+        // Team attendance for today (only for admins)
+        $teamAttendance = $isAdmin 
+            ? Attendance::with('user')->whereDate('date', today())->orderBy('check_in', 'desc')->get()
+            : collect();
+
+        return view('admin.hrm.attendance.index', compact('attendances', 'users', 'todayStats', 'todayAttendance', 'selectedMonth', 'teamAttendance', 'isAdmin', 'monthStats'));
     }
 
     public function checkIn(Request $request)
@@ -159,12 +186,18 @@ class AttendanceController extends Controller
 
     public function report(Request $request)
     {
+        $user = auth()->user();
+        $isAdmin = $user->isSuperAdmin();
+        
         $month = $request->get('month', now()->format('Y-m'));
         $userId = $request->get('user_id');
 
         $query = Attendance::query();
 
-        if ($userId) {
+        // Non-admins can only see their own report
+        if (!$isAdmin) {
+            $query->where('user_id', $user->id);
+        } elseif ($userId) {
             $query->where('user_id', $userId);
         }
 
@@ -179,7 +212,8 @@ class AttendanceController extends Controller
             ->get()
             ->groupBy('user_id');
 
-        $users = User::where('is_active', true)->orderBy('name')->get();
+        // Users list only for admins
+        $users = $isAdmin ? User::where('is_active', true)->orderBy('name')->get() : collect();
 
         // Calculate summary for each user
         $summary = [];
@@ -195,6 +229,6 @@ class AttendanceController extends Controller
             ];
         }
 
-        return view('admin.hrm.attendance.report', compact('attendances', 'users', 'summary', 'month'));
+        return view('admin.hrm.attendance.report', compact('attendances', 'users', 'summary', 'month', 'isAdmin'));
     }
 }

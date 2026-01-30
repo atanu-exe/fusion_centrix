@@ -41,7 +41,7 @@
                         </div>
                         <span class="text-muted">•</span>
                         <div class="d-flex flex-wrap align-items-center gap-2 text-muted small">
-                            <span class="badge bg-light text-dark border">📅 {{ $blog->published_at->format('M d, Y') }}</span>
+                            <span class="badge bg-light text-dark border">📅 {{ $blog->published_at?->format('M d, Y') ?? 'Draft' }}</span>
                             <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }} views</span>
                             <span class="badge bg-light text-dark border">⏱️ {{ $blog->reading_time }} min read</span>
                         </div>
@@ -197,7 +197,7 @@
                                 <h5>{{ $related->title }}</h5>
                                 <p class="text-muted small">{{ Str::limit($related->meta_description, 80) }}</p>
                                 <div class="fc-related-meta">
-                                    {{ $related->published_at->format('M d, Y') }} 
+                                    {{ $related->published_at?->format('M d, Y') ?? 'Draft' }} 
                                     @if($related->categories->isNotEmpty())
                                         • {{ $related->categories->first()->name }}
                                     @endif

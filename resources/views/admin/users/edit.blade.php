@@ -126,27 +126,38 @@
         </div>
         
         <!-- Permissions Section -->
-        @if($user->id !== auth()->id() && !$user->isSuperAdmin())
+        @if($user->id !== auth()->id() && !$user->isSuperAdmin() && auth()->user()->isSuperAdmin())
         <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h5 class="card-title mb-0"><i class="fas fa-shield-alt me-2"></i>User Permissions</h5>
-                <form action="{{ route('admin.users.reset-permissions', $user) }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-sm btn-outline-warning" 
-                            onclick="return confirm('Reset all permissions to role defaults?')">
-                        <i class="fas fa-undo me-1"></i>Reset to Defaults
-                    </button>
-                </form>
+                <div class="d-flex gap-2">
+                    <form action="{{ route('admin.users.reset-permissions', $user) }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-outline-warning" 
+                                onclick="return confirm('Reset this user\'s permissions to role defaults?')">
+                            <i class="fas fa-undo me-1"></i>Reset User
+                        </button>
+                    </form>
+                    <form action="{{ route('admin.users.reset-all-permissions') }}" method="POST" class="d-inline">
+                        @csrf
+                        <input type="hidden" name="user_type" value="{{ $user->user_type }}">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                onclick="return confirm('Reset ALL {{ $user->role_label }} users to default permissions? This cannot be undone.')">
+                            <i class="fas fa-users me-1"></i>Reset All {{ $user->role_label }}s
+                        </button>
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <div class="alert alert-info mb-4">
                     <i class="fas fa-info-circle me-2"></i>
-                    <strong>Default:</strong> Permission follows the role's default settings |
-                    <strong class="text-success">Granted:</strong> Explicitly allowed |
-                    <strong class="text-danger">Denied:</strong> Explicitly denied
+                    <strong>How it works:</strong><br>
+                    • <strong>Default:</strong> Uses the {{ $user->role_label }} role's default permission<br>
+                    • <strong class="text-success">✓ Grant:</strong> Override to explicitly allow (even if role default denies)<br>
+                    • <strong class="text-danger">✗ Deny:</strong> Override to explicitly deny (even if role default allows)
                 </div>
                 
-                <form action="{{ route('admin.users.permissions', $user) }}" method="POST">
+                <form action="{{ route('admin.users.permissions', $user) }}" method="POST" id="permissionsForm">
                     @csrf
                     @method('PUT')
                     
@@ -160,42 +171,43 @@
                             @php
                                 $userPerm = $userPermissions->get($permission->id);
                                 $currentStatus = 'default';
-                                if ($userPerm) {
+                                if ($userPerm && $userPerm->pivot) {
                                     $currentStatus = $userPerm->pivot->granted ? 'granted' : 'denied';
                                 }
                                 
                                 // Check if default role has this permission
-                                $roleDefaults = \App\Models\Permission::getRoleDefaults();
-                                $rolePerms = $roleDefaults[$user->user_type] ?? [];
-                                $hasDefault = false;
-                                if (is_array($rolePerms)) {
-                                    foreach ($rolePerms as $perm) {
-                                        if ($perm === $permission->name || 
-                                            (str_ends_with($perm, '.*') && str_starts_with($permission->name, str_replace('.*', '.', $perm)))) {
-                                            $hasDefault = true;
-                                            break;
-                                        }
-                                    }
-                                }
+                                $hasDefault = \App\Models\Permission::isInRoleDefaults($user->user_type, $permission->name);
+                                
+                                // Determine effective permission
+                                $effectivePermission = ($currentStatus === 'default') ? $hasDefault : ($currentStatus === 'granted');
+                                $isOverridden = $currentStatus !== 'default';
                             @endphp
                             <div class="col-md-6 mb-3">
-                                <div class="card bg-light">
+                                <div class="card {{ $isOverridden ? 'border-warning' : 'bg-light' }}">
                                     <div class="card-body py-2 px-3">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <strong>{{ $permission->display_name }}</strong>
+                                                @if($isOverridden)
+                                                    <span class="badge bg-warning text-dark ms-1" style="font-size: 0.65rem;">Overridden</span>
+                                                @endif
                                                 <br>
                                                 <small class="text-muted">
-                                                    Default: 
+                                                    Role Default: 
                                                     @if($hasDefault)
                                                         <span class="text-success"><i class="fas fa-check"></i> Allowed</span>
                                                     @else
                                                         <span class="text-danger"><i class="fas fa-times"></i> Denied</span>
                                                     @endif
+                                                    @if($isOverridden)
+                                                        → <strong class="{{ $effectivePermission ? 'text-success' : 'text-danger' }}">
+                                                            {{ $effectivePermission ? 'Allowed' : 'Denied' }}
+                                                        </strong>
+                                                    @endif
                                                 </small>
                                             </div>
                                             <div>
-                                                <select name="permissions[{{ $permission->id }}]" class="form-select form-select-sm" style="width: 120px;">
+                                                <select name="permissions[{{ $permission->id }}]" class="form-select form-select-sm {{ $isOverridden ? 'border-warning' : '' }}" style="width: 120px;">
                                                     <option value="default" {{ $currentStatus === 'default' ? 'selected' : '' }}>Default</option>
                                                     <option value="granted" {{ $currentStatus === 'granted' ? 'selected' : '' }}>✓ Grant</option>
                                                     <option value="denied" {{ $currentStatus === 'denied' ? 'selected' : '' }}>✗ Deny</option>

@@ -59,7 +59,49 @@ class LeadController extends Controller
             $query->where('assigned_to', auth()->id());
         }
 
-        $leads = $query->orderBy('created_at', 'desc')->paginate(20);
+        // Sorting
+        $sortBy = $request->get('sort', 'created_at');
+        $sortDir = $request->get('dir', 'desc');
+        
+        switch ($sortBy) {
+            case 'name':
+                $query->orderBy('name', $sortDir);
+                break;
+            case 'last_contacted':
+                $query->orderByRaw("last_contact_at IS NULL, last_contact_at {$sortDir}");
+                break;
+            case 'last_followup':
+                $query->leftJoin('lead_followups as lf_last', function ($join) {
+                    $join->on('leads.id', '=', 'lf_last.lead_id')
+                        ->where('lf_last.is_completed', true);
+                })
+                ->select('leads.*')
+                ->selectRaw('MAX(lf_last.created_at) as last_followup_date')
+                ->groupBy('leads.id')
+                ->orderByRaw("last_followup_date IS NULL, last_followup_date {$sortDir}");
+                break;
+            case 'next_followup':
+                $query->leftJoin('lead_followups as lf_next', function ($join) {
+                    $join->on('leads.id', '=', 'lf_next.lead_id')
+                        ->where('lf_next.is_completed', false)
+                        ->whereNotNull('lf_next.followup_date');
+                })
+                ->select('leads.*')
+                ->selectRaw('MIN(lf_next.followup_date) as next_followup_date')
+                ->groupBy('leads.id')
+                ->orderByRaw("next_followup_date IS NULL, next_followup_date {$sortDir}");
+                break;
+            case 'priority':
+                $query->orderByRaw("FIELD(priority, 'urgent', 'high', 'medium', 'low') " . ($sortDir === 'desc' ? 'ASC' : 'DESC'));
+                break;
+            case 'value':
+                $query->orderByRaw("estimated_value IS NULL, estimated_value {$sortDir}");
+                break;
+            default:
+                $query->orderBy('created_at', $sortDir);
+        }
+
+        $leads = $query->paginate(20)->withQueryString();
 
         $statuses = LeadStatus::where('is_active', true)->orderBy('order')->get();
         $sources = LeadSource::where('is_active', true)->get();

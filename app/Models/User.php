@@ -168,6 +168,7 @@ class User extends Authenticatable
 
     /**
      * Check if user has a specific permission
+     * Priority: 1. Super Admin = all, 2. User override, 3. Role default
      */
     public function hasPermission(string $permission): bool
     {
@@ -176,35 +177,84 @@ class User extends Authenticatable
             return true;
         }
 
-        // Check custom permissions first
-        $customPermission = $this->permissions()
-            ->where('name', $permission)
-            ->first();
-
-        if ($customPermission) {
-            return $customPermission->pivot->granted;
+        // Check for user-specific override in user_permissions table
+        $override = $this->permissions()->where('name', $permission)->first();
+        if ($override) {
+            return (bool) $override->pivot->granted;
         }
 
         // Fall back to role defaults
-        $roleDefaults = Permission::getRoleDefaults();
-        $rolePermissions = $roleDefaults[$this->user_type] ?? [];
+        return Permission::isInRoleDefaults($this->user_type, $permission);
+    }
 
-        if (is_array($rolePermissions)) {
-            // Check for wildcard permissions (e.g., 'blogs.*')
-            foreach ($rolePermissions as $perm) {
-                if ($perm === $permission) {
-                    return true;
-                }
-                if (str_ends_with($perm, '.*')) {
-                    $module = str_replace('.*', '', $perm);
-                    if (str_starts_with($permission, $module . '.')) {
-                        return true;
-                    }
-                }
-            }
+    /**
+     * Check if user has ANY permission in a module (for menu visibility)
+     */
+    public function hasModuleAccess(string $module): bool
+    {
+        if ($this->isSuperAdmin()) {
+            return true;
         }
 
+        // Get all permissions for this module
+        $modulePermissions = Permission::where('module', $module)->pluck('name')->toArray();
+        
+        foreach ($modulePermissions as $permission) {
+            if ($this->hasPermission($permission)) {
+                return true;
+            }
+        }
+        
         return false;
+    }
+
+    /**
+     * Get all effective permissions for this user
+     */
+    public function getEffectivePermissions(): array
+    {
+        if ($this->isSuperAdmin()) {
+            return Permission::pluck('name')->toArray();
+        }
+
+        $permissions = [];
+        $allPermissions = Permission::all();
+        
+        foreach ($allPermissions as $perm) {
+            if ($this->hasPermission($perm->name)) {
+                $permissions[] = $perm->name;
+            }
+        }
+        
+        return $permissions;
+    }
+
+    /**
+     * Get user's custom overrides (permissions that differ from role default)
+     */
+    public function getPermissionOverrides(): array
+    {
+        return $this->permissions()->get()->mapWithKeys(function ($perm) {
+            return [$perm->name => (bool) $perm->pivot->granted];
+        })->toArray();
+    }
+
+    /**
+     * Set a permission override for this user
+     */
+    public function setPermissionOverride(int $permissionId, bool $granted): void
+    {
+        $this->permissions()->syncWithoutDetaching([
+            $permissionId => ['granted' => $granted]
+        ]);
+    }
+
+    /**
+     * Clear all permission overrides (reset to role defaults)
+     */
+    public function clearPermissionOverrides(): void
+    {
+        $this->permissions()->detach();
     }
 
     /**

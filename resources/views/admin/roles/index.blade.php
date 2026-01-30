@@ -98,16 +98,7 @@
                             @else
                                 @php
                                     $rolePerms = $roleDefaults[$roleKey] ?? [];
-                                    $hasPermission = false;
-                                    if (is_array($rolePerms)) {
-                                        foreach ($rolePerms as $perm) {
-                                            if ($perm === $permission->name || 
-                                                (str_ends_with($perm, '.*') && str_starts_with($permission->name, str_replace('.*', '.', $perm)))) {
-                                                $hasPermission = true;
-                                                break;
-                                            }
-                                        }
-                                    }
+                                    $hasPermission = is_array($rolePerms) && in_array($permission->name, $rolePerms);
                                 @endphp
                                 @if($hasPermission)
                                     <i class="fas fa-check text-success"></i>
@@ -147,25 +138,19 @@
                     <div class="mb-4">
                         <h6 class="text-uppercase text-muted mb-3 border-bottom pb-2">
                             <i class="fas fa-folder me-2"></i>{{ ucfirst($module) }}
+                            <button type="button" class="btn btn-sm btn-link float-end toggle-module" data-module="{{ $roleKey }}_{{ $module }}">
+                                Select All
+                            </button>
                         </h6>
                         <div class="row">
                             @foreach($modulePermissions as $permission)
                             @php
                                 $rolePerms = $roleDefaults[$roleKey] ?? [];
-                                $hasPermission = false;
-                                if (is_array($rolePerms)) {
-                                    foreach ($rolePerms as $perm) {
-                                        if ($perm === $permission->name || 
-                                            (str_ends_with($perm, '.*') && str_starts_with($permission->name, str_replace('.*', '.', $perm)))) {
-                                            $hasPermission = true;
-                                            break;
-                                        }
-                                    }
-                                }
+                                $hasPermission = is_array($rolePerms) && in_array($permission->name, $rolePerms);
                             @endphp
                             <div class="col-md-6 mb-2">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" 
+                                    <input class="form-check-input module-{{ $roleKey }}_{{ $module }}" type="checkbox" 
                                            name="permissions[]" 
                                            value="{{ $permission->name }}"
                                            id="{{ $roleKey }}_{{ $permission->id }}"
@@ -180,11 +165,20 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-2"></i>Save Permissions
-                    </button>
+                <div class="modal-footer justify-content-between">
+                    <form action="{{ route('admin.roles.apply-to-all', $roleKey) }}" method="POST" class="d-inline"
+                          onsubmit="return confirm('This will reset ALL {{ $role['name'] }} users to role defaults, removing any custom overrides. Continue?');">
+                        @csrf
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-sync me-1"></i>Apply to All {{ $role['name'] }}s
+                        </button>
+                    </form>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Save Permissions
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -198,4 +192,25 @@
     <strong>Note:</strong> Role permissions are defaults applied to all users with that role. 
     You can override permissions for individual users from the <a href="{{ route('admin.users.index') }}">User Management</a> page by editing a specific user.
 </div>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle all checkboxes in a module
+    document.querySelectorAll('.toggle-module').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const moduleClass = 'module-' + this.dataset.module;
+            const checkboxes = document.querySelectorAll('.' + moduleClass);
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            checkboxes.forEach(function(cb) {
+                cb.checked = !allChecked;
+            });
+            
+            this.textContent = allChecked ? 'Select All' : 'Deselect All';
+        });
+    });
+});
+</script>
+@endpush
 @endsection

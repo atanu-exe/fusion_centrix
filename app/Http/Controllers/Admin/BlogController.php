@@ -61,6 +61,12 @@ class BlogController extends Controller
         return view('admin.blogs.index', compact('blogs', 'categories', 'stats'));
     }
 
+    public function show(Blog $blog)
+    {
+        $blog->load(['categories', 'creator']);
+        return view('admin.blogs.show', compact('blog'));
+    }
+
     public function create()
     {
         $categories = BlogCategory::all();

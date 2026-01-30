@@ -5048,6 +5048,328 @@ section strong {
 }
 
 
+/* ============================================
+   BLOG DETAIL PAGE STYLES
+   ============================================ */
+
+/* Blog Detail Container */
+.fc-blog-detail {
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Featured Image Section */
+.fc-detail-featured-image {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.fc-detail-featured-image img {
+  border-radius: 1rem;
+}
+
+/* Article Content */
+.fc-article-content {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #374151;
+}
+
+.fc-article-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
+  color: #1f2937;
+}
+
+.fc-article-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+  color: #1f2937;
+}
+
+.fc-article-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: #1f2937;
+}
+
+.fc-article-content p {
+  margin-bottom: 1.25rem;
+}
+
+.fc-article-content ul,
+.fc-article-content ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.fc-article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.fc-article-content blockquote {
+  border-left: 4px solid #667eea;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.fc-article-content pre {
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: 'Fira Code', 'Monaco', monospace;
+  font-size: 0.9rem;
+}
+
+.fc-article-content code {
+  background: rgba(102, 126, 234, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Fira Code', 'Monaco', monospace;
+  font-size: 0.9em;
+  color: #667eea;
+}
+
+.fc-article-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.fc-article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.fc-article-content a {
+  color: #667eea;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.fc-article-content a:hover {
+  border-bottom-color: #667eea;
+}
+
+/* Article Footer */
+.fc-article-footer {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+}
+
+.fc-article-sharing {
+  padding: 1.25rem;
+  background: #f8fafc;
+  border-radius: 0.75rem;
+}
+
+.fc-share-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+/* Sidebar Widgets */
+.fc-sidebar-widget {
+  border-radius: 1rem !important;
+  border: none !important;
+}
+
+.fc-sidebar-widget .card-body {
+  padding: 1.5rem;
+}
+
+.fc-widget-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1f2937;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #667eea;
+}
+
+/* Category List */
+.fc-category-list li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.fc-category-list li a:hover {
+  padding-left: 0.5rem;
+}
+
+/* Popular Posts */
+.fc-popular-posts .fc-popular-post {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.fc-popular-posts .fc-popular-post:last-child {
+  border-bottom: none;
+}
+
+.fc-popular-posts .fc-popular-post:hover {
+  background: #f8fafc;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.fc-popular-posts .fc-popular-post h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.fc-popular-posts .fc-popular-post:hover h6 {
+  color: #667eea;
+}
+
+/* Newsletter Form */
+.fc-newsletter-desc {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.fc-newsletter-form input {
+  border-radius: 0.5rem;
+}
+
+/* Related Articles Section */
+.fc-related-articles {
+  padding: 3rem 0;
+  background: white;
+  margin-top: 3rem;
+}
+
+.fc-related-card {
+  display: block;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  height: 100%;
+}
+
+.fc-related-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.fc-related-body {
+  padding: 1.25rem;
+}
+
+.fc-related-card h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+  transition: color 0.3s ease;
+}
+
+.fc-related-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.fc-related-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.fc-related-card:hover img {
+  transform: scale(1.08);
+}
+
+.fc-related-card:hover h5 {
+  color: #667eea;
+}
+
+/* Tags */
+.fc-tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.fc-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Blog Detail */
+@media (max-width: 991px) {
+  .fc-blog-detail .fc-header h1 {
+    font-size: 2rem;
+  }
+  
+  .fc-article-content {
+    font-size: 1rem;
+  }
+  
+  .fc-detail-featured-image {
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .fc-blog-detail .fc-header {
+    padding: 2rem 1rem;
+  }
+  
+  .fc-blog-detail .fc-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .fc-related-articles {
+    padding: 2rem 0;
+  }
+  
+  .fc-article-content h2 {
+    font-size: 1.4rem;
+  }
+  
+  .fc-article-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
 /* Gradient background helpers to match theme */
 .bg-gradient-primary-soft {
   background: linear-gradient(135deg, rgba(13, 110, 253, 0.08) 0%, rgba(13, 110, 253, 0.16) 100%);

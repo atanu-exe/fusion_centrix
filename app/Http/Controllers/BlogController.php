@@ -175,13 +175,14 @@ class BlogController extends Controller
             'image' => $blog->featured_image,
             'url' => route('blog.show', $blog->slug),
             'author' => $blog->creator?->name ?? 'Admin',
-            'publishedDate' => $blog->published_at->toIso8601String(),
+            'publishedDate' => $blog->published_at?->toIso8601String() ?? now()->toIso8601String(),
         ];
 
         return view('blog-single', [
             'blog' => $blog,
             'relatedArticles' => $relatedArticles,
             'seoData' => $seoData,
+            'page_title' => $blog->meta_title ?? $blog->title,
         ]);
     }
 

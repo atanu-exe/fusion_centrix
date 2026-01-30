@@ -302,26 +302,32 @@
                 </div>
             </div>
             
-            <!-- Danger Zone -->
-            <div class="card border-danger">
-                <div class="card-header bg-danger text-white">
-                    <h5 class="card-title mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Danger Zone</h5>
-                </div>
-                <div class="card-body">
-                    <p class="small text-muted mb-3">Once you delete this blog, there is no going back. Please be certain.</p>
-                    <form action="{{ route('admin.blogs.destroy', $blog) }}" method="POST" 
-                          onsubmit="return confirm('Are you sure you want to delete this blog? This action cannot be undone.');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger w-100">
-                            <i class="fas fa-trash me-2"></i>Delete Blog
-                        </button>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </form>
+
+<!-- Danger Zone - MUST be outside the main form -->
+<div class="row">
+    <div class="col-lg-8"></div>
+    <div class="col-lg-4">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Danger Zone</h5>
+            </div>
+            <div class="card-body">
+                <p class="small text-muted mb-3">Once you delete this blog, there is no going back. Please be certain.</p>
+                <form action="{{ route('admin.blogs.destroy', $blog) }}" method="POST" 
+                      onsubmit="return confirm('Are you sure you want to delete this blog? This action cannot be undone.');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger w-100">
+                        <i class="fas fa-trash me-2"></i>Delete Blog
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')

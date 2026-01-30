@@ -75,4 +75,32 @@ class Blog extends Model
     {
         return $this->primaryCategory()?->name ?? 'Uncategorized';
     }
+
+    /**
+     * Scope: Only published blogs
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true)
+                     ->whereNotNull('published_at')
+                     ->where('published_at', '<=', now());
+    }
+
+    /**
+     * Scope: Scheduled blogs ready to publish
+     */
+    public function scopeScheduledAndReady($query)
+    {
+        return $query->where('is_published', false)
+                     ->whereNotNull('scheduled_at')
+                     ->where('scheduled_at', '<=', now());
+    }
+
+    /**
+     * Check if blog should be indexed by search engines
+     */
+    public function shouldBeIndexed(): bool
+    {
+        return $this->is_published && $this->published_at && $this->published_at <= now();
+    }
 }

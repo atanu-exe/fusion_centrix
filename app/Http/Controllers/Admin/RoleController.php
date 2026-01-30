@@ -47,26 +47,39 @@ class RoleController extends Controller
     /**
      * Update role default permissions
      */
-    public function updateRolePermissions(Request $request, string $role)
+    public function updatePermissions(Request $request, string $role)
     {
         if (!in_array($role, [User::TYPE_ADMIN, User::TYPE_EMPLOYEE])) {
             return back()->with('error', 'Cannot modify permissions for this role.');
         }
 
-        // Store role permissions in a settings/config table or JSON file
-        // For now, we'll use a JSON file approach
         $permissions = $request->input('permissions', []);
         
-        $configPath = storage_path('app/role_permissions.json');
-        $currentConfig = [];
-        
-        if (file_exists($configPath)) {
-            $currentConfig = json_decode(file_get_contents($configPath), true) ?? [];
+        if (Permission::saveRoleDefaults($role, $permissions)) {
+            return redirect()->route('admin.roles.index')->with('success', ucfirst($role) . ' permissions updated successfully.');
         }
-        
-        $currentConfig[$role] = $permissions;
-        file_put_contents($configPath, json_encode($currentConfig, JSON_PRETTY_PRINT));
 
-        return back()->with('success', 'Role permissions updated successfully.');
+        return back()->with('error', 'Failed to save role permissions.');
+    }
+
+    /**
+     * Apply role permissions to all users of that role (reset their overrides)
+     */
+    public function applyToAllUsers(Request $request, string $role)
+    {
+        if (!in_array($role, [User::TYPE_ADMIN, User::TYPE_EMPLOYEE])) {
+            return back()->with('error', 'Cannot apply permissions for this role.');
+        }
+
+        // Get all users of this role
+        $users = User::where('user_type', $role)->get();
+        
+        // Clear all permission overrides for these users
+        foreach ($users as $user) {
+            $user->clearPermissionOverrides();
+        }
+
+        return redirect()->route('admin.roles.index')
+            ->with('success', 'All ' . ucfirst(str_replace('_', ' ', $role)) . ' users have been reset to role defaults.');
     }
 }

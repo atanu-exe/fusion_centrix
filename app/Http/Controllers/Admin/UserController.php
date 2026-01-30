@@ -87,7 +87,10 @@ class UserController extends Controller
     {
         $roles = $this->getAvailableRoles();
         $permissions = Permission::all()->groupBy('module');
-        $userPermissions = $user->permissions()->get()->keyBy('id');
+        
+        // Load fresh permissions with pivot data
+        $user->load('permissions');
+        $userPermissions = $user->permissions->keyBy('id');
         
         return view('admin.users.edit', compact('user', 'roles', 'permissions', 'userPermissions'));
     }
@@ -180,33 +183,37 @@ class UserController extends Controller
     {
         // Prevent modifying super admin permissions
         if ($user->isSuperAdmin()) {
-            return back()->with('error', 'Super Admin has all permissions by default.');
+            return redirect()->route('admin.users.edit', $user)->with('error', 'Super Admin has all permissions by default.');
         }
 
         // Prevent modifying your own permissions
         if ($user->id === auth()->id()) {
-            return back()->with('error', 'You cannot modify your own permissions.');
+            return redirect()->route('admin.users.edit', $user)->with('error', 'You cannot modify your own permissions.');
         }
 
-        // Only super admin and admin can modify permissions
-        if (!auth()->user()->isAdmin()) {
-            return back()->with('error', 'You do not have permission to modify user permissions.');
+        // Only super admin can modify permissions
+        if (!auth()->user()->isSuperAdmin()) {
+            return redirect()->route('admin.users.edit', $user)->with('error', 'Only Super Admin can modify user permissions.');
         }
 
         $permissions = $request->input('permissions', []);
         
-        // Sync permissions with granted status
-        $syncData = [];
-        foreach ($permissions as $permissionId => $status) {
-            // status can be: 'default', 'granted', 'denied'
-            if ($status !== 'default') {
-                $syncData[$permissionId] = ['granted' => $status === 'granted'];
-            }
-        }
+        // First, detach all existing permissions
+        $user->permissions()->detach();
         
-        $user->permissions()->sync($syncData);
+        // Then attach only non-default permissions
+        foreach ($permissions as $permissionId => $status) {
+            $permissionId = (int) $permissionId;
+            // status can be: 'default', 'granted', 'denied'
+            if ($status === 'granted') {
+                $user->permissions()->attach($permissionId, ['granted' => true]);
+            } elseif ($status === 'denied') {
+                $user->permissions()->attach($permissionId, ['granted' => false]);
+            }
+            // 'default' status means use role default (no custom permission)
+        }
 
-        return back()->with('success', 'User permissions updated successfully.');
+        return redirect()->route('admin.users.edit', $user)->with('success', 'User permissions updated successfully.');
     }
 
     /**
@@ -219,10 +226,44 @@ class UserController extends Controller
             return back()->with('error', 'Super Admin has all permissions by default.');
         }
 
+        // Only super admin can reset permissions
+        if (!auth()->user()->isSuperAdmin()) {
+            return back()->with('error', 'Only Super Admin can reset user permissions.');
+        }
+
         // Detach all custom permissions
         $user->permissions()->detach();
 
         return back()->with('success', 'User permissions reset to role defaults.');
+    }
+
+    /**
+     * Reset all users of a specific type to default permissions
+     */
+    public function resetAllPermissions(Request $request)
+    {
+        // Only super admin can do this
+        if (!auth()->user()->isSuperAdmin()) {
+            return back()->with('error', 'Only Super Admin can reset permissions.');
+        }
+
+        $userType = $request->input('user_type');
+        
+        if (!in_array($userType, [User::TYPE_ADMIN, User::TYPE_EMPLOYEE])) {
+            return back()->with('error', 'Invalid user type.');
+        }
+
+        // Get all users of this type (except super admins)
+        $users = User::where('user_type', $userType)->get();
+        
+        foreach ($users as $user) {
+            $user->permissions()->detach();
+        }
+
+        $count = $users->count();
+        $typeLabel = $userType === User::TYPE_ADMIN ? 'Admin' : 'Employee';
+        
+        return back()->with('success', "All {$count} {$typeLabel} users have been reset to default permissions.");
     }
 
     /**

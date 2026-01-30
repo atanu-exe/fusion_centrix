@@ -82,9 +82,31 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-primary me-2"><i class="fas fa-search me-1"></i>Filter</button>
-                <a href="{{ route('admin.leads.index') }}" class="btn btn-outline-secondary">Clear</a>
+            <div class="col-md-2">
+                <label class="form-label">Sort By</label>
+                <select name="sort" class="form-select">
+                    <option value="created_at" {{ request('sort', 'created_at') == 'created_at' ? 'selected' : '' }}>Date Added</option>
+                    <option value="last_contacted" {{ request('sort') == 'last_contacted' ? 'selected' : '' }}>Last Contacted</option>
+                    <option value="last_followup" {{ request('sort') == 'last_followup' ? 'selected' : '' }}>Last Follow-up</option>
+                    <option value="next_followup" {{ request('sort') == 'next_followup' ? 'selected' : '' }}>Next Follow-up</option>
+                    <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name</option>
+                    <option value="priority" {{ request('sort') == 'priority' ? 'selected' : '' }}>Priority</option>
+                    <option value="value" {{ request('sort') == 'value' ? 'selected' : '' }}>Estimated Value</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="form-label">Order</label>
+                <select name="dir" class="form-select">
+                    <option value="desc" {{ request('dir', 'desc') == 'desc' ? 'selected' : '' }}>↓ Desc</option>
+                    <option value="asc" {{ request('dir') == 'asc' ? 'selected' : '' }}>↑ Asc</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <div>
+                    <button type="submit" class="btn btn-primary me-2"><i class="fas fa-search me-1"></i>Filter</button>
+                    <a href="{{ route('admin.leads.index') }}" class="btn btn-outline-secondary">Clear</a>
+                </div>
             </div>
         </form>
     </div>
