@@ -9,6 +9,19 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\ServicesController;
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Request;
+Route::get('/recache', function (Request $request) {
+	$token = $request->query('token');
+	if ($token !== env('CACHE_RECACHE_TOKEN')) {
+		abort(403, 'Unauthorized');
+	}
+	Artisan::call('route:cache');
+	Artisan::call('config:cache');
+	Artisan::call('view:cache');
+	return 'Laravel cache recached!';
+});
+
 // Blog newsletter subscribe
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 

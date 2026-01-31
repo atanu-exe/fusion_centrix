@@ -146,72 +146,73 @@
     <section class="testimonials py-5" id="testimonials">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-heading">What Our Clients Say</h2>
-                <p class="section-description text-muted">We partner with global brands and startups to deliver technology that drives business growth.</p>
+                <h2 class="section-heading mb-2">What Our Clients Say</h2>
+                <p class="section-description text-muted mb-0">We partner with global brands and startups to deliver technology that drives business growth.</p>
             </div>
-            <div class="card-wrap swiper swiper-testimonials">
+            <!-- Swiper Carousel for testimonials: 3 at once on desktop, 1 on mobile, slide 1 at a time, infinite, always show dots -->
+            <div class="swiper testimonials-swiper">
                 <div class="swiper-wrapper">
-                    <div class="card swiper-slide" role="group" aria-label="1 / 5">
-                        <div class="testimonial-card">
-                            <span class="quote-icon text-success"><i class="bi bi-chat-quote-fill"></i></span>
-                            <p class="testimonial-text">“Working with Fusioncentrix was seamless from day one. They delivered a clean, fast-loading web app that matched our goals exactly. Communication was clear and timelines were met.”</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/images/devid.webp') }}" alt="David Miller" loading="lazy">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card border rounded-3 shadow-sm p-4 w-100 d-flex flex-column ">
+                            <span class="mb-2 fs-2 text-success"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="mb-3 flex-grow-1">“Working with Fusioncentrix was seamless from day one. They delivered a clean, fast-loading web app that matched our goals exactly. Communication was clear and timelines were met.”</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ asset('assets/images/devid.webp') }}" alt="David Miller" class="rounded-circle me-3" width="48" height="48" loading="lazy">
                                 <div>
-                                    <strong>David Miller</strong><span> – Austin, USA</span>
-                                    <small>Product Manager, <em>NovaSync Systems</em></small>
+                                    <strong>David Miller</strong><span class="text-muted"> – Austin, USA</span><br>
+                                    <small class="text-muted">Product Manager, <em>NovaSync Systems</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card swiper-slide" role="group" aria-label="2 / 5">
-                        <div class="testimonial-card">
-                            <span class="quote-icon text-primary"><i class="bi bi-chat-quote-fill"></i></span>
-                            <p class="testimonial-text">“We hired Fusioncentrix for branding and UI design. They really understood our industry and gave us a sleek, modern identity that stood out. Highly recommend their design team.”</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/images/jessica.webp') }}" alt="Jessica Li" loading="lazy">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card border rounded-3 shadow-sm p-4 w-100 d-flex flex-column ">
+                            <span class="mb-2 fs-2 text-primary"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="mb-3 flex-grow-1">“We hired Fusioncentrix for branding and UI design. They really understood our industry and gave us a sleek, modern identity that stood out. Highly recommend their design team.”</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ asset('assets/images/jessica.webp') }}" alt="Jessica Li" class="rounded-circle me-3" width="48" height="48" loading="lazy">
                                 <div>
-                                    <strong>Jessica Li</strong><span> – Vancouver, Canada</span>
-                                    <small>Founder, <em>Brightflow Software</em></small>
+                                    <strong>Jessica Li</strong><span class="text-muted"> – Vancouver, Canada</span><br>
+                                    <small class="text-muted">Founder, <em>Brightflow Software</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card swiper-slide" role="group" aria-label="3 / 5">
-                        <div class="testimonial-card">
-                            <span class="quote-icon text-warning"><i class="bi bi-chat-quote-fill"></i></span>
-                            <p class="testimonial-text">“Our Google rankings improved noticeably within the first few weeks. The SEO strategy from Fusioncentrix is clearly built on experience and real results, not just promises.”</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/images/natalie.webp') }}" alt="Natalie Cruz" loading="lazy">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card border rounded-3 shadow-sm p-4 w-100 d-flex flex-column ">
+                            <span class="mb-2 fs-2 text-warning"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="mb-3 flex-grow-1">“Our Google rankings improved noticeably within the first few weeks. The SEO strategy from Fusioncentrix is clearly built on experience and real results, not just promises.”</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ asset('assets/images/natalie.webp') }}" alt="Natalie Cruz" class="rounded-circle me-3" width="48" height="48" loading="lazy">
                                 <div>
-                                    <strong>Natalie Cruz</strong><span> – Miami, USA</span>
-                                    <small>Marketing Lead, <em>Verda Naturals</em></small>
+                                    <strong>Natalie Cruz</strong><span class="text-muted"> – Miami, USA</span><br>
+                                    <small class="text-muted">Marketing Lead, <em>Verda Naturals</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card swiper-slide" role="group" aria-label="4 / 5">
-                        <div class="testimonial-card">
-                            <span class="quote-icon text-danger"><i class="bi bi-chat-quote-fill"></i></span>
-                            <p class="testimonial-text">“Being based in India, it was great to work with a professional local team that delivered international-quality results. Their support post-launch was quick and dependable.”</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/images/abhisekh-sharma.webp') }}" alt="Abhishek Sharma" loading="lazy">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card border rounded-3 shadow-sm p-4 w-100 d-flex flex-column ">
+                            <span class="mb-2 fs-2 text-danger"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="mb-3 flex-grow-1">“Being based in India, it was great to work with a professional local team that delivered international-quality results. Their support post-launch was quick and dependable.”</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ asset('assets/images/abhisekh-sharma.webp') }}" alt="Abhishek Sharma" class="rounded-circle me-3" width="48" height="48" loading="lazy">
                                 <div>
-                                    <strong>Abhishek Sharma</strong><span> – Mumbai, India</span>
-                                    <small>Director, <em>LogiXpert Technologies</em></small>
+                                    <strong>Abhishek Sharma</strong><span class="text-muted"> – Mumbai, India</span><br>
+                                    <small class="text-muted">Director, <em>LogiXpert Technologies</em></small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card swiper-slide" role="group" aria-label="5 / 5">
-                        <div class="testimonial-card">
-                            <span class="quote-icon text-info"><i class="bi bi-chat-quote-fill"></i></span>
-                            <p class="testimonial-text">“Fusioncentrix clarified our digital marketing strategy. The campaign analytics, creative ads, and timely reporting made all the difference in hitting our quarterly goals.”</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/images/alexntra.webp') }}" alt="Alexandra R." loading="lazy">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card border rounded-3 shadow-sm p-4 w-100 d-flex flex-column ">
+                            <span class="mb-2 fs-2 text-info"><i class="bi bi-chat-quote-fill"></i></span>
+                            <p class="mb-3 flex-grow-1">“Fusioncentrix clarified our digital marketing strategy. The campaign analytics, creative ads, and timely reporting made all the difference in hitting our quarterly goals.”</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ asset('assets/images/alexntra.webp') }}" alt="Alexandra R." class="rounded-circle me-3" width="48" height="48" loading="lazy">
                                 <div>
-                                    <strong>Alexandra R.</strong><span> – Dubai, UAE</span>
-                                    <small>CMO, <em>Luxora Global</em></small>
+                                    <strong>Alexandra R.</strong><span class="text-muted"> – Dubai, UAE</span><br>
+                                    <small class="text-muted">CMO, <em>Luxora Global</em></small>
                                 </div>
                             </div>
                         </div>
@@ -449,34 +450,8 @@
         });
     </script>
     <script>
-        //js for testimonials
+        //js for portfolio swiper only
         document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('.swiper-testimonials').forEach(function(swiperEl, index) {
-                new Swiper(swiperEl, {
-                    loop: true,
-                    slidesPerView: 3, // ✅ Show 3 slides at once
-                    spaceBetween: 20,
-                    pagination: {
-                        el: swiperEl.querySelector('.swiper-pagination'),
-                        clickable: true,
-                    },
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    },
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 1
-                        }, // mobile
-                        768: {
-                            slidesPerView: 2
-                        }, // tablet
-                        1024: {
-                            slidesPerView: 3
-                        } // desktop
-                    }
-                });
-            });
             document.querySelectorAll('.swiper-portfolio').forEach(function(swiperEl, index) {
                 new Swiper(swiperEl, {
                     loop: true,
@@ -486,24 +461,35 @@
                         el: swiperEl.querySelector('.swiper-pagination'),
                         clickable: true,
                     },
-                    // navigation: {
-                    //     nextEl: swiperEl.querySelector('.swiper-button-next'),
-                    //     prevEl: swiperEl.querySelector('.swiper-button-prev'),
-                    // },
                     autoplay: {
                         delay: 3000,
                         disableOnInteraction: false,
                     },
-                    //     breakpoints: {
-                    //         768: {
-                    //             slidesPerView: 2
-                    //         }, // Tablet
-                    //         1024: {
-                    //             slidesPerView: 3
-                    //         } // Desktop
-                    //     }
-                    // });
                 });
+            });
+
+            // Swiper for testimonials (fix: only on .testimonials-swiper)
+            var testimonialSwiper = new Swiper('.testimonials-swiper', {
+                loop: true,
+                spaceBetween: 24,
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                pagination: {
+                    el: '.testimonials-swiper .swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    }
+                }
             });
         });
     </script>
