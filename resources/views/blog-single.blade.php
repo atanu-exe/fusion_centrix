@@ -24,22 +24,21 @@
         <section class="fc-header">
             <div class="container">
                 <div class="fc-header-content">
-                    <div class="fc-breadcrumb">
-                        <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> / <span>{{ $blog->title }}</span>
-                    </div>
+                    
                     <h1 class="mb-3">{{ $blog->title }}</h1>
-                    <p class="mb-4 text-muted">{{ $blog->meta_description }}</p>
+                    <p class="mb-4 ">{{ $blog->meta_description }}</p>
 
                     <div class="d-flex flex-wrap align-items-center gap-3">
-                        <div class="d-flex align-items-center gap-2">
+                        {{-- <div class="d-flex align-items-center gap-2">
                             <img src="{{ $blog->creator?->profile_photo_url ?? 'https://via.placeholder.com/48' }}"
                                 alt="Author" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
                             <div>
                                 <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
+                                <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
                                 <div class="text-muted small">Author</div>
                             </div>
-                        </div>
-                        <span class="text-muted">•</span>
+                        </div> --}}
+                        {{-- <span class="text-muted">•</span> --}}
                         <div class="d-flex flex-wrap align-items-center gap-2 text-muted small">
                             <span class="badge bg-light text-dark border">📅 {{ $blog->published_at?->format('M d, Y') ?? 'Draft' }}</span>
                             <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }} views</span>
@@ -51,12 +50,15 @@
                     @if($blog->categories->isNotEmpty())
                     <div class="mt-3 d-flex flex-wrap gap-2">
                         @foreach($blog->categories as $category)
-                        <a href="{{ route('blog.category', $category->slug) }}" class="fc-tag" style="background-color: {{ $category->color }}20; color: {{ $category->color }}; border: 1px solid {{ $category->color }};">
+                        <a href="{{ route('blog.category', $category->slug) }}" class="fc-category-tag">
                             {{ $category->icon ?? '📌' }} {{ $category->name }}
                         </a>
                         @endforeach
                     </div>
                     @endif
+                    <div class="fc-breadcrumb">
+                        <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> / <span>{{ $blog->title }}</span>
+                    </div>
                 </div>
             </div>
         </section>

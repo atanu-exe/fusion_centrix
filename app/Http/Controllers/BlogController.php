@@ -131,7 +131,17 @@ class BlogController extends Controller
         $articles = $query->paginate(12, ['*'], 'page', $page);
 
         return response()->json([
-            'articles' => $articles->items(),
+            'articles' => $articles->map(function($article) {
+                return [
+                    'id' => $article->id,
+                    'title' => $article->title,
+                    'slug' => $article->slug,
+                    'meta_description' => $article->meta_description,
+                    'featured_image' => $article->featured_image,
+                    'published_at' => $article->published_at,
+                    'views' => $article->views,
+                ];
+            }),
             'hasMore' => $articles->hasMorePages(),
             'nextPage' => $articles->currentPage() + 1,
         ]);

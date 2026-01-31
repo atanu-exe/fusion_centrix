@@ -6,7 +6,7 @@
             <div class="fc-header-content">
                 <h1>About Us</h1>
                 <p>Delivering <b>CRM, ERP, SaaS applications, LMS, and custom software solutions</b> for businesses in the
-                    US, Canada, India, and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly
+                    US, Canada, India and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly
                         integrations</b> to streamline operations.
                 </p>
                 <div class="fc-breadcrumb">

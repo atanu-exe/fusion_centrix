@@ -53,7 +53,7 @@
                             <div class="icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <div class="label">Email</div>
-                                <a class="value" href="mailto:sales@fusioncentrix.com">sales@fusioncentrix.com</a>
+                                <a class="value" href="mailto:info@fusioncentrix.com">info@fusioncentrix.com</a>
                             </div>
                         </div>
                         <div class="contact-card">
@@ -65,14 +65,14 @@
                         </div>
                     </div>
 
-                    <div class="contact-social">
+                    {{-- <div class="contact-social">
                         <div class="label">Follow us</div>
                         <div class="social-links">
                             <a href="https://www.facebook.com/fusioncentrix" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/fusioncentrix" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="contact-hours">
                         <div class="label">Working hours</div>

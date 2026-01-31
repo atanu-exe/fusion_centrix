@@ -105,7 +105,7 @@
                     <p class="lead text-muted mb-3">
                         At <strong>Fusioncentrix Solutions</strong>, we are your one-stop destination for high-quality IT
                         services — proudly based in India and powering large-scale digital projects across the
-                        <strong>US, Canada, and global markets</strong>.
+                        <strong>US, Canada, India and global markets</strong>.
                     </p>
                     
                     <p class="text-muted mb-4">

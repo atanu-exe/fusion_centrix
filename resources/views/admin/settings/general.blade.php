@@ -53,32 +53,36 @@
                             <div class="mb-3">
                                 <label class="form-label">Admin Theme</label>
                                 <select class="form-select" name="admin_theme">
-                                    <option value="light">Light</option>
-                                    <option value="dark">Dark</option>
-                                    <option value="auto">Auto (System)</option>
+                                    <option value="light" {{ ($settings['admin_theme'] ?? 'light') == 'light' ? 'selected' : '' }}>Light</option>
+                                    <option value="dark" {{ ($settings['admin_theme'] ?? '') == 'dark' ? 'selected' : '' }}>Dark</option>
+                                    <option value="auto" {{ ($settings['admin_theme'] ?? '') == 'auto' ? 'selected' : '' }}>Auto (System)</option>
                                 </select>
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Items Per Page</label>
                                 <select class="form-select" name="items_per_page">
-                                    <option value="10">10</option>
-                                    <option value="15" selected>15</option>
-                                    <option value="20">20</option>
-                                    <option value="50">50</option>
+                                    <option value="10" {{ ($settings['items_per_page'] ?? 15) == 10 ? 'selected' : '' }}>10</option>
+                                    <option value="15" {{ ($settings['items_per_page'] ?? 15) == 15 ? 'selected' : '' }}>15</option>
+                                    <option value="20" {{ ($settings['items_per_page'] ?? 15) == 20 ? 'selected' : '' }}>20</option>
+                                    <option value="50" {{ ($settings['items_per_page'] ?? 15) == 50 ? 'selected' : '' }}>50</option>
                                 </select>
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Timezone</label>
                                 <select class="form-select" name="timezone">
-                                    <option value="UTC">UTC</option>
-                                    <option value="America/New_York">Eastern Time</option>
-                                    <option value="America/Chicago">Central Time</option>
-                                    <option value="America/Denver">Mountain Time</option>
-                                    <option value="America/Los_Angeles">Pacific Time</option>
-                                    <option value="Asia/Kolkata">India (IST)</option>
+                                    @foreach($timezones as $region => $zones)
+                                        <optgroup label="{{ $region }}">
+                                            @foreach($zones as $zoneValue => $zoneName)
+                                                <option value="{{ $zoneValue }}" {{ ($settings['timezone'] ?? 'UTC') == $zoneValue ? 'selected' : '' }}>
+                                                    {{ $zoneName }}
+                                                </option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
                                 </select>
+                                <small class="text-muted">Current server time: {{ now()->format('Y-m-d H:i:s') }} ({{ config('app.timezone') }})</small>
                             </div>
                         </div>
                     </div>
@@ -93,22 +97,22 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label">Site Name</label>
-                                <input type="text" class="form-control" name="site_name" value="FusionCentrix">
+                                <input type="text" class="form-control" name="site_name" value="{{ $settings['site_name'] ?? 'FusionCentrix' }}">
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Site Description</label>
-                                <textarea class="form-control" name="site_description" rows="3">Your trusted digital partner</textarea>
+                                <textarea class="form-control" name="site_description" rows="3">{{ $settings['site_description'] ?? 'Your trusted digital partner' }}</textarea>
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Contact Email</label>
-                                <input type="email" class="form-control" name="contact_email" value="info@fusioncentrix.com">
+                                <input type="email" class="form-control" name="contact_email" value="{{ $settings['contact_email'] ?? 'info@fusioncentrix.com' }}">
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">Contact Phone</label>
-                                <input type="text" class="form-control" name="contact_phone" value="">
+                                <input type="text" class="form-control" name="contact_phone" value="{{ $settings['contact_phone'] ?? '' }}">
                             </div>
                         </div>
                     </div>
@@ -123,12 +127,12 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label">Posts Per Page</label>
-                                <input type="number" class="form-control" name="posts_per_page" value="10" min="1" max="50">
+                                <input type="number" class="form-control" name="posts_per_page" value="{{ $settings['posts_per_page'] ?? 10 }}" min="1" max="50">
                             </div>
                             
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="allow_comments" name="allow_comments" checked>
+                                    <input class="form-check-input" type="checkbox" id="allow_comments" name="allow_comments" {{ ($settings['allow_comments'] ?? true) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="allow_comments">
                                         Allow comments on blog posts
                                     </label>
@@ -137,7 +141,7 @@
                             
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="auto_publish_scheduled" name="auto_publish_scheduled" checked>
+                                    <input class="form-check-input" type="checkbox" id="auto_publish_scheduled" name="auto_publish_scheduled" {{ ($settings['auto_publish_scheduled'] ?? true) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="auto_publish_scheduled">
                                         Auto-publish scheduled posts
                                     </label>
@@ -167,17 +171,17 @@
                             
                             <div class="mb-3">
                                 <label class="form-label">From Name</label>
-                                <input type="text" class="form-control" name="mail_from_name" value="FusionCentrix">
+                                <input type="text" class="form-control" name="mail_from_name" value="{{ $settings['mail_from_name'] ?? 'FusionCentrix' }}">
                             </div>
                             
                             <div class="mb-3">
                                 <label class="form-label">From Email</label>
-                                <input type="email" class="form-control" name="mail_from_address" value="noreply@fusioncentrix.com">
+                                <input type="email" class="form-control" name="mail_from_address" value="{{ $settings['mail_from_address'] ?? 'noreply@fusioncentrix.com' }}">
                             </div>
                             
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="notify_new_user" name="notify_new_user" checked>
+                                    <input class="form-check-input" type="checkbox" id="notify_new_user" name="notify_new_user" {{ ($settings['notify_new_user'] ?? true) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="notify_new_user">
                                         Send email notification when new user is created
                                     </label>

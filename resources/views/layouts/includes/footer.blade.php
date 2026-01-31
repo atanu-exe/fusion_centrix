@@ -66,7 +66,7 @@
                         <span class="fc-logo-text-footer">Fusioncentrix</span>
                     </div>
                     <p class="fc-footer-desc">Fusioncentrix Solutions is your one-stop IT partner — Web, App, SEO, Marketing, Design & more.</p>
-                    <div class="fc-social-footer">
+                    {{-- <div class="fc-social-footer">
                         <a href="https://www.facebook.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Facebook" class="fc-social-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -79,7 +79,7 @@
                         <a href="https://twitter.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Twitter" class="fc-social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -124,7 +124,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <p class="fc-contact-label">Email</p>
-                            <p><a href="mailto:contact@fusioncentrix.com">contact@fusioncentrix.com</a></p>
+                            <p><a href="mailto:info@fusioncentrix.com">info@fusioncentrix.com</a></p>
                         </div>
                     </div>
                     <div class="fc-contact-item">

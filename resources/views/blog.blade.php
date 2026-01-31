@@ -68,128 +68,125 @@
     </div>
   </section>
 
-  <!-- FEATURED SECTION -->
-  <section class="fc-section pt-3 pb-4">
-    <div class="container">
-      <h3 class="fc-title mb-4">Featured Articles</h3>
-      <div class="row g-4" id="featuredGrid">
-        @forelse($featured as $article)
-        <div class="col-md-6">
-          <a href="{{ route('blog.show', $article->slug) }}" class="fc-feature-card">
-            <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/600x400?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-            <div class="fc-feature-body">
-              <span class="fc-badge">Featured</span>
-              <h4>{{ $article->title }}</h4>
-              <p class="text-muted small mb-2">{{ Str::limit($article->meta_description, 100) }}</p>
-              <div class="fc-meta">{{ $article->published_at->format('M d, Y') }} • {{ number_format($article->views) }} views</div>
-            </div>
-          </a>
-        </div>
-        @empty
-        <div class="col-12">
-          <p class="text-muted text-center">No featured articles yet.</p>
-        </div>
-        @endforelse
-      </div>
-    </div>
-  </section>
-
-  <!-- LATEST & TRENDING SECTION -->
-  <section class="fc-section pb-4">
+  <!-- MAIN CONTENT WITH SIDEBAR -->
+  <section class="fc-section pt-3">
     <div class="container">
       <div class="row g-4">
 
-        <!-- LATEST ARTICLES -->
-        <div class="col-lg-8">
-          <h3 class="fc-title mb-4">Latest Articles</h3>
-          <div class="d-flex flex-column gap-3" id="latestContainer">
-            @forelse($latest as $article)
-            <a href="{{ route('blog.show', $article->slug) }}" class="fc-latest-card">
-              <img src="{{ $article->thumbnail_image ?? 'https://via.placeholder.com/150?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-              <div class="latest-content">
-                <div>
-                  <span class="fc-badge">Latest</span>
+        <!-- LEFT: ALL ARTICLES GRID -->
+        <div class="col-lg-8 order-2 order-lg-1">
+
+          <!-- ALL BLOGS CARD -->
+          <div class="fc-sidebar-widget mb-4">
+            <h4 class="fc-widget-title">All Blogs</h4>
+            <div id="articleGrid" class="row g-3 mb-4">
+              @forelse($allArticles as $article)
+              <div class="col-md-6 article-item">
+                <a href="{{ route('blog.show', $article->slug) }}" class="fc-article-card">
+                  <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/400x300?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                  <div class="fc-article-body">
+                    @if($article->categories->isNotEmpty())
+                    <div class="fc-categories-row" style="margin-bottom: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
+                      @foreach($article->categories->take(2) as $cat)
+                      <span class="fc-badge" style="background-color: {{ $cat->color }}20; color: {{ $cat->color }}; border: 1px solid {{ $cat->color }}; padding: 4px 8px; font-size: 0.75rem;">
+                        {{ $cat->icon ?? '📌' }} {{ $cat->name }}
+                      </span>
+                      @endforeach
+                    </div>
+                    @else
+                    <span class="fc-badge">Article</span>
+                    @endif
+                    <h5>{{ $article->title }}</h5>
+                    <p class="fc-article-description">{{ $article->meta_description }}</p>
+                    <div class="fc-meta">
+                      <div>{{ $article->published_at->format('M d, Y') }}</div>
+                      <div>{{ number_format($article->views) }} views</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              @empty
+              <div class="col-12">
+                <p class="text-muted text-center">No articles found.</p>
+              </div>
+              @endforelse
+            </div>
+          </div>
+
+          <!-- LOAD MORE BUTTON -->
+          <div class="fc-load-more-section">
+            <button id="loadMoreBtn" class="btn btn-primary btn-lg" data-page="2" data-search="{{ $search }}" data-category="{{ $category }}" data-sort="{{ $sort }}">
+              <span class="fc-load-more-text">
+                <span id="loadMoreText">Load More Blogs</span>
+                <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner" role="status"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div class="col-lg-4 order-1 order-lg-2">
+
+          <!-- LATEST ARTICLES -->
+          <div class="fc-sidebar-widget mb-4">
+            <h4 class="fc-widget-title">Latest Articles</h4>
+            <div class="d-flex flex-column gap-2" id="latestContainer">
+              @forelse($latest->take(3) as $article)
+              <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-latest-card">
+                <img src="{{ $article->thumbnail_image ?? 'https://via.placeholder.com/80?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                <div class="sidebar-latest-content">
+                  <span class="fc-badge-sm">Latest</span>
+                  <h6>{{ $article->title }}</h6>
+                  <div class="sidebar-latest-meta">
+                    <span>{{ $article->published_at->format('M d, Y') }}</span>
+                    <span>{{ number_format($article->views) }} views</span>
+                  </div>
+                </div>
+              </a>
+              @empty
+              <p class="text-muted">No latest articles yet.</p>
+              @endforelse
+            </div>
+          </div>
+
+          <!-- FEATURED ARTICLES -->
+          <div class="fc-sidebar-widget mb-4">
+            <h4 class="fc-widget-title">Featured Articles</h4>
+            <div class="d-flex flex-column gap-3" id="featuredContainer">
+              @forelse($featured->take(2) as $article)
+              <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-featured-card">
+                <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/400x200?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                <div class="sidebar-featured-body">
+                  <span class="fc-badge-sm">Featured</span>
                   <h6>{{ $article->title }}</h6>
                 </div>
-                <div class="latest-meta">
-                  <span>{{ $article->published_at->format('M d, Y') }}</span>
-                  <span>{{ number_format($article->views) }} views</span>
-                </div>
-              </div>
-            </a>
-            @empty
-            <p class="text-muted">No latest articles yet.</p>
-            @endforelse
-          </div>
-        </div>
-
-        <!-- TRENDING ARTICLES -->
-        <div class="col-lg-4">
-          <h3 class="fc-title mb-4">Trending Now 🔥</h3>
-          <div class="d-flex flex-column gap-2" id="trendingContainer">
-            @forelse($trending as $index => $article)
-            <a href="{{ route('blog.show', $article->slug) }}" class="fc-trending-card">
-              <span class="trending-index">{{ $index + 1 }}</span>
-              <div class="trending-content">
-                <h6>{{ $article->title }}</h6>
-                <div class="trending-meta"><span>{{ number_format($article->views) }} views</span></div>
-              </div>
-            </a>
-            @empty
-            <p class="text-muted">No trending articles yet.</p>
-            @endforelse
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ALL ARTICLES GRID -->
-  <section class="fc-section">
-    <div class="container">
-      <h3 class="fc-title mb-4">All Articles</h3>
-
-      <div id="articleGrid" class="row g-4 mb-5">
-        @forelse($allArticles as $article)
-        <div class="col-md-6 col-lg-4 article-item">
-          <a href="{{ route('blog.show', $article->slug) }}" class="fc-article-card">
-            <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/400x300?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-            <div class="fc-article-body">
-              @if($article->categories->isNotEmpty())
-              <div class="fc-categories-row" style="margin-bottom: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
-                @foreach($article->categories->take(2) as $cat)
-                <span class="fc-badge" style="background-color: {{ $cat->color }}20; color: {{ $cat->color }}; border: 1px solid {{ $cat->color }}; padding: 4px 8px; font-size: 0.75rem;">
-                  {{ $cat->icon ?? '📌' }} {{ $cat->name }}
-                </span>
-                @endforeach
-              </div>
-              @else
-              <span class="fc-badge">Article</span>
-              @endif
-              <h5>{{ $article->title }}</h5>
-              <div class="fc-meta">
-                <div>{{ $article->published_at->format('M d, Y') }}</div>
-                <div>{{ number_format($article->views) }} views</div>
-              </div>
+              </a>
+              @empty
+              <p class="text-muted">No featured articles yet.</p>
+              @endforelse
             </div>
-          </a>
-        </div>
-        @empty
-        <div class="col-12">
-          <p class="text-muted text-center">No articles found.</p>
-        </div>
-        @endforelse
-      </div>
+          </div>
 
-      <!-- PAGINATION / LOAD MORE SECTION -->
-      <div class="fc-load-more-section">
-        <button id="loadMoreBtn" class="btn btn-primary btn-lg" data-page="2" data-search="{{ $search }}" data-category="{{ $category }}" data-sort="{{ $sort }}">
-          <span class="fc-load-more-text">
-            <span id="loadMoreText">Load More Articles</span>
-            <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner" role="status"></span>
-          </span>
-        </button>
+          <!-- TRENDING NOW -->
+          <div class="fc-sidebar-widget">
+            <h4 class="fc-widget-title">Trending Now 🔥</h4>
+            <div class="d-flex flex-column gap-2" id="trendingContainer">
+              @forelse($trending->take(3) as $index => $article)
+              <a href="{{ route('blog.show', $article->slug) }}" class="fc-trending-card">
+                <span class="trending-index">{{ $index + 1 }}</span>
+                <div class="trending-content">
+                  <h6>{{ $article->title }}</h6>
+                  <div class="trending-meta"><span>{{ number_format($article->views) }} views</span></div>
+                </div>
+              </a>
+              @empty
+              <p class="text-muted">No trending articles yet.</p>
+              @endforelse
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   </section>
@@ -241,13 +238,22 @@ document.addEventListener('DOMContentLoaded', function() {
       viewToggle.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       const view = this.dataset.view;
+      const articleItems = articleGrid.querySelectorAll('.article-item');
       
       if (view === 'list') {
-        articleGrid.classList.remove('row', 'g-4');
+        articleGrid.classList.remove('row', 'g-3');
         articleGrid.classList.add('fc-list-view');
+        // Remove column classes from article items
+        articleItems.forEach(item => {
+          item.classList.remove('col-md-6');
+        });
       } else {
         articleGrid.classList.remove('fc-list-view');
-        articleGrid.classList.add('row', 'g-4');
+        articleGrid.classList.add('row', 'g-3');
+        // Add back column classes to article items
+        articleItems.forEach(item => {
+          item.classList.add('col-md-6');
+        });
       }
     });
   });
@@ -258,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const search = this.dataset.search;
     const category = this.dataset.category;
     const sort = this.dataset.sort;
+    const isListView = articleGrid.classList.contains('fc-list-view');
 
     loadMoreBtn.disabled = true;
     loadingSpinner.classList.remove('d-none');
@@ -267,13 +274,15 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => response.json())
       .then(data => {
         data.articles.forEach((article) => {
+          const colClass = isListView ? '' : 'col-md-6';
           const articleHTML = `
-            <div class="col-md-6 col-lg-4 article-item" style="opacity: 0; transform: scale(0.9);">
+            <div class="${colClass} article-item" style="opacity: 0; transform: scale(0.9);">
               <a href="/blog/${article.slug}" class="fc-article-card">
                 <img src="${article.featured_image || 'https://via.placeholder.com/400x300'}" alt="${article.title}" loading="lazy">
                 <div class="fc-article-body">
                   <span class="fc-badge">Article</span>
                   <h5>${article.title}</h5>
+                  <p class="fc-article-description">${article.meta_description || ''}</p>
                   <div class="fc-meta">
                     <div>${new Date(article.published_at).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
                     <div>${article.views.toLocaleString()} views</div>
@@ -297,29 +306,39 @@ document.addEventListener('DOMContentLoaded', function() {
         loadMoreBtn.dataset.page = data.nextPage;
         loadMoreBtn.disabled = false;
         loadingSpinner.classList.add('d-none');
-        loadMoreText.textContent = 'Load More Articles';
+        loadMoreText.textContent = 'Load More Blogs';
 
         if (!data.hasMore) {
-          loadMoreBtn.textContent = '✓ No More Articles';
+          loadMoreBtn.textContent = '✓ No More Blogs';
           loadMoreBtn.disabled = true;
         }
       })
       .catch(error => {
-        console.error('Error loading articles:', error);
+        console.error('Error loading blogs:', error);
         loadMoreBtn.disabled = false;
         loadingSpinner.classList.add('d-none');
-        loadMoreText.textContent = 'Load More Articles';
+        loadMoreText.textContent = 'Load More Blogs';
       });
   });
 
-  // Infinite scroll
-  window.addEventListener('scroll', function() {
-    const scrollPos = window.innerHeight + window.scrollY;
-    const pageHeight = document.documentElement.scrollHeight;
-    if (scrollPos >= pageHeight - 300 && !loadMoreBtn.disabled) {
+  // Infinite scroll - trigger when Load More button is visible
+  let isLoading = false;
+  function checkScroll() {
+    if (isLoading || loadMoreBtn.disabled) return;
+    
+    const btnRect = loadMoreBtn.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Trigger when button is within 200px of viewport bottom
+    if (btnRect.top <= windowHeight + 200) {
+      isLoading = true;
       loadMoreBtn.click();
+      setTimeout(() => { isLoading = false; }, 1500);
     }
-  });
+  }
+  
+  window.addEventListener('scroll', checkScroll);
+  setTimeout(checkScroll, 500);
 });
 </script>
 @endsection
