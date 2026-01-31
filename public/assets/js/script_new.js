@@ -82,8 +82,11 @@ class FusionTheme {
         const forms = document.querySelectorAll('form');
         
         forms.forEach(form => {
+            // Skip newsletter form from JS validation to allow backend validation
+            if (form.classList.contains('fc-newsletter-form')) {
+                return;
+            }
             const inputs = form.querySelectorAll('input[required], textarea[required]');
-            
             inputs.forEach(input => {
                 input.addEventListener('blur', () => {
                     if (!input.value.trim()) {
@@ -93,10 +96,8 @@ class FusionTheme {
                     }
                 });
             });
-
             form.addEventListener('submit', (e) => {
                 let isValid = true;
-
                 inputs.forEach(input => {
                     if (!input.value.trim()) {
                         input.classList.add('is-invalid');
@@ -105,7 +106,6 @@ class FusionTheme {
                         input.classList.remove('is-invalid');
                     }
                 });
-
                 if (!isValid) {
                     e.preventDefault();
                 }

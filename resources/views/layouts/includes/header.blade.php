@@ -1,3 +1,14 @@
+        <!-- Google Fonts: Example with font-display: swap -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preconnect & Prefetch for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,14 +42,19 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     {{-- bootstrap  --}}
+    <link rel="preload" as="style" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}">
+    <link rel="preload" as="style" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}" media="print" onload="this.media='all'">
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}">
+    <link rel="preload" as="style" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}" media="print" onload="this.media='all'">
     <!-- Bootstrap Icons CDN -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}">
+    <link rel="preload" as="style" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}" media="print" onload="this.media='all'">
     {{-- custom css  --}}
+    <link rel="preload" as="style" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <style>
         /* CTA button bold sweep + dual shimmer + pulse */

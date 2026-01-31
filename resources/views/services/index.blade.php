@@ -74,7 +74,7 @@
                              confidence.</p>
                          <div class="commitment-stats">
                              <div class="stat">
-                                 <div class="stat-number">180+</div>
+                                 <div class="stat-number">30+</div>
                                  <div class="stat-label">Projects delivered</div>
                              </div>
                              <div class="stat">

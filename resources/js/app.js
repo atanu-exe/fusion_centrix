@@ -35,32 +35,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const helper = document.getElementById("mobileHelper");
-    const speech = helper.querySelector(".helper-speech");
-    let scrollTimer;
-
-    // Speech bubble appears after scroll pause
-    window.addEventListener("scroll", function () {
-        speech.classList.remove("show");       // hide speech while scrolling
-        clearTimeout(scrollTimer);
-
-        scrollTimer = setTimeout(() => {
-            speech.classList.add("show");        // show after pause
-        }, 2000);
-    });
-
-    // Modal logic
-    const modal = document.getElementById("quoteModal");
-    if (modal) {
-        modal.addEventListener("show.bs.modal", function () {
-            helper.style.display = "none";    // hide button + speech
-        });
-
-        modal.addEventListener("hidden.bs.modal", function () {
-            helper.style.display = "block";   // show button again
-        });
-    }
-});
 
 

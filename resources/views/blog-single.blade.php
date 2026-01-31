@@ -30,7 +30,7 @@
 
                     <div class="d-flex flex-wrap align-items-center gap-3">
                         {{-- <div class="d-flex align-items-center gap-2">
-                            <img src="{{ $blog->creator?->profile_photo_url ?? 'https://via.placeholder.com/48' }}"
+                            <img src="{{ $blog->creator?->profile_photo_url ?? asset('assets/img/default-avatar.png') }}" loading="lazy"
                                 alt="Author" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
                             <div>
                                 <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
@@ -67,7 +67,7 @@
         <section class="fc-detail-featured-image">
             <div class="container">
                 <div class="bg-white rounded-4 shadow-sm overflow-hidden">
-                    <img src="{{ $blog->featured_image ?? 'https://via.placeholder.com/1200x600' }}"
+                    <img src="{{ $blog->featured_image ?? asset('assets/img/default-featured.png') }}" loading="lazy"
                         alt="{{ $blog->title }}" class="w-100" style="max-height: 520px; object-fit: cover;">
                 </div>
             </div>
@@ -105,14 +105,14 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light">
-                                <img src="{{ $blog->creator?->profile_photo_url ?? 'https://via.placeholder.com/100' }}"
+                            {{-- <div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light">
+                                <img src="{{ $blog->creator?->profile_photo_url ?? asset('assets/img/default-avatar.png') }}" loading="lazy"
                                     alt="Author" class="rounded-circle" style="width: 72px; height: 72px; object-fit: cover;">
-                                <div>
-                                    <h5 class="mb-1">{{ $blog->creator?->name ?? 'Admin' }}</h5>
-                                    <p class="mb-0 text-muted small">{{ $blog->creator?->bio ?? 'Content Author' }}</p>
-                                </div>
-                            </div>
+                                    <div>
+                                        <h5 class="mb-1">{{ $blog->creator?->name ?? 'Admin' }}</h5>
+                                        <p class="mb-0 text-muted small">{{ $blog->creator?->bio ?? 'Content Author' }}</p>
+                                    </div>
+                            </div> --}}
                         </div>
 
                     </article>
@@ -154,7 +154,7 @@
                             <div class="fc-popular-posts">
                                 @forelse($relatedArticles->take(3) as $related)
                                 <a href="{{ route('blog.show', $related->slug) }}" class="fc-popular-post d-flex gap-3 align-items-center py-2">
-                                    <img src="{{ $related->thumbnail_image ?? 'https://via.placeholder.com/80' }}"
+                                    <img src="{{ $related->thumbnail_image ?? asset('assets/img/default-thumb.png') }}" loading="lazy"
                                         alt="{{ $related->title }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
@@ -173,8 +173,11 @@
                         <div class="card-body">
                             <h4 class="fc-widget-title">Subscribe to Updates</h4>
                             <p class="fc-newsletter-desc">Get the latest articles delivered to your inbox</p>
-                            <form class="fc-newsletter-form">
-                                <input type="email" placeholder="Enter your email" class="form-control mb-2" required>
+                            <div id="newsletter-message"></div>
+                            <form class="fc-newsletter-form" method="POST" action="{{ route('subscribe') }}">
+                                @csrf
+                                <input type="email" name="email" placeholder="Enter your email" class="form-control mb-2" required>
+                                <div class="text-danger small mb-2" id="newsletter-error"></div>
                                 <button type="submit" class="btn btn-primary w-100">Subscribe</button>
                             </form>
                         </div>
@@ -193,7 +196,7 @@
                     @forelse($relatedArticles as $related)
                     <div class="col-md-6 col-lg-4">
                         <a href="{{ route('blog.show', $related->slug) }}" class="fc-related-card">
-                            <img src="{{ $related->featured_image ?? 'https://via.placeholder.com/300x200' }}"
+                            <img src="{{ $related->featured_image ?? asset('assets/img/default-featured.png') }}" loading="lazy"
                                 alt="{{ $related->title }}">
                             <div class="fc-related-body">
                                 <h5>{{ $related->title }}</h5>
@@ -221,23 +224,55 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Copy link functionality
-            document.querySelector('.fc-share-copy')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('data-url');
-                navigator.clipboard.writeText(url).then(() => {
-                    this.innerHTML = '<span>✓ Copied!</span>';
-                    setTimeout(() => {
-                        this.innerHTML = '<span>🔗 Copy Link</span>';
-                    }, 2000);
+            const shareCopyBtn = document.querySelector('.fc-share-copy');
+            if (shareCopyBtn) {
+                shareCopyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('data-url');
+                    navigator.clipboard.writeText(url).then(() => {
+                        this.innerHTML = '<span>✓ Copied!</span>';
+                        setTimeout(() => {
+                            this.innerHTML = '<span>🔗 Copy Link</span>';
+                        }, 2000);
+                    });
                 });
-            });
+            }
 
-            // Newsletter form
-            document.querySelector('.fc-newsletter-form')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for subscribing!');
-                this.reset();
-            });
+            // Newsletter form AJAX submit
+            const newsletterForm = document.querySelector('.fc-newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const form = this;
+                    const formData = new FormData(form);
+                    const messageDiv = document.getElementById('newsletter-message');
+                    const errorDiv = document.getElementById('newsletter-error');
+                    messageDiv.innerHTML = '';
+                    errorDiv.innerHTML = '';
+                    fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': form.querySelector('[name=_token]').value
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            messageDiv.innerHTML = '<div class="alert alert-success">' + data.success + '</div>';
+                            form.reset();
+                        } else if (data.errors && data.errors.email) {
+                            errorDiv.innerHTML = data.errors.email[0];
+                        } else {
+                            messageDiv.innerHTML = '<div class="alert alert-danger">Something went wrong. Please try again.</div>';
+                        }
+                    })
+                    .catch(() => {
+                        messageDiv.innerHTML = '<div class="alert alert-danger">Server error. Please try again later.</div>';
+                    });
+                });
+            }
         });
     </script>
 @endsection

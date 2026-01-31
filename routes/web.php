@@ -1,12 +1,16 @@
-<?php
 
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SitemapController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\ServicesController;
+
+// Blog newsletter subscribe
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
 // SEO: Dynamic Sitemap & Robots (only published blogs are included)
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

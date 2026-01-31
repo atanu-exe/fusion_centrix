@@ -21,14 +21,14 @@
             <!-- Left: Info -->
             <div class="col-lg-5">
                 <div class="contact-intro">
-                    <span class="contact-badge">Contact</span>
+                    {{-- <span class="contact-badge">Contact</span> --}}
                     <h2 class="section-heading">Let’s plan your next launch</h2>
                     <p class="section-description text-muted">Tell us about your goals and we’ll tailor a roadmap—whether
                         it’s a new build, modernization, or ongoing support.</p>
 
                     <div class="contact-stats">
                         <div class="stat">
-                            <div class="stat-number">180+</div>
+                            <div class="stat-number">30+</div>
                             <div class="stat-label">Projects shipped</div>
                         </div>
                         <div class="stat">

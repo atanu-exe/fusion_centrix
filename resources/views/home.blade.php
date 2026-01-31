@@ -14,9 +14,10 @@
             <div class="row align-items-center">
                 <!-- Text Content -->
                 <div class="col-lg-6 fc-hero-content mb-4 mb-lg-0">
-                    <div class="fc-hero-badge mb-4">
+                    {{-- <div class="fc-hero-badge mb-4 hide-mobile">
                         <span>🚀 Digital Excellence</span>
-                    </div>
+                    </div> --}}
+                    <div class="mb-4 py-4"></div>
                     <h1 class="fc-hero-title mb-3">
                         Your Global IT Partner for Web, App Development, SEO & Brand Growth
                     </h1>
@@ -35,11 +36,11 @@
                     </div>
 
                     <!-- Stats Section -->
-                    {{-- <div class="fc-hero-stats mt-5 pt-4 border-top border-secondary border-opacity-25">
+                    <div class="fc-hero-stats mt-5 pt-4 border-top border-secondary border-opacity-25">
                         <div class="row g-4">
                             <div class="col-6">
                                 <div class="fc-stat">
-                                    <h3 class="fc-stat-number">500+</h3>
+                                    <h3 class="fc-stat-number">30+</h3>
                                     <p class="fc-stat-label">Projects Delivered</p>
                                 </div>
                             </div>
@@ -50,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <!-- Hero Image -->

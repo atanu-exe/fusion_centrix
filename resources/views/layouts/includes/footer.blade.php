@@ -1,54 +1,3 @@
-<!-- Mobile Helper Button -->
-{{-- <button id="mobileHelper" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;" class="fc-mobile-helper">
-    <img src="{{ asset('assets/images/help-robot.webp') }}" alt="Helper" class="fc-helper-img">
-    <div class="fc-helper-speech">📅 Free Consultation</div>
-</button> --}}
-
-<!-- Quote Modal -->
-<div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fc-modal-content">
-            <div class="modal-header fc-modal-header">
-                <h5 class="modal-title" id="quoteModalLabel">Request a Free Quote</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="POST" action="/submit-quote">
-                <div class="modal-body p-4">
-                    <div class="mb-3">
-                        <label for="quoteName" class="form-label fw-semibold">Your Name</label>
-                        <input type="text" class="form-control" id="quoteName" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quoteEmail" class="form-label fw-semibold">Email Address</label>
-                        <input type="email" class="form-control" id="quoteEmail" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quotePhone" class="form-label fw-semibold">Phone Number</label>
-                        <input type="tel" class="form-control" id="quotePhone" name="phone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="quoteService" class="form-label fw-semibold">Service</label>
-                        <select class="form-select" id="quoteService" name="service" required>
-                            <option value="" selected disabled>Select a service</option>
-                            <option>Web & App Development</option>
-                            <option>E-Commerce Solutions</option>
-                            <option>Digital Marketing</option>
-                            <option>Custom Software</option>
-                            <option>Branding & Identity</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quoteMessage" class="form-label fw-semibold">Your Message</label>
-                        <textarea class="form-control" id="quoteMessage" rows="3" name="message" required></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer p-3">
-                    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 </main>
 
@@ -158,7 +107,8 @@
 </footer>
 
 <!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+@vite(['resources/js/app.js'])
 <!-- Calendly Integration -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>

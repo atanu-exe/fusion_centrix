@@ -1,53 +1,150 @@
+@media (max-width: 767.98px) {
+  .fc-header {
+    padding-top: 5.8rem !important;
+    padding-bottom: 1.2rem !important;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .fc-header-content h1 {
+    font-size: 1.45rem !important;
+    margin-bottom: 0.7rem !important;
+    word-break: break-word;
+  }
+
+  .fc-header-content p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .fc-header-content .d-flex.gap-3,
+  .fc-header-content .d-flex.gap-2 {
+    gap: 0.5rem !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0.7rem;
+  }
+
+  .fc-category-tag {
+    font-size: 0.97rem !important;
+    padding: 0.35rem 0.9rem !important;
+    border-radius: 1.2rem !important;
+  }
+
+  .fc-breadcrumb {
+    font-size: 0.97rem !important;
+    margin-top: 0.7rem !important;
+    margin-bottom: 0.7rem !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .fc-detail-featured-image img {
+    max-height: 220px !important;
+    border-radius: 1.1rem !important;
+    object-fit: cover !important;
+  }
+
+  .section-heading {
+    text-align: center;
+    font-size: 1.8rem !important;
+  }
+
+  .section-description {
+    text-align: center;
+    font-size: 1rem !important;
+  }
+
+  .contact-hours {
+    text-align: center;
+  }
+
+  .form-chip {
+    display: none !important;
+  }
+
+  .text-muted {
+    text-align: center;
+  }
+
+  .form-help {
+    text-align: center;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .btn.btn-gradient {
+    text-align: center;
+    display: block;
+  }
+
+  #contact-us .form-head h3 {
+    text-align: center;
+    font-size: 1.5rem !important;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 991.98px) {
+
   .fc-hero-image,
   .fc-hero-image-wrapper {
     display: none !important;
   }
 }
+
 @media (min-width: 768px) and (max-width: 991.98px) {
   .fc-hero-section {
     flex-direction: column;
     padding: 3.5rem 0 2.5rem 0;
     min-height: 60vh;
   }
+
   .fc-hero-content {
     text-align: center;
     padding: 0 2.5rem;
   }
+
   .fc-hero-title {
     font-size: 2.5rem !important;
     margin-bottom: 1.2rem;
   }
+
   .fc-hero-subtitle {
     font-size: 1.1rem;
     max-width: 100%;
     margin-bottom: 1.5rem;
   }
+
   .fc-hero-badge {
     font-size: 1rem;
     padding: 0.7rem 1.5rem;
     margin-bottom: 1.2rem;
   }
+
   .fc-hero-cta {
     flex-direction: row;
     gap: 1.2rem;
     margin-top: 1.5rem;
     justify-content: center;
   }
+
   .fc-hero-image {
     margin-top: 2rem;
     margin-bottom: 1rem;
     text-align: center;
   }
+
   .fc-hero-image-wrapper {
     max-width: 320px;
     margin: 0 auto;
   }
+
   .fc-hero-img-fixed {
     max-width: 100%;
     height: auto;
   }
 }
+
 :root {
   /* Brand Colors */
   --bs-primary: #0051ff;
@@ -464,7 +561,7 @@ body {
     flex-direction: row;
     align-items: center;
   }
-  
+
   .fc-list-view .fc-article-card img {
     width: 100px;
     min-width: 100px;
@@ -472,11 +569,11 @@ body {
     border-radius: 0.75rem;
     margin: 0.75rem;
   }
-  
+
   .fc-list-view .fc-article-body {
     padding: 0.75rem 0.75rem 0.75rem 0;
   }
-  
+
   .fc-list-view .fc-article-body h5 {
     font-size: 0.95rem;
     margin-bottom: 0.25rem;
@@ -485,15 +582,15 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .fc-list-view .fc-article-description {
     display: none;
   }
-  
+
   .fc-list-view .fc-categories-row {
     display: none !important;
   }
-  
+
   .fc-list-view .fc-meta {
     font-size: 0.75rem;
     flex-direction: row;
@@ -2340,9 +2437,11 @@ section strong {
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: block;
 }
-.accordion-collapse.collapse.show{
+
+.accordion-collapse.collapse.show {
   visibility: visible;
 }
+
 .fc-menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translate(10px, 10px);
 }
@@ -5714,36 +5813,30 @@ section strong {
 
 /* Responsive Blog Detail */
 @media (max-width: 991px) {
-  .fc-blog-detail .fc-header h1 {
-    font-size: 2rem;
-  }
-  
+
   .fc-article-content {
     font-size: 1rem;
   }
-  
+
   .fc-detail-featured-image {
     margin-top: -1rem;
   }
 }
 
 @media (max-width: 767px) {
-  .fc-blog-detail .fc-header {
+  .fc-header {
     padding: 2rem 1rem;
-  }
-  
-  .fc-blog-detail .fc-header h1 {
     font-size: 1.5rem;
   }
-  
+
   .fc-related-articles {
     padding: 2rem 0;
   }
-  
+
   .fc-article-content h2 {
     font-size: 1.4rem;
   }
-  
+
   .fc-article-content h3 {
     font-size: 1.25rem;
   }
@@ -5778,64 +5871,105 @@ section strong {
     display: none;
   }
 
-  #nav-free-consult-btn{
+  #nav-free-consult-btn {
     display: none;
   }
-   .about-image-wrapper {
+
+  .about-image-wrapper {
     display: none !important;
   }
+
   .fc-hero-section {
     flex-direction: column;
     padding: 2.5rem 0 1.5rem 0;
     min-height: 60vh;
   }
+
   .fc-hero-content {
     text-align: center;
     padding: 0 1.2rem;
   }
+
   .fc-hero-title {
     font-size: 2rem !important;
     margin-bottom: 1rem;
   }
+
   .fc-hero-subtitle {
     font-size: 1rem;
     max-width: 100%;
     margin-bottom: 1.2rem;
   }
+
   .fc-hero-badge {
     font-size: 0.85rem;
     padding: 0.5rem 1.1rem;
     margin-bottom: 1rem;
   }
+
   .fc-hero-cta {
     flex-direction: column;
     gap: 0.75rem;
     margin-top: 1.2rem;
   }
+
   .fc-hero-image {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
+
   .fc-hero-image-wrapper {
     max-width: 220px;
     margin: 0 auto;
   }
+
   .fc-hero-img-fixed {
     max-width: 100%;
     height: auto;
   }
+
   .fc-hero-cta {
     flex-direction: column !important;
     gap: 0.75rem !important;
     margin-top: 1.2rem !important;
     align-items: stretch !important;
   }
-  .fc-btn, .fc-btn-primary, .fc-btn-secondary {
+
+  .fc-btn,
+  .fc-btn-primary,
+  .fc-btn-secondary {
     width: 100%;
     padding: 0.85rem 1.2rem;
     font-size: 1rem;
     border-radius: 0.7rem;
     justify-content: center;
+  }
+
+  #cms-services .mobile-card-inr {
+    margin: auto;
+  }
+
+  #process h5 {
+    text-align: center;
+  }
+
+  .card-body {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+  .hide-mobile{
+    display: none !important;
+  }
+  .fc-hero-stats{
+    display: block !important;
   }
 }
 

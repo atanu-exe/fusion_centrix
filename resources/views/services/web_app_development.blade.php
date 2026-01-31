@@ -127,7 +127,7 @@
                                     <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
                                         <i class="fab fa-wordpress"></i>
                                     </div>
-                                    <div>
+                                    <div class="mobile-card-inr">
                                         <h6 class="mb-1">WordPress CMS</h6>
                                         <small class="text-muted">Custom themes & plugins</small>
                                     </div>
@@ -140,7 +140,7 @@
                                     <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
                                         <i class="fas fa-layer-group"></i>
                                     </div>
-                                    <div>
+                                    <div class="mobile-card-inr">
                                         <h6 class="mb-1">Headless CMS</h6>
                                         <small class="text-muted">API-first architecture</small>
                                     </div>
@@ -153,7 +153,7 @@
                                     <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
                                         <i class="fas fa-lock"></i>
                                     </div>
-                                    <div>
+                                    <div class="mobile-card-inr">
                                         <h6 class="mb-1">Access Control</h6>
                                         <small class="text-muted">Role-based permissions</small>
                                     </div>
@@ -166,7 +166,7 @@
                                     <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
                                         <i class="fas fa-search"></i>
                                     </div>
-                                    <div>
+                                    <div class="mobile-card-inr">
                                         <h6 class="mb-1">SEO Tools</h6>
                                         <small class="text-muted">Schema & meta tags</small>
                                     </div>

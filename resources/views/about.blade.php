@@ -197,7 +197,7 @@
                 <div class="col-md-4">
                     <div class="awc-stat">
                         <div class="stat-label">Projects delivered</div>
-                        <div class="stat-value">180+</div>
+                        <div class="stat-value">30+</div>
                         <p class="stat-note">Web, mobile, SaaS, and commerce builds.</p>
                     </div>
                 </div>
