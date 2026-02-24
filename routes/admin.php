@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\LeaveController;
 use App\Http\Controllers\Admin\SalaryController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\EmailCampaignController;
+use App\Http\Controllers\Admin\EmailTrackingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -242,4 +243,12 @@ Route::middleware(['admin'])->group(function () {
         Route::put('roles/{role}/permissions', [RoleController::class, 'updatePermissions'])->name('admin.roles.permissions');
         Route::post('roles/{role}/apply-to-all', [RoleController::class, 'applyToAllUsers'])->name('admin.roles.apply-to-all');
     });
+});
+
+// Email Tracking Routes (no authentication required - used in emails)
+Route::prefix('email')->group(function () {
+    Route::get('track/open/{token}', [EmailTrackingController::class, 'trackOpen'])->name('admin.email.track-open');
+    Route::get('track/click/{token}', [EmailTrackingController::class, 'trackClick'])->name('admin.email.track-click');
+    Route::post('track/bounce', [EmailTrackingController::class, 'trackBounce'])->name('admin.email.track-bounce');
+    Route::get('campaigns/{campaign}/stats', [EmailTrackingController::class, 'campaignStats'])->name('admin.email.campaign-stats');
 });

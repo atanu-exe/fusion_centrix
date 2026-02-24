@@ -8,8 +8,10 @@ use App\Models\EmailLog;
 use App\Models\EmailTemplate;
 use App\Models\Lead;
 use App\Models\LeadStatus;
+use App\Services\EmailTrackingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class EmailCampaignController extends Controller
 {
@@ -52,6 +54,7 @@ class EmailCampaignController extends Controller
             'content' => 'required|string',
             'template_id' => 'nullable|exists:email_templates,id',
             'recipient_type' => 'required|in:all_leads,by_status,by_source,selected',
+            'scheduled_at' => 'nullable|date|after:now',
         ]);
 
         // Build recipient filter based on recipient_type
@@ -65,6 +68,7 @@ class EmailCampaignController extends Controller
             $recipientFilter['lead_ids'] = $request->lead_ids;
         }
 
+        // Create campaign
         $campaign = EmailCampaign::create([
             'name' => $request->name,
             'subject' => $request->subject,
@@ -80,8 +84,103 @@ class EmailCampaignController extends Controller
         $recipientCount = $this->getRecipientQuery($recipientFilter)->count();
         $campaign->update(['total_recipients' => $recipientCount]);
 
+        // Handle action: draft, send, or schedule
+        $action = $request->input('action', 'draft');
+
+        if ($action === 'send') {
+            return $this->sendCampaign($campaign);
+        } elseif ($action === 'schedule') {
+            if (!$request->filled('scheduled_at')) {
+                return back()->withInput()->with('error', 'Please specify a schedule time.');
+            }
+            
+            $campaign->update([
+                'status' => 'scheduled',
+                'scheduled_at' => $request->scheduled_at,
+            ]);
+
+            return redirect()->route('admin.email.campaigns.show', $campaign)
+                ->with('success', 'Campaign scheduled successfully.');
+        }
+
+        // Default: save as draft
         return redirect()->route('admin.email.campaigns.show', $campaign)
-            ->with('success', 'Campaign created successfully.');
+            ->with('success', 'Campaign created as draft.');
+    }
+
+    /**
+     * Send campaign helper
+     */
+    protected function sendCampaign(EmailCampaign $campaign)
+    {
+        if ($campaign->status === 'sent') {
+            return back()->with('error', 'Campaign already sent.');
+        }
+
+        $leads = $this->getRecipientQuery($campaign->recipient_filter)->get();
+
+        if ($leads->isEmpty()) {
+            return back()->with('error', 'No recipients found for this campaign.');
+        }
+
+        $campaign->update(['status' => 'sending']);
+
+        $sentCount = 0;
+        foreach ($leads as $lead) {
+            if (!$lead->email) continue;
+
+            try {
+                // Parse template variables
+                $subject = $this->parseVariables($campaign->subject, $lead);
+                $body = $this->parseVariables($campaign->content, $lead);
+
+                // Create email log with tracking token
+                $trackingToken = Str::random(32);
+                $emailLog = EmailLog::create([
+                    'campaign_id' => $campaign->id,
+                    'lead_id' => $lead->id,
+                    'to_email' => $lead->email,
+                    'to_name' => $lead->name,
+                    'subject' => $subject,
+                    'body' => $body,
+                    'status' => 'pending',
+                    'tracking_token' => $trackingToken,
+                ]);
+
+                // Wrap links with tracking URLs
+                $bodyWithLinkTracking = EmailTrackingService::wrapLinksWithTracking($emailLog, $body);
+
+                // Add tracking pixel to email body
+                $trackingPixel = '<img src="' . route('admin.email.track-open', ['token' => $trackingToken]) . '" width="1" height="1" alt="" style="display:none;" />';
+                $bodyWithTracking = $bodyWithLinkTracking . "\n" . $trackingPixel;
+
+                // Send email (using Laravel Mail)
+                Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
+                    $message->to($lead->email, $lead->name)
+                        ->subject($subject)
+                        ->html($bodyWithTracking);
+                });
+
+                $emailLog->update([
+                    'status' => 'sent',
+                    'sent_at' => now(),
+                ]);
+
+                $sentCount++;
+
+            } catch (\Exception $e) {
+                \Log::error('Failed to send email to ' . $lead->email . ': ' . $e->getMessage());
+            }
+        }
+
+        $campaign->update([
+            'status' => 'sent',
+            'sent_at' => now(),
+            'sent_count' => $sentCount,
+        ]);
+
+        return redirect()->route('admin.email.campaigns.show', $campaign)
+            ->with('success', "Campaign sent to {$sentCount} recipients.");
     }
 
     public function show(EmailCampaign $campaign)
@@ -172,7 +271,8 @@ class EmailCampaignController extends Controller
                 $subject = $this->parseVariables($campaign->subject, $lead);
                 $body = $this->parseVariables($campaign->content, $lead);
 
-                // Create email log
+                // Create email log with tracking token
+                $trackingToken = Str::random(32);
                 $emailLog = EmailLog::create([
                     'campaign_id' => $campaign->id,
                     'lead_id' => $lead->id,
@@ -181,13 +281,21 @@ class EmailCampaignController extends Controller
                     'subject' => $subject,
                     'body' => $body,
                     'status' => 'pending',
+                    'tracking_token' => $trackingToken,
                 ]);
 
+                // Wrap links with tracking URLs
+                $bodyWithLinkTracking = EmailTrackingService::wrapLinksWithTracking($emailLog, $body);
+
+                // Add tracking pixel to email body
+                $trackingPixel = '<img src="' . route('admin.email.track-open', ['token' => $trackingToken]) . '" width="1" height="1" alt="" style="display:none;" />';
+                $bodyWithTracking = $bodyWithLinkTracking . "\n" . $trackingPixel;
+
                 // Send email (using Laravel Mail)
-                Mail::send([], [], function ($message) use ($lead, $subject, $body) {
+                Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
                     $message->to($lead->email, $lead->name)
                         ->subject($subject)
-                        ->html($body);
+                        ->html($bodyWithTracking);
                 });
 
                 $emailLog->update([

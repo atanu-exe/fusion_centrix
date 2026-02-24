@@ -114,7 +114,9 @@
                 <h5 class="card-title mb-0"><i class="fas fa-pie-chart me-2"></i>Traffic Sources</h5>
             </div>
             <div class="card-body">
-                <canvas id="sourcesChart" height="200"></canvas>
+                <div style="height: 250px; position: relative;">
+                    <canvas id="sourcesChart"></canvas>
+                </div>
                 <div class="mt-3">
                     @foreach($trafficSources as $source)
                     <div class="d-flex align-items-center mb-2">

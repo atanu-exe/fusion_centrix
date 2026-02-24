@@ -21,6 +21,7 @@ class EmailLog extends Model
         'clicked_at',
         'error_message',
         'message_id',
+        'tracking_token',
     ];
 
     protected $casts = [

@@ -225,7 +225,6 @@
         </div>
     </div>
 </form>
-@endsection
 
 @push('scripts')
 <script>
