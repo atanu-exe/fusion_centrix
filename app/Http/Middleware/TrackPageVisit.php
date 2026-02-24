@@ -8,6 +8,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
+use App\Services\BotDetectionService;
 
 class TrackPageVisit
 {
@@ -32,6 +33,12 @@ class TrackPageVisit
         $path = $request->path();
         if (preg_match('/\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/i', $path)) {
             return $response;
+        }
+
+        // Detect bots
+        $isBot = \App\Services\BotDetectionService::detectBot($request->userAgent(), $request->ip(), $request->headers->all());
+        if ($isBot) {
+            return $next($request); // Skip tracking for bots
         }
 
         try {
