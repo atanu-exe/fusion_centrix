@@ -12,6 +12,7 @@ class EmailCampaign extends Model
         'content',
         'template_id',
         'status',
+        'recipient_type',
         'recipient_filter',
         'total_recipients',
         'sent_count',

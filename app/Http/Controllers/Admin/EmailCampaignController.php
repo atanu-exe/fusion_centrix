@@ -37,8 +37,11 @@ class EmailCampaignController extends Controller
     {
         $templates = EmailTemplate::where('is_active', true)->get();
         $statuses = LeadStatus::where('is_active', true)->get();
+        $leadCount = \App\Models\Lead::count();
+        $sources = \App\Models\LeadSource::where('is_active', true)->get();
+        $leads = \App\Models\Lead::select('id', 'name', 'email')->get();
 
-        return view('admin.email.campaigns.create', compact('templates', 'statuses'));
+        return view('admin.email.campaigns.create', compact('templates', 'statuses', 'leadCount', 'sources', 'leads'));
     }
 
     public function store(Request $request)
@@ -48,21 +51,33 @@ class EmailCampaignController extends Controller
             'subject' => 'required|string|max:255',
             'content' => 'required|string',
             'template_id' => 'nullable|exists:email_templates,id',
-            'recipient_filter' => 'nullable|array',
+            'recipient_type' => 'required|in:all_leads,by_status,by_source,selected',
         ]);
+
+        // Build recipient filter based on recipient_type
+        $recipientFilter = [];
+        
+        if ($request->recipient_type === 'by_status' && $request->has('status_ids')) {
+            $recipientFilter['status_ids'] = $request->status_ids;
+        } elseif ($request->recipient_type === 'by_source' && $request->has('source_ids')) {
+            $recipientFilter['source_ids'] = $request->source_ids;
+        } elseif ($request->recipient_type === 'selected' && $request->has('lead_ids')) {
+            $recipientFilter['lead_ids'] = $request->lead_ids;
+        }
 
         $campaign = EmailCampaign::create([
             'name' => $request->name,
             'subject' => $request->subject,
             'content' => $request->content,
             'template_id' => $request->template_id,
-            'recipient_filter' => $request->recipient_filter,
+            'recipient_type' => $request->recipient_type,
+            'recipient_filter' => !empty($recipientFilter) ? $recipientFilter : null,
             'status' => 'draft',
             'created_by' => auth()->id(),
         ]);
 
         // Calculate recipients
-        $recipientCount = $this->getRecipientQuery($request->recipient_filter)->count();
+        $recipientCount = $this->getRecipientQuery($recipientFilter)->count();
         $campaign->update(['total_recipients' => $recipientCount]);
 
         return redirect()->route('admin.email.campaigns.show', $campaign)
@@ -86,8 +101,11 @@ class EmailCampaignController extends Controller
 
         $templates = EmailTemplate::where('is_active', true)->get();
         $statuses = LeadStatus::where('is_active', true)->get();
+        $leadCount = \App\Models\Lead::count();
+        $sources = \App\Models\LeadSource::where('is_active', true)->get();
+        $leads = \App\Models\Lead::select('id', 'name', 'email')->get();
 
-        return view('admin.email.campaigns.edit', compact('campaign', 'templates', 'statuses'));
+        return view('admin.email.campaigns.edit', compact('campaign', 'templates', 'statuses', 'leadCount', 'sources', 'leads'));
     }
 
     public function update(Request $request, EmailCampaign $campaign)
@@ -100,12 +118,31 @@ class EmailCampaignController extends Controller
             'name' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'content' => 'required|string',
+            'recipient_type' => 'required|in:all_leads,by_status,by_source,selected',
         ]);
 
-        $campaign->update($request->only(['name', 'subject', 'content', 'template_id', 'recipient_filter']));
+        // Build recipient filter based on recipient_type
+        $recipientFilter = [];
+        
+        if ($request->recipient_type === 'by_status' && $request->has('status_ids')) {
+            $recipientFilter['status_ids'] = $request->status_ids;
+        } elseif ($request->recipient_type === 'by_source' && $request->has('source_ids')) {
+            $recipientFilter['source_ids'] = $request->source_ids;
+        } elseif ($request->recipient_type === 'selected' && $request->has('lead_ids')) {
+            $recipientFilter['lead_ids'] = $request->lead_ids;
+        }
+
+        $campaign->update([
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'content' => $request->content,
+            'template_id' => $request->template_id,
+            'recipient_type' => $request->recipient_type,
+            'recipient_filter' => !empty($recipientFilter) ? $recipientFilter : null,
+        ]);
 
         // Recalculate recipients
-        $recipientCount = $this->getRecipientQuery($campaign->recipient_filter)->count();
+        $recipientCount = $this->getRecipientQuery($recipientFilter)->count();
         $campaign->update(['total_recipients' => $recipientCount]);
 
         return redirect()->route('admin.email.campaigns.show', $campaign)
@@ -211,6 +248,9 @@ class EmailCampaignController extends Controller
             if (!empty($filter['source_ids'])) {
                 $query->whereIn('lead_source_id', $filter['source_ids']);
             }
+            if (!empty($filter['lead_ids'])) {
+                $query->whereIn('id', $filter['lead_ids']);
+            }
             if (!empty($filter['assigned_to'])) {
                 $query->where('assigned_to', $filter['assigned_to']);
             }
@@ -260,7 +300,7 @@ class EmailCampaignController extends Controller
             'created_by' => auth()->id(),
         ]);
 
-        return redirect()->route('admin.email.templates')
+        return redirect()->route('admin.email.templates.index')
             ->with('success', 'Template created successfully.');
     }
 
@@ -284,7 +324,7 @@ class EmailCampaignController extends Controller
             'is_active' => $request->boolean('is_active'),
         ]);
 
-        return redirect()->route('admin.email.templates')
+        return redirect()->route('admin.email.templates.index')
             ->with('success', 'Template updated successfully.');
     }
 

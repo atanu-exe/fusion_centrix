@@ -37,17 +37,17 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['admin'])->group(function () {
     // Logout
     Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
-    
+
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
-    
+
     // Profile (accessible by all users)
     Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
     Route::put('profile', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('admin.profile.password');
     Route::post('profile/avatar', [ProfileController::class, 'updateAvatar'])->name('admin.profile.avatar');
-    
+
     // Blog Management - with permission checks
     // Create routes MUST come before {blog} routes to avoid "create" being matched as a blog ID
     Route::middleware('permission:blogs.create')->group(function () {
@@ -70,9 +70,9 @@ Route::middleware(['admin'])->group(function () {
     Route::middleware('permission:blogs.delete')->group(function () {
         Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
     });
-    
+
     // Category Management - with permission checks
-    
+
     Route::middleware('permission:categories.manage')->group(function () {
         Route::get('categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('categories', [CategoryController::class, 'store'])->name('admin.categories.store');
@@ -91,7 +91,7 @@ Route::middleware(['admin'])->group(function () {
         Route::get('pages', [AnalyticsController::class, 'pages'])->name('admin.analytics.pages');
         Route::get('locations', [AnalyticsController::class, 'locations'])->name('admin.analytics.locations');
     });
-    
+
     // Settings - with permission checks
     Route::middleware('permission:settings.view')->group(function () {
         Route::get('settings', [SettingsController::class, 'general'])->name('admin.settings.general');
@@ -99,7 +99,7 @@ Route::middleware(['admin'])->group(function () {
     Route::middleware('permission:settings.manage')->group(function () {
         Route::put('settings', [SettingsController::class, 'update'])->name('admin.settings.update');
     });
-    
+
     // ===============================
     // HRM Module
     // ===============================
@@ -114,7 +114,7 @@ Route::middleware(['admin'])->group(function () {
             Route::post('attendance', [AttendanceController::class, 'store'])->name('admin.hrm.attendance.store');
             Route::get('attendance/report', [AttendanceController::class, 'report'])->name('admin.hrm.attendance.report');
         });
-        
+
         // Leave Management
         Route::middleware('permission:hrm.view')->group(function () {
             Route::get('leaves', [LeaveController::class, 'index'])->name('admin.hrm.leaves.index');
@@ -126,14 +126,14 @@ Route::middleware(['admin'])->group(function () {
         Route::middleware('permission:hrm.leaves')->group(function () {
             Route::post('leaves/{leave}/approve', [LeaveController::class, 'approve'])->name('admin.hrm.leaves.approve');
             Route::post('leaves/{leave}/reject', [LeaveController::class, 'reject'])->name('admin.hrm.leaves.reject');
-            
+
             // Leave Types (Admin only)
             Route::get('leave-types', [LeaveController::class, 'types'])->name('admin.hrm.leave-types.index');
             Route::post('leave-types', [LeaveController::class, 'storeType'])->name('admin.hrm.leave-types.store');
             Route::put('leave-types/{leaveType}', [LeaveController::class, 'updateType'])->name('admin.hrm.leave-types.update');
             Route::delete('leave-types/{leaveType}', [LeaveController::class, 'destroyType'])->name('admin.hrm.leave-types.destroy');
         });
-        
+
         // Salary (Admin only)
         Route::middleware('permission:hrm.salary')->group(function () {
             Route::get('salary', [SalaryController::class, 'index'])->name('admin.hrm.salary.index');
@@ -144,20 +144,21 @@ Route::middleware(['admin'])->group(function () {
             Route::get('salary/{salary}/payslip', [SalaryController::class, 'payslip'])->name('admin.hrm.salary.payslip');
         });
     });
-    
+
     // ===============================
     // Marketing / CRM Module
     // ===============================
     // Lead Management - with permission checks
     Route::prefix('leads')->group(function () {
-        Route::middleware('permission:leads.view')->group(function () {
-            Route::get('/', [LeadController::class, 'index'])->name('admin.leads.index');
-            Route::get('{lead}', [LeadController::class, 'show'])->name('admin.leads.show');
-        });
         Route::middleware('permission:leads.create')->group(function () {
             Route::get('create', [LeadController::class, 'create'])->name('admin.leads.create');
             Route::post('/', [LeadController::class, 'store'])->name('admin.leads.store');
         });
+        Route::middleware('permission:leads.view')->group(function () {
+            Route::get('/', [LeadController::class, 'index'])->name('admin.leads.index');
+            Route::get('{lead}', [LeadController::class, 'show'])->name('admin.leads.show');
+        });
+
         Route::middleware('permission:leads.edit')->group(function () {
             Route::get('{lead}/edit', [LeadController::class, 'edit'])->name('admin.leads.edit');
             Route::put('{lead}', [LeadController::class, 'update'])->name('admin.leads.update');
@@ -180,13 +181,9 @@ Route::middleware(['admin'])->group(function () {
             Route::get('export', [LeadController::class, 'export'])->name('admin.leads.export');
         });
     });
-    
+
     // Email Marketing - with permission checks
     Route::prefix('email')->group(function () {
-        Route::middleware('permission:email.view')->group(function () {
-            Route::get('campaigns', [EmailCampaignController::class, 'index'])->name('admin.email.campaigns.index');
-            Route::get('campaigns/{campaign}', [EmailCampaignController::class, 'show'])->name('admin.email.campaigns.show');
-        });
         Route::middleware('permission:email.campaigns')->group(function () {
             Route::get('campaigns/create', [EmailCampaignController::class, 'create'])->name('admin.email.campaigns.create');
             Route::post('campaigns', [EmailCampaignController::class, 'store'])->name('admin.email.campaigns.store');
@@ -194,11 +191,16 @@ Route::middleware(['admin'])->group(function () {
             Route::put('campaigns/{campaign}', [EmailCampaignController::class, 'update'])->name('admin.email.campaigns.update');
             Route::delete('campaigns/{campaign}', [EmailCampaignController::class, 'destroy'])->name('admin.email.campaigns.destroy');
         });
+        Route::middleware('permission:email.view')->group(function () {
+            Route::get('campaigns', [EmailCampaignController::class, 'index'])->name('admin.email.campaigns.index');
+            Route::get('campaigns/{campaign}', [EmailCampaignController::class, 'show'])->name('admin.email.campaigns.show');
+        });
+
         Route::middleware('permission:email.send')->group(function () {
             Route::post('campaigns/{campaign}/send', [EmailCampaignController::class, 'send'])->name('admin.email.campaigns.send');
             Route::post('campaigns/{campaign}/schedule', [EmailCampaignController::class, 'schedule'])->name('admin.email.campaigns.schedule');
         });
-        
+
         // Templates
         Route::middleware('permission:email.templates')->group(function () {
             Route::get('templates', [EmailCampaignController::class, 'templates'])->name('admin.email.templates.index');
@@ -209,7 +211,7 @@ Route::middleware(['admin'])->group(function () {
             Route::delete('templates/{template}', [EmailCampaignController::class, 'destroyTemplate'])->name('admin.email.templates.destroy');
         });
     });
-    
+
     // User Management - with permission checks
     Route::middleware('permission:users.view')->group(function () {
         Route::get('users', [UserController::class, 'index'])->name('admin.users.index');
@@ -233,7 +235,7 @@ Route::middleware(['admin'])->group(function () {
         Route::post('users/{user}/reset-permissions', [UserController::class, 'resetPermissions'])->name('admin.users.reset-permissions');
         Route::post('users/reset-all-permissions', [UserController::class, 'resetAllPermissions'])->name('admin.users.reset-all-permissions');
     });
-    
+
     // Role Management (Super Admin only)
     Route::middleware('role:super_admin')->group(function () {
         Route::get('roles', [RoleController::class, 'index'])->name('admin.roles.index');

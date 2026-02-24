@@ -43,19 +43,19 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label class="form-label">Default Subject</label>
+                        <label class="form-label">Subject <span class="text-danger">*</span></label>
                         <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" 
-                               value="{{ old('subject') }}" placeholder="Default email subject line">
+                               value="{{ old('subject') }}" required placeholder="Default email subject line">
                         @error('subject')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     
                     <div class="mb-3">
-                        <label class="form-label">Email Content <span class="text-danger">*</span></label>
-                        <textarea name="content" class="form-control @error('content') is-invalid @enderror" 
-                                  rows="20" required>{{ old('content', $defaultContent ?? '') }}</textarea>
-                        @error('content')
+                        <label class="form-label">Email Body <span class="text-danger">*</span></label>
+                        <textarea name="body" class="form-control @error('body') is-invalid @enderror" 
+                                  rows="20" required>{{ old('body', $defaultContent ?? '') }}</textarea>
+                        @error('body')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -70,8 +70,8 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="form-label">Template Type</label>
-                        <select name="type" class="form-select">
+                        <label class="form-label">Category</label>
+                        <select name="category" class="form-select">
                             <option value="marketing">Marketing</option>
                             <option value="transactional">Transactional</option>
                             <option value="notification">Notification</option>

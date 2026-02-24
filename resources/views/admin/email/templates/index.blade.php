@@ -33,11 +33,11 @@
                 </span>
             </div>
             <div class="card-body">
-                <p class="text-muted small mb-3">{{ Str::limit($template->description, 100) }}</p>
+                <p class="text-muted small mb-3">{{ Str::limit($template->subject, 100) }}</p>
                 
                 <div class="bg-light rounded p-2 mb-3" style="height: 120px; overflow: hidden;">
                     <small class="text-muted">
-                        {!! Str::limit(strip_tags($template->content), 200) !!}
+                        {!! Str::limit(strip_tags($template->body), 200) !!}
                     </small>
                 </div>
                 
@@ -49,7 +49,7 @@
                 <a href="{{ route('admin.email.templates.edit', $template) }}" class="btn btn-sm btn-outline-primary flex-fill">
                     <i class="fas fa-edit me-1"></i>Edit
                 </a>
-                <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#previewModal{{ $template->id }}">
+                <button type="button" class="btn btn-sm btn-outline-info preview-btn" data-template-name="{{ $template->name }}" data-template-body="{!! htmlspecialchars($template->body) !!}">
                     <i class="fas fa-eye"></i>
                 </button>
                 <form action="{{ route('admin.email.templates.destroy', $template) }}" method="POST">
@@ -62,22 +62,50 @@
             </div>
         </div>
         
-        <!-- Preview Modal -->
-        <div class="modal fade" id="previewModal{{ $template->id }}" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{ $template->name }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="border rounded p-3">
-                            {!! $template->content !!}
-                        </div>
-                    </div>
+    <!-- Single Preview Modal -->
+    @if($loop->first)
+    <div class="modal fade" id="previewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="previewModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="previewModalIframe" class="w-100 border rounded" style="height: 500px;"></iframe>
                 </div>
             </div>
         </div>
+    </div>
+    @endif
+    @push('scripts')
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modalEl = document.getElementById('previewModal');
+        var modal = new bootstrap.Modal(modalEl);
+        var iframe = document.getElementById('previewModalIframe');
+        var title = document.getElementById('previewModalTitle');
+        document.querySelectorAll('.preview-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                title.textContent = btn.getAttribute('data-template-name');
+                var doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write(btn.getAttribute('data-template-body'));
+                doc.close();
+                modal.show();
+            });
+        });
+        modalEl.addEventListener('hidden.bs.modal', function() {
+            // Clear iframe content to avoid overlay/black effect
+            iframe.src = 'about:blank';
+            // Remove lingering Bootstrap modal backdrops
+            document.querySelectorAll('.modal-backdrop').forEach(function(el) {
+                el.parentNode.removeChild(el);
+            });
+        });
+    });
+    </script>
+    @endpush
     </div>
     @empty
     <div class="col-12">

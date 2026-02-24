@@ -24,6 +24,22 @@
                     <h5 class="card-title mb-0"><i class="fas fa-envelope me-2"></i>Campaign Details</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Choose Template First - At the Top -->
+                    <div class="mb-4 p-3 rounded" style="background-color: #f8f9fa; border-left: 4px solid #5f63f1;">
+                        <label class="form-label mb-2" style="font-weight: 600;"><i class="fas fa-file-alt me-2"></i>Start With Template</label>
+                        <select name="template_id" class="form-select" id="templateSelect" style="border-color: #5f63f1;">
+                            <option value="">✏️ Start from scratch</option>
+                            @foreach($templates as $template)
+                                <option value="{{ $template->id }}" data-template-body="{!! htmlspecialchars($template->body) !!}" data-template-subject="{{ $template->subject }}" {{ old('template_id') == $template->id ? 'selected' : '' }}>
+                                    📋 {{ $template->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <small class="text-muted d-block mt-2">Choose a template to auto-fill the email content, or start from scratch</small>
+                    </div>
+
+                    <hr class="my-4">
+                    
                     <div class="mb-3">
                         <label class="form-label">Campaign Name <span class="text-danger">*</span></label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
@@ -33,29 +49,17 @@
                         @enderror
                     </div>
                     
+                    <!-- Email Subject - Required when scratch, overwrites when template selected -->
                     <div class="mb-3">
-                        <label class="form-label">Email Subject <span class="text-danger">*</span></label>
+                        <label class="form-label">Email Subject <span class="text-danger" id="subjectRequiredMark">*</span></label>
                         <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" 
-                               value="{{ old('subject') }}" required placeholder="e.g., 🎉 Exclusive Offer Just For You!">
+                               value="{{ old('subject') }}" id="emailSubject" required placeholder="e.g., 🎉 Exclusive Offer Just For You!">
                         @error('subject')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                         <small class="text-muted">You can use variables: {name}, {email}, {company}</small>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Email Template</label>
-                        <select name="template_id" class="form-select" id="templateSelect">
-                            <option value="">Start from scratch</option>
-                            @foreach($templates as $template)
-                                <option value="{{ $template->id }}" {{ old('template_id') == $template->id ? 'selected' : '' }}>
-                                    {{ $template->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
+                    <div class="mb-3" id="emailContentContainer">
                         <label class="form-label">Email Content <span class="text-danger">*</span></label>
                         <textarea name="content" class="form-control @error('content') is-invalid @enderror" 
                                   rows="15" id="emailContent" required>{{ old('content') }}</textarea>
@@ -64,6 +68,57 @@
                         @enderror
                         <small class="text-muted">HTML supported. Variables: {name}, {email}, {company}, {unsubscribe_link}</small>
                     </div>
+                    <div class="mb-3" id="templatePreviewContainer" style="display:none;">
+                        <label class="form-label">Template Preview</label>
+                        <div class="border rounded p-3 bg-light" id="templatePreviewHtml"></div>
+                    </div>
+                    @push('scripts')
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var templateSelect = document.getElementById('templateSelect');
+                        var emailContent = document.getElementById('emailContent');
+                        var emailContentContainer = document.getElementById('emailContentContainer');
+                        var templatePreviewContainer = document.getElementById('templatePreviewContainer');
+                        var templatePreviewHtml = document.getElementById('templatePreviewHtml');
+                        var emailSubject = document.getElementById('emailSubject');
+                        var subjectRequiredMark = document.getElementById('subjectRequiredMark');
+                        
+                        function updateContentView() {
+                            var selected = templateSelect.options[templateSelect.selectedIndex];
+                            var body = selected.getAttribute('data-template-body');
+                            var subject = selected.getAttribute('data-template-subject');
+                            
+                            if (!selected.value) {
+                                // Start from scratch
+                                emailContentContainer.style.display = '';
+                                templatePreviewContainer.style.display = 'none';
+                                emailContent.value = '';
+                                emailContent.required = true;
+                                emailSubject.value = '';
+                                emailSubject.required = true;
+                                emailSubject.setAttribute('required', 'required');
+                                subjectRequiredMark.style.display = '';
+                                templateSelect.style.borderColor = '#ccc';
+                            } else {
+                                // Template selected - overwrite subject and show preview
+                                emailContentContainer.style.display = 'none';
+                                templatePreviewContainer.style.display = '';
+                                templatePreviewHtml.innerHTML = body;
+                                emailContent.value = body || '';
+                                emailContent.required = false;
+                                emailSubject.value = subject || '';
+                                emailSubject.required = false;
+                                emailSubject.removeAttribute('required');
+                                subjectRequiredMark.style.display = 'none';
+                                templateSelect.style.borderColor = '#5f63f1';
+                            }
+                        }
+                        
+                        templateSelect.addEventListener('change', updateContentView);
+                        updateContentView(); // Initial state
+                    });
+                    </script>
+                    @endpush
                 </div>
             </div>
         </div>
@@ -176,9 +231,9 @@
 <script>
 // Recipient type toggle
 document.getElementById('recipientType').addEventListener('change', function() {
-    document.getElementById('statusSelect').style.display = this.value === 'by_status' ? 'block' : 'none';
-    document.getElementById('sourceSelect').style.display = this.value === 'by_source' ? 'block' : 'none';
-    document.getElementById('leadSelect').style.display = this.value === 'selected' ? 'block' : 'none';
+    document.getElementById('statusSelect').style.display = this.value === 'by_status' ? '' : 'none';
+    document.getElementById('sourceSelect').style.display = this.value === 'by_source' ? '' : 'none';
+    document.getElementById('leadSelect').style.display = this.value === 'selected' ? '' : 'none';
 });
 
 // Template selection
@@ -195,3 +250,4 @@ document.getElementById('templateSelect').addEventListener('change', function() 
 });
 </script>
 @endpush
+@endsection
