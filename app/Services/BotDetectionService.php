@@ -133,7 +133,7 @@ class BotDetectionService
         }
 
         // Check for suspicious patterns
-        if ($this->hasSuspiciousPatterns($userAgentLower)) {
+        if (self::hasSuspiciousPatterns($userAgentLower)) {
             return true;
         }
 
