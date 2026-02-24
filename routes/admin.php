@@ -72,10 +72,7 @@ Route::middleware(['admin'])->group(function () {
     });
     
     // Category Management - with permission checks
-    Route::middleware('permission:categories.view')->group(function () {
-        Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
-        Route::get('categories/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
-    });
+    
     Route::middleware('permission:categories.manage')->group(function () {
         Route::get('categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
         Route::post('categories', [CategoryController::class, 'store'])->name('admin.categories.store');
@@ -83,7 +80,10 @@ Route::middleware(['admin'])->group(function () {
         Route::put('categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
-    
+    Route::middleware('permission:categories.view')->group(function () {
+        Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::get('categories/{category}', [CategoryController::class, 'show'])->name('admin.categories.show');
+    });
     // Analytics - with permission checks
     Route::middleware('permission:analytics.view')->prefix('analytics')->group(function () {
         Route::get('/', [AnalyticsController::class, 'overview'])->name('admin.analytics.overview');

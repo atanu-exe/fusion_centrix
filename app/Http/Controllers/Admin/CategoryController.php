@@ -10,6 +10,13 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     /**
+     * Display the specified category
+     */
+    public function show(BlogCategory $category)
+    {
+        return view('admin.categories.show', compact('category'));
+    }
+    /**
      * Display a listing of categories
      */
     public function index()
