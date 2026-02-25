@@ -214,14 +214,15 @@ Route::middleware(['admin'])->group(function () {
     });
 
     // User Management - with permission checks
-    Route::middleware('permission:users.view')->group(function () {
-        Route::get('users', [UserController::class, 'index'])->name('admin.users.index');
-        Route::get('users/{user}', [UserController::class, 'show'])->name('admin.users.show');
-    });
     Route::middleware('permission:users.create')->group(function () {
         Route::get('users/create', [UserController::class, 'create'])->name('admin.users.create');
         Route::post('users', [UserController::class, 'store'])->name('admin.users.store');
     });
+    Route::middleware('permission:users.view')->group(function () {
+        Route::get('users', [UserController::class, 'index'])->name('admin.users.index');
+        Route::get('users/{user}', [UserController::class, 'show'])->name('admin.users.show');
+    });
+
     Route::middleware('permission:users.edit')->group(function () {
         Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::put('users/{user}', [UserController::class, 'update'])->name('admin.users.update');
