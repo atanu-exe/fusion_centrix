@@ -370,12 +370,12 @@ class EmailCampaignController extends Controller
     protected function parseVariables(string $content, Lead $lead): string
     {
         $variables = [
-            '{{name}}' => $lead->name,
-            '{{first_name}}' => explode(' ', $lead->name)[0],
-            '{{email}}' => $lead->email,
-            '{{company}}' => $lead->company ?? '',
-            '{{phone}}' => $lead->phone ?? '',
-            '{{city}}' => $lead->city ?? '',
+            '{name}' => $lead->name,
+            '{first_name}' => explode(' ', $lead->name)[0],
+            '{email}' => $lead->email,
+            '{company}' => $lead->company ?? '',
+            '{phone}' => $lead->phone ?? '',
+            '{city}' => $lead->city ?? '',
         ];
 
         return str_replace(array_keys($variables), array_values($variables), $content);
