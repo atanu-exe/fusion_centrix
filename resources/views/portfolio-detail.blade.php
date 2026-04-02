@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('meta')
+    <link rel="canonical" href="{{ url('/portfolio/' . $portfolio->slug) }}">
+    <meta property="og:title" content="{{ $page_title }}">
+    <meta property="og:description" content="{{ $meta_description }}">
+    <meta property="og:url" content="{{ url('/portfolio/' . $portfolio->slug) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="{{ $portfolio->image_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page_title }}">
+    <meta name="twitter:description" content="{{ $meta_description }}">
+    <meta name="twitter:image" content="{{ $portfolio->image_url }}">
+@endsection
+
 @section('content')
     <!-- Header Section -->
     <section class="fc-header">
@@ -64,6 +77,37 @@
                             </div>
                         </div>
                     @endif
+
+                    <div class="portfolio-market-proof mb-5">
+                        <h2 class="mb-3">Built for competitive markets</h2>
+                        <p>
+                            This delivery approach is designed for businesses targeting performance, trust and lead generation in the US,
+                            UK, India and worldwide. From conversion-focused UX to scalable development and SEO-ready structure,
+                            the goal is measurable business growth, not just visual output.
+                        </p>
+                        <div class="market-tags">
+                            <span>US market ready</span>
+                            <span>UK business friendly</span>
+                            <span>India execution support</span>
+                            <span>Worldwide delivery model</span>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-faq-block mb-5">
+                        <h2 class="mb-4">Frequently Asked Questions</h2>
+                        <div class="faq-item">
+                            <h3>Can Fusioncentrix build a similar solution for our business?</h3>
+                            <p>Yes. The team works on web, ecommerce, mobile, branding and growth-focused digital projects for clients in the US, UK, India and international markets.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Do you support international collaboration and delivery?</h3>
+                            <p>Yes. Projects are structured for remote communication, milestone planning, feedback loops and launch support across time zones.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>How do we get a quote for a similar project?</h3>
+                            <p>Use the quote request CTA below and share scope, timeline and objectives. You can then receive the recommended engagement path and estimated next steps.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sidebar -->
@@ -112,6 +156,7 @@
                             <a href="{{ route('contact_us') }}" class="btn btn-outline-primary btn-lg w-100">
                                 <i class="fas fa-envelope"></i> Request Similar Project
                             </a>
+                            <p class="cta-helper mb-0 mt-3">Tell us if you are targeting the US, UK, India or global audiences so we can shape the right delivery and SEO approach.</p>
                         </div>
                     </div>
                 </div>
@@ -173,7 +218,6 @@
             <div class="modal-title" id="modalTitleDetail"></div>
         </div>
     </div>
-    </section>
 
 
     <script>

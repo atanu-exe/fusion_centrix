@@ -10,23 +10,30 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $page_title = 'Web, App, E-commerce & Digital Marketing Services';
-        $meta_description = 'Fusioncentrix Solutions offers full-cycle web, app, e-commerce, and digital marketing services tailored to modern business needs.';
-        $meta_keywords = 'Fusioncentrix Solutions, digital agency India, web development, mobile app development, e-commerce solutions, SEO services, digital marketing, branding, custom software, IT solutions';
+        $page_title = 'Web Development, SEO, Branding & Software Company in Kolkata, West Bengal, India';
+        $meta_description = 'Fusioncentrix delivers web development, ecommerce, SEO, branding, app development and custom software services from Kolkata, West Bengal, India for businesses across India and worldwide.';
+        $meta_keywords = 'web development company Kolkata, SEO company Kolkata, software company West Bengal, ecommerce development India, digital marketing Kolkata, branding agency Kolkata, app development company India';
 
 
         $jsonLd = [
             "@context" => "https://schema.org",
-            "@type" => "Organization",
+            "@type" => "LocalBusiness",
             "name" => "Fusioncentrix Solutions",
             "url" => url('/'),
-            "logo" => asset('logo.png'), // adjust path as needed
+            "logo" => asset('logo.png'),
             "sameAs" => [
                 "https://www.facebook.com/fusioncentrix",
                 "https://www.linkedin.com/company/fusioncentrix",
                 "https://www.instagram.com/fusioncentrix"
             ],
             "description" => $meta_description,
+            "address" => [
+                "@type" => "PostalAddress",
+                "addressLocality" => "Kolkata",
+                "addressRegion" => "West Bengal",
+                "addressCountry" => "IN"
+            ],
+            "areaServed" => ["Kolkata", "West Bengal", "India", "Worldwide"],
         ];
 
         return view('home', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords'));
@@ -34,9 +41,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        $page_title = 'About Us – IT Solutions for Web, App & Digital Growth';
-        $meta_description = 'Learn more about Fusioncentrix Solutions — your one-stop provider for digital and IT solutions focused on innovation, performance, and long-term success.';
-        $meta_keywords = 'about Fusioncentrix, IT company profile, digital solutions provider, software agency India, web agency background, team of developers, company values';
+        $page_title = 'About Fusioncentrix - Digital Company in Kolkata, West Bengal, India';
+        $meta_description = 'Learn about Fusioncentrix, a Kolkata, West Bengal digital company helping businesses in India and worldwide with web development, SEO, branding, ecommerce and software solutions.';
+        $meta_keywords = 'about Fusioncentrix Kolkata, software company West Bengal, digital agency India, SEO company Kolkata, web development team India, branding company Kolkata';
 
 
         $jsonLd = [
@@ -53,9 +60,9 @@ class HomeController extends Controller
 
     public function contact_us()
     {
-        $page_title = 'Contact Fusioncentrix Solutions – Let’s Build Something Great Together';
-        $meta_description = 'Get in touch with Fusioncentrix Solutions for white-label development, digital marketing, or custom IT solutions. We’re here to help your business grow.';
-        $meta_keywords = 'contact Fusioncentrix, digital agency contact, IT services inquiry, request a quote, web development quote, get in touch, tech support, business consultation';
+        $page_title = 'Contact Fusioncentrix - Kolkata, West Bengal, India Digital Services Company';
+        $meta_description = 'Contact Fusioncentrix in Kolkata, West Bengal, India for web development, SEO, branding, ecommerce, mobile apps and custom software projects for India and international markets.';
+        $meta_keywords = 'contact SEO company Kolkata, contact web development company Kolkata, West Bengal software company contact, India digital agency quote, request website quote Kolkata';
 
 
         $jsonLd = [
@@ -66,9 +73,9 @@ class HomeController extends Controller
             "url" => url('/contact-us'),
             "contactPoint" => [
                 "@type" => "ContactPoint",
-                "telephone" => "+9830107481",  // Replace with your phone number
+                "telephone" => "+91-9830107481",
                 "contactType" => "Customer Service",
-                "areaServed" => ["US", "CA", "IN"],
+                "areaServed" => ["Kolkata", "West Bengal", "India", "Worldwide"],
                 "availableLanguage" => ["English"]
             ]
         ];

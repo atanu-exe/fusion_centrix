@@ -81,6 +81,9 @@ class BlogController extends Controller
         ];
 
         return view('blog', [
+            'page_title' => 'Digital Marketing, SEO, Web & Software Insights from Kolkata, West Bengal, India',
+            'meta_description' => 'Read Fusioncentrix insights on SEO, web development, branding, ecommerce and software from Kolkata, West Bengal, India for businesses in India and worldwide.',
+            'meta_keywords' => 'SEO blog Kolkata, web development blog India, digital marketing insights West Bengal, software company blog Kolkata, branding tips India',
             'featured' => $featured,
             'latest' => $latest,
             'trending' => $trending,
@@ -179,9 +182,9 @@ class BlogController extends Controller
 
         // SEO Meta tags
         $seoData = [
-            'title' => $blog->meta_title ?? $blog->title,
+            'title' => ($blog->meta_title ?? $blog->title) . ' | Fusioncentrix Kolkata',
             'description' => $blog->meta_description,
-            'keywords' => $blog->meta_keywords ?? '',
+            'keywords' => trim(($blog->meta_keywords ?? '') . ', Kolkata, West Bengal, India, Fusioncentrix'),
             'image' => $blog->featured_image,
             'url' => route('blog.show', $blog->slug),
             'author' => $blog->creator?->name ?? 'Admin',
@@ -236,6 +239,9 @@ class BlogController extends Controller
         ];
 
         return view('blog', [
+            'page_title' => $blogCategory->name . ' Blog Articles | Fusioncentrix Kolkata, West Bengal, India',
+            'meta_description' => 'Browse ' . $blogCategory->name . ' articles from Fusioncentrix, a Kolkata, West Bengal, India digital company sharing SEO, development and growth insights.',
+            'meta_keywords' => $blogCategory->name . ', Kolkata blog, West Bengal digital agency, India SEO content, Fusioncentrix',
             'allArticles' => $articles,
             'featured' => [],
             'latest' => [],

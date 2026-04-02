@@ -8,9 +8,9 @@ class ResellerController extends Controller
 {
     function index()
     {
-        $page_title = 'White-Label Digital Services for Agencies & Resellers';
-        $meta_description = 'Partner with Fusioncentrix Solutions to scale your agency. We offer white-label web development, app design, SEO, and IT services under your brand – reliable, confidential, and on time.';
-        $meta_keywords = 'white-label web development, reseller digital services, agency partnership, outsource web development, SEO reselling, branding reseller program, Fusioncentrix for agencies, IT outsourcing India';
+        $page_title = 'White Label Digital Services from Kolkata, West Bengal, India';
+        $meta_description = 'Partner with Fusioncentrix in Kolkata, West Bengal, India for white-label web development, SEO, design and software delivery for agencies serving India and international markets.';
+        $meta_keywords = 'white label web development India, SEO reseller Kolkata, outsourcing company West Bengal, agency partner India, white label software company Kolkata';
 
         $jsonLd = [
             "@context" => "https://schema.org",
@@ -20,7 +20,7 @@ class ResellerController extends Controller
                 "@type" => "Organization",
                 "name" => "Fusioncentrix Solutions",
                 "url" => url('/'),
-                "logo" => asset('assets/images/logo.png'),
+                "logo" => asset('logo.png'),
                 "sameAs" => [
                     "https://www.facebook.com/fusioncentrix",
                     "https://www.linkedin.com/company/fusioncentrix",
@@ -28,7 +28,7 @@ class ResellerController extends Controller
                 ]
             ],
             "description" => $meta_description,
-            "areaServed" => ["US", "Canada", "India", "Global"],
+            "areaServed" => ["Kolkata", "West Bengal", "India", "Worldwide"],
             "audience" => [
                 "@type" => "Audience",
                 "audienceType" => "Agencies, Resellers, Consultants"

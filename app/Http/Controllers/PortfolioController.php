@@ -9,9 +9,9 @@ class PortfolioController extends Controller
 {
     function index()
     {
-        $page_title = 'Our Portfolio – Web Design, Mobile Apps, Graphics & Branding';
-        $meta_description = 'Discover Fusioncentrix portfolio showcasing modern websites, mobile applications, professional branding, logos, posters, brochures, and digital design work. See real client projects and results.';
-        $meta_keywords = 'portfolio, web design, mobile app development, graphic design, logo design, branding, brochure design, poster design, UI/UX design, website portfolio, digital solutions, client work, design agency, web development services';
+        $page_title = 'Portfolio - Web Development, SEO, Branding & App Projects for US, UK, India and Worldwide';
+        $meta_description = 'Explore Fusioncentrix portfolio of web development, ecommerce, mobile app, branding and SEO-focused digital projects delivered for businesses in the US, UK, India and worldwide. Review real project outcomes and request a similar solution.';
+        $meta_keywords = 'portfolio, web development company portfolio, mobile app portfolio, branding portfolio, ecommerce development portfolio, SEO agency portfolio, US web development company, UK digital agency, India software company, worldwide development agency';
 
         // Get all active portfolio items with featured items first
         $portfolios = Portfolio::where('is_active', true)
@@ -46,26 +46,36 @@ class PortfolioController extends Controller
 
         $jsonLd = [
             "@context" => "https://schema.org",
-            "@type" => "CollectionPage",
-            "name" => $page_title,
-            "description" => $meta_description,
-            "url" => url('/portfolio'),
-            "dateModified" => now()->toIso8601String(),
-            "hasPart" => $creativeWorks,
-            "breadcrumb" => [
-                "@type" => "BreadcrumbList",
-                "itemListElement" => [
-                    [
-                        "@type" => "ListItem",
-                        "position" => 1,
-                        "name" => "Home",
-                        "item" => url('/')
-                    ],
-                    [
-                        "@type" => "ListItem",
-                        "position" => 2,
-                        "name" => "Portfolio",
-                        "item" => url('/portfolio')
+            "@graph" => [
+                [
+                    "@type" => "CollectionPage",
+                    "name" => $page_title,
+                    "description" => $meta_description,
+                    "url" => url('/portfolio'),
+                    "dateModified" => now()->toIso8601String(),
+                    "hasPart" => $creativeWorks,
+                    "about" => [
+                        ["@type" => "Thing", "name" => "Web Development"],
+                        ["@type" => "Thing", "name" => "SEO"],
+                        ["@type" => "Thing", "name" => "Mobile App Development"],
+                        ["@type" => "Thing", "name" => "Branding"],
+                    ]
+                ],
+                [
+                    "@type" => "BreadcrumbList",
+                    "itemListElement" => [
+                        [
+                            "@type" => "ListItem",
+                            "position" => 1,
+                            "name" => "Home",
+                            "item" => url('/')
+                        ],
+                        [
+                            "@type" => "ListItem",
+                            "position" => 2,
+                            "name" => "Portfolio",
+                            "item" => url('/portfolio')
+                        ]
                     ]
                 ]
             ]
@@ -85,27 +95,80 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
 
-        $page_title = $portfolio->title . ' - Fusioncentrix Portfolio';
-        $meta_description = $portfolio->short_description . ' | ' . $portfolio->client_name . ' - Fusioncentrix Project';
-        $meta_keywords = implode(', ', array_merge($portfolio->technologies ?? [], [$portfolio->category, $portfolio->client_name]));
+        $page_title = $portfolio->title . ' - Case Study for US, UK, India & Global Businesses | Fusioncentrix';
+        $meta_description = $portfolio->short_description . ' Delivered by Fusioncentrix for growth-focused businesses in the US, UK, India and worldwide. Review the case study, technologies, outcomes and request a similar solution.';
+        $meta_keywords = implode(', ', array_filter(array_merge(
+            $portfolio->technologies ?? [],
+            [$portfolio->category, $portfolio->client_name, 'US digital agency', 'UK software company', 'India web development company', 'global technology partner']
+        )));
+
+        $faqSchema = [
+            "@type" => "FAQPage",
+            "mainEntity" => [
+                [
+                    "@type" => "Question",
+                    "name" => 'Can Fusioncentrix build similar projects for businesses in the US, UK, India and worldwide?',
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => 'Yes. Fusioncentrix works with companies across the US, UK, India and global markets on web, mobile, branding and growth-focused digital projects.'
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => 'How do we start a similar project?',
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => 'Share your goals, timeline and scope through the contact page. The team will review requirements and propose the right delivery plan, budget range and next steps.'
+                    ]
+                ]
+            ]
+        ];
 
         $jsonLd = [
             "@context" => "https://schema.org",
-            "@type" => "CreativeWork",
-            "name" => $portfolio->title,
-            "description" => $portfolio->description,
-            "image" => $portfolio->image_url,
-            "url" => url('/portfolio/' . $portfolio->slug),
-            "client" => [
-                "@type" => "Organization",
-                "name" => $portfolio->client_name
-            ],
-            "creator" => [
-                "@type" => "Organization",
-                "name" => "Fusioncentrix"
-            ],
-            "datePublished" => $portfolio->created_at->toIso8601String(),
-            "keywords" => $meta_keywords
+            "@graph" => [
+                [
+                    "@type" => "CreativeWork",
+                    "name" => $portfolio->title,
+                    "description" => $portfolio->description,
+                    "image" => $portfolio->image_url,
+                    "url" => url('/portfolio/' . $portfolio->slug),
+                    "client" => [
+                        "@type" => "Organization",
+                        "name" => $portfolio->client_name
+                    ],
+                    "creator" => [
+                        "@type" => "Organization",
+                        "name" => "Fusioncentrix"
+                    ],
+                    "datePublished" => $portfolio->created_at->toIso8601String(),
+                    "keywords" => $meta_keywords
+                ],
+                [
+                    "@type" => "BreadcrumbList",
+                    "itemListElement" => [
+                        [
+                            "@type" => "ListItem",
+                            "position" => 1,
+                            "name" => "Home",
+                            "item" => url('/')
+                        ],
+                        [
+                            "@type" => "ListItem",
+                            "position" => 2,
+                            "name" => "Portfolio",
+                            "item" => url('/portfolio')
+                        ],
+                        [
+                            "@type" => "ListItem",
+                            "position" => 3,
+                            "name" => $portfolio->title,
+                            "item" => url('/portfolio/' . $portfolio->slug)
+                        ]
+                    ]
+                ],
+                $faqSchema
+            ]
         ];
 
         // Get related portfolios (same category, max 3)

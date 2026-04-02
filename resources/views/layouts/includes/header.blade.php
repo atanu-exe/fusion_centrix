@@ -13,6 +13,17 @@
 <html lang="en">
 
 <head>
+    @php
+        $canonicalUrl = $canonical_url ?? url()->current();
+        $defaultSeoTitle = 'Fusioncentrix - Web Development, SEO, Branding & Software Company in Kolkata, West Bengal, India';
+        $defaultSeoDescription = 'Fusioncentrix is a web development, SEO, branding, ecommerce and software company in Kolkata, West Bengal, India serving clients across India and worldwide with conversion-focused digital solutions.';
+        $defaultSeoKeywords = 'web development company Kolkata, SEO company Kolkata, digital marketing company West Bengal, software company India, branding agency Kolkata, ecommerce development India, Fusioncentrix';
+        $defaultSeoImage = asset('logo.png');
+        $seoTitle = isset($page_title) && $page_title ? trim($page_title . ' | Fusioncentrix') : $defaultSeoTitle;
+        $seoDescription = isset($meta_description) && $meta_description ? $meta_description : $defaultSeoDescription;
+        $seoKeywords = isset($meta_keywords) && $meta_keywords ? $meta_keywords : $defaultSeoKeywords;
+        $seoImage = $seo_image ?? $defaultSeoImage;
+    @endphp
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9ZFLYSZ8K"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -25,15 +36,28 @@
         gtag('config', 'G-V9ZFLYSZ8K');
     </script>
     <meta charset="UTF-8">
-    <title>
-        {{ isset($page_title) && $page_title ? $page_title . ' | ' : '' }}
-        Fusioncentrix
-    </title>
-    <meta name="description"
-        content="{{ isset($meta_description) && $meta_description ? $meta_description : 'Fusion Centrix Solutions provides professional IT services including web and app development, e-commerce solutions, digital marketing, UI/UX design, branding, and custom software for businesses in the US, Canada, India, and worldwide. Delivering scalable, SEO-friendly, and high-performance solutions to drive growth and engagement.' }}">
-    <meta name="keywords"
-        content="{{ $meta_keywords ?? 'Fusioncentrix, digital marketing India, SEO, branding, app development, social media marketing, logo design, advertising agency' }}">
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDescription }}">
+    <meta name="keywords" content="{{ $seoKeywords }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Fusioncentrix">
+    <meta name="geo.region" content="IN-WB">
+    <meta name="geo.placename" content="Kolkata">
+    <meta name="geo.position" content="22.5810;88.4152">
+    <meta name="ICBM" content="22.5810, 88.4152">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+    <meta property="og:site_name" content="Fusioncentrix">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ $seoImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $seoImage }}">
     @yield('meta')
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">

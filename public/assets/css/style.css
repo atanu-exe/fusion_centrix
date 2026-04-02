@@ -4929,6 +4929,42 @@ section strong {
   flex-wrap: wrap;
 }
 
+.portfolio-stats-section {
+  background: linear-gradient(180deg, #f8fbff 0%, #eef3ff 100%);
+}
+
+.portfolio-stats-section .stat-card {
+  background: #ffffff;
+  border: 1px solid #e6eaf2;
+  border-radius: 1rem;
+  padding: 1rem 0.9rem;
+  min-height: 100%;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.portfolio-stats-section .stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #d8e1f5;
+  box-shadow: 0 16px 34px rgba(29, 78, 216, 0.12);
+}
+
+.portfolio-stats-section .stat-number {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 1.7rem;
+  line-height: 1;
+  background: linear-gradient(120deg, #667eea 0%, #1d79ff 55%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.portfolio-stats-section .stat-label {
+  margin-top: 0.45rem;
+  color: #334155;
+  font-weight: 700;
+}
+
 #portfolio .portfolio-stats .stat {
   background: #f8f9ff;
   border: 1px solid #e6eaf2;
@@ -5238,6 +5274,84 @@ section strong {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.portfolio-market-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.portfolio-market-section .market-proof-card,
+.portfolio-detail .portfolio-market-proof,
+.portfolio-detail .portfolio-faq-block,
+.portfolio-detail .project-info-card {
+  background: #ffffff;
+  border: 1px solid #e6eaf2;
+  border-radius: 1.1rem;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+}
+
+.portfolio-market-section .market-proof-card {
+  padding: 1.5rem;
+}
+
+.portfolio-market-section .lead-cta-card {
+  padding: 1.15rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.09), rgba(29, 121, 255, 0.08));
+  border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.portfolio-market-section .lead-cta-card h3,
+.portfolio-detail .portfolio-faq-block h3 {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.market-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.market-tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(102, 126, 234, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+.portfolio-detail .project-info-card {
+  padding: 1.4rem;
+}
+
+.portfolio-detail .portfolio-market-proof,
+.portfolio-detail .portfolio-faq-block {
+  padding: 1.35rem;
+}
+
+.portfolio-detail .portfolio-market-proof p,
+.portfolio-detail .portfolio-faq-block p,
+.portfolio-market-section .lead-cta-card p {
+  color: #475569;
+  line-height: 1.7;
+}
+
+.portfolio-detail .faq-item + .faq-item {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e6eaf2;
+}
+
+.portfolio-detail .cta-helper {
+  color: #64748b;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 @media (max-width: 992px) {
   #portfolio .portfolio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5263,6 +5377,13 @@ section strong {
 
   #portfolio .portfolio-cta {
     padding: 1.4rem 1.1rem;
+  }
+
+  .portfolio-market-section .market-proof-card,
+  .portfolio-detail .portfolio-market-proof,
+  .portfolio-detail .portfolio-faq-block,
+  .portfolio-detail .project-info-card {
+    padding: 1rem;
   }
 }
 

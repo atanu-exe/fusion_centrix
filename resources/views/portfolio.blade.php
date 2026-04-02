@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('meta')
+    <link rel="canonical" href="{{ url('/portfolio') }}">
+    <meta property="og:title" content="{{ $page_title }}">
+    <meta property="og:description" content="{{ $meta_description }}">
+    <meta property="og:url" content="{{ url('/portfolio') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ $portfolios->first()->image_url ?? asset('logo.png') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page_title }}">
+    <meta name="twitter:description" content="{{ $meta_description }}">
+    <meta name="twitter:image" content="{{ $portfolios->first()->image_url ?? asset('logo.png') }}">
+@endsection
+
 @section('content')
     <!-- Header Section -->
     <section class="fc-header">
@@ -168,10 +181,39 @@
             </div>
         </div>
     </section>
-    <style>/* Temporary style override for debug */
-        .portfolio-stats-section {background: linear-gradient(90deg, #f4f6ff 0%, #e7efff 100%);}
-        .portfolio-stats .stat-number {font-size: 2rem; font-weight: 900;}
-    </style>
+
+    <section class="portfolio-market-section py-5">
+        <div class="container">
+            <div class="market-proof-card">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-7">
+                        <span class="portfolio-badge">Global Delivery</span>
+                        <h2 class="section-heading mt-3 mb-3">Built to win leads in the US, UK, India and worldwide</h2>
+                        <p class="section-description mb-3">
+                            Fusioncentrix helps businesses launch high-converting websites, ecommerce platforms, mobile apps,
+                            branding systems and SEO-ready digital experiences that perform across competitive international markets.
+                        </p>
+                        <div class="market-tags">
+                            <span>US-focused delivery</span>
+                            <span>UK-ready project communication</span>
+                            <span>India execution strength</span>
+                            <span>Worldwide remote collaboration</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="lead-cta-card">
+                            <h3>Need a similar project?</h3>
+                            <p>Share your goals and get a proposal tailored to your market, scope and budget.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="{{ route('contact_us') }}" class="btn btn-gradient">Request a Quote</a>
+                                <a href="{{ url('/services') }}" class="btn btn-outline-primary">Explore Services</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Call to Action Section -->
     <section class="get-quote-section fc-primary-bg">
