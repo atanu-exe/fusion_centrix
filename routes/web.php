@@ -1,4 +1,3 @@
-
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscriberController;
@@ -34,6 +33,8 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/reseller-program', [ResellerController::class, 'index'])->name('resellers');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/portfolio/export/json', [PortfolioController::class, 'exportJson'])->name('portfolio.export');
+Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact_us');
 Route::post('/contact-us', [HomeController::class, 'contact_us_submit'])->name('contact.submit');
 

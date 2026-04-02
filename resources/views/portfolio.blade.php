@@ -1,229 +1,290 @@
 @extends('layouts.app')
 
-
-
 @section('content')
+    <!-- Header Section -->
     <section class="fc-header">
         <div class="container">
             <div class="fc-header-content">
-                <h1>Project Showcase</h1>
-                <p>Our portfolio showcases a diverse range of projects, including web applications,
-
-                    e-commerce platforms, custom software, branding, and marketing campaigns.
-
-                    Each solution is designed to meet unique business needs while ensuring
-
-                    performance, scalability, and a seamless user experience.</p>
+                <h1>Our Portfolio</h1>
+                <p>
+                    Explore our diverse portfolio of modern websites, mobile applications, stunning graphics, 
+                    professional branding, and digital design solutions. Each project showcases our commitment 
+                    to creativity, quality, and delivering measurable results for our clients.
+                </p>
                 <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <span>Project Showcase</span>
+                    <a href="/">Home</a> / <span>Portfolio</span>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-
-
-
+    <!-- Portfolio Grid Section -->
     <section id="portfolio" class="fc-portfolio py-5">
         <div class="container">
+            <!-- Section Head -->
             <div class="portfolio-head text-center mb-5">
-                <span class="portfolio-badge">Work</span>
-                <h2 class="section-heading">Selected launches across industries</h2>
-                <p class="section-description text-muted">From SaaS dashboards to e-commerce and mobile apps, here are
-                    builds where we owned strategy, design, and engineering.</p>
+                <span class="portfolio-badge">Our Work</span>
+                <h2 class="section-heading">Featured Projects & Case Studies</h2>
+                <p class="section-description text-muted">
+                    From sleek corporate websites and robust e-commerce platforms to innovative mobile applications, 
+                    professional branding, logos, posters, brochures, and UI/UX designs – we've crafted solutions 
+                    that drive real business growth.
+                </p>
             </div>
 
-            {{-- <div class="portfolio-meta row g-3 align-items-center mb-4">
-                <div class="col-md-6">
-                    <div class="portfolio-stats">
-                        <div class="stat"><span class="stat-number">180+</span><span class="stat-label">Projects
-                                delivered</span></div>
-                        <div class="stat"><span class="stat-number">12</span><span class="stat-label">Industries
-                                served</span></div>
-                        <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Support &
-                                SLAs</span></div>
-                    </div>
+            <!-- Category Filter -->
+            <div class="portfolio-filters-wrapper mb-5">
+                <div class="d-flex justify-content-center flex-wrap gap-2">
+                    <button class="filter-chip active" data-filter="all">All Work</button>
+                    <button class="filter-chip" data-filter="Website">Websites</button>
+                    <button class="filter-chip" data-filter="Mobile App">Mobile Apps</button>
+                    <button class="filter-chip" data-filter="Graphics">Graphics</button>
+                    <button class="filter-chip" data-filter="Branding">Branding</button>
+                    <button class="filter-chip" data-filter="UI/UX Design">UI/UX Design</button>
+                    <button class="filter-chip" data-filter="E-commerce">E-commerce</button>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="portfolio-filters">
-                        <span class="filter-chip active">All</span>
-                        <span class="filter-chip">SaaS</span>
-                        <span class="filter-chip">E-commerce</span>
-                        <span class="filter-chip">Mobile</span>
-                        <span class="filter-chip">Branding</span>
-                    </div>
-                </div>
-            </div> --}}
-
-            <div class="portfolio-grid">
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image1.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image1.jpg') }}"
-                            alt="SaaS Dashboard" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">SaaS</div>
-                        <h5>SaaS Analytics Dashboard</h5>
-                        <p>Multi-tenant analytics with role-based access and real-time KPIs.</p>
-                        <div class="card-meta">Web App • React, Laravel, Postgres</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image2.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image2.jpg') }}"
-                            alt="E-commerce" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">E-commerce</div>
-                        <h5>Headless Commerce Revamp</h5>
-                        <p>Improved conversion with headless storefront, A/B testing, and fast checkout.</p>
-                        <div class="card-meta">Web • Vue, Laravel API, Stripe</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image3.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image3.jpg') }}"
-                            alt="Healthcare" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Healthcare</div>
-                        <h5>Patient Engagement Portal</h5>
-                        <p>Secure portal with telehealth scheduling, messaging, and lab results.</p>
-                        <div class="card-meta">Web • Laravel, Livewire, AWS</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image4.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image4.jpg') }}"
-                            alt="LMS" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">LMS</div>
-                        <h5>Learning Experience Platform</h5>
-                        <p>Personalized learning paths, assessments, and instructor dashboards.</p>
-                        <div class="card-meta">Web • Laravel, Inertia, MySQL</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image5.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image5.jpg') }}"
-                            alt="Mobile app" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Mobile</div>
-                        <h5>On-demand Services App</h5>
-                        <p>Consumer + provider apps with real-time tracking and wallet.</p>
-                        <div class="card-meta">Mobile • Flutter, Firebase</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image6.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image6.jpg') }}"
-                            alt="Fintech" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Fintech</div>
-                        <h5>Digital Banking Suite</h5>
-                        <p>Account onboarding, payments, and compliance-ready audit trails.</p>
-                        <div class="card-meta">Web • React, Node, Mongo</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image7.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image7.jpg') }}"
-                            alt="Branding" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Branding</div>
-                        <h5>Brand & Identity System</h5>
-                        <p>Logo, guidelines, and web visuals for a global SaaS launch.</p>
-                        <div class="card-meta">Design • Figma, Illustrator</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image8.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image8.jpg') }}"
-                            alt="Marketing" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Marketing</div>
-                        <h5>Performance Landing Suite</h5>
-                        <p>Conversion-focused landing pages with analytics and CRO loops.</p>
-                        <div class="card-meta">Web • Next.js, Headless CMS</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image9.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image9.jpg') }}"
-                            alt="Logistics" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Logistics</div>
-                        <h5>Fleet & Delivery Ops</h5>
-                        <p>Route optimization, driver app, and live ETAs for urban delivery.</p>
-                        <div class="card-meta">Web • Laravel, Maps APIs</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image10.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image10.jpg') }}"
-                            alt="CRM" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">CRM</div>
-                        <h5>Sales CRM Modernization</h5>
-                        <p>Pipeline automation, forecasting, and integrations with marketing ops.</p>
-                        <div class="card-meta">Web • Laravel, Vue, Redis</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image11.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image11.jpg') }}"
-                            alt="Hospitality" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Hospitality</div>
-                        <h5>Booking & Concierge</h5>
-                        <p>Property search, bookings, loyalty, and guest messaging.</p>
-                        <div class="card-meta">Web • React, Laravel, MySQL</div>
-                    </div>
-                </a>
-
-                <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image12.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image12.jpg') }}"
-                            alt="Marketplace" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Marketplace</div>
-                        <h5>B2B Services Marketplace</h5>
-                        <p>Vendor onboarding, RFQs, escrow payments, and reviews.</p>
-                        <div class="card-meta">Web • Laravel, Alpine, Stripe</div>
-                    </div>
-                </a>
-
-                {{-- <a class="portfolio-card" href="{{ asset('assets/images/portfolio/image13.jpg') }}" target="_blank">
-                    <div class="card-media"><img src="{{ asset('assets/images/portfolio/thumb/image13.jpg') }}"
-                            alt="Analytics" loading="lazy"></div>
-                    <div class="card-body">
-                        <div class="card-chip">Analytics</div>
-                        <h5>Embedded Analytics Suite</h5>
-                        <p>White-label analytics with custom theming and permissions.</p>
-                        <div class="card-meta">Web • React, Laravel, Supabase</div>
-                    </div>
-                </a> --}}
             </div>
 
-           
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolio-grid">
+                @forelse($portfolios as $portfolio)
+                    <article class="portfolio-card" data-category="{{ $portfolio->category }}" data-category-type="{{ in_array($portfolio->category, ['Graphics', 'Branding']) ? 'graphics' : 'website' }}">
+                        <div class="card-image-wrapper">
+                            @if(in_array($portfolio->category, ['Graphics', 'Branding']))
+                                <!-- Graphics/Logo: Click to view full image -->
+                                <a href="#" class="image-trigger" data-image="{{ $portfolio->image_url }}" data-title="{{ $portfolio->title }}">
+                                    <img 
+                                        src="{{ $portfolio->thumb_url }}" 
+                                        alt="{{ $portfolio->title }}"
+                                        loading="lazy"
+                                        class="card-image"
+                                    >
+                                    <div class="card-overlay">
+                                        <div class="overlay-content">
+                                            <span class="card-category">{{ $portfolio->category }}</span>
+                                            <h3>{{ $portfolio->title }}</h3>
+                                            <p class="text-center">Click to View Full Image</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            @else
+                                <!-- Website/Project: Click for details -->
+                                <a href="{{ route('portfolio.show', $portfolio->slug) }}" class="image-trigger">
+                                    <img 
+                                        src="{{ $portfolio->thumb_url }}" 
+                                        alt="{{ $portfolio->title }}"
+                                        loading="lazy"
+                                        class="card-image"
+                                    >
+                                    <div class="card-overlay">
+                                        <div class="overlay-content">
+                                            <span class="card-category">{{ $portfolio->category }}</span>
+                                            <h3>{{ $portfolio->title }}</h3>
+                                            <p>{{ $portfolio->short_description }}</p>
+                                            <div class="card-actions">
+                                                @if($portfolio->live_demo_url)
+                                                    <a href="{{ $portfolio->live_demo_url }}" target="_blank" onclick="event.stopPropagation();" class="btn btn-sm" title="View Live Demo">
+                                                        <span>View Live</span>
+                                                    </a>
+                                                @endif
+                                                <span class="btn btn-sm">Details →</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $portfolio->title }}</h5>
+                            <p class="card-client">
+                                <strong>Client:</strong> {{ $portfolio->client_name }}
+                                @if($portfolio->client_industry)
+                                    <span class="badge bg-dark-subtle text-dark">{{ $portfolio->client_industry }}</span>
+                                @endif
+                            </p>
+                            <p class="card-description">{{ $portfolio->short_description }}</p>
+                            @if($portfolio->technologies && count($portfolio->technologies))
+                                <div class="card-tech-stack">
+                                    @foreach($portfolio->technologies as $tech)
+                                        <span class="tech-tag badge bg-dark-subtle text-dark">{{ $tech }}</span>
+                                    @endforeach
+                                </div>
+                            @endif
+                            @if($portfolio->results && count($portfolio->results))
+                                <div class="card-results">
+                                    <strong>Results:</strong>
+                                    <ul class="results-list">
+                                        @foreach($portfolio->results as $result)
+                                            <li>{{ $result }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="card-footer">
+                                @if($portfolio->year_completed)
+                                    <span class="year-badge">{{ $portfolio->year_completed }}</span>
+                                @endif
+                                <a href="{{ route('portfolio.show', $portfolio->slug) }}" class="view-more">View Case Study →</a>
+                            </div>
+                        </div>
+                    </article>
+                @empty
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">No portfolio items available at the moment. Please check back soon!</p>
+                    </div>
+                @endforelse
+            </div>
         </div>
     </section>
-     <section class="get-quote-section fc-primary-bg" id="get-quote">
-                <div class="container">
-                    <div class="quote-card">
-                        <div class="row align-items-center gy-3">
-                            <div class="col-lg-8 text-center text-lg-start">
-                                <h3 class="display-5 fw-bold mb-3">Want to see a detailed case study?</h3>
-                                <p class="lead mb-4 opacity-90">Tell us your industry and we’ll share relevant work with
-                                    metrics and demos.</p>
-                            </div>
-                            <div class="col-lg-4 text-center text-lg-end">
-                                <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                                    {{-- <a href="http://127.0.0.1:8000/contact-us" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">Request a case study</a> --}}
-                                    <a href="http://127.0.0.1:8000/contact-us"
-                                        class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">Request a case
-                                        study</a>
-                                </div>
-                            </div>
+
+    <!-- Stats Section -->
+    <section class="portfolio-stats-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ $portfolios->count() }}+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ $portfolios->pluck('client_name')->unique()->count() }}</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Service Categories</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>/* Temporary style override for debug */
+        .portfolio-stats-section {background: linear-gradient(90deg, #f4f6ff 0%, #e7efff 100%);}
+        .portfolio-stats .stat-number {font-size: 2rem; font-weight: 900;}
+    </style>
+
+    <!-- Call to Action Section -->
+    <section class="get-quote-section fc-primary-bg">
+        <div class="container">
+            <div class="quote-card">
+                <div class="row align-items-center gy-3">
+                    <div class="col-lg-8 text-center text-lg-start">
+                        <h3 class="display-5 fw-bold mb-3">Ready to Build Your Next Project?</h3>
+                        <p class="lead mb-4 opacity-90">
+                            Let's bring your vision to life with modern web design, mobile apps, professional branding, 
+                            and digital solutions tailored to your business goals.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center text-lg-end">
+                        <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
+                            <a href="{{ route('contact_us') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill">
+                                Get In Touch
+                            </a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal for Graphics/Logos -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-title" id="modalTitle"></div>
+        </div>
+    </div>
+
+    <!-- Portfolio Filter & Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-chip');
+            const portfolioCards = document.querySelectorAll('[data-category]');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalClose = document.querySelector('.modal-close');
+            const imageTriggers = document.querySelectorAll('.image-trigger');
+
+            // Image Modal Functionality
+            imageTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    const categoryType = this.closest('[data-category-type]').getAttribute('data-category-type');
+                    
+                    // For graphics/logos, show modal. For websites, allow default navigation
+                    if (categoryType === 'graphics') {
+                        e.preventDefault();
+                        const imageUrl = this.getAttribute('data-image');
+                        const title = this.getAttribute('data-title');
+                        
+                        if (imageUrl) {
+                            modalImage.src = imageUrl;
+                            modalTitle.textContent = title;
+                            imageModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
+                });
+            });
+
+            // Close Modal
+            function closeModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Keyboard close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            // Filter Functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter portfolio items
+                    portfolioCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.classList.add('show');
+                            }, 10);
+                        } else {
+                            card.classList.remove('show');
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
 @endsection

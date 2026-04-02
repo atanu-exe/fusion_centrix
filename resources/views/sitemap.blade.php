@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+{!! '<?xml version="1.0" encoding="UTF-8"?>' !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Main Pages -->
@@ -83,6 +83,16 @@
         <loc>{{ url('/blog/' . $blog->slug) }}</loc>
         <lastmod>{{ $blog->updated_at->toIso8601String() }}</lastmod>
         <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    @endforeach
+
+    <!-- Active Portfolio Entries -->
+    @foreach($portfolios as $portfolio)
+    <url>
+        <loc>{{ url('/portfolio/' . $portfolio->slug) }}</loc>
+        <lastmod>{{ $portfolio->updated_at->toIso8601String() }}</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     @endforeach
