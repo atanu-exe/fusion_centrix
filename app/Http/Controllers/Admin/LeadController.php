@@ -12,6 +12,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LeadController extends Controller
 {
@@ -54,6 +56,24 @@ class LeadController extends Controller
             $query->where('priority', $request->priority);
         }
 
+        // Date range filter for created_at
+        if ($request->filled('date_from') || $request->filled('date_to')) {
+            try {
+                $from = $request->filled('date_from') ? \Carbon\Carbon::parse($request->date_from)->startOfDay() : null;
+                $to = $request->filled('date_to') ? \Carbon\Carbon::parse($request->date_to)->endOfDay() : null;
+
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                } elseif ($from) {
+                    $query->where('created_at', '>=', $from);
+                } elseif ($to) {
+                    $query->where('created_at', '<=', $to);
+                }
+            } catch (\Exception $e) {
+                // ignore invalid date formats
+            }
+        }
+
         // Permission check - employees see only assigned leads
         if (!auth()->user()->hasPermission('leads.view_all')) {
             $query->where('assigned_to', auth()->id());
@@ -61,8 +81,8 @@ class LeadController extends Controller
 
         // Sorting
         $sortBy = $request->get('sort', 'created_at');
-        $sortDir = $request->get('dir', 'desc');
-        
+        $sortDir = $request->get('dir', 'desc') === 'asc' ? 'asc' : 'desc';
+
         switch ($sortBy) {
             case 'name':
                 $query->orderBy('name', $sortDir);
@@ -75,10 +95,10 @@ class LeadController extends Controller
                     $join->on('leads.id', '=', 'lf_last.lead_id')
                         ->where('lf_last.is_completed', true);
                 })
-                ->select('leads.*')
-                ->selectRaw('MAX(lf_last.created_at) as last_followup_date')
-                ->groupBy('leads.id')
-                ->orderByRaw("last_followup_date IS NULL, last_followup_date {$sortDir}");
+                    ->select('leads.*')
+                    ->selectRaw('MAX(lf_last.created_at) as last_followup_date')
+                    ->groupBy('leads.id')
+                    ->orderByRaw("last_followup_date IS NULL, last_followup_date {$sortDir}");
                 break;
             case 'next_followup':
                 $query->leftJoin('lead_followups as lf_next', function ($join) {
@@ -86,10 +106,10 @@ class LeadController extends Controller
                         ->where('lf_next.is_completed', false)
                         ->whereNotNull('lf_next.followup_date');
                 })
-                ->select('leads.*')
-                ->selectRaw('MIN(lf_next.followup_date) as next_followup_date')
-                ->groupBy('leads.id')
-                ->orderByRaw("next_followup_date IS NULL, next_followup_date {$sortDir}");
+                    ->select('leads.*')
+                    ->selectRaw('MIN(lf_next.followup_date) as next_followup_date')
+                    ->groupBy('leads.id')
+                    ->orderByRaw("next_followup_date IS NULL, next_followup_date {$sortDir}");
                 break;
             case 'priority':
                 $query->orderByRaw("FIELD(priority, 'urgent', 'high', 'medium', 'low') " . ($sortDir === 'desc' ? 'ASC' : 'DESC'));
@@ -101,21 +121,28 @@ class LeadController extends Controller
                 $query->orderBy('created_at', $sortDir);
         }
 
-        $leads = $query->paginate(20)->withQueryString();
+        $perPage = (int) $request->get('per_page', 20);
+        $perPage = $perPage > 0 ? $perPage : 20;
+        $leads = $query->paginate($perPage)->withQueryString();
 
         $statuses = LeadStatus::where('is_active', true)->orderBy('order')->get();
         $sources = LeadSource::where('is_active', true)->get();
         $users = User::where('is_active', true)->orderBy('name')->get();
 
+        // Per-status counts (used for the status pills in the view)
+        $statusCounts = $statuses->mapWithKeys(function ($status) {
+            return [$status->slug => Lead::where('lead_status_id', $status->id)->count()];
+        })->toArray();
+
         // Stats
-        $stats = [
+        $stats = array_merge([
             'total' => Lead::count(),
             'new_today' => Lead::whereDate('created_at', today())->count(),
             'needs_followup' => Lead::whereHas('nextFollowup', function ($q) {
                 $q->where('followup_date', '<=', now());
             })->count(),
             'unassigned' => Lead::whereNull('assigned_to')->count(),
-        ];
+        ], $statusCounts);
 
         return view('admin.leads.index', compact('leads', 'statuses', 'sources', 'users', 'stats'));
     }
@@ -146,11 +173,25 @@ class LeadController extends Controller
 
         $lead = Lead::create([
             ...$request->only([
-                'name', 'email', 'phone', 'alternate_phone', 'company',
-                'designation', 'website', 'address', 'city', 'state',
-                'country', 'postal_code', 'lead_source_id', 'lead_status_id',
-                'assigned_to', 'estimated_value', 'expected_close_date',
-                'description', 'priority'
+                'name',
+                'email',
+                'phone',
+                'alternate_phone',
+                'company',
+                'designation',
+                'website',
+                'address',
+                'city',
+                'state',
+                'country',
+                'postal_code',
+                'lead_source_id',
+                'lead_status_id',
+                'assigned_to',
+                'estimated_value',
+                'expected_close_date',
+                'description',
+                'priority'
             ]),
             'priority' => $request->input('priority', 'medium'),
             'created_by' => auth()->id(),
@@ -193,11 +234,25 @@ class LeadController extends Controller
         ]);
 
         $lead->update($request->only([
-            'name', 'email', 'phone', 'alternate_phone', 'company',
-            'designation', 'website', 'address', 'city', 'state',
-            'country', 'postal_code', 'lead_source_id', 'lead_status_id',
-            'assigned_to', 'estimated_value', 'expected_close_date',
-            'description', 'priority'
+            'name',
+            'email',
+            'phone',
+            'alternate_phone',
+            'company',
+            'designation',
+            'website',
+            'address',
+            'city',
+            'state',
+            'country',
+            'postal_code',
+            'lead_source_id',
+            'lead_status_id',
+            'assigned_to',
+            'estimated_value',
+            'expected_close_date',
+            'description',
+            'priority'
         ]));
 
         return redirect()->route('admin.leads.show', $lead)
@@ -289,6 +344,113 @@ class LeadController extends Controller
         return view('admin.leads.import', compact('sources', 'statuses', 'users', 'imports'));
     }
 
+    // public function import(Request $request)
+    // {
+    //     $request->validate([
+    //         'file' => 'required|file|mimes:xlsx,xls,csv|max:10240',
+    //         'lead_source_id' => 'nullable|exists:lead_sources,id',
+    //         'lead_status_id' => 'nullable|exists:lead_statuses,id',
+    //         'assigned_to' => 'nullable|exists:users,id',
+    //     ]);
+
+    //     $file = $request->file('file');
+    //     $batchId = Str::uuid()->toString();
+
+    //     try {
+    //         $spreadsheet = IOFactory::load($file->getPathname());
+    //         $worksheet = $spreadsheet->getActiveSheet();
+    //         $rows = $worksheet->toArray();
+
+    //         // First row is headers
+    //         $headers = array_shift($rows);
+    //         $headers = array_map('strtolower', array_map('trim', $headers));
+
+    //         // Column mapping
+    //         $mapping = [
+    //             'name' => $this->findColumn($headers, ['name', 'full name', 'contact name']),
+    //             'email' => $this->findColumn($headers, ['email', 'email address', 'e-mail']),
+    //             'phone' => $this->findColumn($headers, ['phone', 'mobile', 'contact', 'phone number']),
+    //             'company' => $this->findColumn($headers, ['company', 'organization', 'company name']),
+    //             'city' => $this->findColumn($headers, ['city', 'location']),
+    //             'state' => $this->findColumn($headers, ['state', 'province', 'region']),
+    //             'country' => $this->findColumn($headers, ['country']),
+    //         ];
+
+    //         $import = LeadImport::create([
+    //             'filename' => $file->getClientOriginalName(),
+    //             'batch_id' => $batchId,
+    //             'total_rows' => count($rows),
+    //             'column_mapping' => $mapping,
+    //             'status' => 'processing',
+    //             'imported_by' => auth()->id(),
+    //         ]);
+
+    //         $imported = 0;
+    //         $duplicates = 0;
+    //         $errors = [];
+
+    //         foreach ($rows as $index => $row) {
+    //             $rowNum = $index + 2; // Account for header row
+
+    //             $name = $mapping['name'] !== null ? trim($row[$mapping['name']] ?? '') : '';
+    //             $email = $mapping['email'] !== null ? trim($row[$mapping['email']] ?? '') : null;
+    //             $phone = $mapping['phone'] !== null ? trim($row[$mapping['phone']] ?? '') : null;
+
+    //             // Skip empty rows
+    //             if (empty($name) && empty($email) && empty($phone)) {
+    //                 continue;
+    //             }
+
+    //             // Check for duplicates
+    //             if ($email || $phone) {
+    //                 $exists = Lead::where(function ($q) use ($email, $phone) {
+    //                     if ($email) $q->orWhere('email', $email);
+    //                     if ($phone) $q->orWhere('phone', $phone);
+    //                 })->exists();
+
+    //                 if ($exists) {
+    //                     $duplicates++;
+    //                     continue;
+    //                 }
+    //             }
+
+    //             try {
+    //                 Lead::create([
+    //                     'name' => $name ?: 'Unknown',
+    //                     'email' => $email,
+    //                     'phone' => $phone,
+    //                     'company' => $mapping['company'] !== null ? trim($row[$mapping['company']] ?? '') : null,
+    //                     'city' => $mapping['city'] !== null ? trim($row[$mapping['city']] ?? '') : null,
+    //                     'state' => $mapping['state'] !== null ? trim($row[$mapping['state']] ?? '') : null,
+    //                     'country' => $mapping['country'] !== null ? trim($row[$mapping['country']] ?? '') : null,
+    //                     'lead_source_id' => $request->lead_source_id,
+    //                     'lead_status_id' => $request->lead_status_id ?? LeadStatus::where('order', 1)->first()?->id,
+    //                     'assigned_to' => $request->assigned_to,
+    //                     'created_by' => auth()->id(),
+    //                     'import_batch' => $batchId,
+    //                     'priority' => 'medium',
+    //                 ]);
+    //                 $imported++;
+    //             } catch (\Exception $e) {
+    //                 $errors[] = "Row {$rowNum}: " . $e->getMessage();
+    //             }
+    //         }
+
+    //         $import->update([
+    //             'imported_rows' => $imported,
+    //             'duplicate_rows' => $duplicates,
+    //             'failed_rows' => count($errors),
+    //             'errors' => $errors,
+    //             'status' => 'completed',
+    //         ]);
+
+    //         return redirect()->route('admin.leads.index')
+    //             ->with('success', "Import completed: {$imported} imported, {$duplicates} duplicates skipped.");
+
+    //     } catch (\Exception $e) {
+    //         return back()->with('error', 'Import failed: ' . $e->getMessage());
+    //     }
+    // }
     public function import(Request $request)
     {
         $request->validate([
@@ -297,28 +459,102 @@ class LeadController extends Controller
             'lead_status_id' => 'nullable|exists:lead_statuses,id',
             'assigned_to' => 'nullable|exists:users,id',
         ]);
-
         $file = $request->file('file');
         $batchId = Str::uuid()->toString();
 
+        DB::beginTransaction();
+
         try {
+
             $spreadsheet = IOFactory::load($file->getPathname());
             $worksheet = $spreadsheet->getActiveSheet();
             $rows = $worksheet->toArray();
 
-            // First row is headers
-            $headers = array_shift($rows);
-            $headers = array_map('strtolower', array_map('trim', $headers));
+            if (empty($rows)) {
+                throw new \Exception('The uploaded file is empty.');
+            }
 
-            // Column mapping
+            // Extract headers
+            $headers = array_shift($rows);
+
+            $headers = array_map(function ($header) {
+                return strtolower(trim((string) $header));
+            }, $headers);
+
+            // Map Columns
             $mapping = [
-                'name' => $this->findColumn($headers, ['name', 'full name', 'contact name']),
-                'email' => $this->findColumn($headers, ['email', 'email address', 'e-mail']),
-                'phone' => $this->findColumn($headers, ['phone', 'mobile', 'contact', 'phone number']),
-                'company' => $this->findColumn($headers, ['company', 'organization', 'company name']),
-                'city' => $this->findColumn($headers, ['city', 'location']),
-                'state' => $this->findColumn($headers, ['state', 'province', 'region']),
-                'country' => $this->findColumn($headers, ['country']),
+
+                'name' => $this->findColumn($headers, [
+                    'name',
+                    'full name',
+                    'contact name'
+                ]),
+
+                'email' => $this->findColumn($headers, [
+                    'email',
+                    'email address',
+                    'e-mail'
+                ]),
+
+                'phone' => $this->findColumn($headers, [
+                    'phone',
+                    'mobile',
+                    'contact',
+                    'phone number'
+                ]),
+
+                'company' => $this->findColumn($headers, [
+                    'company',
+                    'organization',
+                    'company name'
+                ]),
+
+                'designation' => $this->findColumn($headers, [
+                    'designation',
+                    'job title',
+                    'title'
+                ]),
+
+                'website' => $this->findColumn($headers, [
+                    'website',
+                    'url'
+                ]),
+
+                'industry' => $this->findColumn($headers, [
+                    'industry'
+                ]),
+
+                'address' => $this->findColumn($headers, [
+                    'address'
+                ]),
+
+                'city' => $this->findColumn($headers, [
+                    'city',
+                    'location'
+                ]),
+
+                'state' => $this->findColumn($headers, [
+                    'state',
+                    'province',
+                    'region'
+                ]),
+
+                'country' => $this->findColumn($headers, [
+                    'country'
+                ]),
+
+                'postal_code' => $this->findColumn($headers, [
+                    'postal_code',
+                    'zip',
+                    'zipcode',
+                    'pincode'
+                ]),
+
+                'description' => $this->findColumn($headers, [
+                    'description',
+                    'notes',
+                    'requirement'
+                ]),
             ];
 
             $import = LeadImport::create([
@@ -330,27 +566,44 @@ class LeadController extends Controller
                 'imported_by' => auth()->id(),
             ]);
 
+            $defaultStatusId = $request->lead_status_id
+                ?? LeadStatus::where('order', 1)->value('id');
+
             $imported = 0;
             $duplicates = 0;
             $errors = [];
 
             foreach ($rows as $index => $row) {
-                $rowNum = $index + 2; // Account for header row
+
+                $rowNum = $index + 2;
 
                 $name = $mapping['name'] !== null ? trim($row[$mapping['name']] ?? '') : '';
-                $email = $mapping['email'] !== null ? trim($row[$mapping['email']] ?? '') : null;
-                $phone = $mapping['phone'] !== null ? trim($row[$mapping['phone']] ?? '') : null;
+                $email = $mapping['email'] !== null ? strtolower(trim($row[$mapping['email']] ?? '')) : null;
+                $phone = $mapping['phone'] !== null ? preg_replace('/\D/', '', trim($row[$mapping['phone']] ?? '')) : null;
 
-                // Skip empty rows
+                // Skip completely empty rows
                 if (empty($name) && empty($email) && empty($phone)) {
                     continue;
                 }
 
-                // Check for duplicates
-                if ($email || $phone) {
-                    $exists = Lead::where(function ($q) use ($email, $phone) {
-                        if ($email) $q->orWhere('email', $email);
-                        if ($phone) $q->orWhere('phone', $phone);
+                // Name is mandatory
+                if (empty($name)) {
+                    $errors[] = "Row {$rowNum}: Name is required.";
+                    continue;
+                }
+
+                // Skip duplicates only if user selected the option
+                if ($request->boolean('skip_duplicates') && ($email || $phone)) {
+
+                    $exists = Lead::where(function ($query) use ($email, $phone) {
+
+                        if (!empty($email)) {
+                            $query->orWhere('email', $email);
+                        }
+
+                        if (!empty($phone)) {
+                            $query->orWhere('phone', $phone);
+                        }
                     })->exists();
 
                     if ($exists) {
@@ -360,40 +613,110 @@ class LeadController extends Controller
                 }
 
                 try {
+
                     Lead::create([
-                        'name' => $name ?: 'Unknown',
+
+                        'name' => $name,
+
                         'email' => $email,
+
                         'phone' => $phone,
-                        'company' => $mapping['company'] !== null ? trim($row[$mapping['company']] ?? '') : null,
-                        'city' => $mapping['city'] !== null ? trim($row[$mapping['city']] ?? '') : null,
-                        'state' => $mapping['state'] !== null ? trim($row[$mapping['state']] ?? '') : null,
-                        'country' => $mapping['country'] !== null ? trim($row[$mapping['country']] ?? '') : null,
+
+                        'company' => $mapping['company'] !== null
+                            ? trim($row[$mapping['company']] ?? '')
+                            : null,
+
+                        'designation' => $mapping['designation'] !== null
+                            ? trim($row[$mapping['designation']] ?? '')
+                            : null,
+
+                        'website' => $mapping['website'] !== null
+                            ? trim($row[$mapping['website']] ?? '')
+                            : null,
+
+                        'industry' => $mapping['industry'] !== null
+                            ? trim($row[$mapping['industry']] ?? '')
+                            : null,
+
+                        'address' => $mapping['address'] !== null
+                            ? trim($row[$mapping['address']] ?? '')
+                            : null,
+
+                        'city' => $mapping['city'] !== null
+                            ? trim($row[$mapping['city']] ?? '')
+                            : null,
+
+                        'state' => $mapping['state'] !== null
+                            ? trim($row[$mapping['state']] ?? '')
+                            : null,
+
+                        'country' => $mapping['country'] !== null
+                            ? trim($row[$mapping['country']] ?? '')
+                            : null,
+
+                        'postal_code' => $mapping['postal_code'] !== null
+                            ? trim($row[$mapping['postal_code']] ?? '')
+                            : null,
+
+                        'description' => $mapping['description'] !== null
+                            ? trim($row[$mapping['description']] ?? '')
+                            : null,
+
                         'lead_source_id' => $request->lead_source_id,
-                        'lead_status_id' => $request->lead_status_id ?? LeadStatus::where('order', 1)->first()?->id,
+
+                        'lead_status_id' => $defaultStatusId,
+
                         'assigned_to' => $request->assigned_to,
-                        'created_by' => auth()->id(),
-                        'import_batch' => $batchId,
+
                         'priority' => 'medium',
+
+                        'created_by' => auth()->id(),
+
+                        'import_batch' => $batchId,
+
                     ]);
+
                     $imported++;
                 } catch (\Exception $e) {
-                    $errors[] = "Row {$rowNum}: " . $e->getMessage();
+
+                    Log::error($e);
+
+                    $errors[] = "Row {$rowNum}: {$e->getMessage()}";
                 }
             }
 
             $import->update([
+
                 'imported_rows' => $imported,
+
                 'duplicate_rows' => $duplicates,
+
                 'failed_rows' => count($errors),
+
                 'errors' => $errors,
+
                 'status' => 'completed',
+
             ]);
 
-            return redirect()->route('admin.leads.index')
-                ->with('success', "Import completed: {$imported} imported, {$duplicates} duplicates skipped.");
+            DB::commit();
 
+            return redirect()
+                ->route('admin.leads.index')
+                ->with(
+                    'success',
+                    "Import completed successfully! Imported: {$imported}, Duplicates: {$duplicates}, Failed: " . count($errors)
+                );
         } catch (\Exception $e) {
-            return back()->with('error', 'Import failed: ' . $e->getMessage());
+
+            DB::rollBack();
+
+            Log::error($e);
+
+            return back()->with(
+                'error',
+                'Import failed: ' . $e->getMessage()
+            );
         }
     }
 

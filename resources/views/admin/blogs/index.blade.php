@@ -105,7 +105,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 @if($blog->thumbnail_image)
-                                    <img src="{{ $blog->thumbnail_image }}" alt="{{ $blog->title }}" 
+                                    <img src="{{ $blog->thumbnail_image_url }}" alt="{{ $blog->title }}" 
                                          class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
                                 @else
                                     <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" 

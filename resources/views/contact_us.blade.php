@@ -53,14 +53,14 @@
                             <div class="icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <div class="label">Email</div>
-                                <a class="value" href="mailto:info@fusioncentrix.com">info@fusioncentrix.com</a>
+                                <a class="value" href="mailto:info@fusioncentrix.com">{{$contact_email}}</a>
                             </div>
                         </div>
                         <div class="contact-card">
                             <div class="icon"><i class="fas fa-phone"></i></div>
                             <div>
                                 <div class="label">Phone</div>
-                                <a class="value" href="tel:+919477614409">+91 9477614409</a>
+                                <a class="value" href="tel:+919477614409">{{$contact_phone}}</a>
                             </div>
                         </div>
                     </div>

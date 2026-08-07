@@ -34,6 +34,61 @@ class Blog extends Model
         'scheduled_at' => 'datetime',
     ];
 
+    protected function getImageFilename($value)
+    {
+        if (!$value) {
+            return null;
+        }
+
+        if (filter_var($value, FILTER_VALIDATE_URL)) {
+            return $value;
+        }
+
+        return basename((string) $value);
+    }
+
+    protected function resolveImageUrl(string $size, $value)
+    {
+        if (!$value) {
+            return null;
+        }
+
+        if (filter_var($value, FILTER_VALIDATE_URL)) {
+            return $value;
+        }
+
+        $filename = $this->getImageFilename($value);
+
+        return asset("storage/blog/{$size}/{$filename}");
+    }
+
+    public function getFeaturedImageUrlAttribute()
+    {
+        if (!$this->featured_image) {
+            return null;
+        }
+
+        return $this->resolveImageUrl('big', $this->featured_image);
+    }
+
+    public function getThumbnailImageUrlAttribute()
+    {
+        if ($this->thumbnail_image) {
+            return $this->resolveImageUrl('mid', $this->thumbnail_image);
+        }
+
+        return $this->featured_image ? $this->resolveImageUrl('mid', $this->featured_image) : null;
+    }
+
+    public function getSmallImageUrlAttribute()
+    {
+        if ($this->thumbnail_image) {
+            return $this->resolveImageUrl('small', $this->thumbnail_image);
+        }
+
+        return $this->featured_image ? $this->resolveImageUrl('small', $this->featured_image) : null;
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');

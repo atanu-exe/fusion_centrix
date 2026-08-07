@@ -32,7 +32,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 @if($blog->featured_image)
-                <img src="{{ asset('storage/blog/' . $blog->featured_image) }}" alt="{{ $blog->title }}" 
+                <img src="{{ $blog->featured_image_url }}" alt="{{ $blog->title }}" 
                      class="img-fluid rounded mb-4" style="max-height: 400px; width: 100%; object-fit: cover;">
                 @endif
                 

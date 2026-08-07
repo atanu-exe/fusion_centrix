@@ -252,7 +252,7 @@
                 <div class="card-body">
                     @if($blog->featured_image)
                     <div class="mb-3 text-center">
-                        <img src="{{ $blog->featured_image }}" alt="Current featured image" class="current-image w-100 mb-2">
+                        <img src="{{ $blog->featured_image_url }}" alt="Current featured image" class="current-image w-100 mb-2">
                         <small class="text-muted d-block">Current image</small>
                     </div>
                     @endif
@@ -281,7 +281,7 @@
                 <div class="card-body">
                     @if($blog->thumbnail_image)
                     <div class="mb-3 text-center">
-                        <img src="{{ $blog->thumbnail_image }}" alt="Current thumbnail" class="current-image w-100 mb-2">
+                        <img src="{{ $blog->thumbnail_image_url }}" alt="Current thumbnail" class="current-image w-100 mb-2">
                         <small class="text-muted d-block">Current thumbnail</small>
                     </div>
                     @endif

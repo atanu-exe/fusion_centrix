@@ -8,6 +8,7 @@ use App\Models\EmailLog;
 use App\Models\EmailTemplate;
 use App\Models\Lead;
 use App\Models\LeadStatus;
+use App\Models\Setting;
 use App\Services\EmailTrackingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -42,12 +43,14 @@ class EmailCampaignController extends Controller
         $leadCount = \App\Models\Lead::count();
         $sources = \App\Models\LeadSource::where('is_active', true)->get();
         $leads = \App\Models\Lead::select('id', 'name', 'email')->get();
+        $settings_email_form_name = Setting::get('mail_from_name');
+        $settings_email_reply_to = Setting::get('mail_from_address');
 
-        return view('admin.email.campaigns.create', compact('templates', 'statuses', 'leadCount', 'sources', 'leads'));
+        return view('admin.email.campaigns.create', compact('templates', 'statuses', 'leadCount', 'sources', 'leads', 'settings_email_form_name','settings_email_reply_to'));
     }
 
     public function store(Request $request)
-    {
+    { 
         $request->validate([
             'name' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
@@ -59,7 +62,7 @@ class EmailCampaignController extends Controller
 
         // Build recipient filter based on recipient_type
         $recipientFilter = [];
-        
+
         if ($request->recipient_type === 'by_status' && $request->has('status_ids')) {
             $recipientFilter['status_ids'] = $request->status_ids;
         } elseif ($request->recipient_type === 'by_source' && $request->has('source_ids')) {
@@ -93,7 +96,7 @@ class EmailCampaignController extends Controller
             if (!$request->filled('scheduled_at')) {
                 return back()->withInput()->with('error', 'Please specify a schedule time.');
             }
-            
+
             $campaign->update([
                 'status' => 'scheduled',
                 'scheduled_at' => $request->scheduled_at,
@@ -130,6 +133,7 @@ class EmailCampaignController extends Controller
             if (!$lead->email) continue;
 
             try {
+                
                 // Parse template variables
                 $subject = $this->parseVariables($campaign->subject, $lead);
                 $body = $this->parseVariables($campaign->content, $lead);
@@ -139,6 +143,7 @@ class EmailCampaignController extends Controller
                 $emailLog = EmailLog::create([
                     'campaign_id' => $campaign->id,
                     'lead_id' => $lead->id,
+                    'user_id' => $lead->id,
                     'to_email' => $lead->email,
                     'to_name' => $lead->name,
                     'subject' => $subject,
@@ -155,19 +160,17 @@ class EmailCampaignController extends Controller
                 $bodyWithTracking = $bodyWithLinkTracking . "\n" . $trackingPixel;
 
                 // Send email (using Laravel Mail)
-                Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
+               $res = Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
                     $message->to($lead->email, $lead->name)
                         ->subject($subject)
                         ->html($bodyWithTracking);
                 });
-
                 $emailLog->update([
                     'status' => 'sent',
                     'sent_at' => now(),
                 ]);
 
                 $sentCount++;
-
             } catch (\Exception $e) {
                 \Log::error('Failed to send email to ' . $lead->email . ': ' . $e->getMessage());
             }
@@ -222,7 +225,7 @@ class EmailCampaignController extends Controller
 
         // Build recipient filter based on recipient_type
         $recipientFilter = [];
-        
+
         if ($request->recipient_type === 'by_status' && $request->has('status_ids')) {
             $recipientFilter['status_ids'] = $request->status_ids;
         } elseif ($request->recipient_type === 'by_source' && $request->has('source_ids')) {
@@ -292,7 +295,7 @@ class EmailCampaignController extends Controller
                 $bodyWithTracking = $bodyWithLinkTracking . "\n" . $trackingPixel;
 
                 // Send email (using Laravel Mail)
-                Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
+                $res =  Mail::send([], [], function ($message) use ($lead, $subject, $bodyWithTracking) {
                     $message->to($lead->email, $lead->name)
                         ->subject($subject)
                         ->html($bodyWithTracking);
@@ -304,7 +307,6 @@ class EmailCampaignController extends Controller
                 ]);
 
                 $sentCount++;
-
             } catch (\Exception $e) {
                 EmailLog::where('id', $emailLog->id ?? 0)->update([
                     'status' => 'failed',

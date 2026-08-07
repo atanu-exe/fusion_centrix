@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -79,8 +80,10 @@ class HomeController extends Controller
                 "availableLanguage" => ["English"]
             ]
         ];
-
-        return view('contact_us', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords'));
+        $settings = Setting::getAll();
+        $contact_email = $settings['contact_email'] ?? '';
+        $contact_phone = $settings['contact_phone'] ?? '';
+        return view('contact_us', compact('page_title', 'meta_description', 'jsonLd', 'meta_keywords', 'contact_email', 'contact_phone'));
     }
 
     function contact_us_submit(Request $request)

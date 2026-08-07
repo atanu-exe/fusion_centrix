@@ -262,26 +262,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2">
-                        <div class="fp-media swiper swiper-portfolio">
-                            <div class="swiper-wrapper">
-                                <div class="project-image overflow-hidden swiper-slide">
-                                    <img src="{{ asset('assets/images/portfolio/image1.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
-                                </div>
-                                <div class="project-image overflow-hidden swiper-slide">
-                                    <img src="{{ asset('assets/images/portfolio/image2.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
-                                </div>
-                                <div class="project-image overflow-hidden swiper-slide">
-                                    <img src="{{ asset('assets/images/portfolio/image3.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
-                                </div>
-                                <div class="project-image overflow-hidden swiper-slide">
-                                    <img src="{{ asset('assets/images/portfolio/image4.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
-                                </div>
-                                <div class="project-image overflow-hidden swiper-slide">
-                                    <img src="{{ asset('assets/images/portfolio/image5.jpg') }}" alt="Featured Project" class="img-fluid w-100" loading="lazy">
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
+                        <img src="{{ asset('assets/images/featured-project.webp') }}" alt="Featured Project Screenshot" class="img-fluid rounded-3 shadow-lg" loading="lazy">
                     </div>
                 </div>
             </div>

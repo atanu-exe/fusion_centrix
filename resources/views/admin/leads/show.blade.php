@@ -14,18 +14,18 @@
             <span>{{ $lead->name }}</span>
         </div>
     </div>
-    <div class="d-flex gap-2">
-        <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-outline-primary">
-            <i class="fas fa-edit me-1"></i>Edit
-        </a>
-        <form action="{{ route('admin.leads.destroy', $lead) }}" method="POST" class="d-inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Delete this lead?')">
-                <i class="fas fa-trash me-1"></i>Delete
-            </button>
-        </form>
-    </div>
+   <div class="d-flex align-items-center gap-2">
+    <a href="{{ route('admin.leads.edit', $lead) }}" class="btn btn-outline-primary d-inline-flex align-items-center">
+        <i class="fas fa-edit me-1"></i>Edit
+    </a>
+    <form action="{{ route('admin.leads.destroy', $lead) }}" method="POST" class="d-inline m-0 p-0">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-outline-danger d-inline-flex align-items-center" onclick="return confirm('Delete this lead?')">
+            <i class="fas fa-trash me-1"></i>Delete
+        </button>
+    </form>
+</div>
 </div>
 
 <div class="row">

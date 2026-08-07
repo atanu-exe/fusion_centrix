@@ -63,7 +63,7 @@
             <tbody>
                 @foreach($campaign->emails as $email)
                 <tr>
-                    <td>{{ $email->recipient_email }}</td>
+                    <td>{{ $email->to_email }}</td>
                     <td><span class="badge bg-{{ $email->status == 'sent' ? 'success' : ($email->status == 'failed' ? 'danger' : 'secondary') }}">{{ ucfirst($email->status) }}</span></td>
                     <td>{{ $email->sent_at ? $email->sent_at->format('Y-m-d H:i') : 'N/A' }}</td>
                 </tr>

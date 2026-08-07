@@ -83,7 +83,6 @@ class BlogController extends Controller
             'content' => 'required|string',
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
             'thumbnail_image' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:5120',
-            'is_published' => 'boolean',
             'scheduled_at' => 'nullable|date|after:now',
             'categories' => 'nullable|array',
             'categories.*' => 'exists:blog_categories,id',
@@ -99,24 +98,21 @@ class BlogController extends Controller
         }
 
         // Handle featured image upload
-        $featuredImagePath = null;
+        $featuredImageName = null;
         if ($request->hasFile('featured_image')) {
-            $featuredImagePath = $this->uploadAndResizeImage($request->file('featured_image'), 'featured', $slug);
+            $featuredImageName = $this->uploadAndResizeImage($request->file('featured_image'), 'featured', $slug);
         }
 
         // Handle thumbnail image upload
-        $thumbnailImagePath = null;
+        $thumbnailImageName = null;
         if ($request->hasFile('thumbnail_image')) {
-            $thumbnailImagePath = $this->uploadAndResizeImage($request->file('thumbnail_image'), 'thumbnail', $slug);
-        } elseif ($featuredImagePath) {
-            // Use featured image as thumbnail if not provided
-            $thumbnailImagePath = $featuredImagePath;
+            $thumbnailImageName = $this->uploadAndResizeImage($request->file('thumbnail_image'), 'thumbnail', $slug);
         }
 
-        $isPublished = $request->input('is_published') == '1';
         $scheduledAt = $request->filled('scheduled_at') ? Carbon::parse($request->scheduled_at) : null;
         
         // If scheduled, don't publish yet
+        $isPublished = true;
         if ($scheduledAt) {
             $isPublished = false;
         }
@@ -128,8 +124,8 @@ class BlogController extends Controller
             'meta_description' => $validated['meta_description'] ?? Str::limit(strip_tags($validated['content']), 150),
             'meta_keywords' => $validated['meta_keywords'] ?? '',
             'content' => $validated['content'],
-            'featured_image' => $featuredImagePath,
-            'thumbnail_image' => $thumbnailImagePath,
+            'featured_image' => $featuredImageName,
+            'thumbnail_image' => $thumbnailImageName,
             'is_published' => $isPublished,
             'scheduled_at' => $scheduledAt,
             'published_at' => $isPublished ? now() : null,
@@ -150,37 +146,21 @@ class BlogController extends Controller
 
     private function uploadAndResizeImage($file, $type, $slug)
     {
-        $extension = $file->getClientOriginalExtension();
+        $extension = strtolower($file->getClientOriginalExtension());
         $filename = $slug . '-' . $type . '-' . time() . '.' . $extension;
-        
-        // Define sizes based on type
-        $sizes = [
-            'featured' => ['width' => 1200, 'height' => 630],  // Open Graph standard
-            'thumbnail' => ['width' => 400, 'height' => 300],
+
+        $sizeDefinitions = [
+            'big' => ['width' => 1200, 'height' => 630],
+            'mid' => ['width' => 600, 'height' => 400],
+            'small' => ['width' => 320, 'height' => 240],
         ];
-        
-        $size = $sizes[$type] ?? $sizes['featured'];
-        
-        // Create directory if not exists
-        $directory = public_path('storage/blog/' . $type);
-        if (!file_exists($directory)) {
-            mkdir($directory, 0755, true);
-        }
-        
-        // Get image info
+
+        $buildSizes = $type === 'featured' ? ['big', 'mid', 'small'] : ['mid', 'small'];
+
         $imageInfo = getimagesize($file->getRealPath());
         $sourceWidth = $imageInfo[0];
         $sourceHeight = $imageInfo[1];
-        
-        // Calculate dimensions maintaining aspect ratio
-        $targetWidth = $size['width'];
-        $targetHeight = $size['height'];
-        
-        $ratio = min($targetWidth / $sourceWidth, $targetHeight / $sourceHeight);
-        $newWidth = round($sourceWidth * $ratio);
-        $newHeight = round($sourceHeight * $ratio);
-        
-        // Create image resource based on type
+
         switch ($imageInfo['mime']) {
             case 'image/jpeg':
                 $sourceImage = imagecreatefromjpeg($file->getRealPath());
@@ -195,47 +175,78 @@ class BlogController extends Controller
                 $sourceImage = imagecreatefromwebp($file->getRealPath());
                 break;
             default:
-                // Fallback: just move the file
+                $sourceImage = null;
+                break;
+        }
+
+        foreach ($buildSizes as $sizeKey) {
+            $size = $sizeDefinitions[$sizeKey];
+            $directory = public_path('storage/blog/' . $sizeKey);
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            $targetWidth = $size['width'];
+            $targetHeight = $size['height'];
+            $ratio = min($targetWidth / $sourceWidth, $targetHeight / $sourceHeight);
+            $newWidth = max(1, round($sourceWidth * $ratio));
+            $newHeight = max(1, round($sourceHeight * $ratio));
+
+            if ($sourceImage) {
+                $newImage = imagecreatetruecolor($newWidth, $newHeight);
+
+                if ($imageInfo['mime'] === 'image/png' || $imageInfo['mime'] === 'image/gif') {
+                    imagealphablending($newImage, false);
+                    imagesavealpha($newImage, true);
+                    $transparent = imagecolorallocatealpha($newImage, 255, 255, 255, 127);
+                    imagefilledrectangle($newImage, 0, 0, $newWidth, $newHeight, $transparent);
+                }
+
+                imagecopyresampled($newImage, $sourceImage, 0, 0, 0, 0, $newWidth, $newHeight, $sourceWidth, $sourceHeight);
+                $path = $directory . '/' . $filename;
+
+                switch ($imageInfo['mime']) {
+                    case 'image/jpeg':
+                        imagejpeg($newImage, $path, 90);
+                        break;
+                    case 'image/png':
+                        imagepng($newImage, $path, 8);
+                        break;
+                    case 'image/gif':
+                        imagegif($newImage, $path);
+                        break;
+                    case 'image/webp':
+                        imagewebp($newImage, $path, 90);
+                        break;
+                }
+
+                imagedestroy($newImage);
+            } else {
                 $file->move($directory, $filename);
-                return '/storage/blog/' . $type . '/' . $filename;
+            }
         }
-        
-        // Create new image
-        $newImage = imagecreatetruecolor($newWidth, $newHeight);
-        
-        // Preserve transparency for PNG and GIF
-        if ($imageInfo['mime'] == 'image/png' || $imageInfo['mime'] == 'image/gif') {
-            imagealphablending($newImage, false);
-            imagesavealpha($newImage, true);
-            $transparent = imagecolorallocatealpha($newImage, 255, 255, 255, 127);
-            imagefilledrectangle($newImage, 0, 0, $newWidth, $newHeight, $transparent);
+
+        if ($sourceImage) {
+            imagedestroy($sourceImage);
         }
-        
-        // Resize
-        imagecopyresampled($newImage, $sourceImage, 0, 0, 0, 0, $newWidth, $newHeight, $sourceWidth, $sourceHeight);
-        
-        // Save based on original type
-        $path = $directory . '/' . $filename;
-        switch ($imageInfo['mime']) {
-            case 'image/jpeg':
-                imagejpeg($newImage, $path, 90);
-                break;
-            case 'image/png':
-                imagepng($newImage, $path, 8);
-                break;
-            case 'image/gif':
-                imagegif($newImage, $path);
-                break;
-            case 'image/webp':
-                imagewebp($newImage, $path, 90);
-                break;
+
+        return $filename;
+    }
+
+    private function deleteImageFiles($filename, array $sizes = ['big', 'mid', 'small'])
+    {
+        if (! $filename) {
+            return;
         }
-        
-        // Free memory
-        imagedestroy($sourceImage);
-        imagedestroy($newImage);
-        
-        return '/storage/blog/' . $type . '/' . $filename;
+
+        $filename = basename($filename);
+
+        foreach ($sizes as $size) {
+            $path = public_path('storage/blog/' . $size . '/' . $filename);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
     }
 
     public function edit(Blog $blog)
@@ -273,26 +284,22 @@ class BlogController extends Controller
         }
 
         // Handle featured image upload
-        $featuredImagePath = $blog->featured_image;
+        $featuredImageName = $blog->featured_image;
+        $thumbnailImageName = $blog->thumbnail_image;
+
         if ($request->hasFile('featured_image')) {
-            // Delete old image if exists
-            if ($blog->featured_image && file_exists(public_path($blog->featured_image))) {
-                unlink(public_path($blog->featured_image));
+            if ($blog->featured_image) {
+                $this->deleteImageFiles($blog->featured_image, ['big', 'mid', 'small']);
             }
-            $featuredImagePath = $this->uploadAndResizeImage($request->file('featured_image'), 'featured', $blog->slug);
+
+            $featuredImageName = $this->uploadAndResizeImage($request->file('featured_image'), 'featured', $blog->slug);
         }
 
-        // Handle thumbnail image upload
-        $thumbnailImagePath = $blog->thumbnail_image;
         if ($request->hasFile('thumbnail_image')) {
-            // Delete old image if exists
-            if ($blog->thumbnail_image && file_exists(public_path($blog->thumbnail_image))) {
-                unlink(public_path($blog->thumbnail_image));
+            if ($blog->thumbnail_image) {
+                $this->deleteImageFiles($blog->thumbnail_image, ['mid', 'small']);
             }
-            $thumbnailImagePath = $this->uploadAndResizeImage($request->file('thumbnail_image'), 'thumbnail', $blog->slug);
-        } elseif ($request->hasFile('featured_image')) {
-            // Update thumbnail to match featured if featured changed but thumbnail didn't
-            $thumbnailImagePath = $featuredImagePath;
+            $thumbnailImageName = $this->uploadAndResizeImage($request->file('thumbnail_image'), 'thumbnail', $blog->slug);
         }
 
         $isPublished = $request->input('is_published') == '1';
@@ -309,8 +316,8 @@ class BlogController extends Controller
             'meta_description' => $validated['meta_description'] ?? Str::limit(strip_tags($validated['content']), 150),
             'meta_keywords' => $validated['meta_keywords'] ?? '',
             'content' => $validated['content'],
-            'featured_image' => $featuredImagePath,
-            'thumbnail_image' => $thumbnailImagePath,
+            'featured_image' => $featuredImageName,
+            'thumbnail_image' => $thumbnailImageName,
             'is_published' => $isPublished,
             'scheduled_at' => $scheduledAt,
             'published_at' => $isPublished && !$blog->published_at ? now() : $blog->published_at,

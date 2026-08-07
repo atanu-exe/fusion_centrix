@@ -83,7 +83,7 @@
               @forelse($allArticles as $article)
               <div class="col-md-6 article-item">
                 <a href="{{ route('blog.show', $article->slug) }}" class="fc-article-card">
-                  <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/400x300?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                  <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-feture-image.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
                   <div class="fc-article-body">
                     @if($article->categories->isNotEmpty())
                     <div class="fc-categories-row" style="margin-bottom: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
@@ -133,7 +133,7 @@
             <div class="d-flex flex-column gap-2" id="latestContainer">
               @forelse($latest->take(3) as $article)
               <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-latest-card">
-                <img src="{{ $article->thumbnail_image ?? 'https://via.placeholder.com/80?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                <img src="{{ $article->small_image_url ?? asset('assets/images/blog-default-thumbnail.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
                 <div class="sidebar-latest-content">
                   <span class="fc-badge-sm">Latest</span>
                   <h6>{{ $article->title }}</h6>
@@ -155,7 +155,7 @@
             <div class="d-flex flex-column gap-3" id="featuredContainer">
               @forelse($featured->take(2) as $article)
               <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-featured-card">
-                <img src="{{ $article->featured_image ?? 'https://via.placeholder.com/400x200?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
+                <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
                 <div class="sidebar-featured-body">
                   <span class="fc-badge-sm">Featured</span>
                   <h6>{{ $article->title }}</h6>
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const articleHTML = `
             <div class="${colClass} article-item" style="opacity: 0; transform: scale(0.9);">
               <a href="/blog/${article.slug}" class="fc-article-card">
-                <img src="${article.featured_image || 'https://via.placeholder.com/400x300'}" alt="${article.title}" loading="lazy">
+                <img src="${article.thumbnail_image_url || 'https://via.placeholder.com/400x300'}" alt="${article.title}" loading="lazy">
                 <div class="fc-article-body">
                   <span class="fc-badge">Article</span>
                   <h5>${article.title}</h5>

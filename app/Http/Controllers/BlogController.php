@@ -79,7 +79,6 @@ class BlogController extends Controller
                 ->where('published_at', '>=', now()->startOfMonth())
                 ->count(),
         ];
-
         return view('blog', [
             'page_title' => 'Digital Marketing, SEO, Web & Software Insights from Kolkata, West Bengal, India',
             'meta_description' => 'Read Fusioncentrix insights on SEO, web development, branding, ecommerce and software from Kolkata, West Bengal, India for businesses in India and worldwide.',
@@ -140,7 +139,9 @@ class BlogController extends Controller
                     'title' => $article->title,
                     'slug' => $article->slug,
                     'meta_description' => $article->meta_description,
-                    'featured_image' => $article->featured_image,
+                    'featured_image_url' => $article->featured_image_url,
+                    'thumbnail_image_url' => $article->thumbnail_image_url,
+                    'small_image_url' => $article->small_image_url,
                     'published_at' => $article->published_at,
                     'views' => $article->views,
                 ];
@@ -185,7 +186,7 @@ class BlogController extends Controller
             'title' => ($blog->meta_title ?? $blog->title) . ' | Fusioncentrix Kolkata',
             'description' => $blog->meta_description,
             'keywords' => trim(($blog->meta_keywords ?? '') . ', Kolkata, West Bengal, India, Fusioncentrix'),
-            'image' => $blog->featured_image,
+            'image' => $blog->featured_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($blog->title),
             'url' => route('blog.show', $blog->slug),
             'author' => $blog->creator?->name ?? 'Admin',
             'publishedDate' => $blog->published_at?->toIso8601String() ?? now()->toIso8601String(),

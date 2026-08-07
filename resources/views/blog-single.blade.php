@@ -67,7 +67,7 @@
         <section class="fc-detail-featured-image">
             <div class="container">
                 <div class="bg-white rounded-4 shadow-sm overflow-hidden">
-                    <img src="{{ $blog->featured_image ?? asset('assets/img/default-featured.png') }}" loading="lazy"
+                    <img src="{{ $blog->featured_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($blog->title) }}" loading="lazy"
                         alt="{{ $blog->title }}" class="w-100" style="max-height: 520px; object-fit: cover;">
                 </div>
             </div>
@@ -154,7 +154,7 @@
                             <div class="fc-popular-posts">
                                 @forelse($relatedArticles->take(3) as $related)
                                 <a href="{{ route('blog.show', $related->slug) }}" class="fc-popular-post d-flex gap-3 align-items-center py-2">
-                                    <img src="{{ $related->thumbnail_image ?? asset('assets/img/default-thumb.png') }}" loading="lazy"
+                                    <img src="{{ $related->small_image_url ?? asset('assets/img/default-thumb.png') }}" loading="lazy"
                                         alt="{{ $related->title }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
@@ -196,7 +196,7 @@
                     @forelse($relatedArticles as $related)
                     <div class="col-md-6 col-lg-4">
                         <a href="{{ route('blog.show', $related->slug) }}" class="fc-related-card">
-                            <img src="{{ $related->featured_image ?? asset('assets/img/default-featured.png') }}" loading="lazy"
+                            <img src="{{ $related->small_image_url ?? asset('assets/img/default-featured.png') }}" loading="lazy"
                                 alt="{{ $related->title }}">
                             <div class="fc-related-body">
                                 <h5>{{ $related->title }}</h5>
