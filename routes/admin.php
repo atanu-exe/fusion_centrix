@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\SalaryController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\EmailCampaignController;
 use App\Http\Controllers\Admin\EmailTrackingController;
+use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -245,6 +247,22 @@ Route::middleware(['admin'])->group(function () {
         Route::post('roles/{role}/apply-to-all', [RoleController::class, 'applyToAllUsers'])->name('admin.roles.apply-to-all');
     });
 });
+
+// client module 
+Route::resource('clients', ClientController::class)->names('admin.clients');
+
+// Convert an existing lead into a client (button lives on the Lead show page)
+Route::post('leads/{lead}/convert', [ClientController::class, 'convertFromLead'])
+    ->name('admin.leads.convert');
+
+
+
+Route::resource('services', ServiceController::class)
+    ->except(['show'])
+    ->names('admin.services');
+
+Route::patch('services/{service}/toggle', [ServiceController::class, 'toggleActive'])
+    ->name('admin.services.toggle');
 
 // Email Tracking Routes (no authentication required - used in emails)
 Route::prefix('email')->group(function () {

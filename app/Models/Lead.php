@@ -119,4 +119,8 @@ class Lead extends Model
             $q->where('followup_date', '<=', now());
         });
     }
+    public function client()
+    {
+        return $this->hasOne(Client::class, 'converted_from_lead_id');
+    }
 }

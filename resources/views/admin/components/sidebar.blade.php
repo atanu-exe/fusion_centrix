@@ -78,6 +78,21 @@
             @endif
         </div>
         @endif
+
+        <!-- Client module  -->
+        <div class="nav-section">
+            <div class="nav-section-title">Core Section</div>
+            <a href="{{ route('admin.clients.index') }}" class="nav-link {{ request()->routeIs('admin.clients.*') ? 'active' : '' }}">
+                <i class="fas fa-user-plus"></i>
+                <span>Clients</span>
+            </a>
+            <a href="{{ route('admin.services.index') }}" class="nav-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                <i class="fas fa-user-plus"></i>
+                <span>Services</span>
+            </a>
+           
+        </div>
+
         
         <!-- HRM Module -->
         @if(auth()->user()->hasModuleAccess('hrm'))
