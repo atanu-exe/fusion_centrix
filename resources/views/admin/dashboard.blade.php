@@ -114,7 +114,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         @if($blog->thumbnail_image)
-                                        <img src="{{ $blog->thumbnail_image }}" alt="" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <img src="{{ $blog->thumbnail_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($blog->title) }}" alt="{{ $blog->title }}" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
                                         @else
                                         <div class="bg-light rounded me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
                                             <i class="fas fa-image text-muted"></i>

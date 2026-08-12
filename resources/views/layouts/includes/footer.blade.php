@@ -80,7 +80,7 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <p class="fc-contact-label">Phone</p>
-                            <p><a href="tel:+919477614409">+91 9477614409</a></p>
+                            <p><a href="tel:+918282098384">+91 82820 98384</a></p>
                         </div>
                     </div>
                 </div>

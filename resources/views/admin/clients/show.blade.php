@@ -61,11 +61,102 @@
         </div>
 
         <div class="card border-0 shadow-sm">
-            <div class="card-header bg-white"><strong>Projects</strong></div>
-            <div class="card-body text-muted text-center py-4">
-                Projects module coming next — this section will list projects for {{ $client->name }}.
+    <div class="card-header d-flex justify-content-between align-items-center bg-white">
+        <h5 class="mb-0">
+            <i class="fas fa-diagram-project me-2 text-primary"></i>
+            Projects
+        </h5>
+
+        <a href="{{ route('admin.projects.create', ['client_id' => $client->id]) }}"
+            class="btn btn-sm btn-primary">
+            <i class="fas fa-plus me-1"></i>
+            New Project
+        </a>
+    </div>
+
+    <div class="card-body p-0">
+
+        @forelse($client->projects as $project)
+
+            <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+
+                <div>
+
+                    <h6 class="mb-1">
+                        <a href="{{ route('admin.projects.show', $project) }}"
+                            class="text-decoration-none">
+                            {{ $project->name }}
+                        </a>
+                    </h6>
+
+                    <small class="text-muted">
+
+                        @if($project->start_date)
+                            {{ $project->start_date->format('d M Y') }}
+                        @endif
+
+                        @if($project->end_date)
+                            • {{ $project->end_date->format('d M Y') }}
+                        @endif
+
+                    </small>
+
+                </div>
+
+                <div>
+
+                    @switch($project->status)
+
+                        @case('planning')
+                            <span class="badge bg-secondary">Planning</span>
+                            @break
+
+                        @case('in_progress')
+                            <span class="badge bg-primary">In Progress</span>
+                            @break
+
+                        @case('on_hold')
+                            <span class="badge bg-warning">On Hold</span>
+                            @break
+
+                        @case('completed')
+                            <span class="badge bg-success">Completed</span>
+                            @break
+
+                        @case('cancelled')
+                            <span class="badge bg-danger">Cancelled</span>
+                            @break
+
+                    @endswitch
+
+                </div>
+
             </div>
-        </div>
+
+        @empty
+
+            <div class="text-center py-5">
+
+                <i class="fas fa-diagram-project fa-3x text-muted mb-3"></i>
+
+                <h6>No Projects Found</h6>
+
+                <p class="text-muted mb-3">
+                    This client doesn't have any projects yet.
+                </p>
+
+                <a href="{{ route('admin.projects.create', ['client_id' => $client->id]) }}"
+                    class="btn btn-primary">
+                    <i class="fas fa-plus me-1"></i>
+                    Create First Project
+                </a>
+
+            </div>
+
+        @endforelse
+
+    </div>
+</div>
     </div>
 
     <div class="col-lg-4">

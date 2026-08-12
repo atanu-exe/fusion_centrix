@@ -88,8 +88,8 @@ class ClientController extends Controller
 
     public function show(Client $client)
     {
-        $client->load(['accountManager', 'creator', 'sourceLead']);
-        // ->load(['projects', 'invoices']) will be added once those modules exist
+        $client->load(['accountManager', 'creator', 'sourceLead'])
+            ->load(['projects', 'invoices']);
 
         return view('admin.clients.show', compact('client'));
     }
@@ -179,5 +179,12 @@ class ClientController extends Controller
             'account_manager_id' => 'nullable|exists:users,id',
             'notes' => 'nullable|string|max:2000',
         ]);
+    }
+
+    public function projects(Client $client)
+    {
+        $projects = $client->projects()->orderByDesc('created_at');
+
+        return response()->json($projects->get());
     }
 }

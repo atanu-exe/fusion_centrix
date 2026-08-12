@@ -17,6 +17,9 @@ use App\Http\Controllers\Admin\EmailCampaignController;
 use App\Http\Controllers\Admin\EmailTrackingController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -250,6 +253,8 @@ Route::middleware(['admin'])->group(function () {
 
 // client module 
 Route::resource('clients', ClientController::class)->names('admin.clients');
+// /admin/clients/${clientId}/projects
+Route::get('clients/{client}/projects', [ClientController::class, 'projects'])->name('admin.clients.projects');
 
 // Convert an existing lead into a client (button lives on the Lead show page)
 Route::post('leads/{lead}/convert', [ClientController::class, 'convertFromLead'])
@@ -263,6 +268,37 @@ Route::resource('services', ServiceController::class)
 
 Route::patch('services/{service}/toggle', [ServiceController::class, 'toggleActive'])
     ->name('admin.services.toggle');
+
+// Invoice 
+
+
+Route::resource('invoices', InvoiceController::class)->names('admin.invoices');
+
+Route::post('invoices/{invoice}/mark-sent', [InvoiceController::class, 'markAsSent'])
+    ->name('admin.invoices.mark-sent');
+Route::post('invoices/{invoice}/cancel', [InvoiceController::class, 'cancel'])
+    ->name('admin.invoices.cancel');
+Route::get('invoices/{invoice}/pdf', [InvoiceController::class, 'viewPdf'])
+    ->name('admin.invoices.pdf');
+Route::get('invoices/{invoice}/pdf/download', [InvoiceController::class, 'downloadPdf'])
+    ->name('admin.invoices.pdf.download');
+Route::post('invoices/{invoice}/send-email', [InvoiceController::class, 'sendEmail'])
+    ->name('admin.invoices.send-email');
+
+// payments 
+Route::get('payments', [PaymentController::class, 'index'])->name('admin.payments.index');
+Route::post('invoices/{invoice}/payments', [PaymentController::class, 'store'])
+    ->name('admin.invoices.payments.store');
+Route::delete('payments/{payment}', [PaymentController::class, 'destroy'])
+    ->name('admin.payments.destroy');
+
+    // project
+    Route::resource('projects', ProjectController::class)->names('admin.projects');
+
+Route::post('projects/{project}/services', [ProjectController::class, 'attachService'])
+    ->name('admin.projects.services.attach');
+Route::delete('projects/{project}/services/{service}', [ProjectController::class, 'detachService'])
+    ->name('admin.projects.services.detach');
 
 // Email Tracking Routes (no authentication required - used in emails)
 Route::prefix('email')->group(function () {
