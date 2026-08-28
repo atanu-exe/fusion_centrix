@@ -112,10 +112,8 @@ class BlogController extends Controller
         $scheduledAt = $request->filled('scheduled_at') ? Carbon::parse($request->scheduled_at) : null;
         
         // If scheduled, don't publish yet
-        $isPublished = true;
-        if ($scheduledAt) {
-            $isPublished = false;
-        }
+        $isPublished = $request->input('is_published') === '1';
+
 
         $blog = Blog::create([
             'title' => $validated['title'],

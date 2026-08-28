@@ -307,3 +307,5 @@ Route::prefix('email')->group(function () {
     Route::post('track/bounce', [EmailTrackingController::class, 'trackBounce'])->name('admin.email.track-bounce');
     Route::get('campaigns/{campaign}/stats', [EmailTrackingController::class, 'campaignStats'])->name('admin.email.campaign-stats');
 });
+
+

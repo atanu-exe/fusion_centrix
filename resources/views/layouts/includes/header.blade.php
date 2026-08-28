@@ -1,5 +1,9 @@
-        <!-- Google Fonts: Example with font-display: swap -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Fonts: Example with font-display: swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Preconnect & Prefetch for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,15 +13,14 @@
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
     @php
         $canonicalUrl = $canonical_url ?? url()->current();
-        $defaultSeoTitle = 'Fusioncentrix - Web Development, SEO, Branding & Software Company in Kolkata, West Bengal, India';
-        $defaultSeoDescription = 'Fusioncentrix is a web development, SEO, branding, ecommerce and software company in Kolkata, West Bengal, India serving clients across India and worldwide with conversion-focused digital solutions.';
-        $defaultSeoKeywords = 'web development company Kolkata, SEO company Kolkata, digital marketing company West Bengal, software company India, branding agency Kolkata, ecommerce development India, Fusioncentrix';
+        $defaultSeoTitle =
+            'Fusioncentrix - Web Development, SEO, Branding & Software Company in Kolkata, West Bengal, India';
+        $defaultSeoDescription =
+            'Fusioncentrix is a web development, SEO, branding, ecommerce and software company in Kolkata, West Bengal, India serving clients across India and worldwide with conversion-focused digital solutions.';
+        $defaultSeoKeywords =
+            'web development company Kolkata, SEO company Kolkata, digital marketing company West Bengal, software company India, branding agency Kolkata, ecommerce development India, Fusioncentrix';
         $defaultSeoImage = asset('logo.png');
         $seoTitle = isset($page_title) && $page_title ? trim($page_title . ' | Fusioncentrix') : $defaultSeoTitle;
         $seoDescription = isset($meta_description) && $meta_description ? $meta_description : $defaultSeoDescription;
@@ -47,13 +50,16 @@
     <meta name="geo.position" content="22.5810;88.4152">
     <meta name="ICBM" content="22.5810, 88.4152">
     <link rel="canonical" href="{{ $canonicalUrl }}">
-    <meta property="og:site_name" content="Fusioncentrix">
-    <meta property="og:locale" content="en_IN">
-    <meta property="og:title" content="{{ $seoTitle }}">
-    <meta property="og:description" content="{{ $seoDescription }}">
-    <meta property="og:url" content="{{ $canonicalUrl }}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ $seoImage }}">
+    @if (!request()->routeIs('blog.show'))
+        {{-- Default OG tags for all non-blog pages --}}
+        <meta property="og:site_name" content="Fusioncentrix">
+        <meta property="og:locale" content="en_IN">
+        <meta property="og:title" content="{{ $seoTitle }}">
+        <meta property="og:description" content="{{ $seoDescription }}">
+        <meta property="og:url" content="{{ $canonicalUrl }}">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="{{ $seoImage }}">
+    @endif
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $seoTitle }}">
     <meta name="twitter:description" content="{{ $seoDescription }}">
@@ -70,13 +76,17 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <!-- Swiper CSS -->
     <link rel="preload" as="style" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/swiper/swiper-bundle.min.css') }}" media="print"
+        onload="this.media='all'">
     <!-- Font Awesome CDN -->
     <link rel="preload" as="style" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-7.0.0/css/all.min.css') }}" media="print"
+        onload="this.media='all'">
     <!-- Bootstrap Icons CDN -->
-    <link rel="preload" as="style" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}" media="print" onload="this.media='all'">
+    <link rel="preload" as="style"
+        href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-icons/font/bootstrap-icons.min.css') }}"
+        media="print" onload="this.media='all'">
     {{-- custom css  --}}
     <link rel="preload" as="style" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -92,15 +102,17 @@
             transition: transform 0.16s ease, box-shadow 0.16s ease;
             animation: navCtaBg 3.2s ease infinite, navCtaPulse 2.6s ease-in-out infinite;
         }
+
         /* Wide soft shimmer */
         #nav-free-consult-btn::before {
             content: "";
             position: absolute;
             inset: -10% -40%;
-            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.18), transparent 38%);
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.18), transparent 38%);
             animation: navCtaGlow 4.6s ease-in-out infinite;
             opacity: 0.8;
         }
+
         /* Thin sweep line */
         #nav-free-consult-btn::after {
             content: "";
@@ -109,32 +121,69 @@
             left: -150%;
             width: 150%;
             height: 100%;
-            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.85) 40%, transparent 100%);
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.85) 40%, transparent 100%);
             transform: skewX(-18deg);
             mix-blend-mode: screen;
             animation: navCtaShine 1.9s linear infinite;
         }
+
         #nav-free-consult-btn:hover {
             transform: translateY(-2px) scale(1.03);
             box-shadow: 0 16px 36px rgba(255, 47, 146, 0.34);
         }
+
         @keyframes navCtaBg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
+
         @keyframes navCtaShine {
-            0% { left: -150%; }
-            50% { left: -10%; }
-            100% { left: 140%; }
+            0% {
+                left: -150%;
+            }
+
+            50% {
+                left: -10%;
+            }
+
+            100% {
+                left: 140%;
+            }
         }
+
         @keyframes navCtaPulse {
-            0%, 100% { box-shadow: 0 12px 28px rgba(255, 47, 146, 0.28); }
-            50% { box-shadow: 0 18px 42px rgba(90, 141, 255, 0.36); }
+
+            0%,
+            100% {
+                box-shadow: 0 12px 28px rgba(255, 47, 146, 0.28);
+            }
+
+            50% {
+                box-shadow: 0 18px 42px rgba(90, 141, 255, 0.36);
+            }
         }
+
         @keyframes navCtaGlow {
-            0%, 100% { transform: translateX(0); opacity: 0.8; }
-            50% { transform: translateX(18%); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateX(0);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateX(18%);
+                opacity: 1;
+            }
         }
     </style>
 
@@ -187,7 +236,7 @@
   "name": "Fusioncentrix Solutions",
   "image": "https://www.fusioncentrix.com/logo.png",
   "url": "https://www.fusioncentrix.com",
-  "telephone": "+91-9477614409",
+  "telephone": "+91-8282098384",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Sector V, Salt Lake",
@@ -206,7 +255,7 @@
   "sameAs": [
     "https://www.linkedin.com/company/fusioncentrix",
     "https://www.facebook.com/fusioncentrix",
-    "https://www.instagram.com/fusioncentrix"
+    "https://www.instagram.com/fusioncentrix_global"
   ]
 }
 </script>
@@ -234,7 +283,8 @@
                     <li class="fc-nav-item"><a href="{{ url('services') }}" class="fc-nav-link">Services</a></li>
                     <li class="fc-nav-item"><a href="{{ url('portfolio') }}" class="fc-nav-link">Portfolio</a></li>
                     <li class="fc-nav-item"><a href="{{ url('blog') }}" class="fc-nav-link">Blog</a></li>
-                    <li class="fc-nav-item"><a href="{{ url('contact-us') }}" class="fc-nav-link">Contact Us</a></li>
+                    <li class="fc-nav-item"><a href="{{ url('contact-us') }}" class="fc-nav-link">Contact Us</a>
+                    </li>
                 </ul>
                 <div>
                     <a href="{{ url('contact-us') }}" id="nav-free-consult-btn"

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\Cron\BlogCronController;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
@@ -51,3 +52,8 @@ Route::get('/services/digital-marketing', [ServicesController::class, 'marketing
 Route::get('/services/custom-software-development', [ServicesController::class, 'custom_software'])->name('services.custom_software');
 Route::get('/services/ui-ux-design', [ServicesController::class, 'graphics'])->name('services.ui_ux_design');
 Route::get('/services/branding-identity', [ServicesController::class, 'branding'])->name('services.branding_identity');
+// cron
+Route::get('/cron/publish-scheduled-blogs', [
+    BlogCronController::class,
+    'publishScheduledBlogs'
+]);

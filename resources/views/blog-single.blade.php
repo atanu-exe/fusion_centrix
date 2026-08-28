@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('meta')
-<meta name="description" content="{{ $seoData['description'] }}">
-<meta name="keywords" content="{{ $seoData['keywords'] }}">
-<meta name="author" content="{{ $seoData['author'] }}">
-<meta property="og:title" content="{{ $seoData['title'] }}">
-<meta property="og:description" content="{{ $seoData['description'] }}">
-<meta property="og:image" content="{{ $seoData['image'] }}">
-<meta property="og:url" content="{{ $seoData['url'] }}">
-<meta property="og:type" content="article">
-<meta name="article:published_time" content="{{ $seoData['publishedDate'] }}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $seoData['title'] }}">
-<meta name="twitter:description" content="{{ $seoData['description'] }}">
-<meta name="twitter:image" content="{{ $seoData['image'] }}">
-<link rel="canonical" href="{{ $seoData['url'] }}">
+    <meta name="description" content="{{ $seoData['description'] }}">
+    <meta name="keywords" content="{{ $seoData['keywords'] }}">
+    <meta name="author" content="{{ $seoData['author'] }}">
+    <meta property="og:title" content="{{ $seoData['title'] }}">
+    <meta property="og:description" content="{{ $seoData['description'] }}">
+    <meta property="og:image" content="{{ $seoData['image'] }}">
+    <meta property="og:url" content="{{ $seoData['url'] }}">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="{{ $seoData['publishedDate'] }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoData['title'] }}">
+    <meta name="twitter:description" content="{{ $seoData['description'] }}">
+    <meta name="twitter:image" content="{{ $seoData['image'] }}">
+    <link rel="canonical" href="{{ $seoData['url'] }}">
 @endsection
 
 @section('content')
@@ -24,7 +24,7 @@
         <section class="fc-header">
             <div class="container">
                 <div class="fc-header-content">
-                    
+
                     <h1 class="mb-3">{{ $blog->title }}</h1>
                     <p class="mb-4 ">{{ $blog->meta_description }}</p>
 
@@ -40,24 +40,27 @@
                         </div> --}}
                         {{-- <span class="text-muted">•</span> --}}
                         <div class="d-flex flex-wrap align-items-center gap-2 text-muted small">
-                            <span class="badge bg-light text-dark border">📅 {{ $blog->published_at?->format('M d, Y') ?? 'Draft' }}</span>
-                            <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }} views</span>
+                            <span class="badge bg-light text-dark border">📅
+                                {{ $blog->published_at?->format('M d, Y') ?? 'Draft' }}</span>
+                            <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }}
+                                views</span>
                             <span class="badge bg-light text-dark border">⏱️ {{ $blog->reading_time }} min read</span>
                         </div>
                     </div>
 
                     <!-- ARTICLE CATEGORIES -->
-                    @if($blog->categories->isNotEmpty())
-                    <div class="mt-3 d-flex flex-wrap gap-2">
-                        @foreach($blog->categories as $category)
-                        <a href="{{ route('blog.category', $category->slug) }}" class="fc-category-tag">
-                            {{ $category->icon ?? '📌' }} {{ $category->name }}
-                        </a>
-                        @endforeach
-                    </div>
+                    @if ($blog->categories->isNotEmpty())
+                        <div class="mt-3 d-flex flex-wrap gap-2">
+                            @foreach ($blog->categories as $category)
+                                <a href="{{ route('blog.category', $category->slug) }}" class="fc-category-tag">
+                                    {{ $category->icon ?? '📌' }} {{ $category->name }}
+                                </a>
+                            @endforeach
+                        </div>
                     @endif
                     <div class="fc-breadcrumb">
-                        <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> / <span>{{ $blog->title }}</span>
+                        <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> /
+                        <span>{{ $blog->title }}</span>
                     </div>
                 </div>
             </div>
@@ -67,8 +70,9 @@
         <section class="fc-detail-featured-image">
             <div class="container">
                 <div class="bg-white rounded-4 shadow-sm overflow-hidden">
-                    <img src="{{ $blog->featured_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($blog->title) }}" loading="lazy"
-                        alt="{{ $blog->title }}" class="w-100" style="max-height: 520px; object-fit: cover;">
+                    <img src="{{ $blog->featured_image_url ?? asset('assets/images/blog-default-featured-image.png') . '?text=' . urlencode($blog->title) }}"
+                        loading="lazy" alt="{{ $blog->title }}" class="w-100"
+                        style="max-height: 520px; object-fit: cover;">
                 </div>
             </div>
         </section>
@@ -90,18 +94,30 @@
                             <div class="fc-article-sharing mb-4">
                                 <span class="fc-share-label d-block mb-2">Share this article:</span>
                                 <div class="d-flex flex-wrap gap-2">
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($seoData['url']) }}&text={{ urlencode($blog->title) }}" class="btn btn-outline-dark btn-sm" title="Share on Twitter" target="_blank" rel="noopener noreferrer">
+
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($seoData['url']) }}&text={{ urlencode($blog->title) }}"
+                                        class="btn btn-outline-dark btn-sm" title="Share on Twitter" target="_blank"
+                                        rel="noopener noreferrer">
                                         𝕏 Twitter
                                     </a>
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoData['url']) }}" class="btn btn-outline-primary btn-sm" title="Share on Facebook" target="_blank" rel="noopener noreferrer">
+
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoData['url']) }}"
+                                        class="btn btn-outline-primary btn-sm" title="Share on Facebook" target="_blank"
+                                        rel="noopener noreferrer">
                                         Facebook
                                     </a>
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($seoData['url']) }}" class="btn btn-outline-info btn-sm" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($seoData['url']) }}"
+                                        class="btn btn-outline-info btn-sm" title="Share on LinkedIn" target="_blank"
+                                        rel="noopener noreferrer">
                                         LinkedIn
                                     </a>
-                                    <a href="#" class="btn btn-outline-secondary btn-sm fc-share-copy" title="Copy link" data-url="{{ $seoData['url'] }}">
+
+                                    <a href="#" class="btn btn-outline-secondary btn-sm fc-share-copy"
+                                        title="Copy link" data-url="{{ $seoData['url'] }}">
                                         🔗 Copy Link
                                     </a>
+
                                 </div>
                             </div>
 
@@ -135,13 +151,16 @@
                         <div class="card-body">
                             <h4 class="fc-widget-title">Categories</h4>
                             <ul class="list-unstyled mb-0 fc-category-list">
-                                @foreach($blog->categories as $category)
-                                <li class="mb-2">
-                                    <a href="{{ route('blog.category', $category->slug) }}" style="color: {{ $category->color }};" class="d-flex justify-content-between align-items-center">
-                                        <span>{{ $category->icon ?? '📌' }} {{ $category->name }}</span>
-                                        <span class="badge bg-light text-dark border">{{ $category->publishedBlogs()->count() }}</span>
-                                    </a>
-                                </li>
+                                @foreach ($blog->categories as $category)
+                                    <li class="mb-2">
+                                        <a href="{{ route('blog.category', $category->slug) }}"
+                                            style="color: {{ $category->color }};"
+                                            class="d-flex justify-content-between align-items-center">
+                                            <span>{{ $category->icon ?? '📌' }} {{ $category->name }}</span>
+                                            <span
+                                                class="badge bg-light text-dark border">{{ $category->publishedBlogs()->count() }}</span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -153,16 +172,20 @@
                             <h4 class="fc-widget-title">Popular Posts</h4>
                             <div class="fc-popular-posts">
                                 @forelse($relatedArticles->take(3) as $related)
-                                <a href="{{ route('blog.show', $related->slug) }}" class="fc-popular-post d-flex gap-3 align-items-center py-2">
-                                    <img src="{{ $related->small_image_url ?? asset('assets/img/default-thumb.png') }}" loading="lazy"
-                                        alt="{{ $related->title }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
-                                    <div>
-                                        <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
-                                        <span class="fc-post-meta text-muted small">{{ number_format($related->views) }} views</span>
-                                    </div>
-                                </a>
+                                    <a href="{{ route('blog.show', $related->slug) }}"
+                                        class="fc-popular-post d-flex gap-3 align-items-center py-2">
+                                        <img src="{{ $related->small_image_url ?? asset('assets/img/default-thumb.png') }}"
+                                            loading="lazy" alt="{{ $related->title }}" class="rounded"
+                                            style="width: 64px; height: 64px; object-fit: cover;">
+                                        <div>
+                                            <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
+                                            <span
+                                                class="fc-post-meta text-muted small">{{ number_format($related->views) }}
+                                                views</span>
+                                        </div>
+                                    </a>
                                 @empty
-                                <p class="text-muted">No posts available.</p>
+                                    <p class="text-muted">No posts available.</p>
                                 @endforelse
                             </div>
                         </div>
@@ -176,7 +199,8 @@
                             <div id="newsletter-message"></div>
                             <form class="fc-newsletter-form" method="POST" action="{{ route('subscribe') }}">
                                 @csrf
-                                <input type="email" name="email" placeholder="Enter your email" class="form-control mb-2" required>
+                                <input type="email" name="email" placeholder="Enter your email"
+                                    class="form-control mb-2" required>
                                 <div class="text-danger small mb-2" id="newsletter-error"></div>
                                 <button type="submit" class="btn btn-primary w-100">Subscribe</button>
                             </form>
@@ -194,26 +218,26 @@
                 <h3 class="fc-title mb-4">Related Articles</h3>
                 <div class="row g-4">
                     @forelse($relatedArticles as $related)
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{{ route('blog.show', $related->slug) }}" class="fc-related-card">
-                            <img src="{{ $related->small_image_url ?? asset('assets/img/default-featured.png') }}" loading="lazy"
-                                alt="{{ $related->title }}">
-                            <div class="fc-related-body">
-                                <h5>{{ $related->title }}</h5>
-                                <p class="text-muted small">{{ Str::limit($related->meta_description, 80) }}</p>
-                                <div class="fc-related-meta">
-                                    {{ $related->published_at?->format('M d, Y') ?? 'Draft' }} 
-                                    @if($related->categories->isNotEmpty())
-                                        • {{ $related->categories->first()->name }}
-                                    @endif
+                        <div class="col-md-6 col-lg-4">
+                            <a href="{{ route('blog.show', $related->slug) }}" class="fc-related-card">
+                                <img src="{{ $related->small_image_url ?? asset('assets/img/default-featured.png') }}"
+                                    loading="lazy" alt="{{ $related->title }}">
+                                <div class="fc-related-body">
+                                    <h5>{{ $related->title }}</h5>
+                                    <p class="text-muted small">{{ Str::limit($related->meta_description, 80) }}</p>
+                                    <div class="fc-related-meta">
+                                        {{ $related->published_at?->format('M d, Y') ?? 'Draft' }}
+                                        @if ($related->categories->isNotEmpty())
+                                            • {{ $related->categories->first()->name }}
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     @empty
-                    <div class="col-12">
-                        <p class="text-muted text-center">No related articles found.</p>
-                    </div>
+                        <div class="col-12">
+                            <p class="text-muted text-center">No related articles found.</p>
+                        </div>
                     @endforelse
                 </div>
             </div>
@@ -250,29 +274,81 @@
                     messageDiv.innerHTML = '';
                     errorDiv.innerHTML = '';
                     fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': form.querySelector('[name=_token]').value
-                        },
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            messageDiv.innerHTML = '<div class="alert alert-success">' + data.success + '</div>';
-                            form.reset();
-                        } else if (data.errors && data.errors.email) {
-                            errorDiv.innerHTML = data.errors.email[0];
-                        } else {
-                            messageDiv.innerHTML = '<div class="alert alert-danger">Something went wrong. Please try again.</div>';
-                        }
-                    })
-                    .catch(() => {
-                        messageDiv.innerHTML = '<div class="alert alert-danger">Server error. Please try again later.</div>';
-                    });
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': form.querySelector('[name=_token]').value
+                            },
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                messageDiv.innerHTML = '<div class="alert alert-success">' + data
+                                    .success + '</div>';
+                                form.reset();
+                            } else if (data.errors && data.errors.email) {
+                                errorDiv.innerHTML = data.errors.email[0];
+                            } else {
+                                messageDiv.innerHTML =
+                                    '<div class="alert alert-danger">Something went wrong. Please try again.</div>';
+                            }
+                        })
+                        .catch(() => {
+                            messageDiv.innerHTML =
+                                '<div class="alert alert-danger">Server error. Please try again later.</div>';
+                        });
                 });
             }
         });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const facebookBtn = document.querySelector('.fc-share-facebook');
+
+    if (!facebookBtn) {
+        return;
+    }
+
+    facebookBtn.addEventListener('click', async function (e) {
+
+        const url = this.dataset.url;
+        const title = this.dataset.title;
+
+        // Check whether native sharing is available
+        if (navigator.share) {
+            e.preventDefault();
+
+            try {
+                await navigator.share({
+                    title: title,
+                    text: title,
+                    url: url
+                });
+
+                console.log('Native share opened');
+
+            } catch (error) {
+
+                // User cancelled the share sheet
+                if (error.name === 'AbortError') {
+                    return;
+                }
+
+                console.error('Native share failed:', error);
+
+                // Fallback to Facebook
+                window.location.href =
+                    'https://www.facebook.com/sharer/sharer.php?u=' +
+                    encodeURIComponent(url);
+            }
+        }
+
+        // If navigator.share doesn't exist,
+        // normal <a href=""> Facebook URL works automatically.
+    });
+
+});
+</script>
 @endsection
