@@ -104,8 +104,8 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                @if($blog->thumbnail_image)
-                                    <img src="{{ $blog->thumbnail_image_url }}" alt="{{ $blog->title }}" 
+                                @if($blog->small_image_url)
+                                    <img src="{{ $blog->small_image_url ?? asset('assets/images/blog-default-thumbnail.png').'?text='.urlencode($article->title) }}" alt="{{ $blog->title }}" 
                                          class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
                                 @else
                                     <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" 
