@@ -1,0 +1,331 @@
+/*
+|--------------------------------------------------------------------------
+| FusionCentrix V2 — Global Theme
+|--------------------------------------------------------------------------
+| Load AFTER the existing style.css during the migration.
+| This file establishes the new brand system without replacing page
+| markup yet.
+*/
+
+:root {
+    /* Brand */
+    --fc-navy: #07142B;
+    --fc-blue: #1565FF;
+    --fc-cyan: #00C2FF;
+    --fc-gray: #6B7280;
+
+    /* Supporting neutrals */
+    --fc-white: #FFFFFF;
+    --fc-surface: #F7F9FC;
+    --fc-surface-alt: #EEF3F9;
+    --fc-border: #E2E8F0;
+    --fc-border-dark: rgba(255, 255, 255, 0.12);
+
+    /* Text */
+    --fc-text: #0F172A;
+    --fc-text-soft: #475569;
+    --fc-text-muted: #6B7280;
+    --fc-text-inverse: #FFFFFF;
+
+    /* Brand gradients — use sparingly */
+    --fc-gradient-primary: linear-gradient(135deg, #1565FF 0%, #00C2FF 100%);
+    --fc-gradient-dark: linear-gradient(135deg, #07142B 0%, #0B1F45 100%);
+    --fc-gradient-hero: radial-gradient(circle at 72% 45%, rgba(21, 101, 255, 0.18) 0%, rgba(0, 194, 255, 0.07) 24%, transparent 55%);
+
+    /* Shadows */
+    --fc-shadow-sm: 0 4px 14px rgba(7, 20, 43, 0.07);
+    --fc-shadow-md: 0 12px 32px rgba(7, 20, 43, 0.10);
+    --fc-shadow-lg: 0 24px 60px rgba(7, 20, 43, 0.14);
+    --fc-shadow-blue: 0 12px 32px rgba(21, 101, 255, 0.22);
+
+    /* Radius */
+    --fc-radius-sm: 8px;
+    --fc-radius-md: 12px;
+    --fc-radius-lg: 18px;
+    --fc-radius-xl: 24px;
+    --fc-radius-pill: 999px;
+
+    /* Layout */
+    --fc-container: 1200px;
+    --fc-section-y: clamp(64px, 8vw, 112px);
+    --fc-header-height: 76px;
+
+    /* Typography */
+    --fc-font-sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    --fc-font-mono: "Fira Code", Consolas, monospace;
+
+    /* Motion */
+    --fc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --fc-transition: 220ms var(--fc-ease);
+}
+
+/* Base reset */
+html {
+    *scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fc-font-sans);
+    color: var(--fc-text);
+    background: var(--fc-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--fc-blue);
+    transition: color var(--fc-transition);
+}
+
+a:hover {
+    color: #0D56E6;
+}
+
+/* Global container */
+.fc-container {
+    width: min(100% - 32px, var(--fc-container));
+    margin-inline: auto;
+}
+
+/* Sections */
+.fc-section {
+    padding-block: var(--fc-section-y);
+}
+
+.fc-section-light {
+    background: var(--fc-white);
+}
+
+.fc-section-soft {
+    background: var(--fc-surface);
+}
+
+.fc-section-dark {
+    background: var(--fc-navy);
+    color: var(--fc-text-inverse);
+}
+
+/* Section headings */
+.fc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    color: var(--fc-blue);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.fc-eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--fc-gradient-primary);
+}
+
+.fc-section-title {
+    margin: 0;
+    color: var(--fc-text);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 750;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.fc-section-dark .fc-section-title {
+    color: var(--fc-white);
+}
+
+.fc-section-description {
+    max-width: 680px;
+    margin: 18px auto 0;
+    color: var(--fc-text-soft);
+    font-size: 1.05rem;
+}
+
+.fc-section-dark .fc-section-description {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* Text helpers */
+.fc-text-primary { color: var(--fc-blue) !important; }
+.fc-text-cyan { color: var(--fc-cyan) !important; }
+.fc-text-navy { color: var(--fc-navy) !important; }
+.fc-text-muted { color: var(--fc-text-muted) !important; }
+
+.fc-gradient-text {
+    background: var(--fc-gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Buttons */
+.fc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 12px 22px;
+    border: 1px solid transparent;
+    border-radius: var(--fc-radius-sm);
+    font-size: 0.95rem;
+    font-weight: 650;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform var(--fc-transition),
+        box-shadow var(--fc-transition),
+        background-color var(--fc-transition),
+        border-color var(--fc-transition),
+        color var(--fc-transition);
+}
+
+.fc-btn:hover {
+    transform: translateY(-2px);
+}
+
+.fc-btn-primary {
+    color: var(--fc-white) !important;
+    background: var(--fc-gradient-primary);
+    box-shadow: var(--fc-shadow-blue);
+}
+
+.fc-btn-primary:hover {
+    color: var(--fc-white) !important;
+    box-shadow: 0 16px 38px rgba(21, 101, 255, 0.30);
+}
+
+.fc-btn-outline {
+    color: var(--fc-navy) !important;
+    background: transparent;
+    border-color: var(--fc-navy);
+}
+
+.fc-btn-outline:hover {
+    color: var(--fc-blue) !important;
+    border-color: var(--fc-blue);
+}
+
+.fc-btn-dark-outline {
+    color: var(--fc-white) !important;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.fc-btn-dark-outline:hover {
+    color: var(--fc-white) !important;
+    border-color: var(--fc-cyan);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Cards */
+.fc-card {
+    height: 100%;
+    padding: 28px;
+    background: var(--fc-white);
+    border: 1px solid var(--fc-border);
+    border-radius: var(--fc-radius-lg);
+    box-shadow: var(--fc-shadow-sm);
+    transition:
+        transform var(--fc-transition),
+        border-color var(--fc-transition),
+        box-shadow var(--fc-transition);
+}
+
+.fc-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(21, 101, 255, 0.30);
+    box-shadow: var(--fc-shadow-md);
+}
+
+.fc-card-dark {
+    background: rgba(255, 255, 255, 0.035);
+    border-color: var(--fc-border-dark);
+    color: var(--fc-white);
+}
+
+.fc-card-dark:hover {
+    border-color: rgba(0, 194, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* Form controls */
+.fc-input,
+.fc-textarea,
+.fc-select {
+    width: 100%;
+    border: 1px solid var(--fc-border);
+    border-radius: var(--fc-radius-sm);
+    background: var(--fc-white);
+    color: var(--fc-text);
+    outline: none;
+    transition:
+        border-color var(--fc-transition),
+        box-shadow var(--fc-transition);
+}
+
+.fc-input:focus,
+.fc-textarea:focus,
+.fc-select:focus {
+    border-color: var(--fc-blue);
+    box-shadow: 0 0 0 4px rgba(21, 101, 255, 0.10);
+}
+
+/* Accessibility */
+:focus-visible {
+    outline: 3px solid rgba(0, 194, 255, 0.55);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .fc-container {
+        width: min(100% - 24px, var(--fc-container));
+    }
+
+    .fc-card {
+        padding: 22px;
+    }
+
+    .fc-section-description {
+        font-size: 1rem;
+    }
+
+    .fc-btn {
+        min-height: 44px;
+        padding-inline: 18px;
+    }
+}

@@ -1,0 +1,710 @@
+/* ============================================================
+   FUSIONCENTRIX V2 — HERO
+   Bootstrap-compatible
+   ============================================================ */
+
+#home-hero-section.fc-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 900px;
+
+    padding: 170px 0 80px !important;
+    margin: 0 !important;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(circle at 73% 53%,
+            rgba(21, 101, 255, 0.24) 0%,
+            rgba(21, 101, 255, 0.10) 22%,
+            transparent 43%),
+        radial-gradient(circle at 91% 75%,
+            rgba(0, 194, 255, 0.08),
+            transparent 28%),
+        linear-gradient(115deg,
+            #07142B 0%,
+            #061328 55%,
+            #030B1A 100%) !important;
+
+    color: #fff;
+}
+
+
+/* ============================================================
+   BACKGROUND GRID
+   ============================================================ */
+
+#home-hero-section.fc-hero-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    opacity: .30;
+
+    background-image:
+        linear-gradient(rgba(0, 194, 255, .055) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(0, 194, 255, .055) 1px,
+            transparent 1px);
+
+    background-size: 72px 72px;
+
+    mask-image:
+        linear-gradient(to bottom,
+            #000 0%,
+            rgba(0, 0, 0, .8) 45%,
+            transparent 100%);
+
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            #000 0%,
+            rgba(0, 0, 0, .8) 45%,
+            transparent 100%);
+}
+
+
+/* ============================================================
+   RIGHT SIDE AMBIENT GLOW
+   ============================================================ */
+
+#home-hero-section.fc-hero-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    top: 140px;
+    right: 0;
+
+    z-index: -1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .20),
+            rgba(21, 101, 255, .07) 38%,
+            transparent 72%);
+
+    filter: blur(55px);
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   BOOTSTRAP CONTAINER OVERRIDE
+   ============================================================ */
+
+#home-hero-section>.container {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 80px),
+            1420px) !important;
+
+    max-width: 1420px !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* Remove Bootstrap row gutter */
+#home-hero-section>.container>.row {
+    --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0 !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+/* ============================================================
+   LEFT SIDE
+   ============================================================ */
+
+#home-hero-section .fc-hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    flex: 0 0 52% !important;
+
+    width: 52% !important;
+    max-width: 52% !important;
+
+    padding:
+        0 35px 0 0 !important;
+}
+
+
+/* ============================================================
+   HEADING
+   ============================================================ */
+
+#home-hero-section .fc-hero-title {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 0 28px !important;
+    padding: 0 !important;
+
+    color: #fff !important;
+
+    font-size:
+        clamp(52px,
+            5.1vw,
+            78px) !important;
+
+    font-weight: 750 !important;
+
+    line-height: 1.04 !important;
+
+    letter-spacing: -0.045em !important;
+
+    text-wrap: balance;
+}
+
+
+/* Blue accent */
+
+#home-hero-section .fc-hero-highlight {
+    display: inline;
+
+    color: transparent !important;
+
+    background:
+        linear-gradient(100deg,
+            #1565FF 0%,
+            #0789FF 48%,
+            #00C2FF 100%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+
+#home-hero-section .fc-hero-subtitle {
+    width: 100%;
+    max-width: 610px;
+
+    margin: 0 0 32px !important;
+    padding: 0 !important;
+
+    color:
+        rgba(255,
+            255,
+            255,
+            .70) !important;
+
+    font-size: 18px !important;
+
+    line-height: 1.7 !important;
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+#home-hero-section .fc-hero-cta {
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 16px !important;
+
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    margin: 0 !important;
+}
+
+
+/* Primary */
+
+#home-hero-section .fc-hero-cta .fc-btn-primary {
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+
+    min-width: 205px;
+    min-height: 58px;
+
+    padding: 14px 25px !important;
+
+    border: 0 !important;
+    border-radius: 9px !important;
+
+    background:
+        linear-gradient(135deg,
+            #1565FF,
+            #087CFF 55%,
+            #00AEEF) !important;
+
+    color: #fff !important;
+
+    font-size: 16px !important;
+    font-weight: 650 !important;
+
+    line-height: 1 !important;
+
+    box-shadow:
+        0 14px 34px rgba(21, 101, 255, .27);
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+#home-hero-section .fc-hero-cta .fc-btn-primary:hover {
+    color: #fff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 18px 42px rgba(21, 101, 255, .38);
+}
+
+
+/* Secondary */
+
+#home-hero-section .fc-hero-cta .fc-btn-secondary {
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+
+    min-width: 220px;
+    min-height: 58px;
+
+    padding: 14px 25px !important;
+
+    border:
+        1px solid rgba(0, 194, 255, .72) !important;
+
+    border-radius: 9px !important;
+
+    background:
+        rgba(255, 255, 255, .015) !important;
+
+    color: #fff !important;
+
+    font-size: 16px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+#home-hero-section .fc-hero-cta .fc-btn-secondary:hover {
+    color: #fff !important;
+
+    background:
+        rgba(0, 194, 255, .07) !important;
+
+    border-color:
+        #00C2FF !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+#home-hero-section .fc-hero-stats {
+    width: 100%;
+    max-width: 650px;
+
+    margin-top: 54px !important;
+
+    padding-top: 26px !important;
+
+    border-top:
+        1px solid rgba(255, 255, 255, .12) !important;
+}
+
+#home-hero-section .fc-hero-stats .row {
+    --bs-gutter-x: 0 !important;
+}
+
+#home-hero-section .fc-stat {
+    min-height: 66px;
+
+    padding:
+        2px 20px 2px 0 !important;
+}
+
+#home-hero-section .fc-stat-number {
+    margin: 0 !important;
+
+    color: #fff !important;
+
+    font-size: 30px !important;
+
+    font-weight: 750 !important;
+
+    line-height: 1.05 !important;
+}
+
+#home-hero-section .fc-stat-label {
+    max-width: 140px;
+
+    margin: 7px 0 0 !important;
+
+    color:
+        rgba(255, 255, 255, .50) !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.35 !important;
+}
+
+
+/* ============================================================
+   RIGHT VISUAL
+   ============================================================ */
+
+#home-hero-section .fc-hero-image {
+    position: relative;
+
+    z-index: 3;
+
+    flex: 0 0 48% !important;
+
+    width: 48% !important;
+    max-width: 48% !important;
+
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+
+    padding: 0 !important;
+}
+
+
+/* Image wrapper */
+
+#home-hero-section .fc-hero-image-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 0 !important;
+}
+
+
+/* Image glow */
+
+#home-hero-section .fc-hero-image-wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80%;
+    height: 70%;
+
+    top: 15%;
+    left: 10%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .38) 0%,
+            rgba(21, 101, 255, .15) 40%,
+            transparent 72%);
+
+    filter: blur(38px);
+
+    z-index: -1;
+}
+
+
+/* Actual image */
+
+#home-hero-section .fc-hero-img-fixed {
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: 720px !important;
+
+    height: auto !important;
+
+    margin: 0 auto !important;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 35px 65px rgba(0, 0, 0, .48)) drop-shadow(0 0 35px rgba(21, 101, 255, .18));
+
+    animation:
+        fcHeroFloat 7s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   FLOATING POINTS
+   ============================================================ */
+
+#home-hero-section .fc-hero-float {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #00C2FF;
+
+    box-shadow:
+        0 0 18px rgba(0, 194, 255, .9);
+
+    pointer-events: none;
+}
+
+#home-hero-section .fc-float-1 {
+    top: 18%;
+    right: 10%;
+}
+
+#home-hero-section .fc-float-2 {
+    top: 60%;
+    right: 2%;
+
+    width: 5px;
+    height: 5px;
+}
+
+#home-hero-section .fc-float-3 {
+    top: 42%;
+    left: 7%;
+
+    width: 5px;
+    height: 5px;
+}
+
+
+@keyframes fcHeroFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1199.98px) {
+
+    #home-hero-section>.container {
+        width:
+            calc(100% - 64px) !important;
+    }
+
+    #home-hero-section .fc-hero-content {
+        flex-basis: 53% !important;
+        width: 53% !important;
+        max-width: 53% !important;
+    }
+
+    #home-hero-section .fc-hero-image {
+        flex-basis: 47% !important;
+        width: 47% !important;
+        max-width: 47% !important;
+    }
+
+    #home-hero-section .fc-hero-title {
+        font-size:
+            clamp(48px,
+                5vw,
+                65px) !important;
+    }
+
+    #home-hero-section .fc-hero-image-wrapper {
+        max-width: 590px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    #home-hero-section.fc-hero-section {
+        min-height: auto;
+
+        padding:
+            125px 0 65px !important;
+    }
+
+    #home-hero-section>.container {
+        width:
+            calc(100% - 32px) !important;
+    }
+
+    #home-hero-section>.container>.row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #home-hero-section .fc-hero-content {
+        flex: 0 0 100% !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        padding: 0 !important;
+
+        text-align: center;
+    }
+
+    #home-hero-section .fc-hero-title {
+        max-width: 760px;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        font-size:
+            clamp(44px,
+                7vw,
+                62px) !important;
+    }
+
+    #home-hero-section .fc-hero-subtitle {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #home-hero-section .fc-hero-cta {
+        justify-content: center;
+    }
+
+    #home-hero-section .fc-hero-stats {
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        text-align: left;
+    }
+
+    #home-hero-section .fc-hero-image {
+        flex: 0 0 100% !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        margin-top: 45px;
+    }
+
+    #home-hero-section .fc-hero-image-wrapper {
+        max-width: 620px;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+    #home-hero-section.fc-hero-section {
+        padding:
+            105px 0 48px !important;
+    }
+
+    #home-hero-section>.container {
+        width:
+            calc(100% - 24px) !important;
+    }
+
+    #home-hero-section .fc-hero-title {
+        font-size:
+            clamp(38px,
+                10.8vw,
+                50px) !important;
+
+        line-height: 1.04 !important;
+    }
+
+    #home-hero-section .fc-hero-subtitle {
+        font-size: 16px !important;
+    }
+
+    #home-hero-section .fc-hero-cta {
+        flex-direction: column;
+    }
+
+    #home-hero-section .fc-hero-cta .fc-btn-primary,
+    #home-hero-section .fc-hero-cta .fc-btn-secondary {
+        width: min(100%, 320px) !important;
+
+        min-width: 0;
+    }
+
+    #home-hero-section .fc-hero-image {
+        margin-top: 30px;
+    }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #home-hero-section .fc-hero-img-fixed {
+        animation: none;
+    }
+}

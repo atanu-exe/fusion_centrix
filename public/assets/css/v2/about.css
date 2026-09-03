@@ -1,0 +1,1771 @@
+/* ============================================================
+   FUSIONCENTRIX V2
+   ABOUT PAGE
+   ============================================================ */
+
+
+/* ============================================================
+   01. ABOUT HERO
+   ============================================================ */
+
+.fc-about-hero {
+
+    position: relative;
+
+    min-height:
+        620px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    overflow:
+        hidden;
+
+    padding:
+        110px 0 90px;
+
+    background:
+        var(--fc-gradient-dark);
+
+    color:
+        var(--fc-white);
+
+    isolation:
+        isolate;
+}
+
+
+.fc-about-hero-glow {
+
+    position:
+        absolute;
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    border-radius:
+        50%;
+
+    pointer-events:
+        none;
+
+    filter:
+        blur(30px);
+
+    z-index:
+        -1;
+}
+
+
+.fc-about-hero-glow-one {
+
+    top:
+        -260px;
+
+    right:
+        -100px;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .28),
+            transparent 68%);
+}
+
+
+.fc-about-hero-glow-two {
+
+    bottom:
+        -320px;
+
+    left:
+        -180px;
+
+    background:
+        radial-gradient(circle,
+            rgba(0, 194, 255, .13),
+            transparent 68%);
+}
+
+
+.fc-about-hero::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        -2;
+
+    opacity:
+        .28;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, .035) 1px,
+            transparent 1px);
+
+    background-size:
+        55px 55px;
+
+    pointer-events:
+        none;
+}
+
+
+.fc-about-hero-content {
+
+    max-width:
+        850px;
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+}
+
+
+.fc-about-hero .fc-eyebrow {
+
+    color:
+        var(--fc-cyan);
+}
+
+
+.fc-about-hero-title {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-white);
+
+    font-size:
+        clamp(3rem, 6vw, 5.8rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        .98;
+
+    letter-spacing:
+        -.06em;
+}
+
+
+.fc-about-hero-title span {
+
+    display:
+        block;
+
+    margin-top:
+        8px;
+
+    background:
+        var(--fc-gradient-primary);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+.fc-about-hero-description {
+
+    max-width:
+        680px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255, 255, 255, .67);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.75;
+}
+
+
+.fc-about-hero-actions {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-top:
+        34px;
+}
+
+
+.fc-about-hero .fc-btn-outline {
+
+    color:
+        var(--fc-white) !important;
+
+    border-color:
+        rgba(255, 255, 255, .25);
+
+    background:
+        rgba(255, 255, 255, .02);
+}
+
+
+.fc-about-hero .fc-btn-outline:hover {
+
+    color:
+        var(--fc-white) !important;
+
+    border-color:
+        var(--fc-cyan);
+
+    background:
+        rgba(0, 194, 255, .06);
+}
+
+
+.fc-about-hero-bottom {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        28px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        13px;
+
+    color:
+        rgba(255, 255, 255, .30);
+
+    font-size:
+        9px;
+
+    font-weight:
+        650;
+
+    letter-spacing:
+        .1em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.fc-about-hero-bottom i {
+
+    width:
+        3px;
+
+    height:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--fc-cyan);
+
+    opacity:
+        .6;
+}
+
+
+/* ============================================================
+   02. WHO WE ARE
+   ============================================================ */
+
+.fc-about-intro {
+
+    background:
+        var(--fc-white);
+}
+
+
+.fc-about-intro-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, .9fr) minmax(0, 1.1fr);
+
+    gap:
+        clamp(50px, 8vw, 120px);
+
+    align-items:
+        start;
+}
+
+
+.fc-about-intro-heading {
+
+    position:
+        sticky;
+
+    top:
+        100px;
+}
+
+
+.fc-about-intro-content {
+
+    max-width:
+        650px;
+}
+
+
+.fc-about-intro-lead {
+
+    margin:
+        0 0 24px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        clamp(1.35rem, 2.4vw, 1.8rem);
+
+    font-weight:
+        600;
+
+    line-height:
+        1.4;
+
+    letter-spacing:
+        -.025em;
+}
+
+
+.fc-about-intro-content p:not(.fc-about-intro-lead) {
+
+    margin:
+        0 0 18px;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
+}
+
+
+.fc-about-intro-content p:last-child {
+
+    margin-bottom:
+        0;
+}
+
+
+/* ============================================================
+   03. BELIEFS
+   ============================================================ */
+
+.fc-about-beliefs {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.fc-about-beliefs-header {
+
+    max-width:
+        760px;
+
+    margin:
+        0 auto 55px;
+
+    text-align:
+        center;
+}
+
+
+.fc-about-beliefs-header .fc-section-description {
+
+    margin-top:
+        20px;
+}
+
+
+.fc-about-beliefs-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    border:
+        1px solid var(--fc-border);
+
+    border-radius:
+        var(--fc-radius-lg);
+
+    background:
+        var(--fc-white);
+
+    overflow:
+        hidden;
+}
+
+
+.fc-about-belief {
+
+    position:
+        relative;
+
+    min-height:
+        250px;
+
+    padding:
+        30px;
+
+    border-right:
+        1px solid var(--fc-border);
+
+    transition:
+        background 250ms ease,
+        transform 250ms var(--fc-ease);
+}
+
+
+.fc-about-belief:last-child {
+
+    border-right:
+        0;
+}
+
+
+.fc-about-belief::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        30px;
+
+    width:
+        28px;
+
+    height:
+        3px;
+
+    background:
+        var(--fc-gradient-primary);
+}
+
+
+.fc-about-belief:hover {
+
+    background:
+        rgba(21, 101, 255, .025);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.fc-about-belief-number {
+
+    display:
+        block;
+
+    margin-bottom:
+        55px;
+
+    color:
+        var(--fc-blue);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .1em;
+}
+
+
+.fc-about-belief h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        17px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-about-belief p {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   04. CAPABILITIES
+   ============================================================ */
+
+.fc-about-capabilities {
+
+    background:
+        var(--fc-white);
+}
+
+
+.fc-about-capabilities-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, .9fr) minmax(0, 1.1fr);
+
+    gap:
+        clamp(50px, 8vw, 110px);
+
+    align-items:
+        center;
+}
+
+
+.fc-about-capabilities-content .fc-section-description {
+
+    margin-left:
+        0;
+
+    margin-right:
+        0;
+}
+
+
+.fc-about-capabilities-btn {
+
+    margin-top:
+        30px;
+}
+
+
+.fc-about-capability-list {
+
+    border-top:
+        1px solid var(--fc-border);
+}
+
+
+.fc-about-capability {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        45px 1fr;
+
+    gap:
+        20px;
+
+    padding:
+        25px 0;
+
+    border-bottom:
+        1px solid var(--fc-border);
+
+    transition:
+        padding-left 250ms var(--fc-ease);
+}
+
+
+.fc-about-capability:hover {
+
+    padding-left:
+        8px;
+}
+
+
+.fc-about-capability>span {
+
+    color:
+        var(--fc-blue);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    padding-top:
+        4px;
+}
+
+
+.fc-about-capability h3 {
+
+    margin:
+        0 0 6px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        17px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-about-capability p {
+
+    max-width:
+        500px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   05. APPROACH
+   ============================================================ */
+
+.fc-about-approach {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--fc-navy);
+}
+
+
+.fc-about-approach::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        550px;
+
+    height:
+        550px;
+
+    right:
+        -350px;
+
+    top:
+        -300px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .20),
+            transparent 70%);
+
+    pointer-events:
+        none;
+}
+
+
+.fc-about-approach-header {
+
+    max-width:
+        700px;
+
+    margin-bottom:
+        55px;
+}
+
+
+.fc-about-approach .fc-section-title {
+
+    color:
+        var(--fc-white);
+}
+
+
+.fc-about-approach-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    border-top:
+        1px solid rgba(255, 255, 255, .12);
+}
+
+
+.fc-about-approach-item {
+
+    min-height:
+        270px;
+
+    padding:
+        30px 28px;
+
+    border-right:
+        1px solid rgba(255, 255, 255, .10);
+}
+
+
+.fc-about-approach-item:first-child {
+
+    padding-left:
+        0;
+}
+
+
+.fc-about-approach-item:last-child {
+
+    border-right:
+        0;
+
+    padding-right:
+        0;
+}
+
+
+.fc-about-approach-index {
+
+    display:
+        block;
+
+    margin-bottom:
+        65px;
+
+    color:
+        var(--fc-cyan);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .1em;
+}
+
+
+.fc-about-approach-item h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--fc-white);
+
+    font-size:
+        18px;
+
+    font-weight:
+        700;
+}
+
+
+.fc-about-approach-item p {
+
+    max-width:
+        230px;
+
+    margin:
+        0;
+
+    color:
+        rgba(255, 255, 255, .55);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   06. TEAM
+   ============================================================ */
+
+.fc-about-team {
+
+    background:
+        var(--fc-white);
+}
+
+
+.fc-about-team-header {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 400px;
+
+    gap:
+        60px;
+
+    align-items:
+        end;
+
+    margin-bottom:
+        55px;
+}
+
+
+.fc-about-team-header>p {
+
+    margin:
+        0 0 4px;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.75;
+}
+
+
+.fc-about-team-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap:
+        18px;
+}
+
+
+.fc-about-team-card {
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid var(--fc-border);
+
+    border-radius:
+        var(--fc-radius-lg);
+
+    background:
+        var(--fc-surface);
+
+    transition:
+        transform 300ms var(--fc-ease),
+        box-shadow 300ms ease,
+        border-color 300ms ease;
+}
+
+
+.fc-about-team-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(21, 101, 255, .25);
+
+    box-shadow:
+        var(--fc-shadow-md);
+}
+
+
+.fc-about-team-image {
+
+    position:
+        relative;
+
+    aspect-ratio:
+        1 / 1.1;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--fc-navy);
+}
+
+
+.fc-about-team-image::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(to top,
+            rgba(7, 20, 43, .28),
+            transparent 45%);
+
+    pointer-events:
+        none;
+}
+
+
+.fc-about-team-image img {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform 500ms var(--fc-ease);
+}
+
+
+.fc-about-team-card:hover .fc-about-team-image img {
+
+    transform:
+        scale(1.04);
+}
+
+
+.fc-about-team-content {
+
+    padding:
+        19px 20px 21px;
+}
+
+
+.fc-about-team-content h3 {
+
+    margin:
+        0 0 5px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        16px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-about-team-content span {
+
+    color:
+        var(--fc-blue);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .08em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* ============================================================
+   07. WHY FUSIONCENTRIX
+   ============================================================ */
+
+.fc-about-why {
+
+    background:
+        var(--fc-surface);
+}
+
+
+.fc-about-why-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, .85fr) minmax(0, 1.15fr);
+
+    gap:
+        clamp(50px, 8vw, 120px);
+
+    align-items:
+        start;
+}
+
+
+.fc-about-why-list {
+
+    border-top:
+        1px solid var(--fc-border);
+}
+
+
+.fc-about-why-item {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        42px 1fr;
+
+    gap:
+        20px;
+
+    padding:
+        23px 0;
+
+    border-bottom:
+        1px solid var(--fc-border);
+}
+
+
+.fc-about-why-icon {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border:
+        1px solid rgba(21, 101, 255, .16);
+
+    border-radius:
+        50%;
+
+    color:
+        var(--fc-blue);
+
+    background:
+        rgba(21, 101, 255, .05);
+
+    font-size:
+        9px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-about-why-item h3 {
+
+    margin:
+        0 0 5px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        16px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-about-why-item p {
+
+    max-width:
+        500px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   08. ABOUT CTA
+   ============================================================ */
+
+.fc-about-cta {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        clamp(80px, 9vw, 120px) 0;
+
+    background:
+        var(--fc-gradient-dark);
+
+    isolation:
+        isolate;
+}
+
+
+.fc-about-cta-glow {
+
+    position:
+        absolute;
+
+    width:
+        550px;
+
+    height:
+        550px;
+
+    right:
+        -280px;
+
+    top:
+        -300px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .23),
+            transparent 68%);
+
+    filter:
+        blur(20px);
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+}
+
+
+.fc-about-cta-inner {
+
+    max-width:
+        850px;
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+}
+
+
+.fc-about-cta-eyebrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        20px;
+
+    color:
+        var(--fc-cyan);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .15em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.fc-about-cta-eyebrow::before,
+.fc-about-cta-eyebrow::after {
+
+    content:
+        "";
+
+    width:
+        25px;
+
+    height:
+        1px;
+
+    background:
+        var(--fc-cyan);
+
+    opacity:
+        .7;
+}
+
+
+.fc-about-cta-title {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-white);
+
+    font-size:
+        clamp(2.7rem, 5.5vw, 5rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.055em;
+}
+
+
+.fc-about-cta-title span {
+
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+    background:
+        var(--fc-gradient-primary);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+.fc-about-cta-inner>p {
+
+    max-width:
+        580px;
+
+    margin:
+        23px auto 0;
+
+    color:
+        rgba(255, 255, 255, .62);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+}
+
+
+.fc-about-cta-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    margin-top:
+        32px;
+}
+
+
+.fc-about-cta .fc-btn-outline {
+
+    color:
+        var(--fc-white) !important;
+
+    border-color:
+        rgba(255, 255, 255, .25);
+}
+
+
+.fc-about-cta .fc-btn-outline:hover {
+
+    color:
+        var(--fc-white) !important;
+
+    border-color:
+        var(--fc-cyan);
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .fc-about-intro-grid,
+    .fc-about-capabilities-grid,
+    .fc-about-why-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            45px;
+    }
+
+
+    .fc-about-intro-heading {
+
+        position:
+            static;
+    }
+
+
+    .fc-about-beliefs-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .fc-about-belief:nth-child(2) {
+
+        border-right:
+            0;
+    }
+
+
+    .fc-about-belief:nth-child(1),
+    .fc-about-belief:nth-child(2) {
+
+        border-bottom:
+            1px solid var(--fc-border);
+    }
+
+
+    .fc-about-approach-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .fc-about-approach-item:nth-child(2) {
+
+        border-right:
+            0;
+    }
+
+
+    .fc-about-approach-item:nth-child(1),
+    .fc-about-approach-item:nth-child(2) {
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, .10);
+    }
+
+
+    .fc-about-approach-item:nth-child(3) {
+
+        padding-left:
+            0;
+    }
+
+
+    .fc-about-team-header {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .fc-about-team-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+
+    .fc-about-hero {
+
+        min-height:
+            570px;
+
+        padding:
+            100px 0 85px;
+    }
+
+
+    .fc-about-hero-title {
+
+        font-size:
+            clamp(2.7rem, 12vw, 4rem);
+    }
+
+
+    .fc-about-hero-description {
+
+        font-size:
+            14px;
+    }
+
+
+    .fc-about-hero-actions {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+    }
+
+
+    .fc-about-hero-actions .fc-btn {
+
+        width:
+            100%;
+
+        max-width:
+            290px;
+    }
+
+
+    .fc-about-hero-bottom {
+
+        bottom:
+            18px;
+
+        gap:
+            8px;
+
+        font-size:
+            8px;
+    }
+
+
+    .fc-about-beliefs-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .fc-about-belief,
+    .fc-about-belief:nth-child(2) {
+
+        border-right:
+            0;
+
+        border-bottom:
+            1px solid var(--fc-border);
+    }
+
+
+    .fc-about-belief:last-child {
+
+        border-bottom:
+            0;
+    }
+
+
+    .fc-about-belief {
+
+        min-height:
+            220px;
+    }
+
+
+    .fc-about-capability {
+
+        grid-template-columns:
+            35px 1fr;
+
+        gap:
+            12px;
+    }
+
+
+    .fc-about-approach-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .fc-about-approach-item,
+    .fc-about-approach-item:nth-child(3) {
+
+        min-height:
+            auto;
+
+        padding:
+            25px 0;
+
+        border-right:
+            0;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, .10);
+    }
+
+
+    .fc-about-approach-item:last-child {
+
+        border-bottom:
+            0;
+    }
+
+
+    .fc-about-team-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .fc-about-team-image {
+
+        aspect-ratio:
+            1 / 1;
+    }
+
+
+    .fc-about-why-item {
+
+        grid-template-columns:
+            35px 1fr;
+
+        gap:
+            14px;
+    }
+
+
+    .fc-about-cta-title {
+
+        font-size:
+            clamp(2.5rem, 11vw, 3.7rem);
+    }
+
+
+    .fc-about-cta-actions {
+
+        flex-direction:
+            column;
+    }
+
+
+    .fc-about-cta-actions .fc-btn {
+
+        width:
+            100%;
+
+        max-width:
+            290px;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+    .fc-about-hero {
+
+        min-height:
+            540px;
+    }
+
+
+    .fc-about-hero-bottom {
+
+        display:
+            none;
+    }
+
+
+    .fc-about-belief {
+
+        padding:
+            27px 24px;
+    }
+
+
+    .fc-about-belief-number {
+
+        margin-bottom:
+            40px;
+    }
+
+
+    .fc-about-team-header {
+
+        margin-bottom:
+            35px;
+    }
+
+
+    .fc-about-team-content {
+
+        padding:
+            17px 18px 19px;
+    }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fc-about-belief,
+    .fc-about-capability,
+    .fc-about-team-card,
+    .fc-about-team-image img {
+
+        transition:
+            none;
+    }
+
+}

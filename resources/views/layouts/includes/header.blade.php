@@ -89,103 +89,10 @@
         media="print" onload="this.media='all'">
     {{-- custom css  --}}
     <link rel="preload" as="style" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <style>
-        /* CTA button bold sweep + dual shimmer + pulse */
-        #nav-free-consult-btn {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(120deg, #ff6a3d, #ff2f92 45%, #5a8dff 100%);
-            background-size: 220% 220%;
-            color: #fff;
-            box-shadow: 0 12px 28px rgba(255, 47, 146, 0.28);
-            transition: transform 0.16s ease, box-shadow 0.16s ease;
-            animation: navCtaBg 3.2s ease infinite, navCtaPulse 2.6s ease-in-out infinite;
-        }
-
-        /* Wide soft shimmer */
-        #nav-free-consult-btn::before {
-            content: "";
-            position: absolute;
-            inset: -10% -40%;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.18), transparent 38%);
-            animation: navCtaGlow 4.6s ease-in-out infinite;
-            opacity: 0.8;
-        }
-
-        /* Thin sweep line */
-        #nav-free-consult-btn::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 150%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.85) 40%, transparent 100%);
-            transform: skewX(-18deg);
-            mix-blend-mode: screen;
-            animation: navCtaShine 1.9s linear infinite;
-        }
-
-        #nav-free-consult-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 16px 36px rgba(255, 47, 146, 0.34);
-        }
-
-        @keyframes navCtaBg {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes navCtaShine {
-            0% {
-                left: -150%;
-            }
-
-            50% {
-                left: -10%;
-            }
-
-            100% {
-                left: 140%;
-            }
-        }
-
-        @keyframes navCtaPulse {
-
-            0%,
-            100% {
-                box-shadow: 0 12px 28px rgba(255, 47, 146, 0.28);
-            }
-
-            50% {
-                box-shadow: 0 18px 42px rgba(90, 141, 255, 0.36);
-            }
-        }
-
-        @keyframes navCtaGlow {
-
-            0%,
-            100% {
-                transform: translateX(0);
-                opacity: 0.8;
-            }
-
-            50% {
-                transform: translateX(18%);
-                opacity: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/fusioncentrix-v2-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/fusioncentrix-v2-hero.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/style.css') }}">
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

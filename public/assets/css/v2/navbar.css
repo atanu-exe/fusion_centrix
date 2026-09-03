@@ -1,0 +1,466 @@
+/* ============================================================
+   FUSIONCENTRIX V2 — NAVBAR
+   Depends on theme.css variables
+   ============================================================ */
+
+.fc-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 98px;
+
+    background: var(--fc-navy)
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.fc-navbar-container {
+    width: min(calc(100% - 112px), var(--fc-container));
+    height: 98px;
+    min-height: 98px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.fc-navbar-brand {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.fc-brand-link {
+    display: inline-flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.fc-brand-logo {
+    display: block;
+
+    width: auto;
+    max-width: 245px;
+    max-height: 62px;
+
+    object-fit: contain;
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.fc-navbar-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 5px;
+
+    margin: 0 0 0 auto;
+    padding: 0;
+
+    list-style: none;
+}
+
+.fc-nav-item {
+    margin: 0;
+    padding: 0;
+}
+
+.fc-nav-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 8px 16px;
+
+    border-radius: 8px;
+
+    color: rgba(255, 255, 255, 0.78) !important;
+
+    background: transparent !important;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        color var(--fc-transition),
+        background-color var(--fc-transition);
+}
+
+.fc-nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 2px;
+
+    height: 2px;
+
+    border-radius: 2px;
+
+    background: var(--fc-gradient-primary);
+
+    transform: scaleX(0);
+
+    transition: transform var(--fc-transition);
+}
+
+.fc-nav-link:hover,
+.fc-nav-link:focus-visible,
+.fc-nav-link.active {
+    color: var(--fc-white) !important;
+
+    background: rgba(255, 255, 255, 0.035) !important;
+}
+
+.fc-nav-link:hover::after,
+.fc-nav-link:focus-visible::after,
+.fc-nav-link.active::after {
+    transform: scaleX(1);
+}
+
+
+/* ============================================================
+   NAVBAR CTA
+   ============================================================ */
+
+#nav-free-consult-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 188px;
+    min-height: 56px;
+
+    margin-left: 14px;
+
+    padding: 13px 24px !important;
+
+    border: 1px solid rgba(0, 194, 255, 0.75) !important;
+    border-radius: 10px !important;
+
+    background: rgba(21, 101, 255, 0.05) !important;
+
+    color: var(--fc-white) !important;
+
+    box-shadow: none !important;
+
+    font-size: 16px;
+    font-weight: 650 !important;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        background var(--fc-transition),
+        border-color var(--fc-transition),
+        transform var(--fc-transition);
+}
+
+
+/*
+ * Remove old pink/orange CTA effects.
+ */
+#nav-free-consult-btn::before,
+#nav-free-consult-btn::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+}
+
+#nav-free-consult-btn:hover {
+    color: var(--fc-white) !important;
+
+    background: var(--fc-gradient-primary) !important;
+
+    border-color: transparent !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   MOBILE TOGGLE
+   ============================================================ */
+
+.fc-menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    margin-left: auto;
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.fc-menu-toggle span {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    border-radius: 2px;
+
+    background: var(--fc-white);
+
+    transition:
+        transform var(--fc-transition),
+        opacity var(--fc-transition);
+}
+
+.fc-menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.fc-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.fc-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ============================================================
+   MOBILE OVERLAY
+   ============================================================ */
+
+.fc-menu-overlay {
+    display: none;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1199.98px) {
+
+    .fc-navbar-container {
+        width: min(calc(100% - 64px), var(--fc-container));
+
+        gap: 20px;
+    }
+
+    .fc-nav-link {
+        padding-inline: 11px;
+    }
+
+    #nav-free-consult-btn {
+        min-width: 165px;
+        padding-inline: 16px !important;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .fc-navbar {
+        height: 72px;
+    }
+
+    .fc-navbar-container {
+        width: calc(100% - 32px);
+
+        height: 72px;
+        min-height: 72px;
+    }
+
+    .fc-brand-logo {
+        max-width: 180px;
+        max-height: 46px;
+    }
+
+    .fc-menu-toggle {
+        display: inline-flex;
+
+        position: relative;
+        z-index: 1003;
+    }
+
+    .fc-navbar-menu {
+        position: fixed;
+
+        top: 84px;
+        right: 16px;
+        left: 16px;
+
+        z-index: 1002;
+
+        display: flex;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 3px;
+
+        max-height: calc(100vh - 100px);
+
+        margin: 0;
+        padding: 12px;
+
+        overflow-y: auto;
+
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 14px;
+
+        background: var(--fc-navy);
+
+        box-shadow:
+            0 24px 60px rgba(0, 0, 0, 0.45);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        pointer-events: none;
+
+        transition:
+            opacity var(--fc-transition),
+            transform var(--fc-transition),
+            visibility var(--fc-transition);
+    }
+
+    .fc-navbar-menu.active {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+    .fc-nav-link {
+        width: 100%;
+
+        min-height: 48px;
+
+        padding: 13px 14px;
+
+        justify-content: flex-start;
+
+        font-size: 15px;
+    }
+
+    .fc-nav-link::after {
+        left: 14px;
+        right: auto;
+
+        width: 30px;
+    }
+
+    /*
+     * Hide desktop CTA.
+     * Mobile CTA will be added to the actual HTML later.
+     */
+    .fc-navbar-container>div:has(#nav-free-consult-btn) {
+        display: none;
+    }
+
+    .fc-menu-overlay {
+        display: block;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 999;
+
+        background: rgba(0, 0, 0, 0.60);
+
+        opacity: 0;
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            opacity var(--fc-transition),
+            visibility var(--fc-transition);
+    }
+
+    .fc-menu-overlay.active {
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+    .fc-navbar-container {
+        width: calc(100% - 24px);
+
+        height: 68px;
+        min-height: 68px;
+    }
+
+    .fc-navbar {
+        height: 68px;
+    }
+
+    .fc-brand-logo {
+        max-width: 150px;
+        max-height: 40px;
+    }
+
+    .fc-navbar-menu {
+        top: 80px;
+
+        right: 12px;
+        left: 12px;
+    }
+}

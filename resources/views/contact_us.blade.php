@@ -1,176 +1,498 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Hero Section -->
+    {{-- ============================================================
+     FUSIONCENTRIX V2 — CONTACT PAGE
+     ============================================================ --}}
 
-  <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>Get in Touch</h1>
-                <p>Let’s build something great together. Whether it’s a new project, partnership, or just a hello — we’d love to hear from you.</p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <span>Contact Us</span>
+    <main id="main-content" class="fc-contact-page">
+        <link rel="stylesheet" href="{{ asset('assets/css/v2/contact.css') }}">
+
+        {{-- ========================================================
+         01. CONTACT HERO
+         ======================================================== --}}
+
+        <section class="fc-contact-hero" aria-labelledby="contact-hero-title">
+
+            <div class="fc-contact-hero-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-contact-hero-content">
+
+                    <span class="fc-eyebrow">
+                        Get In Touch
+                    </span>
+
+                    <h1 id="contact-hero-title" class="fc-contact-hero-title">
+
+                        Let's talk about
+                        <span>what you're building.</span>
+
+                    </h1>
+
+                    <p class="fc-contact-hero-description">
+
+                        Have a project, an idea, or a digital challenge?
+                        Tell us what you have in mind and we'll explore
+                        how FusionCentrix can help.
+
+                    </p>
+
                 </div>
-            </div>
-        </div>
-    </section>
-<!-- Contact Section -->
-<section id="contact-us" class="fc-contact-section py-5">
-    <div class="container">
-        <div class="row align-items-start gy-4">
-            <!-- Left: Info -->
-            <div class="col-lg-5">
-                <div class="contact-intro">
-                    {{-- <span class="contact-badge">Contact</span> --}}
-                    <h2 class="section-heading">Let’s plan your next launch</h2>
-                    <p class="section-description text-muted">Tell us about your goals and we’ll tailor a roadmap—whether
-                        it’s a new build, modernization, or ongoing support.</p>
 
-                    <div class="contact-stats">
-                        <div class="stat">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Projects shipped</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support coverage</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">4–12 wks</div>
-                            <div class="stat-label">Typical timeline</div>
-                        </div>
-                    </div>
-
-                    <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <div class="label">Location</div>
-                                <div class="value">Salt Lake, Kolkata, India</div>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <div class="label">Email</div>
-                                <a class="value" href="mailto:info@fusioncentrix.com">{{$contact_email}}</a>
-                            </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="icon"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <div class="label">Phone</div>
-                                <a class="value" href="tel:+919477614409">{{$contact_phone}}</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- <div class="contact-social">
-                        <div class="label">Follow us</div>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/fusioncentrix" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/fusioncentrix" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div> --}}
-
-                    <div class="contact-hours">
-                        <div class="label">Working hours</div>
-                        <p class="text-muted mb-1">Mon – Fri: 9:00 AM – 6:00 PM</p>
-                        <p class="text-muted mb-0">Sat: 10:00 AM – 2:00 PM</p>
-                        <div class="response"><i class="fas fa-bolt"></i> Avg. response: within 24 hours</div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Right: Form -->
-            <div class="col-lg-7">
-                <div class="contact-form-card">
-                    <div class="form-head">
-                        <div>
-                            <span class="form-chip">Project inquiry</span>
-                            <h3>Tell us what you need</h3>
-                            <p class="text-muted">Share a few details and we’ll follow up with a tailored plan.</p>
+        </section>
+
+
+
+        {{-- ========================================================
+         02. CONTACT AREA
+         ======================================================== --}}
+
+        <section class="fc-contact-main fc-section" aria-labelledby="contact-form-title">
+
+            <div class="container">
+
+                <div class="fc-contact-grid">
+
+
+                    {{-- =================================================
+                     LEFT — CONTACT INFORMATION
+                     ================================================= --}}
+
+                    <div class="fc-contact-info">
+
+                        <span class="fc-eyebrow">
+                            Start a Conversation
+                        </span>
+
+                        <h2 class="fc-contact-info-title">
+
+                            Tell us what you
+                            <span class="fc-gradient-text">
+                                need.
+                            </span>
+
+                        </h2>
+
+                        <p class="fc-contact-info-description">
+
+                            Whether you're starting something new,
+                            improving an existing product, or looking
+                            for a long-term technology partner, we'd
+                            love to hear from you.
+
+                        </p>
+
+
+                        {{-- Email --}}
+                        <a href="mailto:info@fusioncentrix.com" class="fc-contact-detail">
+
+                            <span class="fc-contact-detail-label">
+                                Email
+                            </span>
+
+                            <strong>
+                                info@fusioncentrix.com
+                            </strong>
+
+                        </a>
+
+
+                        {{-- Phone --}}
+                        <a href="tel:+918282098384" class="fc-contact-detail">
+
+                            <span class="fc-contact-detail-label">
+                                Phone
+                            </span>
+
+                            <strong>
+                                +91 82820 98384
+                            </strong>
+
+                        </a>
+
+
+                        {{-- Location --}}
+                        <div class="fc-contact-detail">
+
+                            <span class="fc-contact-detail-label">
+                                Location
+                            </span>
+
+                            <strong>
+                                Sector V, Salt Lake<br>
+                                Kolkata, India - 700091
+                            </strong>
+
                         </div>
-                        <div class="form-help">
-                            <i class="fas fa-clock"></i>
-                            <span>Response in 24 hours</span>
+
+
+                        {{-- Response note --}}
+                        <div class="fc-contact-note">
+
+                            <span class="fc-contact-note-dot"></span>
+
+                            <p>
+                                Tell us about your project.
+                                We'll get back to you with
+                                the next steps.
+                            </p>
+
                         </div>
+
                     </div>
 
-                    <form method="POST" action="{{ route('contact.submit') }}" class="fc-contact-form">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Full Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="John Doe">
-                                @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email Address *</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                                    class="form-control @error('email') is-invalid @enderror" placeholder="you@example.com">
-                                @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" name="subject" id="subject" value="{{ old('subject') }}"
-                                    class="form-control @error('subject') is-invalid @enderror" placeholder="Project inquiry">
-                                @error('subject')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="message" class="form-label">Project Type *</label>
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <label class="chip-input"><input type="radio" name="project_type" value="Web" checked><span>Web</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="chip-input"><input type="radio" name="project_type" value="Mobile"><span>Mobile</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="chip-input"><input type="radio" name="project_type" value="E-commerce"><span>E-commerce</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="chip-input"><input type="radio" name="project_type" value="Other"><span>Other</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label for="message" class="form-label">Message *</label>
-                                <textarea name="message" id="message" rows="5" required
-                                    class="form-control @error('message') is-invalid @enderror"
-                                    placeholder="Tell us about your project, goals, and timeline">{{ old('message') }}</textarea>
-                                @error('message')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-12 d-flex flex-column flex-md-row align-items-md-center gap-3">
-                                <button type="submit" class="btn btn-gradient px-4">Send Message</button>
-                                <span class="form-note"><i class="fas fa-lock"></i> We keep your information private.</span>
+
+
+                    {{-- =================================================
+                     RIGHT — FORM
+                     ================================================= --}}
+
+                    <div class="fc-contact-form-wrap">
+
+                        <div class="fc-contact-form-header">
+
+                            <span>
+                                Project Enquiry
+                            </span>
+
+                            <h2 id="contact-form-title">
+                                How can we help?
+                            </h2>
+
+                        </div>
+
+
+                        <form action="{{ url('contact-us') }}" method="POST" class="fc-contact-form">
+
+                            @csrf
+
+
+                            {{-- Name --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-name">
+                                    Your Name
+                                </label>
+
+                                <input type="text" id="contact-name" name="name" class="fc-input"
+                                    placeholder="Enter your name" autocomplete="name" required>
+
                             </div>
 
-                            @if (session('success'))
-                                <div class="col-12">
-                                    <div class="alert alert-success text-center mt-2">{{ session('success') }}</div>
-                                </div>
-                            @endif
-                            @if (session('error'))
-                                <div class="col-12">
-                                    <div class="alert alert-danger text-center mt-2">{{ session('error') }}</div>
-                                </div>
-                            @endif
-                        </div>
-                    </form>
+
+                            {{-- Email --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-email">
+                                    Email Address
+                                </label>
+
+                                <input type="email" id="contact-email" name="email" class="fc-input"
+                                    placeholder="you@example.com" autocomplete="email" required>
+
+                            </div>
+
+
+                            {{-- Company --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-company">
+                                    Company
+                                    <span>Optional</span>
+                                </label>
+
+                                <input type="text" id="contact-company" name="company" class="fc-input"
+                                    placeholder="Company name" autocomplete="organization">
+
+                            </div>
+
+
+                            {{-- Service --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-service">
+                                    What do you need?
+                                </label>
+
+                                <select id="contact-service" name="service" class="fc-select" required>
+
+                                    <option value="">
+                                        Select a service
+                                    </option>
+
+                                    <option value="web-app-development">
+                                        Web &amp; App Development
+                                    </option>
+
+                                    <option value="e-commerce">
+                                        E-Commerce
+                                    </option>
+
+                                    <option value="digital-marketing">
+                                        Digital Marketing
+                                    </option>
+
+                                    <option value="custom-software">
+                                        Custom Software
+                                    </option>
+
+                                    <option value="ui-ux-design">
+                                        UI/UX Design
+                                    </option>
+
+                                    <option value="branding">
+                                        Branding &amp; Identity
+                                    </option>
+
+                                    <option value="other">
+                                        Something Else
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            {{-- Budget --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-budget">
+                                    Estimated Budget
+                                    <span>Optional</span>
+                                </label>
+
+                                <select id="contact-budget" name="budget" class="fc-select">
+
+                                    <option value="">
+                                        Select a range
+                                    </option>
+
+                                    <option value="under-1l">
+                                        Under ₹1 Lakh
+                                    </option>
+
+                                    <option value="1l-3l">
+                                        ₹1 Lakh – ₹3 Lakh
+                                    </option>
+
+                                    <option value="3l-5l">
+                                        ₹3 Lakh – ₹5 Lakh
+                                    </option>
+
+                                    <option value="5l-10l">
+                                        ₹5 Lakh – ₹10 Lakh
+                                    </option>
+
+                                    <option value="10l-plus">
+                                        ₹10 Lakh+
+                                    </option>
+
+                                    <option value="not-sure">
+                                        Not Sure Yet
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            {{-- Message --}}
+                            <div class="fc-contact-field">
+
+                                <label for="contact-message">
+                                    Tell us about your project
+                                </label>
+
+                                <textarea id="contact-message" name="message" class="fc-textarea" rows="5"
+                                    placeholder="Tell us about your goals, requirements, timeline, or anything else that would help us understand your project."
+                                    required></textarea>
+
+                            </div>
+
+
+                            {{-- Submit --}}
+                            <div class="fc-contact-submit">
+
+                                <button type="submit" class="fc-btn fc-btn-primary">
+
+                                    Send Enquiry
+
+                                </button>
+
+                                <p>
+                                    We'll use your information only
+                                    to respond to your enquiry.
+                                </p>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
                 </div>
+
             </div>
-        </div>
-    </div>
-</section>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         03. WHAT HAPPENS NEXT
+         ======================================================== --}}
+
+        <section class="fc-contact-process fc-section-soft fc-section" aria-labelledby="contact-process-title">
+
+            <div class="container">
+
+                <div class="fc-contact-process-header">
+
+                    <span class="fc-eyebrow">
+                        What Happens Next
+                    </span>
+
+                    <h2 id="contact-process-title" class="fc-section-title">
+
+                        Simple from the
+                        <span class="fc-gradient-text">
+                            first conversation.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="fc-contact-process-grid">
+
+
+                    <article class="fc-contact-process-item">
+
+                        <span class="fc-contact-process-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Tell Us About It
+                        </h3>
+
+                        <p>
+                            Share your idea, requirements,
+                            goals, or current challenge.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-contact-process-item">
+
+                        <span class="fc-contact-process-number">
+                            02
+                        </span>
+
+                        <h3>
+                            We Understand
+                        </h3>
+
+                        <p>
+                            We'll review your requirements and
+                            identify the right direction.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-contact-process-item">
+
+                        <span class="fc-contact-process-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Plan the Solution
+                        </h3>
+
+                        <p>
+                            Together we'll discuss scope,
+                            priorities, timelines, and next steps.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-contact-process-item">
+
+                        <span class="fc-contact-process-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Start Building
+                        </h3>
+
+                        <p>
+                            Once everything is aligned,
+                            we turn the plan into reality.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         04. CONTACT CTA
+         ======================================================== --}}
+
+        <section class="fc-contact-cta" aria-labelledby="contact-cta-title">
+
+            <div class="fc-contact-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-contact-cta-inner">
+
+                    <span class="fc-contact-cta-eyebrow">
+                        Prefer a Quick Call?
+                    </span>
+
+                    <h2 id="contact-cta-title" class="fc-contact-cta-title">
+
+                        Let's discuss your
+                        <span>
+                            next move.
+                        </span>
+
+                    </h2>
+
+                    <p>
+                        If you'd rather talk through your requirements,
+                        schedule a conversation with our team.
+                    </p>
+
+                    <a href="#" class="fc-btn fc-btn-primary"
+                        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
+
+                        Schedule a Consultation
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
 @endsection

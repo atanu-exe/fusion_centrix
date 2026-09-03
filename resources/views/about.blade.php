@@ -1,439 +1,866 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Modern Hero Header -->
-    <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>About Us</h1>
-                <p>Delivering <b>CRM, ERP, SaaS applications, LMS, and custom software solutions</b> for businesses in the
-                    US, Canada, India and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly
-                        integrations</b> to streamline operations.
-                </p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <span>About Us</span>
+ <link rel="stylesheet" href="{{ asset('assets/css/v2/about.css') }}">
+    {{-- ============================================================
+     FUSIONCENTRIX V2 — ABOUT PAGE
+     ============================================================ --}}
+
+    <main id="main-content" class="fc-about-page">
+
+
+        {{-- ========================================================
+         01. ABOUT HERO
+         ======================================================== --}}
+
+        <section class="fc-about-hero" aria-labelledby="about-hero-title">
+
+            <div class="fc-about-hero-glow fc-about-hero-glow-one" aria-hidden="true">
+            </div>
+
+            <div class="fc-about-hero-glow fc-about-hero-glow-two" aria-hidden="true">
+            </div>
+
+
+            <div class="container">
+
+                <div class="fc-about-hero-content">
+
+                    <span class="fc-eyebrow">
+                        About FusionCentrix
+                    </span>
+
+
+                    <h1 id="about-hero-title" class="fc-about-hero-title">
+
+                        We build digital solutions
+                        <span>with purpose.</span>
+
+                    </h1>
+
+
+                    <p class="fc-about-hero-description">
+
+                        FusionCentrix is a digital solutions partner
+                        helping businesses turn ideas into reliable,
+                        scalable, and growth-focused digital experiences.
+
+                    </p>
+
+
+                    <div class="fc-about-hero-actions">
+
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+
+                            Start a Conversation
+
+                        </a>
+
+
+                        <a href="{{ url('services') }}" class="fc-btn fc-btn-outline">
+
+                            Explore Our Services
+
+                        </a>
+
+                    </div>
+
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Mission & Vision Section -->
-    <section id="mission-vission" class="fc-mission-vision py-5">
-        <div class="container">
-            <div class="mv-head text-center mb-5">
-                {{-- <span class="mv-badge">Mission & Vision</span> --}}
-                <h2 class="section-heading">Building dependable tech, guided by purpose</h2>
-                <p class="section-description text-muted">We align strategy, delivery, and support to keep your business
-                    shipping, scaling, and winning.</p>
             </div>
 
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="mv-card mission">
-                        <div class="mv-icon"><i class="fas fa-rocket"></i></div>
-                        <div class="mv-meta">
-                            <span class="mv-chip">Mission</span>
-                            <h3>Ship measurable value, faster</h3>
-                            <p>Deliver scalable, secure, and intelligent solutions that turn roadmaps into shipped products
-                                with clear outcomes.</p>
+
+            <div class="fc-about-hero-bottom" aria-hidden="true">
+
+                <span>Strategy</span>
+                <i></i>
+
+                <span>Technology</span>
+                <i></i>
+
+                <span>Design</span>
+                <i></i>
+
+                <span>Growth</span>
+
+            </div>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         02. WHO WE ARE
+         ======================================================== --}}
+
+        <section class="fc-about-intro fc-section" aria-labelledby="about-intro-title">
+
+            <div class="container">
+
+                <div class="fc-about-intro-grid">
+
+                    <div class="fc-about-intro-heading">
+
+                        <span class="fc-eyebrow">
+                            Who We Are
+                        </span>
+
+
+                        <h2 id="about-intro-title" class="fc-section-title">
+
+                            One partner.
+                            <span class="fc-gradient-text">
+                                Multiple capabilities.
+                            </span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="fc-about-intro-content">
+
+                        <p class="fc-about-intro-lead">
+
+                            Businesses shouldn't have to coordinate
+                            disconnected teams for every part of their
+                            digital journey.
+
+                        </p>
+
+
+                        <p>
+
+                            At FusionCentrix, we bring development,
+                            design, SEO, digital marketing, branding,
+                            and technology solutions together under
+                            one team.
+
+                        </p>
+
+
+                        <p>
+
+                            Our goal is simple: understand the business
+                            behind the project, build the right digital
+                            solution, and create an experience that can
+                            continue to evolve as the business grows.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         03. WHAT WE BELIEVE
+         ======================================================== --}}
+
+        <section class="fc-about-beliefs fc-section-soft fc-section" aria-labelledby="beliefs-title">
+
+            <div class="container">
+
+                <div class="fc-about-beliefs-header">
+
+                    <span class="fc-eyebrow">
+                        What We Believe
+                    </span>
+
+
+                    <h2 id="beliefs-title" class="fc-section-title">
+
+                        Technology should
+                        <span class="fc-gradient-text">
+                            solve real problems.
+                        </span>
+
+                    </h2>
+
+
+                    <p class="fc-section-description">
+
+                        We focus on useful technology, thoughtful design,
+                        and measurable outcomes instead of building
+                        digital products simply for the sake of technology.
+
+                    </p>
+
+                </div>
+
+
+                <div class="fc-about-beliefs-grid">
+
+
+                    {{-- Belief 01 --}}
+                    <article class="fc-about-belief">
+
+                        <span class="fc-about-belief-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Understand First
+                        </h3>
+
+                        <p>
+                            Every strong solution starts with understanding
+                            the business, users, objectives, and challenges.
+                        </p>
+
+                    </article>
+
+
+                    {{-- Belief 02 --}}
+                    <article class="fc-about-belief">
+
+                        <span class="fc-about-belief-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Keep It Useful
+                        </h3>
+
+                        <p>
+                            We prioritize clarity, usability, performance,
+                            and functionality over unnecessary complexity.
+                        </p>
+
+                    </article>
+
+
+                    {{-- Belief 03 --}}
+                    <article class="fc-about-belief">
+
+                        <span class="fc-about-belief-number">
+                            03
+                        </span>
+
+                        <h3>
+                            Build to Evolve
+                        </h3>
+
+                        <p>
+                            Digital products should be able to grow,
+                            adapt, and improve as your business changes.
+                        </p>
+
+                    </article>
+
+
+                    {{-- Belief 04 --}}
+                    <article class="fc-about-belief">
+
+                        <span class="fc-about-belief-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Think Long Term
+                        </h3>
+
+                        <p>
+                            We aim to become a reliable technology partner,
+                            not simply a team that disappears after launch.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         04. WHAT WE BRING TOGETHER
+         ======================================================== --}}
+
+        <section class="fc-about-capabilities fc-section" aria-labelledby="capabilities-title">
+
+            <div class="container">
+
+                <div class="fc-about-capabilities-grid">
+
+                    <div class="fc-about-capabilities-content">
+
+                        <span class="fc-eyebrow">
+                            Our Capabilities
+                        </span>
+
+
+                        <h2 id="capabilities-title" class="fc-section-title">
+
+                            Different disciplines.
+                            <span class="fc-gradient-text">
+                                One direction.
+                            </span>
+
+                        </h2>
+
+
+                        <p class="fc-section-description">
+
+                            From the first strategy discussion to launch
+                            and continued growth, our capabilities work
+                            together instead of operating in isolation.
+
+                        </p>
+
+
+                        <a href="{{ url('services') }}" class="fc-btn fc-btn-primary fc-about-capabilities-btn">
+
+                            Explore Services
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="fc-about-capability-list">
+
+
+                        <div class="fc-about-capability">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <h3>
+                                    Development
+                                </h3>
+
+                                <p>
+                                    Websites, applications, e-commerce,
+                                    and custom software solutions.
+                                </p>
+
+                            </div>
+
                         </div>
-                        <div class="mv-stats">
-                            <div class="mv-stat">
-                                <div class="stat-title">Time-to-market</div>
-                                <div class="stat-value">2x faster</div>
-                            </div>
-                            <div class="mv-stat">
-                                <div class="stat-title">Uptime</div>
-                                <div class="stat-value">99.9%</div>
-                            </div>
-                            <div class="mv-stat">
-                                <div class="stat-title">NPS</div>
-                                <div class="stat-value">+62</div>
-                            </div>
-                        </div>
-                        <ul class="mv-list">
-                            <li><i class="fas fa-check-circle"></i> Agile delivery with weekly demos and transparent
-                                sprints.</li>
-                            <li><i class="fas fa-check-circle"></i> Secure-by-design builds with audits and performance
-                                budgets.</li>
-                            <li><i class="fas fa-check-circle"></i> Data-driven decisions with analytics wired in from day
-                                one.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="mv-card vision">
-                        <div class="mv-icon"><i class="fas fa-star"></i></div>
-                        <div class="mv-meta">
-                            <span class="mv-chip">Vision</span>
-                            <h3>Be your long-term tech ally</h3>
-                            <p>Partner as the trusted team known for transparent delivery, innovation, and resilient
-                                platforms that grow with you.</p>
-                        </div>
-                        <div class="mv-stats">
-                            <div class="mv-stat">
-                                <div class="stat-title">Markets</div>
-                                <div class="stat-value">US, CA, IN</div>
-                            </div>
-                            <div class="mv-stat">
-                                <div class="stat-title">Domains</div>
-                                <div class="stat-value">SaaS, E-comm, LMS</div>
-                            </div>
-                            <div class="mv-stat">
-                                <div class="stat-title">Support</div>
-                                <div class="stat-value">24/7</div>
-                            </div>
-                        </div>
-                        <ul class="mv-list">
-                            <li><i class="fas fa-check-circle"></i> Co-creation with your teams—strategy to rollout.</li>
-                            <li><i class="fas fa-check-circle"></i> Platforms built for scale: cloud-native, API-first,
-                                SEO-ready.</li>
-                            <li><i class="fas fa-check-circle"></i> Continuous improvement with monitoring, feedback, and
-                                optimizations.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Core Values Section -->
-    <section id="our-core-values" class="fc-values py-5">
-        <div class="container">
-            <div class="values-head text-center mb-5">
-                {{-- <span class="values-badge">Core Values</span> --}}
-                <h2 class="section-heading">Built on trust, driven by impact</h2>
-                <p class="section-description text-muted">Six principles that shape how we partner, deliver, and grow with
-                    our clients.</p>
+
+                        <div class="fc-about-capability">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <h3>
+                                    Design
+                                </h3>
+
+                                <p>
+                                    User experiences, interfaces,
+                                    visual systems, and brand identity.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="fc-about-capability">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <h3>
+                                    Growth
+                                </h3>
+
+                                <p>
+                                    SEO, digital marketing, content,
+                                    and strategies designed for visibility.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="fc-about-capability">
+
+                            <span>04</span>
+
+                            <div>
+
+                                <h3>
+                                    Technology
+                                </h3>
+
+                                <p>
+                                    Practical technology solutions,
+                                    integrations, automation, and optimization.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="values-stats row g-3 mb-4">
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-label">Client-first</div>
-                        <div class="stat-number">100%</div>
-                        <p class="stat-text">Clear communication, shared goals, and measurable outcomes.</p>
-                    </div>
+        </section>
+
+
+
+        {{-- ========================================================
+         05. OUR APPROACH
+         ======================================================== --}}
+
+        <section class="fc-about-approach fc-section-dark fc-section" aria-labelledby="approach-title">
+
+            <div class="container">
+
+                <div class="fc-about-approach-header">
+
+                    <span class="fc-eyebrow">
+                        Our Approach
+                    </span>
+
+
+                    <h2 id="approach-title" class="fc-section-title">
+
+                        Clear thinking.
+                        <span class="fc-gradient-text">
+                            Better execution.
+                        </span>
+
+                    </h2>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-label">Delivery pace</div>
-                        <div class="stat-number">2x</div>
-                        <p class="stat-text">Agile teams, fast iterations, and on-time milestones.</p>
-                    </div>
+
+
+                <div class="fc-about-approach-grid">
+
+
+                    <article class="fc-about-approach-item">
+
+                        <span class="fc-about-approach-index">
+                            01
+                        </span>
+
+                        <h3>
+                            Discover
+                        </h3>
+
+                        <p>
+                            We learn about your business, audience,
+                            objectives, and existing digital ecosystem.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-about-approach-item">
+
+                        <span class="fc-about-approach-index">
+                            02
+                        </span>
+
+                        <h3>
+                            Define
+                        </h3>
+
+                        <p>
+                            We identify priorities and define a practical
+                            strategy around your actual requirements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-about-approach-item">
+
+                        <span class="fc-about-approach-index">
+                            03
+                        </span>
+
+                        <h3>
+                            Create
+                        </h3>
+
+                        <p>
+                            Design and development come together to create
+                            the right digital experience.
+                        </p>
+
+                    </article>
+
+
+                    <article class="fc-about-approach-item">
+
+                        <span class="fc-about-approach-index">
+                            04
+                        </span>
+
+                        <h3>
+                            Improve
+                        </h3>
+
+                        <p>
+                            We continue to optimize performance,
+                            visibility, usability, and growth.
+                        </p>
+
+                    </article>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-label">Reliability</div>
-                        <div class="stat-number">24/7</div>
-                        <p class="stat-text">Post-launch support, monitoring, and proactive fixes.</p>
-                    </div>
-                </div>
+
             </div>
 
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon innovation"><i class="fas fa-lightbulb"></i></div>
-                    <div>
-                        <div class="value-chip">Innovation</div>
-                        <h5>Inventive by default</h5>
-                        <p>We turn bold ideas into solutions using the right mix of modern stacks and experimentation.</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon collaboration"><i class="fas fa-handshake"></i></div>
-                    <div>
-                        <div class="value-chip">Collaboration</div>
-                        <h5>Co-create with you</h5>
-                        <p>We blend your domain knowledge with our expertise to ship work that fits your market.</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon integrity"><i class="fas fa-shield-alt"></i></div>
-                    <div>
-                        <div class="value-chip">Integrity</div>
-                        <h5>Transparent always</h5>
-                        <p>Open updates, honest estimates, and accountable delivery in every sprint.</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon excellence"><i class="fas fa-crown"></i></div>
-                    <div>
-                        <div class="value-chip">Excellence</div>
-                        <h5>Quality you can feel</h5>
-                        <p>Performance, accessibility, security, and polish are baked into every release.</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon growth"><i class="fas fa-chart-line"></i></div>
-                    <div>
-                        <div class="value-chip">Growth</div>
-                        <h5>Outcomes over outputs</h5>
-                        <p>We measure success with adoption, retention, and ROI—not just shipped features.</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon support"><i class="fas fa-headset"></i></div>
-                    <div>
-                        <div class="value-chip">Support</div>
-                        <h5>Here beyond launch</h5>
-                        <p>Continuous improvements, observability, and quick response when you need us.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Choose Us -->
-    <section id="about-why-choose-us" class="fc-why-choose py-5">
-        <div class="container">
-            <div class="awc-head text-center mb-5">
-                {{-- <span class="awc-badge">Why Choose Us</span> --}}
-                <h2 class="section-heading">Partners you can count on</h2>
-                <p class="section-description text-muted">Full-stack delivery, transparent process, and long-term support
-                    across every engagement.</p>
-            </div>
 
-            <div class="awc-highlight row g-3 mb-4">
-                <div class="col-md-4">
-                    <div class="awc-stat">
-                        <div class="stat-label">Projects delivered</div>
-                        <div class="stat-value">30+</div>
-                        <p class="stat-note">Web, mobile, SaaS, and commerce builds.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="awc-stat">
-                        <div class="stat-label">Avg. timeline gain</div>
-                        <div class="stat-value">2x faster</div>
-                        <p class="stat-note">Agile pods, weekly demos, zero surprises.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="awc-stat">
-                        <div class="stat-label">Support coverage</div>
-                        <div class="stat-value">24/7</div>
-                        <p class="stat-note">Monitoring, SLAs, and proactive fixes.</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="awc-grid">
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-layer-group"></i></div>
-                    <div>
-                        <div class="awc-chip">End-to-end</div>
-                        <h6>One team for all</h6>
-                        <p>Strategy, UX, engineering, QA, DevOps, and growth in one squad.</p>
-                    </div>
-                </div>
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-globe"></i></div>
-                    <div>
-                        <div class="awc-chip">Global-ready</div>
-                        <h6>Ship for US, CA, IN</h6>
-                        <p>Timezone-friendly standups, compliance-aware builds, and localization.</p>
-                    </div>
-                </div>
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-bolt"></i></div>
-                    <div>
-                        <div class="awc-chip">Agile speed</div>
-                        <h6>Fast without friction</h6>
-                        <p>Short cycles, clear acceptance, and iterative releases.</p>
-                    </div>
-                </div>
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div>
-                        <div class="awc-chip">Transparent</div>
-                        <h6>See progress daily</h6>
-                        <p>Roadmaps, burndowns, and open comms—no black boxes.</p>
-                    </div>
-                </div>
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-chart-line"></i></div>
-                    <div>
-                        <div class="awc-chip">Outcome-first</div>
-                        <h6>Metrics that matter</h6>
-                        <p>We optimize for adoption, retention, conversion, and ROI.</p>
-                    </div>
-                </div>
-                <div class="awc-card">
-                    <div class="awc-icon"><i class="fas fa-headset"></i></div>
-                    <div>
-                        <div class="awc-chip">Always-on</div>
-                        <h6>Support beyond launch</h6>
-                        <p>Runbooks, monitoring, and rapid-response maintenance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        {{-- ========================================================
+         06. MEET OUR EXPERTS
+         ======================================================== --}}
 
-    <!-- Our Process -->
-    <section id="project-process" class="fc-process-section py-5">
-        <div class="container">
-            <div class="pp-head text-center mb-5">
-                {{-- <span class="pp-badge">Project Process</span> --}}
-                <h2 class="section-heading">From idea to launch, with clarity</h2>
-                <p class="section-description text-muted">A visible, trackable flow—each step builds momentum to
-                    production.</p>
-            </div>
+        <section class="fc-about-team fc-section" aria-labelledby="team-title">
 
-            <div class="pp-progress">
-                <div class="pp-step">
-                    <div class="pp-node">1</div>
-                    <h6>Discovery</h6>
-                    <p>Workshops to align goals, users, scope, and success metrics.</p>
-                    <div class="pp-meta">Owner: Product • 1–2 wks</div>
-                </div>
-                <div class="pp-step">
-                    <div class="pp-node">2</div>
-                    <h6>Design</h6>
-                    <p>UX flows and UI prototypes validated quickly with stakeholders.</p>
-                    <div class="pp-meta">Owner: Design • 1–2 wks</div>
-                </div>
-                <div class="pp-step">
-                    <div class="pp-node">3</div>
-                    <h6>Build</h6>
-                    <p>Agile sprints, clean code, CI/CD, and frequent demos.</p>
-                    <div class="pp-meta">Owner: Engineering • 2–6 wks</div>
-                </div>
-                <div class="pp-step">
-                    <div class="pp-node">4</div>
-                    <h6>Quality</h6>
-                    <p>Functional, security, accessibility, and performance checks.</p>
-                    <div class="pp-meta">Owner: QA • 1–2 wks</div>
-                </div>
-                <div class="pp-step">
-                    <div class="pp-node">5</div>
-                    <h6>Launch & Grow</h6>
-                    <p>Release, observe, optimize, and support with SLAs.</p>
-                    <div class="pp-meta">Owner: DevOps • Ongoing</div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="container">
 
-    <!-- CTA Section -->
-    <section class="get-quote-section fc-primary-bg" id="get-quote">
-        <div class="container">
-            <div class="quote-card">
-                <div class="row align-items-center gy-3">
-                    <div class="col-lg-8 text-center text-lg-start">
-                        <h3 class="display-5 fw-bold mb-3">Ready to Transform Your Digital Presence?</h3>
-                        <p class="lead mb-4 opacity-90">Let's partner to create something extraordinary.</p>
+                <div class="fc-about-team-header">
+
+                    <div>
+
+                        <span class="fc-eyebrow">
+                            Meet Our Experts
+                        </span>
+
+
+                        <h2 id="team-title" class="fc-section-title">
+
+                            The people behind
+                            <span class="fc-gradient-text">
+                                the solutions.
+                            </span>
+
+                        </h2>
+
                     </div>
-                    <div class="col-lg-4 text-center text-lg-end">
-                        <div class="d-flex justify-content-center justify-content-lg-end gap-3 flex-wrap">
-                            <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">Get a Free Consultation</a>
-                            {{-- <a href="{{ url('portfolio') }}" class="btn btn-ghost-light">View Portfolio</a> --}}
+
+
+                    <p>
+
+                        A multidisciplinary team bringing together
+                        technology, design, strategy, and growth.
+
+                    </p>
+
+                </div>
+
+
+                <div class="fc-about-team-grid">
+
+
+                    {{-- Expert 01 --}}
+                    <article class="fc-about-team-card">
+
+                        <div class="fc-about-team-image">
+
+                            <img src="{{ asset('assets/images/team/expert-1.webp') }}" alt="FusionCentrix team expert"
+                                loading="lazy">
+
                         </div>
-                    </div>
+
+                        <div class="fc-about-team-content">
+
+                            <h3>
+                                Expert Name
+                            </h3>
+
+                            <span>
+                                Founder &amp; Digital Strategist
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    {{-- Expert 02 --}}
+                    <article class="fc-about-team-card">
+
+                        <div class="fc-about-team-image">
+
+                            <img src="{{ asset('assets/images/team/expert-2.webp') }}" alt="FusionCentrix team expert"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="fc-about-team-content">
+
+                            <h3>
+                                Expert Name
+                            </h3>
+
+                            <span>
+                                Technology &amp; Development
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    {{-- Expert 03 --}}
+                    <article class="fc-about-team-card">
+
+                        <div class="fc-about-team-image">
+
+                            <img src="{{ asset('assets/images/team/expert-3.webp') }}" alt="FusionCentrix team expert"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="fc-about-team-content">
+
+                            <h3>
+                                Expert Name
+                            </h3>
+
+                            <span>
+                                SEO &amp; Growth
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    {{-- Expert 04 --}}
+                    <article class="fc-about-team-card">
+
+                        <div class="fc-about-team-image">
+
+                            <img src="{{ asset('assets/images/team/expert-4.webp') }}" alt="FusionCentrix team expert"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="fc-about-team-content">
+
+                            <h3>
+                                Expert Name
+                            </h3>
+
+                            <span>
+                                Design &amp; Branding
+                            </span>
+
+                        </div>
+
+                    </article>
+
                 </div>
+
             </div>
-        </div>
-    </section>
-    <!-- FAQ Section -->
-    <section id="faq" class="fc-faq py-5">
-        <div class="container">
-            <div class="faq-head text-center mb-5">
-                <span class="faq-badge">Support & FAQs</span>
-                <h2 class="section-heading">Answers before we start</h2>
-                <p class="section-description text-muted">Quick answers to common questions. If you need something
-                    specific, reach out and we'll tailor a response.</p>
-            </div>
-            <div class="row g-4 align-items-start">
-                <div class="col-lg-4">
-                    <div class="faq-card">
-                        <h5>Need something specific?</h5>
-                        <p class="mb-3 text-muted">Share your requirements and we’ll reply within 24 hours with next
-                            steps.</p>
-                        <ul class="faq-points">
-                            <li><i class="fas fa-check-circle"></i> Scoping and discovery calls</li>
-                            <li><i class="fas fa-check-circle"></i> Clear milestones and estimates</li>
-                            <li><i class="fas fa-check-circle"></i> NDA-friendly engagement</li>
-                        </ul>
-                        <a href="{{ url('contact-us') }}" class="btn btn-gradient w-100 mt-3">Talk to our team</a>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         07. WHY FUSIONCENTRIX
+         ======================================================== --}}
+
+        <section class="fc-about-why fc-section-soft fc-section" aria-labelledby="why-title">
+
+            <div class="container">
+
+                <div class="fc-about-why-grid">
+
+                    <div>
+
+                        <span class="fc-eyebrow">
+                            Why FusionCentrix
+                        </span>
+
+
+                        <h2 id="why-title" class="fc-section-title">
+
+                            A partner that sees
+                            <span class="fc-gradient-text">
+                                the bigger picture.
+                            </span>
+
+                        </h2>
+
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="accordion faq-accordion" id="aboutFaqAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button faq-toggle" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq1">
-                                    What services does Fusioncentrix Solutions provide?
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show"
-                                data-bs-parent="#aboutFaqAccordion">
-                                <div class="accordion-body">
-                                    We offer <strong>web & app development, e-commerce solutions, digital marketing, UI/UX
-                                        design, custom software, and branding & identity services</strong> for businesses
-                                    globally.
-                                </div>
+
+
+                    <div class="fc-about-why-list">
+
+
+                        <div class="fc-about-why-item">
+
+                            <span class="fc-about-why-icon">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Business-first thinking
+                                </h3>
+
+                                <p>
+                                    We connect technology decisions
+                                    to actual business objectives.
+                                </p>
+
                             </div>
+
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button faq-toggle collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    Who are your typical clients?
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#aboutFaqAccordion">
-                                <div class="accordion-body">
-                                    We work with <strong>startups, SMEs, and large enterprises</strong> across tech,
-                                    e-commerce, healthcare, education, and marketing industries.
-                                </div>
+
+
+                        <div class="fc-about-why-item">
+
+                            <span class="fc-about-why-icon">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    One connected team
+                                </h3>
+
+                                <p>
+                                    Strategy, design, development,
+                                    and growth work together.
+                                </p>
+
                             </div>
+
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button faq-toggle collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    How long does a typical project take?
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#aboutFaqAccordion">
-                                <div class="accordion-body">
-                                    Most projects are completed within <strong>4–12 weeks</strong>, depending on
-                                    complexity and requirements.
-                                </div>
+
+
+                        <div class="fc-about-why-item">
+
+                            <span class="fc-about-why-icon">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Built for growth
+                                </h3>
+
+                                <p>
+                                    We think beyond launch and create
+                                    solutions that can evolve.
+                                </p>
+
                             </div>
+
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button faq-toggle collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    Do you work with international clients?
-                                </button>
-                            </h2>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#aboutFaqAccordion">
-                                <div class="accordion-body">
-                                    Yes, we serve clients globally, including the <strong>US, Canada, India, and other
-                                        international markets</strong>.
-                                </div>
+
+
+                        <div class="fc-about-why-item">
+
+                            <span class="fc-about-why-icon">
+                                04
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Long-term partnership
+                                </h3>
+
+                                <p>
+                                    We aim to remain useful long after
+                                    the first version goes live.
+                                </p>
+
                             </div>
+
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button faq-toggle collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#faq5">
-                                    How do you ensure quality?
-                                </button>
-                            </h2>
-                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#aboutFaqAccordion">
-                                <div class="accordion-body">
-                                    We follow <strong>best coding practices, thorough testing, and regular
-                                        maintenance</strong> to ensure high-quality, reliable solutions.
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+
                 </div>
+
             </div>
-        </div>
-    </section>
+
+        </section>
+
+
+
+        {{-- ========================================================
+         08. FINAL CTA
+         ======================================================== --}}
+
+        <section class="fc-about-cta" aria-labelledby="about-cta-title">
+
+            <div class="fc-about-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-about-cta-inner">
+
+                    <span class="fc-about-cta-eyebrow">
+                        Let's Work Together
+                    </span>
+
+
+                    <h2 id="about-cta-title" class="fc-about-cta-title">
+
+                        Have an idea?
+                        <span>
+                            Let's build it.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Tell us what you're working on and
+                        let's explore how FusionCentrix can help.
+
+                    </p>
+
+
+                    <div class="fc-about-cta-actions">
+
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+
+                            Start a Conversation
+
+                        </a>
+
+
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
+
+                            View Our Work
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
 @endsection

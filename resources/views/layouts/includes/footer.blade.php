@@ -1,116 +1,238 @@
-
 </main>
 
-<!-- Modern Footer -->
-<footer class="fc-footer">
-    <div class="container-fluid px-4 px-lg-5">
-        <!-- Footer Grid -->
-        <div class="row g-5 mb-5 pb-4">
-            
-            <!-- Brand Section -->
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="fc-footer-brand">
-                    <div class="fc-logo-footer">
-                        <span class="fc-logo-icon-footer">FC</span>
-                        <span class="fc-logo-text-footer">Fusioncentrix</span>
-                    </div>
-                    <p class="fc-footer-desc">Fusioncentrix Solutions is your one-stop IT partner — Web, App, SEO, Marketing, Design & more.</p>
-                    {{-- <div class="fc-social-footer">
-                        <a href="https://www.facebook.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Facebook" class="fc-social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Instagram" class="fc-social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/fusioncentrix" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="fc-social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://twitter.com/fusioncentrix" target="_blank" rel="noopener noreferrer" title="Twitter" class="fc-social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div> --}}
+{{-- ============================================================
+     FUSIONCENTRIX V2 — PREMIUM FOOTER
+     ============================================================ --}}
+
+<footer class="fc-footer" aria-labelledby="footer-brand-title">
+
+    <div class="fc-footer-glow" aria-hidden="true"></div>
+
+    <div class="container">
+
+        {{-- =====================================================
+             TOP
+             ===================================================== --}}
+
+        <div class="fc-footer-top">
+
+            {{-- Brand --}}
+            <div class="fc-footer-brand">
+
+                <a href="{{ url('') }}" class="fc-footer-logo" aria-label="FusionCentrix Home">
+
+                    <img src="{{ asset('/logo.png') }}" alt="FusionCentrix"
+                        class="fc-footer-logo-image">
+
+                </a>
+
+
+                <h2 id="footer-brand-title">
+
+                    Digital solutions built
+                    for businesses that want to grow.
+
+                </h2>
+
+
+                <p>
+
+                    Web, applications, SEO, design, and digital
+                    solutions — bringing technology and strategy
+                    together under one roof.
+
+                </p>
+
+
+                {{-- Social --}}
+                <div class="fc-footer-social">
+
+                    <a href="#" aria-label="LinkedIn" class="fc-footer-social-link">
+
+                        <i class="fab fa-linkedin-in"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="Instagram" class="fc-footer-social-link">
+
+                        <i class="fab fa-instagram"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="Facebook" class="fc-footer-social-link">
+
+                        <i class="fab fa-facebook-f"></i>
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <!-- Quick Links -->
-            <div class="col-lg-2 col-md-6 col-sm-12">
-                <h5 class="fc-footer-title">Quick Links</h5>
-                <ul class="fc-footer-links">
-                    <li><a href="{{ url('') }}">Home</a></li>
-                    <li><a href="{{ url('about') }}">About Us</a></li>
-                    <li><a href="{{ url('services') }}">Services</a></li>
-                    <li><a href="{{ url('portfolio') }}">Portfolio</a></li>
-                    <li><a href="{{ url('blog') }}">Blog</a></li>
-                    <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
-                </ul>
+
+            {{-- =================================================
+                 COMPANY
+                 ================================================= --}}
+
+            <nav class="fc-footer-nav" aria-label="Company">
+
+                <h3>
+                    Company
+                </h3>
+
+                <a href="{{ url('about') }}">
+                    About Us
+                </a>
+
+                <a href="{{ url('services') }}">
+                    Services
+                </a>
+
+                <a href="{{ url('portfolio') }}">
+                    Portfolio
+                </a>
+
+                <a href="{{ url('blog') }}">
+                    Blog
+                </a>
+
+                <a href="{{ url('contact-us') }}">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            {{-- =================================================
+                 SERVICES
+                 ================================================= --}}
+
+            <nav class="fc-footer-nav" aria-label="Services">
+
+                <h3>
+                    Services
+                </h3>
+
+                <a href="{{ route('services.web_app_development') }}">
+                    Web &amp; App Development
+                </a>
+
+                <a href="{{ route('services.e_commerce') }}">
+                    E-Commerce
+                </a>
+
+                <a href="{{ route('services.digital_marketing') }}">
+                    Digital Marketing
+                </a>
+
+                <a href="{{ route('services.custom_software') }}">
+                    Custom Software
+                </a>
+
+                <a href="{{ route('services.ui_ux_design') }}">
+                    UI/UX Design
+                </a>
+
+                <a href="{{ route('services.branding_identity') }}">
+                    Branding &amp; Identity
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        {{-- =====================================================
+             CONTACT BAR
+             ===================================================== --}}
+
+        <div class="fc-footer-contact">
+
+            <div class="fc-footer-contact-heading">
+
+                <span>
+                    Start a conversation
+                </span>
+
+                <strong>
+                    Let's build something together.
+                </strong>
+
             </div>
 
-            <!-- Services Links -->
-            <div class="col-lg-2 col-md-6 col-sm-12">
-                <h5 class="fc-footer-title">Services</h5>
-                <ul class="fc-footer-links">
-                    <li><a href="{{ route('services.web_app_development') }}">Web & App Dev</a></li>
-                    <li><a href="{{ route('services.e_commerce') }}">E-Commerce</a></li>
-                    <li><a href="{{ route('services.digital_marketing') }}">Digital Marketing</a></li>
-                    <li><a href="{{ route('services.custom_software') }}">Custom Software</a></li>
-                    <li><a href="{{ route('services.ui_ux_design') }}">UI/UX Design</a></li>
-                    <li><a href="{{ route('services.branding_identity') }}">Branding</a></li>
-                </ul>
-            </div>
 
-            <!-- Contact Info -->
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <h5 class="fc-footer-title">Get in Touch</h5>
-                <div class="fc-contact-info">
-                    <div class="fc-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p class="fc-contact-label">Address</p>
-                            <p>Sector V, Salt Lake<br>Kolkata, India - 700091</p>
-                        </div>
-                    </div>
-                    <div class="fc-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p class="fc-contact-label">Email</p>
-                            <p><a href="mailto:info@fusioncentrix.com">info@fusioncentrix.com</a></p>
-                        </div>
-                    </div>
-                    <div class="fc-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p class="fc-contact-label">Phone</p>
-                            <p><a href="tel:+918282098384">+91 82820 98384</a></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="fc-footer-contact-details">
+
+                <a href="mailto:info@fusioncentrix.com">
+
+                    info@fusioncentrix.com
+
+                </a>
+
+                <a href="tel:+918282098384">
+
+                    +91 82820 98384
+
+                </a>
+
+                <span>
+
+                    Kolkata, India
+
+                </span>
+
             </div>
 
         </div>
 
-        <!-- Footer Bottom -->
+
+        {{-- =====================================================
+             BOTTOM
+             ===================================================== --}}
+
         <div class="fc-footer-bottom">
-            <div class="row align-items-center gy-3">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="fc-footer-copyright">&copy; {{ date('Y') }} Fusioncentrix Solutions. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <ul class="fc-footer-bottom-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
+
+            <p>
+
+                &copy; {{ date('Y') }}
+                Fusioncentrix Solutions.
+                All rights reserved.
+
+            </p>
+
+
+            <nav class="fc-footer-legal" aria-label="Legal">
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+                <a href="#">
+                    Terms of Service
+                </a>
+
+                <a href="#">
+                    Cookie Policy
+                </a>
+
+            </nav>
+
         </div>
+
     </div>
+
 </footer>
 
-<!-- Bootstrap JS Bundle -->
+
+{{-- Bootstrap JS --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
 @vite(['resources/js/app.js'])
-<!-- Calendly Integration -->
+
+
+{{-- Calendly --}}
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
 </body>

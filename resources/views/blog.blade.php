@@ -1,344 +1,1101 @@
 @extends('layouts.app')
 
 @section('meta')
-<meta name="description" content="Discover our latest blog articles on web development, JavaScript, and modern technology">
-<meta name="keywords" content="blog, web development, javascript, tutorials, technology">
-<meta property="og:title" content="Blog | Fusion Centrix">
-<meta property="og:description" content="Stay updated with the latest insights from our team">
-<meta property="og:type" content="website">
+    <title>Blog | FusionCentrix — Digital, Technology & Growth Insights</title>
+
+    <meta name="description"
+        content="Explore FusionCentrix insights on web development, applications, SEO, digital marketing, UI/UX, technology, automation, and digital growth.">
+
+    <meta name="keywords"
+        content="web development blog, digital marketing blog, SEO insights, UI UX design, software development, technology blog, FusionCentrix">
+
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Blog | FusionCentrix — Digital & Technology Insights">
+
+    <meta property="og:description"
+        content="Insights, ideas, strategies, and practical knowledge from the FusionCentrix team.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url" content="{{ url('blog') }}">
+
+    <link rel="canonical" href="{{ url('blog') }}">
 @endsection
 
+
 @section('content')
-<div class="fc-blog">
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/blog.css') }}">
 
-  <!-- MODERN BLOG HEADER -->
-  <section class="fc-header">
-    <div class="container">
-      <div class="fc-header-content">
-        <h1>Discover Our Blog</h1>
-        <p>Stay updated with the latest insights, tips, and stories from our team</p>
-        <div class="fc-breadcrumb">
-          <a href="/">Home</a> / <span>Blog</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <main class="fc-blog-page">
 
-  <!-- FILTER & CONTROLS -->
-  <section class="fc-controls">
-    <div class="container">
-      <div class="fc-controls-wrapper">
-        <div class="fc-search-box">
-          <input type="text" id="searchInput" placeholder="Search articles..." autocomplete="off" value="{{ $search }}">
-        </div>
-        <select class="fc-sort-dropdown" id="sortDropdown">
-          <option value="newest" {{ $sort === 'newest' ? 'selected' : '' }}>Newest First</option>
-          <option value="oldest" {{ $sort === 'oldest' ? 'selected' : '' }}>Oldest First</option>
-          <option value="popular" {{ $sort === 'popular' ? 'selected' : '' }}>Most Popular</option>
-          <option value="views" {{ $sort === 'views' ? 'selected' : '' }}>Most Viewed</option>
-        </select>
-        <select class="fc-category-filter" id="categoryFilter">
-          <option value="" {{ !$category ? 'selected' : '' }}>All Categories</option>
-          <option value="web-development" {{ $category === 'web-development' ? 'selected' : '' }}>Web Development</option>
-          <option value="javascript" {{ $category === 'javascript' ? 'selected' : '' }}>JavaScript</option>
-          <option value="backend" {{ $category === 'backend' ? 'selected' : '' }}>Backend</option>
-          <option value="frontend" {{ $category === 'frontend' ? 'selected' : '' }}>Frontend</option>
-        </select>
-        <div class="fc-view-toggle">
-          <button class="active" data-view="grid" title="Grid View">⊞</button>
-          <button data-view="list" title="List View">☰</button>
-        </div>
-      </div>
 
-      <!-- ARTICLE STATS -->
-      <div class="fc-article-stats">
-        <div class="fc-stat-item">
-          <span class="fc-stat-number" id="totalArticles">{{ $stats['totalArticles'] }}</span>
-          <span class="fc-stat-label">Total Articles</span>
-        </div>
-        <div class="fc-stat-item">
-          <span class="fc-stat-number" id="totalViews">{{ number_format($stats['totalViews'] / 1000, 0) }}K</span>
-          <span class="fc-stat-label">Total Views</span>
-        </div>
-        <div class="fc-stat-item">
-          <span class="fc-stat-number" id="thisMonth">{{ $stats['thisMonth'] }}</span>
-          <span class="fc-stat-label">This Month</span>
-        </div>
-      </div>
-    </div>
-  </section>
+        {{-- =========================================================
+         BLOG HERO
+         ========================================================= --}}
 
-  <!-- MAIN CONTENT WITH SIDEBAR -->
-  <section class="fc-section pt-3">
-    <div class="container">
-      <div class="row g-4">
+        <section class="fc-blog-hero">
 
-        <!-- LEFT: ALL ARTICLES GRID -->
-        <div class="col-lg-8 order-2 order-lg-1">
+            <div class="fc-blog-hero-grid"></div>
 
-          <!-- ALL BLOGS CARD -->
-          <div class="fc-sidebar-widget mb-4">
-            <h4 class="fc-widget-title">All Blogs</h4>
-            <div id="articleGrid" class="row g-3 mb-4">
-              @forelse($allArticles as $article)
-              <div class="col-md-6 article-item">
-                <a href="{{ route('blog.show', $article->slug) }}" class="fc-article-card">
-                  <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-feture-image.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-                  <div class="fc-article-body">
-                    @if($article->categories->isNotEmpty())
-                    <div class="fc-categories-row" style="margin-bottom: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
-                      @foreach($article->categories->take(2) as $cat)
-                      <span class="fc-badge" style="background-color: {{ $cat->color }}20; color: {{ $cat->color }}; border: 1px solid {{ $cat->color }}; padding: 4px 8px; font-size: 0.75rem;">
-                        {{ $cat->icon ?? '📌' }} {{ $cat->name }}
-                      </span>
-                      @endforeach
+            <div class="container">
+
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-blog-eyebrow">
+
+                            <span></span>
+
+                            Insights & Ideas
+
+                        </div>
+
+
+                        <h1 class="fc-blog-hero-title">
+
+                            Ideas that help
+                            <span>businesses move forward.</span>
+
+                        </h1>
+
+
+                        <p class="fc-blog-hero-description">
+
+                            Practical insights on technology, design,
+                            development, SEO, digital marketing, and
+                            the ideas shaping modern businesses.
+
+                        </p>
+
                     </div>
-                    @else
-                    <span class="fc-badge">Article</span>
-                    @endif
-                    <h5>{{ $article->title }}</h5>
-                    <p class="fc-article-description">{{ $article->meta_description }}</p>
-                    <div class="fc-meta">
-                      <div>{{ $article->published_at->format('M d, Y') }}</div>
-                      <div>{{ number_format($article->views) }} views</div>
+
+
+                    <div class="col-lg-4">
+
+                        <div class="fc-blog-hero-side">
+
+                            <div class="fc-blog-hero-side-number">
+                                {{ number_format($stats['totalArticles']) }}
+                            </div>
+
+                            <div class="fc-blog-hero-side-label">
+                                Articles &amp; Insights
+                            </div>
+
+                            <div class="fc-blog-hero-side-line"></div>
+
+                            <p>
+                                Explore ideas, strategies, and practical
+                                knowledge from our digital team.
+                            </p>
+
+                        </div>
+
                     </div>
-                  </div>
-                </a>
-              </div>
-              @empty
-              <div class="col-12">
-                <p class="text-muted text-center">No articles found.</p>
-              </div>
-              @endforelse
-            </div>
-          </div>
 
-          <!-- LOAD MORE BUTTON -->
-          <div class="fc-load-more-section">
-            <button id="loadMoreBtn" class="btn btn-primary btn-lg" data-page="2" data-search="{{ $search }}" data-category="{{ $category }}" data-sort="{{ $sort }}">
-              <span class="fc-load-more-text">
-                <span id="loadMoreText">Load More Blogs</span>
-                <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner" role="status"></span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <!-- RIGHT SIDEBAR -->
-        <div class="col-lg-4 order-1 order-lg-2">
-
-          <!-- LATEST ARTICLES -->
-          <div class="fc-sidebar-widget mb-4">
-            <h4 class="fc-widget-title">Latest Articles</h4>
-            <div class="d-flex flex-column gap-2" id="latestContainer">
-              @forelse($latest->take(3) as $article)
-              <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-latest-card">
-                <img src="{{ $article->small_image_url ?? asset('assets/images/blog-default-thumbnail.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-                <div class="sidebar-latest-content">
-                  <span class="fc-badge-sm">Latest</span>
-                  <h6>{{ $article->title }}</h6>
-                  <div class="sidebar-latest-meta">
-                    <span>{{ $article->published_at->format('M d, Y') }}</span>
-                    <span>{{ number_format($article->views) }} views</span>
-                  </div>
                 </div>
-              </a>
-              @empty
-              <p class="text-muted">No latest articles yet.</p>
-              @endforelse
-            </div>
-          </div>
 
-          <!-- FEATURED ARTICLES -->
-          <div class="fc-sidebar-widget mb-4">
-            <h4 class="fc-widget-title">Featured Articles</h4>
-            <div class="d-flex flex-column gap-3" id="featuredContainer">
-              @forelse($featured->take(2) as $article)
-              <a href="{{ route('blog.show', $article->slug) }}" class="fc-sidebar-featured-card">
-                <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-featured-image.png').'?text='.urlencode($article->title) }}" alt="{{ $article->title }}" loading="lazy">
-                <div class="sidebar-featured-body">
-                  <span class="fc-badge-sm">Featured</span>
-                  <h6>{{ $article->title }}</h6>
+            </div>
+
+        </section>
+
+
+
+        {{-- =========================================================
+         BLOG CONTROLS
+         ========================================================= --}}
+
+        <section class="fc-blog-controls-section">
+
+            <div class="container">
+
+                <div class="fc-blog-controls">
+
+                    {{-- Search --}}
+                    <div class="fc-blog-search">
+
+                        <i class="fas fa-search"></i>
+
+                        <input type="search" id="searchInput" value="{{ $search }}" placeholder="Search articles..."
+                            aria-label="Search articles" autocomplete="off">
+
+                    </div>
+
+
+                    {{-- Category --}}
+                    <div class="fc-blog-select-wrap">
+
+                        <select class="fc-blog-select" id="categoryFilter" aria-label="Filter articles by category">
+
+                            <option value="" {{ !$category ? 'selected' : '' }}>
+                                All Categories
+                            </option>
+
+                            <option value="web-development" {{ $category === 'web-development' ? 'selected' : '' }}>
+                                Web Development
+                            </option>
+
+                            <option value="javascript" {{ $category === 'javascript' ? 'selected' : '' }}>
+                                JavaScript
+                            </option>
+
+                            <option value="backend" {{ $category === 'backend' ? 'selected' : '' }}>
+                                Backend
+                            </option>
+
+                            <option value="frontend" {{ $category === 'frontend' ? 'selected' : '' }}>
+                                Frontend
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    {{-- Sort --}}
+                    <div class="fc-blog-select-wrap">
+
+                        <select class="fc-blog-select" id="sortDropdown" aria-label="Sort articles">
+
+                            <option value="newest" {{ $sort === 'newest' ? 'selected' : '' }}>
+                                Newest First
+                            </option>
+
+                            <option value="oldest" {{ $sort === 'oldest' ? 'selected' : '' }}>
+                                Oldest First
+                            </option>
+
+                            <option value="popular" {{ $sort === 'popular' ? 'selected' : '' }}>
+                                Most Popular
+                            </option>
+
+                            <option value="views" {{ $sort === 'views' ? 'selected' : '' }}>
+                                Most Viewed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    {{-- View --}}
+                    <div class="fc-blog-view-toggle" role="group" aria-label="Article view">
+
+                        <button type="button" class="active" data-view="grid" aria-label="Grid view">
+
+                            <i class="fas fa-th-large"></i>
+
+                        </button>
+
+                        <button type="button" data-view="list" aria-label="List view">
+
+                            <i class="fas fa-bars"></i>
+
+                        </button>
+
+                    </div>
+
                 </div>
-              </a>
-              @empty
-              <p class="text-muted">No featured articles yet.</p>
-              @endforelse
-            </div>
-          </div>
 
-          <!-- TRENDING NOW -->
-          <div class="fc-sidebar-widget">
-            <h4 class="fc-widget-title">Trending Now 🔥</h4>
-            <div class="d-flex flex-column gap-2" id="trendingContainer">
-              @forelse($trending->take(3) as $index => $article)
-              <a href="{{ route('blog.show', $article->slug) }}" class="fc-trending-card">
-                <span class="trending-index">{{ $index + 1 }}</span>
-                <div class="trending-content">
-                  <h6>{{ $article->title }}</h6>
-                  <div class="trending-meta"><span>{{ number_format($article->views) }} views</span></div>
+
+                {{-- Stats --}}
+
+                <div class="fc-blog-stats">
+
+                    <div class="fc-blog-stat">
+
+                        <strong id="totalArticles">
+                            {{ number_format($stats['totalArticles']) }}
+                        </strong>
+
+                        <span>
+                            Articles
+                        </span>
+
+                    </div>
+
+
+                    <div class="fc-blog-stat">
+
+                        <strong id="totalViews">
+                            {{ number_format($stats['totalViews'] / 1000, 0) }}K
+                        </strong>
+
+                        <span>
+                            Total Views
+                        </span>
+
+                    </div>
+
+
+                    <div class="fc-blog-stat">
+
+                        <strong id="thisMonth">
+                            {{ $stats['thisMonth'] }}
+                        </strong>
+
+                        <span>
+                            This Month
+                        </span>
+
+                    </div>
+
                 </div>
-              </a>
-              @empty
-              <p class="text-muted">No trending articles yet.</p>
-              @endforelse
+
             </div>
-          </div>
 
-        </div>
+        </section>
 
-      </div>
-    </div>
-  </section>
 
-</div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  const articleGrid = document.getElementById('articleGrid');
-  const searchInput = document.getElementById('searchInput');
-  const sortDropdown = document.getElementById('sortDropdown');
-  const categoryFilter = document.getElementById('categoryFilter');
-  const viewToggle = document.querySelectorAll('.fc-view-toggle button');
-  const loadMoreText = document.getElementById('loadMoreText');
-  const loadingSpinner = document.getElementById('loadingSpinner');
+        {{-- =========================================================
+         MAIN BLOG CONTENT
+         ========================================================= --}}
 
-  // Search functionality - debounced
-  let searchTimeout;
-  searchInput.addEventListener('input', function() {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-      const search = this.value;
-      const category = categoryFilter.value;
-      const sort = sortDropdown.value;
-      window.location.href = `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
-    }, 500);
-  });
+        <section class="fc-blog-content">
 
-  // Sort functionality
-  sortDropdown.addEventListener('change', function() {
-    const search = searchInput.value;
-    const category = categoryFilter.value;
-    const sort = this.value;
-    window.location.href = `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
-  });
+            <div class="container">
 
-  // Category filter
-  categoryFilter.addEventListener('change', function() {
-    const search = searchInput.value;
-    const category = this.value;
-    const sort = sortDropdown.value;
-    window.location.href = `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
-  });
+                <div class="row g-5">
 
-  // View toggle
-  viewToggle.forEach(button => {
-    button.addEventListener('click', function() {
-      viewToggle.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const view = this.dataset.view;
-      const articleItems = articleGrid.querySelectorAll('.article-item');
-      
-      if (view === 'list') {
-        articleGrid.classList.remove('row', 'g-3');
-        articleGrid.classList.add('fc-list-view');
-        // Remove column classes from article items
-        articleItems.forEach(item => {
-          item.classList.remove('col-md-6');
+
+                    {{-- =================================================
+                     ARTICLES
+                     ================================================= --}}
+
+                    <div class="col-lg-8 order-2 order-lg-1">
+
+                        <div class="fc-blog-main-heading">
+
+                            <div>
+
+                                <span class="fc-small-label">
+                                    Latest Knowledge
+                                </span>
+
+                                <h2>
+                                    Explore our articles
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="articleGrid" class="row g-4">
+
+
+                            @forelse($allArticles as $article)
+                                <div class="col-md-6 article-item">
+
+
+                                    <article class="fc-blog-card">
+
+                                        <a href="{{ route('blog.show', $article->slug) }}" class="fc-blog-card-image-link"
+                                            aria-label="{{ $article->title }}">
+
+                                            <div class="fc-blog-card-image">
+
+                                                <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-feture-image.png') }}"
+                                                    alt="{{ $article->title }}" loading="lazy">
+
+                                                <div class="fc-blog-card-image-overlay"></div>
+
+                                            </div>
+
+                                        </a>
+
+
+                                        <div class="fc-blog-card-body">
+
+
+                                            {{-- Categories --}}
+
+                                            <div class="fc-blog-card-categories">
+
+                                                @if ($article->categories->isNotEmpty())
+                                                    @foreach ($article->categories->take(2) as $cat)
+                                                        <span class="fc-blog-category">
+
+                                                            {{ $cat->name }}
+
+                                                        </span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="fc-blog-category">
+                                                        Article
+                                                    </span>
+                                                @endif
+
+                                            </div>
+
+
+                                            {{-- Title --}}
+
+                                            <h3 class="fc-blog-card-title">
+
+                                                <a href="{{ route('blog.show', $article->slug) }}">
+
+                                                    {{ $article->title }}
+
+                                                </a>
+
+                                            </h3>
+
+
+                                            {{-- Description --}}
+
+                                            <p class="fc-blog-card-description">
+
+                                                {{ $article->meta_description }}
+
+                                            </p>
+
+
+                                            {{-- Meta --}}
+
+                                            <div class="fc-blog-card-meta">
+
+                                                <span>
+
+                                                    <i class="far fa-calendar"></i>
+
+                                                    {{ $article->published_at->format('M d, Y') }}
+
+                                                </span>
+
+                                                <span>
+
+                                                    <i class="far fa-eye"></i>
+
+                                                    {{ number_format($article->views) }}
+
+                                                </span>
+
+                                            </div>
+
+
+                                            <a href="{{ route('blog.show', $article->slug) }}" class="fc-blog-read">
+
+                                                Read Article
+
+                                            </a>
+
+                                        </div>
+
+                                    </article>
+
+
+                                </div>
+
+                            @empty
+
+                                <div class="col-12">
+
+                                    <div class="fc-blog-empty">
+
+                                        <i class="far fa-file-alt"></i>
+
+                                        <h3>
+                                            No articles found
+                                        </h3>
+
+                                        <p>
+                                            Try changing your search or
+                                            category filters.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            @endforelse
+
+
+                        </div>
+
+
+                        {{-- Load More --}}
+
+                        <div class="fc-blog-load-more">
+
+                            <button id="loadMoreBtn" type="button" class="fc-blog-load-button" data-page="2"
+                                data-search="{{ $search }}" data-category="{{ $category }}"
+                                data-sort="{{ $sort }}">
+
+                                <span id="loadMoreText">
+                                    Load More Articles
+                                </span>
+
+                                <span class="spinner-border spinner-border-sm d-none" id="loadingSpinner" role="status"
+                                    aria-hidden="true">
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    {{-- =================================================
+                     SIDEBAR
+                     ================================================= --}}
+
+                    <aside class="col-lg-4 order-1 order-lg-2">
+
+
+                        {{-- Latest --}}
+
+                        <div class="fc-blog-sidebar-widget">
+
+                            <div class="fc-sidebar-heading">
+
+                                <span>
+                                    Latest
+                                </span>
+
+                                <div></div>
+
+                            </div>
+
+
+                            <div class="fc-latest-list">
+
+                                @forelse($latest->take(4) as $article)
+                                    <a href="{{ route('blog.show', $article->slug) }}" class="fc-latest-item">
+
+
+                                        <div class="fc-latest-image">
+
+                                            <img src="{{ $article->small_image_url ?? asset('assets/images/blog-default-thumbnail.png') }}"
+                                                alt="{{ $article->title }}" loading="lazy">
+
+                                        </div>
+
+
+                                        <div class="fc-latest-content">
+
+                                            <span>
+                                                {{ $article->published_at->format('M d, Y') }}
+                                            </span>
+
+                                            <h3>
+                                                {{ $article->title }}
+                                            </h3>
+
+                                        </div>
+
+
+                                    </a>
+
+                                @empty
+
+                                    <p class="fc-blog-sidebar-empty">
+                                        No latest articles yet.
+                                    </p>
+                                @endforelse
+
+                            </div>
+
+                        </div>
+
+
+
+                        {{-- Featured --}}
+
+                        <div class="fc-blog-sidebar-widget">
+
+                            <div class="fc-sidebar-heading">
+
+                                <span>
+                                    Featured
+                                </span>
+
+                                <div></div>
+
+                            </div>
+
+
+                            @forelse($featured->take(2) as $article)
+                                <a href="{{ route('blog.show', $article->slug) }}" class="fc-featured-post">
+
+
+                                    <div class="fc-featured-image">
+
+                                        <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-featured-image.png') }}"
+                                            alt="{{ $article->title }}" loading="lazy">
+
+                                        <span>
+                                            Featured
+                                        </span>
+
+                                    </div>
+
+
+                                    <h3>
+                                        {{ $article->title }}
+                                    </h3>
+
+
+                                    <div class="fc-featured-meta">
+
+                                        <span>
+                                            {{ $article->published_at->format('M d, Y') }}
+                                        </span>
+
+                                        <span>
+                                            {{ number_format($article->views) }} views
+                                        </span>
+
+                                    </div>
+
+
+                                </a>
+
+                            @empty
+
+                                <p class="fc-blog-sidebar-empty">
+                                    No featured articles yet.
+                                </p>
+                            @endforelse
+
+                        </div>
+
+
+
+                        {{-- Trending --}}
+
+                        <div class="fc-blog-sidebar-widget fc-trending-widget">
+
+                            <div class="fc-sidebar-heading">
+
+                                <span>
+                                    Trending Now
+                                </span>
+
+                                <div></div>
+
+                            </div>
+
+
+                            <div class="fc-trending-list">
+
+                                @forelse($trending->take(5) as $index => $article)
+                                    <a href="{{ route('blog.show', $article->slug) }}" class="fc-trending-item">
+
+
+                                        <span class="fc-trending-number">
+
+                                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+
+                                        </span>
+
+
+                                        <div>
+
+                                            <h3>
+                                                {{ $article->title }}
+                                            </h3>
+
+                                            <span>
+                                                {{ number_format($article->views) }}
+                                                views
+                                            </span>
+
+                                        </div>
+
+                                    </a>
+
+                                @empty
+
+                                    <p class="fc-blog-sidebar-empty">
+                                        No trending articles yet.
+                                    </p>
+                                @endforelse
+
+                            </div>
+
+                        </div>
+
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        {{-- =========================================================
+         BLOG CTA
+         ========================================================= --}}
+
+        <section class="fc-blog-cta">
+
+            <div class="fc-blog-cta-grid"></div>
+
+            <div class="container">
+
+                <div class="fc-blog-cta-inner">
+
+                    <div class="fc-blog-eyebrow">
+
+                        <span></span>
+
+                        Have a Project in Mind?
+
+                        <span></span>
+
+                    </div>
+
+
+                    <h2>
+
+                        Turn ideas into
+                        <span>something real.</span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Have a digital challenge, product idea,
+                        or growth opportunity? Let's talk about it.
+
+                    </p>
+
+
+                    <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary fc-blog-cta-button">
+
+                        Start a Conversation
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    {{-- =============================================================
+     BLOG JAVASCRIPT
+     ============================================================= --}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+
+            const loadMoreBtn =
+                document.getElementById('loadMoreBtn');
+
+            const articleGrid =
+                document.getElementById('articleGrid');
+
+            const searchInput =
+                document.getElementById('searchInput');
+
+            const sortDropdown =
+                document.getElementById('sortDropdown');
+
+            const categoryFilter =
+                document.getElementById('categoryFilter');
+
+            const viewToggle =
+                document.querySelectorAll('.fc-blog-view-toggle button');
+
+            const loadMoreText =
+                document.getElementById('loadMoreText');
+
+            const loadingSpinner =
+                document.getElementById('loadingSpinner');
+
+
+            /* =========================================================
+               SEARCH
+               ========================================================= */
+
+            let searchTimeout;
+
+            if (searchInput) {
+
+                searchInput.addEventListener('input', function() {
+
+                    clearTimeout(searchTimeout);
+
+                    searchTimeout = setTimeout(() => {
+
+                        const search =
+                            this.value;
+
+                        const category =
+                            categoryFilter.value;
+
+                        const sort =
+                            sortDropdown.value;
+
+                        window.location.href =
+                            `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
+
+                    }, 500);
+
+                });
+
+            }
+
+
+            /* =========================================================
+               SORT
+               ========================================================= */
+
+            if (sortDropdown) {
+
+                sortDropdown.addEventListener('change', function() {
+
+                    const search =
+                        searchInput.value;
+
+                    const category =
+                        categoryFilter.value;
+
+                    const sort =
+                        this.value;
+
+                    window.location.href =
+                        `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
+
+                });
+
+            }
+
+
+            /* =========================================================
+               CATEGORY
+               ========================================================= */
+
+            if (categoryFilter) {
+
+                categoryFilter.addEventListener('change', function() {
+
+                    const search =
+                        searchInput.value;
+
+                    const category =
+                        this.value;
+
+                    const sort =
+                        sortDropdown.value;
+
+                    window.location.href =
+                        `{{ route('blog.index') }}?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`;
+
+                });
+
+            }
+
+
+            /* =========================================================
+               GRID / LIST VIEW
+               ========================================================= */
+
+            viewToggle.forEach(button => {
+
+                button.addEventListener('click', function() {
+
+                    viewToggle.forEach(btn => {
+
+                        btn.classList.remove('active');
+
+                    });
+
+                    this.classList.add('active');
+
+                    const view =
+                        this.dataset.view;
+
+
+                    const articleItems =
+                        articleGrid.querySelectorAll('.article-item');
+
+
+                    if (view === 'list') {
+
+                        articleGrid.classList.add(
+                            'fc-blog-list-view'
+                        );
+
+                        articleItems.forEach(item => {
+
+                            item.classList.remove(
+                                'col-md-6'
+                            );
+
+                        });
+
+                    } else {
+
+                        articleGrid.classList.remove(
+                            'fc-blog-list-view'
+                        );
+
+                        articleItems.forEach(item => {
+
+                            item.classList.add(
+                                'col-md-6'
+                            );
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+
+            /* =========================================================
+               LOAD MORE
+               ========================================================= */
+
+            if (loadMoreBtn) {
+
+                loadMoreBtn.addEventListener('click', function() {
+
+
+                    const page =
+                        this.dataset.page;
+
+                    const search =
+                        this.dataset.search;
+
+                    const category =
+                        this.dataset.category;
+
+                    const sort =
+                        this.dataset.sort;
+
+
+                    const isListView =
+                        articleGrid.classList.contains(
+                            'fc-blog-list-view'
+                        );
+
+
+                    this.disabled = true;
+
+                    loadingSpinner.classList.remove(
+                        'd-none'
+                    );
+
+                    loadMoreText.textContent =
+                        'Loading...';
+
+
+                    fetch(
+                            `{{ route('blog.load-more') }}?page=${page}&search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`
+                        )
+
+                        .then(response => response.json())
+
+                        .then(data => {
+
+
+                            data.articles.forEach(article => {
+
+
+                                const colClass =
+                                    isListView ?
+                                    '' :
+                                    'col-md-6';
+
+
+                                const articleHTML = `
+
+                        <div class="${colClass} article-item fc-blog-new-item">
+
+                            <article class="fc-blog-card">
+
+                                <a
+                                    href="/blog/${article.slug}"
+                                    class="fc-blog-card-image-link">
+
+                                    <div class="fc-blog-card-image">
+
+                                        <img
+                                            src="${article.thumbnail_image_url || '{{ asset('assets/images/blog-default-feture-image.png') }}'}"
+                                            alt="${article.title}"
+                                            loading="lazy">
+
+                                        <div class="fc-blog-card-image-overlay"></div>
+
+                                    </div>
+
+                                </a>
+
+
+                                <div class="fc-blog-card-body">
+
+                                    <div class="fc-blog-card-categories">
+
+                                        <span class="fc-blog-category">
+                                            Article
+                                        </span>
+
+                                    </div>
+
+
+                                    <h3 class="fc-blog-card-title">
+
+                                        <a href="/blog/${article.slug}">
+                                            ${article.title}
+                                        </a>
+
+                                    </h3>
+
+
+                                    <p class="fc-blog-card-description">
+                                        ${article.meta_description || ''}
+                                    </p>
+
+
+                                    <div class="fc-blog-card-meta">
+
+                                        <span>
+
+                                            <i class="far fa-calendar"></i>
+
+                                            ${new Date(article.published_at)
+                                                .toLocaleDateString(
+                                                    'en-US',
+                                                    {
+                                                        year: 'numeric',
+                                                        month: 'short',
+                                                        day: 'numeric'
+                                                    }
+                                                )}
+
+                                        </span>
+
+                                        <span>
+
+                                            <i class="far fa-eye"></i>
+
+                                            ${Number(article.views).toLocaleString()}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    <a
+                                        href="/blog/${article.slug}"
+                                        class="fc-blog-read">
+
+                                        Read Article
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    `;
+
+
+                                const wrapper =
+                                    document.createElement('div');
+
+                                wrapper.innerHTML =
+                                    articleHTML.trim();
+
+
+                                const newCard =
+                                    wrapper.firstElementChild;
+
+
+                                articleGrid.appendChild(
+                                    newCard
+                                );
+
+
+                                requestAnimationFrame(() => {
+
+                                    newCard.classList.add(
+                                        'fc-blog-item-visible'
+                                    );
+
+                                });
+
+                            });
+
+
+                            loadMoreBtn.dataset.page =
+                                data.nextPage;
+
+
+                            loadMoreBtn.disabled =
+                                false;
+
+
+                            loadingSpinner.classList.add(
+                                'd-none'
+                            );
+
+
+                            loadMoreText.textContent =
+                                'Load More Articles';
+
+
+                            if (!data.hasMore) {
+
+                                loadMoreText.textContent =
+                                    'No More Articles';
+
+                                loadMoreBtn.disabled =
+                                    true;
+
+                            }
+
+                        })
+
+
+                        .catch(error => {
+
+                            console.error(
+                                'Error loading blogs:',
+                                error
+                            );
+
+                            loadMoreBtn.disabled =
+                                false;
+
+                            loadingSpinner.classList.add(
+                                'd-none'
+                            );
+
+                            loadMoreText.textContent =
+                                'Load More Articles';
+
+                        });
+
+                });
+
+            }
+
+
         });
-      } else {
-        articleGrid.classList.remove('fc-list-view');
-        articleGrid.classList.add('row', 'g-3');
-        // Add back column classes to article items
-        articleItems.forEach(item => {
-          item.classList.add('col-md-6');
-        });
-      }
-    });
-  });
+    </script>
 
-  // Load more functionality
-  loadMoreBtn.addEventListener('click', function() {
-    const page = this.dataset.page;
-    const search = this.dataset.search;
-    const category = this.dataset.category;
-    const sort = this.dataset.sort;
-    const isListView = articleGrid.classList.contains('fc-list-view');
 
-    loadMoreBtn.disabled = true;
-    loadingSpinner.classList.remove('d-none');
-    loadMoreText.textContent = 'Loading...';
-
-    fetch(`{{ route('blog.load-more') }}?page=${page}&search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&sort=${encodeURIComponent(sort)}`)
-      .then(response => response.json())
-      .then(data => {
-        data.articles.forEach((article) => {
-          const colClass = isListView ? '' : 'col-md-6';
-          const articleHTML = `
-            <div class="${colClass} article-item" style="opacity: 0; transform: scale(0.9);">
-              <a href="/blog/${article.slug}" class="fc-article-card">
-                <img src="${article.thumbnail_image_url || 'https://via.placeholder.com/400x300'}" alt="${article.title}" loading="lazy">
-                <div class="fc-article-body">
-                  <span class="fc-badge">Article</span>
-                  <h5>${article.title}</h5>
-                  <p class="fc-article-description">${article.meta_description || ''}</p>
-                  <div class="fc-meta">
-                    <div>${new Date(article.published_at).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
-                    <div>${article.views.toLocaleString()} views</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          `;
-          const element = document.createElement('div');
-          element.innerHTML = articleHTML;
-          const newCard = element.firstElementChild;
-          articleGrid.appendChild(newCard);
-
-          setTimeout(() => {
-            newCard.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            newCard.style.opacity = '1';
-            newCard.style.transform = 'scale(1)';
-          }, 100);
-        });
-
-        loadMoreBtn.dataset.page = data.nextPage;
-        loadMoreBtn.disabled = false;
-        loadingSpinner.classList.add('d-none');
-        loadMoreText.textContent = 'Load More Blogs';
-
-        if (!data.hasMore) {
-          loadMoreBtn.textContent = '✓ No More Blogs';
-          loadMoreBtn.disabled = true;
-        }
-      })
-      .catch(error => {
-        console.error('Error loading blogs:', error);
-        loadMoreBtn.disabled = false;
-        loadingSpinner.classList.add('d-none');
-        loadMoreText.textContent = 'Load More Blogs';
-      });
-  });
-
-  // Infinite scroll - trigger when Load More button is visible
-  let isLoading = false;
-  function checkScroll() {
-    if (isLoading || loadMoreBtn.disabled) return;
-    
-    const btnRect = loadMoreBtn.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    // Trigger when button is within 200px of viewport bottom
-    if (btnRect.top <= windowHeight + 200) {
-      isLoading = true;
-      loadMoreBtn.click();
-      setTimeout(() => { isLoading = false; }, 1500);
-    }
-  }
-  
-  window.addEventListener('scroll', checkScroll);
-  setTimeout(checkScroll, 500);
-});
-</script>
 @endsection

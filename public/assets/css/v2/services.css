@@ -1,0 +1,1763 @@
+/* ============================================================
+   FUSIONCENTRIX V2
+   SERVICES PAGE
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL SAFETY
+   ============================================================ */
+
+.fc-services-hero *,
+.fc-services-intro *,
+.fc-services-list *,
+.fc-work-section *,
+.fc-services-cta * {
+    box-sizing: border-box;
+}
+
+.fc-services-hero img,
+.fc-services-intro img,
+.fc-services-list img,
+.fc-work-section img,
+.fc-services-cta img {
+    max-width: 100%;
+}
+
+
+/* ============================================================
+   01 — SERVICES HERO
+   ============================================================ */
+
+.fc-services-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        90px 0 105px;
+
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 78% 45%,
+            rgba(21, 101, 255, .20),
+            transparent 30%),
+        radial-gradient(circle at 100% 0%,
+            rgba(0, 194, 255, .10),
+            transparent 32%),
+        #07142B;
+}
+
+
+/* Grid */
+
+.fc-hero-grid {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .55;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, .035) 1px,
+            transparent 1px);
+
+    background-size: 64px 64px;
+
+    mask-image:
+        linear-gradient(to right,
+            black,
+            transparent 90%);
+}
+
+
+/* Eyebrow */
+
+.fc-services-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 25px;
+
+    color: var(--fc-cyan);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.fc-services-eyebrow span {
+    width: 32px;
+    height: 2px;
+
+    display: block;
+
+    border-radius: 99px;
+
+    background:
+        linear-gradient(90deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+}
+
+
+/* Hero title */
+
+.fc-services-title {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: #fff !important;
+
+    font-size:
+        clamp(52px, 7vw, 92px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: .93 !important;
+
+    letter-spacing: -.065em !important;
+}
+
+.fc-services-title span {
+    display: block;
+
+    color: #fff !important;
+}
+
+.fc-services-title strong {
+    display: block;
+
+    font-weight: inherit;
+
+    background:
+        linear-gradient(135deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Description */
+
+.fc-services-description {
+    max-width: 620px;
+
+    margin:
+        32px 0 0;
+
+    color:
+        rgba(255, 255, 255, .72) !important;
+
+    font-size: 18px !important;
+
+    line-height: 1.75 !important;
+}
+
+
+/* Actions */
+
+.fc-services-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-top: 38px;
+}
+
+
+/* ============================================================
+   HERO ORBIT
+   ============================================================ */
+
+.fc-services-orbit {
+    position: relative;
+
+    width: min(100%, 570px);
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+}
+
+
+/* Rings */
+
+.fc-orbit {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.orbit-one {
+    width: 72%;
+    height: 72%;
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+}
+
+.orbit-two {
+    width: 50%;
+    height: 50%;
+
+    border:
+        1px dashed rgba(0, 194, 255, .28);
+}
+
+
+/* Connecting lines */
+
+.fc-orbit-line {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 42%;
+
+    height: 1px;
+
+    transform-origin: left center;
+
+    background:
+        linear-gradient(90deg,
+            rgba(0, 194, 255, .55),
+            transparent);
+}
+
+.line-one {
+    transform: rotate(0deg);
+}
+
+.line-two {
+    transform: rotate(145deg);
+}
+
+.line-three {
+    transform: rotate(-145deg);
+}
+
+
+/* Center */
+
+.fc-orbit-center {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 130px;
+    height: 130px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    border:
+        1px solid rgba(0, 194, 255, .45);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%,
+            rgba(21, 101, 255, .55),
+            #07142B 65%);
+
+    box-shadow:
+        0 0 70px rgba(21, 101, 255, .25);
+}
+
+.fc-orbit-center strong {
+    color: #fff;
+
+    font-size: 34px;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+.fc-orbit-center span {
+    margin-top: 7px;
+
+    color: var(--fc-cyan);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: .18em;
+}
+
+
+/* Orbit cards */
+
+.fc-orbit-card {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+    gap: 11px;
+
+    padding:
+        12px 17px;
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 13px;
+
+    color: #fff;
+
+    background:
+        rgba(12, 35, 72, .90);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .18);
+
+    backdrop-filter: blur(10px);
+}
+
+.fc-orbit-card i {
+    color: var(--fc-cyan);
+
+    font-size: 14px;
+}
+
+.fc-orbit-card span {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.orbit-design {
+    top: 42%;
+    left: 4%;
+}
+
+.orbit-development {
+    top: 13%;
+    right: 2%;
+}
+
+.orbit-growth {
+    right: 4%;
+    bottom: 15%;
+}
+
+.orbit-intelligence {
+    bottom: 30%;
+    left: 7%;
+}
+
+
+/* Dots */
+
+.fc-orbit-dot {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--fc-cyan);
+
+    box-shadow:
+        0 0 15px rgba(0, 194, 255, .8);
+}
+
+.dot-one {
+    top: 18%;
+    left: 28%;
+}
+
+.dot-two {
+    top: 29%;
+    right: 7%;
+}
+
+.dot-three {
+    bottom: 18%;
+    left: 35%;
+}
+
+.dot-four {
+    bottom: 32%;
+    right: 20%;
+}
+
+
+/* ============================================================
+   02 — INTRO
+   ============================================================ */
+
+.fc-services-intro {
+    padding:
+        clamp(75px, 9vw, 120px) 0;
+
+    background: #fff;
+}
+
+
+/* Generic eyebrow */
+
+.fc-section-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    color: var(--fc-blue);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+}
+
+.fc-section-eyebrow span {
+    display: block;
+
+    width: 26px;
+    height: 2px;
+
+    border-radius: 99px;
+
+    background:
+        linear-gradient(90deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+}
+
+
+/* Intro title */
+
+.fc-services-intro-title {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    color: var(--fc-navy) !important;
+
+    font-size:
+        clamp(42px, 5vw, 68px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -.055em !important;
+}
+
+.fc-services-intro-title span {
+    background:
+        linear-gradient(135deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Intro text */
+
+.fc-services-intro-text {
+    max-width: 720px;
+
+    margin:
+        24px auto 0;
+
+    color: #405A78 !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.75 !important;
+}
+
+
+/* Capability */
+
+.fc-capability-row {
+    margin-top: 70px;
+}
+
+.fc-capability {
+    position: relative;
+
+    height: 100%;
+
+    padding:
+        20px 15px 15px;
+
+    text-align: center;
+}
+
+
+/* Connector */
+
+.fc-capability-row>div:not(:last-child) .fc-capability::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 47px;
+    left: calc(50% + 55px);
+
+    width: calc(100% - 110px);
+
+    height: 1px;
+
+    background:
+        #DDE6F2;
+}
+
+
+/* Icon */
+
+.fc-capability-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border:
+        1px solid rgba(21, 101, 255, .20);
+
+    border-radius: 50%;
+
+    color: var(--fc-blue);
+
+    background: #fff;
+
+    box-shadow:
+        0 12px 30px rgba(21, 101, 255, .10);
+}
+
+.fc-capability-icon i {
+    font-size: 18px;
+}
+
+.fc-capability>span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--fc-blue);
+
+    font-family: var(--fc-font-mono);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.fc-capability h3 {
+    margin: 0;
+
+    color: var(--fc-navy);
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.fc-capability p {
+    margin:
+        10px 0 0;
+
+    color: #526B88;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   03 — SERVICES LIST
+   ============================================================ */
+
+.fc-services-list {
+    padding:
+        clamp(75px, 9vw, 120px) 0;
+
+    background:
+        #F7F9FC;
+}
+
+
+/* Header */
+
+.fc-services-list-header {
+    margin-bottom: 55px;
+}
+
+.fc-section-eyebrow-left {
+    justify-content: flex-start;
+}
+
+.fc-services-list-title {
+    max-width: 900px;
+
+    margin: 0;
+
+    color: var(--fc-navy) !important;
+
+    font-size:
+        clamp(40px, 5vw, 66px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: -.055em !important;
+}
+
+.fc-services-list-title span {
+    background:
+        linear-gradient(135deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.fc-services-list-intro {
+    max-width: 400px;
+
+    margin:
+        0 0 5px auto;
+
+    color: #405A78 !important;
+
+    font-size: 16px !important;
+
+    line-height: 1.7 !important;
+}
+
+
+/* ============================================================
+   SERVICE CARDS
+   ============================================================ */
+
+.fc-service-card {
+    position: relative;
+
+    min-height: 485px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        38px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #DCE6F2;
+
+    border-radius: 24px;
+
+    background: #fff;
+
+    box-shadow:
+        0 12px 35px rgba(7, 20, 43, .055);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+
+/* Top brand line */
+
+.fc-service-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(90deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+}
+
+
+/* Dark card */
+
+.fc-service-card-dark {
+    color: #fff;
+
+    border-color:
+        rgba(21, 101, 255, .55);
+
+    background:
+        linear-gradient(145deg,
+            #07142B,
+            #0B2550);
+
+    box-shadow:
+        0 20px 50px rgba(7, 20, 43, .18);
+}
+
+
+/* Card top */
+
+.fc-service-card-top {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+/* Number */
+
+.fc-service-number {
+    color: var(--fc-blue);
+
+    font-family: var(--fc-font-mono);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: .05em;
+}
+
+.fc-service-card-dark .fc-service-number {
+    color: var(--fc-cyan);
+}
+
+
+/* Icon */
+
+.fc-service-icon {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(21, 101, 255, .20);
+
+    border-radius: 16px;
+
+    color: var(--fc-blue);
+
+    background:
+        linear-gradient(145deg,
+            #EFF5FF,
+            #fff);
+}
+
+.fc-service-icon i {
+    font-size: 19px;
+}
+
+.fc-service-card-dark .fc-service-icon {
+    border-color:
+        rgba(0, 194, 255, .30);
+
+    color: var(--fc-cyan);
+
+    background:
+        rgba(21, 101, 255, .10);
+}
+
+
+/* Content */
+
+.fc-service-card-content {
+    margin-top: 62px;
+}
+
+
+/* Category */
+
+.fc-service-category {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--fc-blue);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+}
+
+.fc-service-card-dark .fc-service-category {
+    color: var(--fc-cyan);
+}
+
+
+/* Title */
+
+.fc-service-card h3 {
+    margin: 0;
+
+    color: var(--fc-navy) !important;
+
+    font-size:
+        clamp(25px, 2.5vw, 31px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1.12 !important;
+
+    letter-spacing: -.035em !important;
+}
+
+.fc-service-card-dark h3 {
+    color: #fff !important;
+}
+
+
+/* Description */
+
+.fc-service-card-content p {
+    max-width: 570px;
+
+    margin:
+        18px 0 0;
+
+    color: #526B88 !important;
+
+    font-size: 16px !important;
+
+    line-height: 1.7 !important;
+}
+
+.fc-service-card-dark .fc-service-card-content p {
+    color:
+        rgba(255, 255, 255, .72) !important;
+}
+
+
+/* Tags */
+
+.fc-service-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+.fc-service-tags span {
+    padding:
+        7px 13px;
+
+    border:
+        1px solid rgba(21, 101, 255, .18);
+
+    border-radius: 99px;
+
+    color: var(--fc-blue);
+
+    background: #F5F8FF;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.fc-service-card-dark .fc-service-tags span {
+    color: #fff;
+
+    border-color:
+        rgba(255, 255, 255, .15);
+
+    background:
+        rgba(255, 255, 255, .055);
+}
+
+
+/* Service link */
+
+.fc-service-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    margin-top: auto;
+    padding-top: 30px;
+
+    color: var(--fc-blue) !important;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+.fc-service-card-dark .fc-service-link {
+    color: var(--fc-cyan) !important;
+}
+
+.fc-service-link:hover {
+    color: var(--fc-cyan) !important;
+
+    transform: translateX(4px);
+}
+
+
+/* Card hover */
+
+.fc-service-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(21, 101, 255, .32);
+
+    box-shadow:
+        0 25px 55px rgba(7, 20, 43, .12);
+}
+
+.fc-service-card-dark:hover {
+    border-color:
+        rgba(0, 194, 255, .55);
+
+    box-shadow:
+        0 28px 65px rgba(7, 20, 43, .22);
+}
+
+
+/* ============================================================
+   04 — HOW WE WORK
+   ============================================================ */
+
+.fc-work-section {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        clamp(75px, 9vw, 120px) 0;
+
+    background:
+        radial-gradient(circle at 88% 8%,
+            rgba(21, 101, 255, .075),
+            transparent 30%),
+        #F7F9FC;
+}
+
+
+.fc-work-header {
+    margin-bottom:
+        clamp(45px, 6vw, 70px);
+}
+
+
+.fc-work-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    color: var(--fc-blue);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+}
+
+
+.fc-work-eyebrow-line {
+    width: 32px;
+    height: 2px;
+
+    border-radius: 99px;
+
+    background:
+        linear-gradient(90deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+}
+
+
+.fc-work-title {
+    margin: 0 !important;
+
+    color: var(--fc-navy) !important;
+
+    font-size:
+        clamp(42px, 5vw, 72px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: .98 !important;
+
+    letter-spacing: -.055em !important;
+}
+
+.fc-work-title span {
+    background:
+        linear-gradient(135deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+.fc-work-intro {
+    max-width: 500px;
+
+    margin: 0 !important;
+
+    color: #405A78 !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.7 !important;
+}
+
+
+/* Process card */
+
+.fc-work-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 405px;
+
+    overflow: hidden;
+
+    padding:
+        28px;
+
+    border:
+        1px solid rgba(7, 20, 43, .10);
+
+    border-radius: 22px;
+
+    background: #fff;
+
+    box-shadow:
+        0 12px 35px rgba(7, 20, 43, .055);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+
+/* First process card */
+
+.fc-work-card-featured {
+    border-color:
+        rgba(21, 101, 255, .55);
+
+    background:
+        linear-gradient(145deg,
+            #07142B 0%,
+            #0B2552 100%);
+
+    box-shadow:
+        0 20px 45px rgba(7, 20, 43, .15);
+}
+
+
+.fc-work-card-top {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+}
+
+
+.fc-work-number {
+    color: var(--fc-blue);
+
+    font-family: var(--fc-font-mono);
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+.fc-work-card-featured .fc-work-number {
+    color: var(--fc-cyan);
+}
+
+
+/* Work icon */
+
+.fc-work-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(21, 101, 255, .20);
+
+    border-radius: 16px;
+
+    color: var(--fc-blue);
+
+    background:
+        linear-gradient(145deg,
+            #EEF4FF,
+            #fff);
+
+    box-shadow:
+        0 12px 30px rgba(21, 101, 255, .10);
+
+    transition:
+        transform .35s ease;
+}
+
+.fc-work-card-featured .fc-work-icon {
+    border-color:
+        rgba(0, 194, 255, .35);
+
+    color: var(--fc-cyan);
+
+    background:
+        rgba(21, 101, 255, .12);
+}
+
+
+/* Work content */
+
+.fc-work-card-content {
+    margin-top: 62px;
+}
+
+
+.fc-work-label {
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: var(--fc-blue);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+}
+
+.fc-work-card-featured .fc-work-label {
+    color: var(--fc-cyan);
+}
+
+
+.fc-work-card h3 {
+    margin: 0 !important;
+
+    color: var(--fc-navy) !important;
+
+    font-size: 23px !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1.2 !important;
+}
+
+.fc-work-card-featured h3 {
+    color: #fff !important;
+}
+
+
+.fc-work-card p {
+    max-width: 280px;
+
+    margin:
+        16px 0 0 !important;
+
+    color: #526B88 !important;
+
+    font-size: 15px !important;
+
+    line-height: 1.7 !important;
+}
+
+.fc-work-card-featured p {
+    color:
+        rgba(255, 255, 255, .74) !important;
+}
+
+
+/* Bottom line */
+
+.fc-work-card-accent {
+    position: absolute;
+
+    left: 28px;
+    right: 28px;
+    bottom: 0;
+
+    height: 3px;
+
+    border-radius:
+        4px 4px 0 0;
+
+    background:
+        linear-gradient(90deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+}
+
+
+/* Hover */
+
+.fc-work-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(21, 101, 255, .30);
+
+    box-shadow:
+        0 25px 55px rgba(7, 20, 43, .12);
+}
+
+.fc-work-card-featured:hover {
+    border-color:
+        rgba(0, 194, 255, .55);
+}
+
+.fc-work-card:hover .fc-work-icon {
+    transform: translateY(-3px);
+}
+
+
+/* ============================================================
+   05 — CTA
+   ============================================================ */
+
+.fc-services-cta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        clamp(85px, 10vw, 130px) 0;
+
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 50% 100%,
+            rgba(21, 101, 255, .25),
+            transparent 40%),
+        #07142B;
+}
+
+
+.fc-services-cta::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, .035) 1px,
+            transparent 1px);
+
+    background-size: 60px 60px;
+}
+
+
+.fc-cta-glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .14),
+            transparent 68%);
+
+    pointer-events: none;
+}
+
+
+.fc-services-cta-inner {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.fc-section-eyebrow-light {
+    color: var(--fc-cyan);
+}
+
+
+.fc-services-cta-title {
+    margin: 0;
+
+    color: #fff !important;
+
+    font-size:
+        clamp(43px, 6vw, 78px) !important;
+
+    font-weight: 800 !important;
+
+    line-height: .98 !important;
+
+    letter-spacing: -.055em !important;
+}
+
+
+.fc-services-cta-title span {
+    display: block;
+
+    background:
+        linear-gradient(135deg,
+            var(--fc-blue),
+            var(--fc-cyan));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+.fc-services-cta-text {
+    max-width: 650px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255, 255, 255, .70) !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.7 !important;
+}
+
+
+.fc-services-cta-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 38px;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.fc-btn-large {
+    min-height: 54px;
+
+    padding:
+        15px 27px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1199.98px) {
+
+    .fc-services-hero {
+        min-height: auto;
+
+        padding:
+            90px 0;
+    }
+
+    .fc-services-title {
+        font-size:
+            clamp(50px, 7vw, 78px) !important;
+    }
+
+    .fc-service-card {
+        min-height: 460px;
+    }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .fc-services-hero {
+        padding:
+            80px 0;
+    }
+
+    .fc-services-orbit {
+        max-width: 520px;
+
+        margin-top: 25px;
+    }
+
+    .fc-services-list-intro {
+        margin-left: 0;
+    }
+
+    .fc-capability-row>div:nth-child(2) .fc-capability::after {
+        display: none;
+    }
+
+    .fc-work-card {
+        min-height: 370px;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+
+    .fc-services-hero {
+        padding:
+            65px 0 75px;
+    }
+
+    .fc-services-title {
+        font-size:
+            clamp(48px, 13vw, 66px) !important;
+    }
+
+    .fc-services-description {
+        font-size:
+            16px !important;
+    }
+
+    .fc-services-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .fc-services-actions .fc-btn {
+        width: 100%;
+    }
+
+    .fc-services-orbit {
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+    .fc-orbit-center {
+        width: 105px;
+        height: 105px;
+    }
+
+    .fc-orbit-center strong {
+        font-size: 28px;
+    }
+
+    .fc-orbit-card {
+        padding:
+            9px 12px;
+    }
+
+    .fc-orbit-card span {
+        font-size: 11px;
+    }
+
+    .orbit-design {
+        left: 0;
+    }
+
+    .orbit-development {
+        right: 0;
+    }
+
+    .orbit-growth {
+        right: 0;
+    }
+
+    .orbit-intelligence {
+        left: 0;
+    }
+
+    .fc-services-intro-title,
+    .fc-services-list-title {
+        font-size:
+            clamp(40px, 11vw, 55px) !important;
+    }
+
+    .fc-services-intro-text {
+        font-size:
+            16px !important;
+    }
+
+    .fc-capability-row {
+        margin-top: 45px;
+    }
+
+    .fc-capability-row>div .fc-capability::after {
+        display: none;
+    }
+
+    .fc-service-card {
+        min-height: 420px;
+
+        padding:
+            28px 24px;
+    }
+
+    .fc-service-card-content {
+        margin-top: 45px;
+    }
+
+    .fc-work-title {
+        font-size:
+            clamp(40px, 11vw, 55px) !important;
+    }
+
+    .fc-work-intro {
+        margin-top: 18px !important;
+
+        font-size:
+            16px !important;
+    }
+
+    .fc-work-card {
+        min-height: 340px;
+
+        padding:
+            25px 23px;
+    }
+
+    .fc-work-card-content {
+        margin-top: 42px;
+    }
+
+    .fc-services-cta-title {
+        font-size:
+            clamp(42px, 11vw, 58px) !important;
+    }
+
+    .fc-services-cta-actions {
+        flex-direction: column;
+    }
+
+    .fc-services-cta-actions .fc-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+    .fc-services-hero {
+        padding:
+            55px 0 65px;
+    }
+
+    .fc-services-eyebrow {
+        font-size: 11px;
+    }
+
+    .fc-services-title {
+        font-size:
+            47px !important;
+
+        line-height:
+            .95 !important;
+    }
+
+    .fc-services-orbit {
+        width: 100%;
+    }
+
+    .fc-orbit-card {
+        gap: 7px;
+
+        padding:
+            8px 10px;
+    }
+
+    .fc-orbit-card i {
+        font-size: 11px;
+    }
+
+    .fc-orbit-card span {
+        font-size: 10px;
+    }
+
+    .fc-service-card {
+        min-height: 400px;
+
+        border-radius: 19px;
+    }
+
+    .fc-service-card h3 {
+        font-size:
+            25px !important;
+    }
+
+    .fc-service-card-content p {
+        font-size:
+            15px !important;
+    }
+
+    .fc-work-card {
+        min-height: 325px;
+
+        border-radius: 19px;
+    }
+
+    .fc-work-card h3 {
+        font-size:
+            22px !important;
+    }
+
+    .fc-services-cta {
+        padding:
+            75px 0 80px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL
+   ============================================================ */
+
+@media (max-width: 375px) {
+
+    .fc-services-title {
+        font-size:
+            42px !important;
+    }
+
+    .fc-orbit-card {
+        padding:
+            7px 8px;
+    }
+
+    .fc-orbit-card span {
+        font-size: 9px;
+    }
+
+}

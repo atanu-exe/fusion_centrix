@@ -1,0 +1,1065 @@
+/* ============================================================
+   FUSIONCENTRIX V2
+   CONTACT PAGE
+   ============================================================ */
+
+
+/* ============================================================
+   01. HERO
+   ============================================================ */
+
+.fc-contact-hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        105px 0 90px;
+
+    background:
+        var(--fc-gradient-dark);
+
+    color:
+        var(--fc-white);
+
+    isolation:
+        isolate;
+}
+
+
+.fc-contact-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    opacity: .25;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, .035) 1px,
+            transparent 1px);
+
+    background-size:
+        55px 55px;
+}
+
+
+.fc-contact-hero-glow {
+
+    position: absolute;
+
+    width: 550px;
+    height: 550px;
+
+    right: -260px;
+    top: -300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .24),
+            transparent 68%);
+
+    filter:
+        blur(20px);
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+}
+
+
+.fc-contact-hero-content {
+
+    max-width:
+        850px;
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+}
+
+
+.fc-contact-hero .fc-eyebrow {
+
+    color:
+        var(--fc-cyan);
+}
+
+
+.fc-contact-hero-title {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-white);
+
+    font-size:
+        clamp(3rem, 6vw, 5.5rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        .98;
+
+    letter-spacing:
+        -.06em;
+}
+
+
+.fc-contact-hero-title span {
+
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    background:
+        var(--fc-gradient-primary);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+.fc-contact-hero-description {
+
+    max-width:
+        650px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255, 255, 255, .65);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+}
+
+
+/* ============================================================
+   02. CONTACT MAIN
+   ============================================================ */
+
+.fc-contact-main {
+
+    background:
+        var(--fc-white);
+}
+
+
+.fc-contact-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(280px, .8fr) minmax(450px, 1.2fr);
+
+    gap:
+        clamp(50px, 8vw, 110px);
+
+    align-items:
+        start;
+}
+
+
+/* ============================================================
+   LEFT INFORMATION
+   ============================================================ */
+
+.fc-contact-info {
+
+    padding-top:
+        10px;
+}
+
+
+.fc-contact-info-title {
+
+    max-width:
+        480px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        clamp(2.4rem, 4vw, 4rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -.05em;
+}
+
+
+.fc-contact-info-description {
+
+    max-width:
+        470px;
+
+    margin:
+        22px 0 38px;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+}
+
+
+.fc-contact-detail {
+
+    display:
+        block;
+
+    padding:
+        18px 0;
+
+    border-top:
+        1px solid var(--fc-border);
+
+    color:
+        var(--fc-text);
+
+    text-decoration:
+        none;
+}
+
+
+.fc-contact-detail:last-of-type {
+
+    border-bottom:
+        1px solid var(--fc-border);
+}
+
+
+.fc-contact-detail-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        var(--fc-text-muted);
+
+    font-size:
+        9px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .12em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.fc-contact-detail strong {
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        14px;
+
+    font-weight:
+        650;
+}
+
+
+a.fc-contact-detail:hover strong {
+
+    color:
+        var(--fc-blue);
+}
+
+
+/* Note */
+
+.fc-contact-note {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    align-items:
+        flex-start;
+
+    margin-top:
+        28px;
+}
+
+
+.fc-contact-note-dot {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    margin-top:
+        6px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--fc-cyan);
+
+    box-shadow:
+        0 0 0 5px rgba(0, 194, 255, .08);
+}
+
+
+.fc-contact-note p {
+
+    max-width:
+        380px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.fc-contact-form-wrap {
+
+    padding:
+        34px;
+
+    border:
+        1px solid var(--fc-border);
+
+    border-radius:
+        var(--fc-radius-lg);
+
+    background:
+        var(--fc-surface);
+
+    box-shadow:
+        var(--fc-shadow-sm);
+}
+
+
+.fc-contact-form-header {
+
+    margin-bottom:
+        30px;
+}
+
+
+.fc-contact-form-header span {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    color:
+        var(--fc-blue);
+
+    font-size:
+        9px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .13em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.fc-contact-form-header h2 {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        27px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        -.035em;
+}
+
+
+.fc-contact-form {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        19px;
+}
+
+
+.fc-contact-field {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        7px;
+}
+
+
+.fc-contact-field:nth-last-child(2),
+.fc-contact-submit {
+
+    grid-column:
+        1 / -1;
+}
+
+
+.fc-contact-field label {
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+.fc-contact-field label span {
+
+    margin-left:
+        5px;
+
+    color:
+        var(--fc-text-muted);
+
+    font-size:
+        9px;
+
+    font-weight:
+        500;
+}
+
+
+.fc-contact-field .fc-input,
+.fc-contact-field .fc-select,
+.fc-contact-field .fc-textarea {
+
+    padding:
+        13px 14px;
+
+    border-color:
+        var(--fc-border);
+
+    background:
+        var(--fc-white);
+
+    font-size:
+        13px;
+}
+
+
+.fc-contact-field .fc-textarea {
+
+    min-height:
+        125px;
+
+    resize:
+        vertical;
+
+    line-height:
+        1.6;
+}
+
+
+.fc-contact-field .fc-input::placeholder,
+.fc-contact-field .fc-textarea::placeholder {
+
+    color:
+        #94A3B8;
+}
+
+
+/* Submit */
+
+.fc-contact-submit {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    margin-top:
+        3px;
+}
+
+
+.fc-contact-submit .fc-btn {
+
+    min-height:
+        48px;
+}
+
+
+.fc-contact-submit p {
+
+    max-width:
+        260px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-muted);
+
+    font-size:
+        9px;
+
+    line-height:
+        1.6;
+}
+
+
+/* ============================================================
+   03. PROCESS
+   ============================================================ */
+
+.fc-contact-process-header {
+
+    max-width:
+        700px;
+
+    margin-bottom:
+        50px;
+}
+
+
+.fc-contact-process-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid var(--fc-border);
+}
+
+
+.fc-contact-process-item {
+
+    min-height:
+        240px;
+
+    padding:
+        27px 25px;
+
+    border-right:
+        1px solid var(--fc-border);
+}
+
+
+.fc-contact-process-item:first-child {
+
+    padding-left:
+        0;
+}
+
+
+.fc-contact-process-item:last-child {
+
+    border-right:
+        0;
+
+    padding-right:
+        0;
+}
+
+
+.fc-contact-process-number {
+
+    display:
+        block;
+
+    margin-bottom:
+        60px;
+
+    color:
+        var(--fc-blue);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .1em;
+}
+
+
+.fc-contact-process-item h3 {
+
+    margin:
+        0 0 9px;
+
+    color:
+        var(--fc-navy);
+
+    font-size:
+        17px;
+
+    font-weight:
+        750;
+}
+
+
+.fc-contact-process-item p {
+
+    max-width:
+        230px;
+
+    margin:
+        0;
+
+    color:
+        var(--fc-text-soft);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   04. CTA
+   ============================================================ */
+
+.fc-contact-cta {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        90px 0;
+
+    background:
+        var(--fc-gradient-dark);
+
+    isolation:
+        isolate;
+}
+
+
+.fc-contact-cta-glow {
+
+    position:
+        absolute;
+
+    width:
+        550px;
+
+    height:
+        550px;
+
+    left:
+        -300px;
+
+    top:
+        -300px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(21, 101, 255, .22),
+            transparent 68%);
+
+    filter:
+        blur(20px);
+
+    z-index:
+        -1;
+}
+
+
+.fc-contact-cta-inner {
+
+    max-width:
+        800px;
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+}
+
+
+.fc-contact-cta-eyebrow {
+
+    display:
+        inline-block;
+
+    margin-bottom:
+        18px;
+
+    color:
+        var(--fc-cyan);
+
+    font-size:
+        10px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .14em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.fc-contact-cta-title {
+
+    margin:
+        0;
+
+    color:
+        var(--fc-white);
+
+    font-size:
+        clamp(2.6rem, 5vw, 4.7rem);
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.055em;
+}
+
+
+.fc-contact-cta-title span {
+
+    display:
+        block;
+
+    background:
+        var(--fc-gradient-primary);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+}
+
+
+.fc-contact-cta-inner>p {
+
+    max-width:
+        560px;
+
+    margin:
+        21px auto 30px;
+
+    color:
+        rgba(255, 255, 255, .62);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.7;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 991.98px) {
+
+    .fc-contact-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            55px;
+    }
+
+
+    .fc-contact-info {
+
+        max-width:
+            700px;
+    }
+
+
+    .fc-contact-process-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .fc-contact-process-item:nth-child(2) {
+
+        border-right:
+            0;
+    }
+
+
+    .fc-contact-process-item:nth-child(1),
+    .fc-contact-process-item:nth-child(2) {
+
+        border-bottom:
+            1px solid var(--fc-border);
+    }
+
+
+    .fc-contact-process-item:nth-child(3) {
+
+        padding-left:
+            0;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 767.98px) {
+
+    .fc-contact-hero {
+
+        padding:
+            90px 0 75px;
+    }
+
+
+    .fc-contact-hero-title {
+
+        font-size:
+            clamp(2.7rem, 12vw, 4rem);
+    }
+
+
+    .fc-contact-hero-description {
+
+        font-size:
+            14px;
+    }
+
+
+    .fc-contact-form-wrap {
+
+        padding:
+            24px 20px;
+    }
+
+
+    .fc-contact-form {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            17px;
+    }
+
+
+    .fc-contact-field:nth-last-child(2),
+    .fc-contact-submit {
+
+        grid-column:
+            auto;
+    }
+
+
+    .fc-contact-submit {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+    }
+
+
+    .fc-contact-process-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .fc-contact-process-item,
+    .fc-contact-process-item:nth-child(3) {
+
+        min-height:
+            auto;
+
+        padding:
+            25px 0;
+
+        border-right:
+            0;
+
+        border-bottom:
+            1px solid var(--fc-border);
+    }
+
+
+    .fc-contact-process-item:last-child {
+
+        border-bottom:
+            0;
+    }
+
+
+    .fc-contact-cta {
+
+        padding:
+            75px 0;
+    }
+
+
+    .fc-contact-cta-title {
+
+        font-size:
+            clamp(2.5rem, 11vw, 3.8rem);
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 575.98px) {
+
+    .fc-contact-info-title {
+
+        font-size:
+            2.6rem;
+    }
+
+
+    .fc-contact-form-header h2 {
+
+        font-size:
+            24px;
+    }
+
+
+    .fc-contact-form-wrap {
+
+        border-radius:
+            var(--fc-radius-md);
+    }
+
+
+    .fc-contact-submit .fc-btn {
+
+        width:
+            100%;
+    }
+
+}

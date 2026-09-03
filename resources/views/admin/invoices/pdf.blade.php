@@ -186,7 +186,7 @@
 
             <td class="company-left">
 
-                <img src="{{ public_path('logo.png') }}" class="logo">
+                <img src="{{ public_path('logo-dark.png') }}" class="logo">
 
                 <div class="company-name">
                     FusionCentrix
