@@ -1,512 +1,1356 @@
 @extends('layouts.app')
 
-
-
 @section('content')
-    <!-- Hero Banner -->
-     <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>Expert E-commerce Development Services</h1>
-                <p>
-                Build <b>custom e-commerce platforms</b> including <b>WooCommerce</b> and <b>Shopify</b> for businesses
-                    in the US, Canada, India, and worldwide. Our solutions ensure <b>secure transactions, optimized user
-                        experience, and SEO-friendly product listings</b> to drive sales and growth.
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/services.css') }}">
+
+    <main>
+
+        {{-- =========================================================
+        HERO
+    ========================================================== --}}
+        <section class="fc-services-hero">
+            <div class="fc-hero-grid"></div>
+
+            <div class="container">
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-eyebrow">
+                            <span></span>
+                            E-commerce Development
+                        </div>
+
+                        <h1 class="fc-services-title">
+                            E-commerce <span>solutions</span> built for
+                            <strong>growth.</strong>
+                        </h1>
+
+                        <p class="fc-services-description">
+                            Build custom e-commerce platforms including
+                            <strong>WooCommerce, Shopify, and custom solutions</strong>
+                            designed for secure transactions, optimized user experiences,
+                            SEO-friendly product listings, and scalable business growth.
                         </p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <a href="{{ route('services') }}">Services </a> / <span>E-commerce Development</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
+                        <div class="fc-services-actions">
+                            <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+                                Start a Conversation
+                            </a>
 
-    <!-- Service Overview -->
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 rounded-pill">
-                    <i class="fas fa-shopping-cart me-2"></i>Platform Development
-                </span> --}}
-                <h2 class="display-5 fw-bold mb-3">Custom E-commerce Platforms</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 800px;">
-                    We build <strong>custom e-commerce platforms</strong> tailored to your business needs, ensuring
-                    scalability, performance, and a seamless shopping experience that converts visitors into loyal customers.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-code fa-2x"></i>
+                            <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
+                                Explore Our Work
+                            </a>
                         </div>
-                        <h5 class="fw-bold mb-3">Custom Development</h5>
-                        <p class="text-muted small mb-0">Built from scratch using modern frameworks like Laravel, React, and Node.js. Every feature is designed specifically for your business model and customer needs.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-expand-arrows-alt fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">Scalable Architecture</h5>
-                        <p class="text-muted small mb-0">Cloud-ready infrastructure that grows with your business. Handle thousands of products and concurrent users without performance degradation.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-bolt fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">Lightning Performance</h5>
-                        <p class="text-muted small mb-0">Optimized for speed with lazy loading, CDN integration, and efficient caching. Fast load times improve SEO rankings and conversion rates.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
-                            <i class="fas fa-search-dollar fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">SEO Optimized</h5>
-                        <p class="text-muted small mb-0">Built with SEO best practices including schema markup, meta tags, and clean URLs to help your products rank higher in search results.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 mb-3 rounded-pill">
-                    <i class="fab fa-shopify me-2"></i>Platform Expertise
-                </span> --}}
-                <h2 class="display-5 fw-bold mb-3">WooCommerce & Shopify Development</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 800px;">
-                    Leverage the power of leading e-commerce platforms with <strong>custom designs, integrated apps, and smooth checkout processes</strong> that maximize conversions.
-                </p>
-            </div>
-            <div class="row g-4 mb-5">
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 me-3">
-                                    <i class="fab fa-wordpress fa-3x"></i>
-                                </div>
-                                <div>
-                                    <h4 class="fw-bold mb-2">WooCommerce Development</h4>
-                                    <p class="text-muted mb-0">WordPress-powered flexibility</p>
-                                </div>
-                            </div>
-                            <p class="text-muted mb-4">Transform your WordPress site into a powerful e-commerce store with WooCommerce. Perfect for businesses that want complete control and unlimited customization options.</p>
-                            <ul class="list-unstyled mb-0">
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                    <span><strong>Custom Theme Development:</strong> Unique designs that match your brand perfectly with responsive layouts</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                    <span><strong>Plugin Integration:</strong> Payment gateways, shipping calculators, and marketing tools seamlessly integrated</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                    <span><strong>Product Variations:</strong> Unlimited attributes, options, and combinations for complex product catalogs</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-0">
-                                    <i class="fas fa-check-circle text-primary me-3 mt-1"></i>
-                                    <span><strong>SEO & Performance:</strong> Optimized for search engines with fast loading speeds and mobile responsiveness</span>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="bg-success bg-opacity-10 text-success rounded-3 p-3 me-3">
-                                    <i class="fab fa-shopify fa-3x"></i>
-                                </div>
-                                <div>
-                                    <h4 class="fw-bold mb-2">Shopify Development</h4>
-                                    <p class="text-muted mb-0">All-in-one e-commerce solution</p>
-                                </div>
-                            </div>
-                            <p class="text-muted mb-4">Launch your online store quickly with Shopify's robust platform. Ideal for businesses seeking a reliable, scalable solution with built-in hosting and security.</p>
-                            <ul class="list-unstyled mb-0">
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-success me-3 mt-1"></i>
-                                    <span><strong>Theme Customization:</strong> Tailor Shopify themes or build custom designs from scratch for unique branding</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-success me-3 mt-1"></i>
-                                    <span><strong>App Integration:</strong> Connect marketing, analytics, and automation tools from Shopify's extensive app store</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-check-circle text-success me-3 mt-1"></i>
-                                    <span><strong>Secure Payments:</strong> Built-in PCI compliance with support for 100+ payment gateways worldwide</span>
-                                </li>
-                                <li class="d-flex align-items-start mb-0">
-                                    <i class="fas fa-check-circle text-success me-3 mt-1"></i>
-                                    <span><strong>Mobile Commerce:</strong> Responsive design and mobile app integration for shopping on-the-go</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 mb-3 rounded-pill">
-                    <i class="fas fa-boxes me-2"></i>Inventory Solutions
-                </span> --}}
-                <h2 class="display-5 fw-bold mb-3">Inventory & Order Management Systems</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 800px;">
-                    Streamline your operations with <strong>intelligent inventory management</strong> that reduces errors, saves time, and keeps customers satisfied with accurate stock information.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-sync-alt fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Real-time Synchronization</h5>
-                            <p class="text-muted mb-0">Automatic inventory updates across all sales channels. When a product sells on your website, mobile app, or marketplace, stock levels adjust instantly preventing overselling.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-bell fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Smart Alerts & Notifications</h5>
-                            <p class="text-muted mb-0">Get automated alerts for low stock levels, reorder points, and out-of-stock items. Set custom thresholds to maintain optimal inventory and never miss a sale.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-barcode fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Barcode & SKU Management</h5>
-                            <p class="text-muted mb-0">Generate and scan barcodes for quick product identification. Track products with custom SKUs, manage variations, and organize inventory efficiently for faster fulfillment.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-clipboard-list fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Order Processing & Tracking</h5>
-                            <p class="text-muted mb-0">Streamline order workflows from placement to delivery. Automated status updates, packing slips, shipping labels, and real-time tracking keep customers informed.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-warehouse fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Multi-warehouse Support</h5>
-                            <p class="text-muted mb-0">Manage inventory across multiple warehouses or locations. Automatic routing to nearest warehouse reduces shipping costs and delivery times for customers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-secondary bg-opacity-10 text-secondary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-chart-bar fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Analytics & Reporting</h5>
-                            <p class="text-muted mb-0">Detailed insights on stock levels, sales velocity, and product performance. Make data-driven decisions about purchasing, promotions, and product discontinuation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="col-lg-6">
 
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 mb-3 rounded-pill">
-                    <i class="fas fa-store-alt me-2"></i>Marketplace Solutions
-                </span> --}}
-                <h2 class="display-5 fw-bold mb-3">Multi-vendor Marketplace Setup</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 800px;">
-                    Create powerful <strong>multi-vendor marketplaces</strong> like Amazon, Etsy, or eBay where multiple sellers manage their products while you earn commission on every transaction.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-tachometer-alt fa-2x"></i>
+                        <div class="fc-services-orbit" aria-hidden="true">
+
+                            <div class="fc-orbit orbit-one"></div>
+                            <div class="fc-orbit orbit-two"></div>
+
+                            <div class="fc-orbit-line line-one"></div>
+                            <div class="fc-orbit-line line-two"></div>
+                            <div class="fc-orbit-line line-three"></div>
+
+                            <span class="fc-orbit-dot dot-one"></span>
+                            <span class="fc-orbit-dot dot-two"></span>
+                            <span class="fc-orbit-dot dot-three"></span>
+                            <span class="fc-orbit-dot dot-four"></span>
+
+                            <div class="fc-orbit-center">
+                                <strong>FC</strong>
+                                <span>COMMERCE</span>
                             </div>
-                            <h5 class="fw-bold mb-3">Vendor Dashboard</h5>
-                            <p class="text-muted mb-0">Comprehensive seller panel for managing products, orders, inventory, and earnings. Each vendor has their own secure login with customizable permissions and branding options.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-percentage fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Commission Management</h5>
-                            <p class="text-muted mb-0">Flexible commission structures with fixed rates, percentage-based, or tiered pricing. Automatic calculations, payment splits, and detailed financial reporting for transparency.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-user-check fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Vendor Verification</h5>
-                            <p class="text-muted mb-0">Multi-step vendor approval process to maintain quality. Document verification, business validation, and review system ensure trustworthy sellers on your platform.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-credit-card fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Split Payment System</h5>
-                            <p class="text-muted mb-0">Automated payment distribution to vendors after deducting commissions. Support for multiple payment gateways with scheduled payouts and transaction history.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-comments fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Review & Rating System</h5>
-                            <p class="text-muted mb-0">Build trust with customer reviews for products and vendor ratings. Moderation tools, verified purchase badges, and response system for seller feedback management.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="bg-secondary bg-opacity-10 text-secondary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
-                                <i class="fas fa-shipping-fast fa-2x"></i>
-                            </div>
-                            <h5 class="fw-bold mb-3">Individual Shipping Rules</h5>
-                            <p class="text-muted mb-0">Each vendor sets their own shipping methods, rates, and zones. Support for local pickup, free shipping thresholds, and integration with major shipping carriers.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-
-
-
-
-
-
-    <!-- Features Section -->
-    <section class="py-5 py-lg-6 position-relative overflow-hidden">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#667eea" fill-opacity="0.05" d="M0,192L48,176C96,160,192,128,288,106.7C384,85,480,75,576,69.3C672,64,768,64,864,96C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        <div class="container position-relative">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 rounded-pill">Key Benefits</span> --}}
-                <h2 class="display-5 fw-bold mb-3">What You Get</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 760px;">A quick, skimmable overview with clear icons and short explanations — no cards, just simple stripes and FAQs.</p>
-            </div>
-
-            <div class="mx-auto" style="max-width: 1000px;">
-                <!-- Benefit Stripes (Side-by-side) -->
-                <div class="row g-3" data-aos="fade-up">
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                            <div class="fc-orbit-card orbit-design">
                                 <i class="fas fa-store"></i>
+                                <span>Stores</span>
                             </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Custom Stores</h5>
-                                <p class="text-muted mb-0">WooCommerce & Shopify solutions tailored to your brand identity and business goals.</p>
+
+                            <div class="fc-orbit-card orbit-development">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Commerce</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                <i class="fas fa-boxes"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Inventory & Orders</h5>
-                                <p class="text-muted mb-0">Real-time sync, smart alerts, barcode/SKU support, and multi-location management.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Optimized Shopping</h5>
-                                <p class="text-muted mb-0">Fast checkout, trust signals, and conversion-focused UX to maximize sales.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Secure Transactions</h5>
-                                <p class="text-muted mb-0">PCI-ready payments, SSL, fraud prevention, and role-based access controls.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Mobile-First Design</h5>
-                                <p class="text-muted mb-0">Responsive layouts optimized for smartphones, tablets, and desktops.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                            <div class="bg-secondary bg-opacity-10 text-secondary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+
+                            <div class="fc-orbit-card orbit-growth">
                                 <i class="fas fa-chart-line"></i>
+                                <span>Growth</span>
                             </div>
-                            <div>
-                                <h5 class="fw-bold mb-1">Analytics & Insights</h5>
-                                <p class="text-muted mb-0">Track sales, customer behavior, and performance metrics in real-time.</p>
+
+                            <div class="fc-orbit-card orbit-intelligence">
+                                <i class="fas fa-boxes"></i>
+                                <span>Inventory</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Quick FAQ -->
-                <div class="accordion mt-4" id="benefitsFaq" data-aos="fade-up" data-aos-delay="150">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faqOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                How fast will my store load?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#benefitsFaq">
-                            <div class="accordion-body text-muted">We optimize images, caching, and delivery via CDN, targeting sub‑2s load on modern devices.</div>
                         </div>
+
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faqTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Can I manage multiple warehouses?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#benefitsFaq">
-                            <div class="accordion-body text-muted">Yes — we support multi-location stock, nearest‑warehouse routing, and separate shipping rules.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faqThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Is it SEO‑friendly from day one?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#benefitsFaq">
-                            <div class="accordion-body text-muted">We ship clean URLs, meta tags, schema markup, and fast pages to help rankings.</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
+        {{-- =========================================================
+        OVERVIEW
+    ========================================================== --}}
+        <section class="fc-services-intro">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+                        <span></span>
+                        E-commerce Development
+                        <span></span>
+                    </div>
+
+                    <h2 class="fc-services-intro-title">
+                        Custom commerce experiences built around
+                        <span>your business.</span>
+                    </h2>
+
+                    <p class="fc-services-intro-text">
+                        We build custom e-commerce platforms tailored to your business
+                        needs, combining scalable architecture, performance, intuitive
+                        shopping experiences, and SEO-friendly foundations that help
+                        turn visitors into customers.
+                    </p>
+
+                </div>
 
 
+                <div class="row g-4 fc-capability-row">
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+
+                            <span>01</span>
+
+                            <h3>Custom Development</h3>
+
+                            <p>
+                                Build e-commerce experiences using modern technologies
+                                such as Laravel, React, and Node.js around your specific
+                                business model.
+                            </p>
+
+                        </div>
+
+                    </div>
 
 
+                    <div class="col-12 col-sm-6 col-xl-3">
 
-    <!-- Why Choose Us -->
+                        <div class="fc-capability">
 
-    @include('includes.why-choose-us')
+                            <div class="fc-capability-icon">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </div>
+
+                            <span>02</span>
+
+                            <h3>Scalable Architecture</h3>
+
+                            <p>
+                                Cloud-ready commerce architecture designed to support
+                                growing product catalogs, traffic, and operational needs.
+                            </p>
+
+                        </div>
+
+                    </div>
 
 
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+
+                            <span>03</span>
+
+                            <h3>Performance</h3>
+
+                            <p>
+                                Optimize shopping experiences with efficient caching,
+                                CDN integration, lazy loading, and performance-focused
+                                implementation.
+                            </p>
+
+                        </div>
+
+                    </div>
 
 
+                    <div class="col-12 col-sm-6 col-xl-3">
 
-    <!-- Call To Action -->
-    <section class="position-relative py-5 py-lg-6 text-white overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        <div class="container position-relative" data-aos="zoom-in">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="display-5 fw-bold mb-4">Ready to Launch Your E-commerce Store?</h2>
-                    <p class="lead mb-4 fs-5">From concept to launch, we design scalable, high-performance e-commerce solutions tailored to your business needs</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg hover-lift">
-                            <i class="fas fa-rocket me-2"></i>Let's Get Started
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+
+                            <span>04</span>
+
+                            <h3>SEO Ready</h3>
+
+                            <p>
+                                Clean URLs, structured data, metadata, mobile-friendly
+                                layouts, and technical SEO foundations for product pages.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WOOCOMMERCE / SHOPIFY
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+                            <span></span>
+                            Platform Development
+                        </div>
+
+                        <h2 class="fc-services-list-title">
+                            WooCommerce & Shopify
+                            <span>development.</span>
+                        </h2>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+                            Choose the platform that fits your business and extend it
+                            with custom design, integrations, commerce functionality,
+                            and conversion-focused experiences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    {{-- WooCommerce --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">01</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fab fa-wordpress"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    WordPress Commerce
+                                </span>
+
+                                <h3>WooCommerce Development</h3>
+
+                                <p>
+                                    Transform your WordPress website into a powerful
+                                    e-commerce store with WooCommerce. Build flexible
+                                    shopping experiences with custom functionality
+                                    and control over your store.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Custom Themes</span>
+                                    <span>Plugins</span>
+                                    <span>Payments</span>
+                                    <span>Product Variations</span>
+                                </div>
+
+                            </div>
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+                                Discuss WooCommerce
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Shopify --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">02</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fab fa-shopify"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Hosted Commerce
+                                </span>
+
+                                <h3>Shopify Development</h3>
+
+                                <p>
+                                    Launch and customize Shopify stores with branded
+                                    designs, integrated applications, secure payments,
+                                    analytics, automation, and mobile commerce support.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Theme Development</span>
+                                    <span>App Integration</span>
+                                    <span>Payments</span>
+                                    <span>Mobile Commerce</span>
+                                </div>
+
+                            </div>
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+                                Discuss Shopify
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        INVENTORY & ORDER MANAGEMENT
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+                            <span></span>
+                            Operations
+                        </div>
+
+                        <h2 class="fc-services-list-title">
+                            Inventory & Order
+                            <span>management.</span>
+                        </h2>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+                            Connect products, inventory, orders, warehouses, and
+                            fulfillment into a more organized commerce workflow.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">01</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Inventory
+                                </span>
+
+                                <h3>Real-time Synchronization</h3>
+
+                                <p>
+                                    Synchronize inventory across websites, mobile
+                                    applications, and marketplaces to keep stock
+                                    information consistent.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Stock Sync</span>
+                                    <span>Multi-channel</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">02</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Automation
+                                </span>
+
+                                <h3>Smart Alerts & Notifications</h3>
+
+                                <p>
+                                    Configure alerts for low stock, reorder points,
+                                    and out-of-stock products to keep inventory
+                                    under control.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Low Stock</span>
+                                    <span>Alerts</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">03</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-barcode"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Product Management
+                                </span>
+
+                                <h3>Barcode & SKU Management</h3>
+
+                                <p>
+                                    Organize products with custom SKUs, barcode
+                                    support, product variations, and structured
+                                    inventory management.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Barcodes</span>
+                                    <span>SKUs</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">04</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Fulfillment
+                                </span>
+
+                                <h3>Order Processing & Tracking</h3>
+
+                                <p>
+                                    Streamline order workflows from placement through
+                                    delivery with status updates, shipping labels,
+                                    packing slips, and tracking.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Orders</span>
+                                    <span>Tracking</span>
+                                    <span>Fulfillment</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 05 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">05</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Logistics
+                                </span>
+
+                                <h3>Multi-warehouse Support</h3>
+
+                                <p>
+                                    Manage stock across multiple locations and
+                                    configure fulfillment workflows around your
+                                    warehouse structure.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Warehouses</span>
+                                    <span>Locations</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 06 --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">06</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Analytics
+                                </span>
+
+                                <h3>Analytics & Reporting</h3>
+
+                                <p>
+                                    Understand stock levels, sales velocity, and
+                                    product performance to support purchasing and
+                                    merchandising decisions.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Reports</span>
+                                    <span>Sales Data</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        MULTI-VENDOR MARKETPLACE
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+                            <span></span>
+                            Marketplace Solutions
+                        </div>
+
+                        <h2 class="fc-services-list-title">
+                            Multi-vendor marketplaces
+                            <span>built to scale.</span>
+                        </h2>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+                            Build marketplace platforms where multiple sellers can
+                            manage products and orders while your business manages
+                            commissions, payments, and marketplace operations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">01</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Vendors</span>
+
+                                <h3>Vendor Dashboard</h3>
+
+                                <p>
+                                    Give sellers a dedicated dashboard to manage
+                                    products, orders, inventory, earnings, permissions,
+                                    and account settings.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Seller Panel</span>
+                                    <span>Permissions</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">02</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Revenue</span>
+
+                                <h3>Commission Management</h3>
+
+                                <p>
+                                    Configure fixed, percentage-based, or tiered
+                                    commission structures with automated calculations
+                                    and financial reporting.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Commission</span>
+                                    <span>Reporting</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">03</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Trust</span>
+
+                                <h3>Vendor Verification</h3>
+
+                                <p>
+                                    Support vendor approval workflows with document
+                                    verification, business validation, and review
+                                    processes.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Verification</span>
+                                    <span>Approval</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">04</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Payments</span>
+
+                                <h3>Split Payment System</h3>
+
+                                <p>
+                                    Support automated payment distribution to vendors
+                                    with commission deductions, payment gateways,
+                                    payouts, and transaction history.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Payments</span>
+                                    <span>Payouts</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">05</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Customers</span>
+
+                                <h3>Review & Rating System</h3>
+
+                                <p>
+                                    Build customer trust with product reviews,
+                                    vendor ratings, moderation tools, verified
+                                    purchases, and seller responses.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Reviews</span>
+                                    <span>Ratings</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+                                <span class="fc-service-number">06</span>
+
+                                <div class="fc-service-icon">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">Shipping</span>
+
+                                <h3>Individual Shipping Rules</h3>
+
+                                <p>
+                                    Allow vendors to define shipping methods, rates,
+                                    zones, local pickup options, free-shipping
+                                    thresholds, and carrier integrations.
+                                </p>
+
+                                <div class="fc-service-tags">
+                                    <span>Shipping</span>
+                                    <span>Zones</span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHAT YOU GET
+    ========================================================== --}}
+        <section class="fc-work-section">
+
+            <div class="container">
+
+                <div class="fc-work-header">
+
+                    <div class="fc-work-eyebrow">
+                        <span class="fc-work-eyebrow-line"></span>
+                        What You Get
+                    </div>
+
+                    <div class="row align-items-end g-4">
+
+                        <div class="col-lg-7">
+
+                            <h2 class="fc-work-title">
+                                Everything your store needs to
+                                <span>move forward.</span>
+                            </h2>
+
+                        </div>
+
+                        <div class="col-lg-5">
+
+                            <p class="fc-work-intro">
+                                From the storefront and checkout experience to
+                                inventory, payments, and analytics, we build around
+                                the operational needs of your commerce business.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4 fc-work-process">
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card fc-work-card-featured">
+
+                            <div class="fc-work-card-top">
+                                <span class="fc-work-number">01</span>
+
+                                <div class="fc-work-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">Commerce</span>
+
+                                <h3>Custom Stores</h3>
+
+                                <p>
+                                    WooCommerce, Shopify, and custom commerce
+                                    solutions tailored to your brand and business goals.
+                                </p>
+
+                            </div>
+
+                            <span class="fc-work-card-accent"></span>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+                                <span class="fc-work-number">02</span>
+
+                                <div class="fc-work-icon">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">Operations</span>
+
+                                <h3>Inventory & Orders</h3>
+
+                                <p>
+                                    Stock synchronization, alerts, SKU management,
+                                    order processing, and multi-location inventory.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+                                <span class="fc-work-number">03</span>
+
+                                <div class="fc-work-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">Experience</span>
+
+                                <h3>Optimized Shopping</h3>
+
+                                <p>
+                                    Fast checkout, clear navigation, trust signals,
+                                    and conversion-focused shopping experiences.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+                                <span class="fc-work-number">04</span>
+
+                                <div class="fc-work-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">Insights</span>
+
+                                <h3>Analytics & Reporting</h3>
+
+                                <p>
+                                    Track sales, customer behavior, inventory,
+                                    and performance data to support better decisions.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        FAQ
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-7">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+                            <span></span>
+                            Frequently Asked Questions
+                        </div>
+
+                        <h2 class="fc-services-list-title">
+                            Questions about your
+                            <span>e-commerce project.</span>
+                        </h2>
+
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <p class="fc-services-list-intro">
+                            A few common questions about performance, inventory,
+                            SEO, and the technical side of building an online store.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <div class="col-12">
+
+                        <div class="accordion" id="ecommerceFaq">
+
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="ecommerceFaqOne">
+
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#ecommerceCollapseOne" aria-expanded="true"
+                                        aria-controls="ecommerceCollapseOne">
+
+                                        How fast will my store load?
+
+                                    </button>
+
+                                </h3>
+
+                                <div id="ecommerceCollapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="ecommerceFaqOne" data-bs-parent="#ecommerceFaq">
+
+                                    <div class="accordion-body">
+
+                                        We optimize images, caching, and content
+                                        delivery through performance-focused
+                                        implementation and CDN support.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="ecommerceFaqTwo">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#ecommerceCollapseTwo" aria-expanded="false"
+                                        aria-controls="ecommerceCollapseTwo">
+
+                                        Can I manage multiple warehouses?
+
+                                    </button>
+
+                                </h3>
+
+                                <div id="ecommerceCollapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="ecommerceFaqTwo" data-bs-parent="#ecommerceFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. The platform can support multi-location
+                                        stock management, warehouse workflows,
+                                        and separate shipping rules.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="ecommerceFaqThree">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#ecommerceCollapseThree" aria-expanded="false"
+                                        aria-controls="ecommerceCollapseThree">
+
+                                        Is it SEO-friendly from day one?
+
+                                    </button>
+
+                                </h3>
+
+                                <div id="ecommerceCollapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="ecommerceFaqThree" data-bs-parent="#ecommerceFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. We can build clean URLs, metadata,
+                                        structured data, responsive pages, and
+                                        performance-focused storefronts.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="ecommerceFaqFour">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#ecommerceCollapseFour" aria-expanded="false"
+                                        aria-controls="ecommerceCollapseFour">
+
+                                        Can you build a multi-vendor marketplace?
+
+                                    </button>
+
+                                </h3>
+
+                                <div id="ecommerceCollapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="ecommerceFaqFour" data-bs-parent="#ecommerceFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Marketplace functionality can include
+                                        vendor dashboards, commissions, verification,
+                                        split payments, reviews, and vendor-specific
+                                        shipping rules.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHY CHOOSE US
+    ========================================================== --}}
+        @include('includes.why-choose-us')
+
+
+        {{-- =========================================================
+        CTA
+    ========================================================== --}}
+        <section class="fc-services-cta">
+
+            <div class="fc-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-services-cta-inner">
+
+                    <div class="fc-section-eyebrow fc-section-eyebrow-light">
+                        <span></span>
+                        Have an E-commerce Project in Mind?
+                        <span></span>
+                    </div>
+
+                    <h2 class="fc-services-cta-title">
+                        Ready to launch your
+                        <span>e-commerce store?</span>
+                    </h2>
+
+                    <p class="fc-services-cta-text">
+                        From concept to launch, we design scalable,
+                        performance-focused e-commerce solutions around your
+                        business needs.
+                    </p>
+
+                    <div class="fc-services-cta-actions">
+
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary fc-btn-large">
+
+                            <i class="fas fa-rocket me-2"></i>
+                            Let's Get Started
+
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
-                            <i class="fas fa-phone me-2"></i>Schedule a Call
-                        </a>
-                    </div>
-                    <div class="mt-4">
-                        <small class="opacity-75"><i class="fas fa-check-circle me-2"></i>Free consultation <i class="fas fa-check-circle mx-2"></i>No commitment required</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Related Services -->
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                {{-- <span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-2 mb-3 rounded-pill">Explore More</span> --}}
-                <h2 class="display-5 fw-bold mb-3">Other Services</h2>
-                <p class="lead text-muted mx-auto" style="max-width: 900px;">
-                    We empower businesses through expertly crafted <strong>web & app development</strong>,
-                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
-                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
-                    scalable and performance-driven digital services tailored to your vision.
-                </p>
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline fc-btn-large">
+
+                            View Our Work
+
+                        </a>
+
+                    </div>
+
+                </div>
+
             </div>
-            @include('includes.services')
-        </div>
-    </section>
+
+        </section>
+
+
+        {{-- =========================================================
+        RELATED SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+                        <span></span>
+                        Explore More
+                        <span></span>
+                    </div>
+
+                    <h2 class="fc-services-intro-title">
+                        Other digital services
+                        <span>for your business.</span>
+                    </h2>
+
+                    <p class="fc-services-intro-text">
+                        We combine web development, software, design, branding,
+                        and digital marketing to create connected digital
+                        experiences around your business goals.
+                    </p>
+
+                </div>
+
+                <div class="mt-5">
+
+                    @include('includes.services')
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 @endsection

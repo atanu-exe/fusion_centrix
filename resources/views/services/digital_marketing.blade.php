@@ -1,538 +1,1627 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/services.css') }}">
 
-    <!-- Hero Banner -->
-    <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>Comprehensive Digital Marketing Services</h1>
-                <p>Boost your online presence with <b>SEO, social media marketing, PPC advertising, email automation, and content marketing</b> for businesses in the US, Canada, India, and globally. We help you generate <b>leads, increase conversions, and maximize ROI</b>.</p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <a href="{{ route('services') }}">Services </a> / <span>Digital Marketing</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main>
 
-    <!-- SEO & Analytics Section -->
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">Search Optimization</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">SEO & Search Engine Marketing</h2>
-                    <p class="text-muted lead mb-3">
-                        Dominate search results with <strong>comprehensive SEO services, technical optimization, and keyword strategy</strong> that drives sustainable organic traffic to your website.
-                    </p>
-                    <p class="text-muted mb-4">
-                        Our <strong>search engine marketing specialists</strong> combine on-page and off-page optimization with advanced analytics to improve rankings, increase visibility, and generate qualified leads from search engines.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Technical SEO audits, site speed optimization, and mobile-first indexing</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Keyword research, on-page optimization, and content strategy</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Link building, competitor analysis, and SERP tracking</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Keyword Research</h6>
-                                        <small class="text-muted">Strategic targeting</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-cogs"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Technical SEO</h6>
-                                        <small class="text-muted">Site performance</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-link"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Link Building</h6>
-                                        <small class="text-muted">Authority growth</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Analytics & Reporting</h6>
-                                        <small class="text-muted">Data-driven insights</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        {{-- =========================================================
+        HERO
+    ========================================================== --}}
+        <section class="fc-services-hero">
 
-    <!-- Social Media Marketing Section -->
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">Social Media Marketing</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">Social Media Marketing & Influencer Partnerships</h2>
-                    <p class="text-muted lead mb-3">
-                        Build a thriving community on <strong>Instagram, Facebook, LinkedIn, TikTok, and Twitter</strong> with our strategic social media marketing campaigns that drive engagement and brand loyalty.
-                    </p>
-                    <p class="text-muted mb-4">
-                        We create <strong>engaging social content, manage community interactions, run paid social campaigns</strong>, and partner with influencers to amplify your reach and drive authentic engagement and conversions.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Social media strategy, content calendar, and brand voice development</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Community management, engagement tracking, and audience growth</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Influencer outreach, partnerships, and campaign management</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fab fa-instagram"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Instagram & Facebook</h6>
-                                        <small class="text-muted">Visual content campaigns</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fab fa-linkedin"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">LinkedIn & B2B</h6>
-                                        <small class="text-muted">Professional networking</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Influencer Marketing</h6>
-                                        <small class="text-muted">Brand partnerships</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-video"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Video & Reels</h6>
-                                        <small class="text-muted">Viral content creation</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="fc-hero-grid"></div>
 
-    <!-- PPC Advertising Section -->
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">Paid Advertising</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">PPC Advertising & Conversion Rate Optimization</h2>
-                    <p class="text-muted lead mb-3">
-                        Maximize your <strong>ROI with targeted Google Ads, Bing Ads, and Facebook Ads campaigns</strong> that reach your ideal customers at the right moment with precision targeting.
-                    </p>
-                    <p class="text-muted mb-4">
-                        We combine <strong>strategic ad management, conversion optimization, A/B testing, and funnel analysis</strong> to turn visitors into qualified leads and paying customers with measurable ROAS.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Google Ads (Search, Display, Shopping) and Bing Ads management</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Landing page optimization and conversion funnel design</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>CRO testing, bid optimization, and ROAS tracking</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-search-dollar"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Google Ads</h6>
-                                        <small class="text-muted">Search & Display ads</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-shopping-bag"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Shopping & Product Ads</h6>
-                                        <small class="text-muted">E-commerce campaigns</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-percent"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Conversion Optimization</h6>
-                                        <small class="text-muted">A/B testing & CRO</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-funnel"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Funnel Analytics</h6>
-                                        <small class="text-muted">ROI & ROAS tracking</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="container">
 
-    <!-- Content Marketing Section -->
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill">Content & Automation</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">Content Marketing & Marketing Automation</h2>
-                    <p class="text-muted lead mb-3">
-                        Engage your audience with <strong>high-quality blog content, copywriting, video marketing, and thought leadership</strong> that drives authority, trust, and customer loyalty.
-                    </p>
-                    <p class="text-muted mb-4">
-                        Automate your <strong>email marketing campaigns, lead nurturing, customer retention</strong>, and sales workflows to generate consistent revenue and improve customer lifetime value with personalized experiences.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>SEO-optimized blog posts, whitepapers, and case studies</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Email automation, segmentation, and nurture workflows</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Video content, podcasts, and multimedia storytelling</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Blog & Articles</h6>
-                                        <small class="text-muted">SEO-optimized content</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-envelope-open"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Email Marketing</h6>
-                                        <small class="text-muted">Campaigns & automation</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-video"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Video Content</h6>
-                                        <small class="text-muted">Production & editing</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-robot"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Automation Workflows</h6>
-                                        <small class="text-muted">Lead nurturing & CRM</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="row align-items-center g-5">
 
-    <!-- What You Get - 4 Modern Stripes with FAQ -->
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="text-center mb-5">
-                {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 rounded-pill">Results-Driven Services</span> --}}
-                <h2 class="display-6 fw-bold mb-3">What You Get</h2>
-                <p class="text-muted mx-auto" style="max-width: 720px;">A complete digital marketing strategy combining <strong>SEO</strong>, <strong>paid advertising</strong>, <strong>social media</strong>, <strong>content</strong>, and <strong>marketing automation</strong> for measurable growth and sustainable business results.</p>
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-eyebrow">
+
+                            <span></span>
+                            Digital Marketing
+
+                        </div>
+
+
+                        <h1 class="fc-services-title">
+
+                            Digital marketing
+                            <span>strategies</span> built for
+                            <strong>growth.</strong>
+
+                        </h1>
+
+
+                        <p class="fc-services-description">
+
+                            Build a stronger digital presence with
+                            <strong>SEO, content marketing, search campaigns,
+                                social media, and performance-focused strategies</strong>
+                            designed to increase visibility and create meaningful
+                            business opportunities.
+
+                        </p>
+
+
+                        <div class="fc-services-actions">
+
+                            <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+
+                                Start a Conversation
+
+                            </a>
+
+
+                            <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
+
+                                Explore Our Work
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-orbit" aria-hidden="true">
+
+                            <div class="fc-orbit orbit-one"></div>
+                            <div class="fc-orbit orbit-two"></div>
+
+                            <div class="fc-orbit-line line-one"></div>
+                            <div class="fc-orbit-line line-two"></div>
+                            <div class="fc-orbit-line line-three"></div>
+
+                            <span class="fc-orbit-dot dot-one"></span>
+                            <span class="fc-orbit-dot dot-two"></span>
+                            <span class="fc-orbit-dot dot-three"></span>
+                            <span class="fc-orbit-dot dot-four"></span>
+
+
+                            <div class="fc-orbit-center">
+
+                                <strong>FC</strong>
+                                <span>GROWTH</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-design">
+
+                                <i class="fas fa-search"></i>
+                                <span>SEO</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-development">
+
+                                <i class="fas fa-pen-nib"></i>
+                                <span>Content</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-growth">
+
+                                <i class="fas fa-chart-line"></i>
+                                <span>Performance</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-intelligence">
+
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Social</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- 4 Modern Stripes -->
-            <div class="row g-3 mb-5">
-                <div class="col-md-6">
-                    <div class="p-4  bg-opacity-5 border-start border-primary border-5 rounded-2 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px; min-width: 50px;">
-                                <i class="fas fa-search fs-6"></i>
-                            </div>
-                            <div>
-                                <h5 class="fw-bold mb-2">SEO Optimization & Organic Growth</h5>
-                                <p class="text-muted mb-0">Improve search rankings, drive qualified organic traffic, establish long-term visibility, and dominate your target keywords in Google results.</p>
-                            </div>
-                        </div>
+        </section>
+
+
+        {{-- =========================================================
+        MARKETING FOUNDATION
+    ========================================================== --}}
+        <section class="fc-services-intro">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        Digital Growth
+                        <span></span>
+
                     </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        Marketing that connects
+                        <span>visibility with opportunity.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Digital marketing works best when search, content,
+                        social media, advertising, analytics, and conversion
+                        strategy work together. We create practical digital
+                        strategies around your audience, market, and business goals.
+
+                    </p>
+
                 </div>
-                <div class="col-md-6">
-                    <div class="p-4  bg-opacity-5 border-start border-success border-5 rounded-2 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px; min-width: 50px;">
-                                <i class="fas fa-chart-bar fs-6"></i>
+
+
+                <div class="row g-4 fc-capability-row">
+
+
+                    {{-- SEO --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-search"></i>
+
                             </div>
-                            <div>
-                                <h5 class="fw-bold mb-2">Targeted Paid Advertising</h5>
-                                <p class="text-muted mb-0">Google Ads, Facebook Ads, and performance marketing campaigns that deliver measurable ROI and drive qualified leads to your business.</p>
-                            </div>
+
+                            <span>01</span>
+
+                            <h3>SEO</h3>
+
+                            <p>
+
+                                Improve organic visibility with
+                                technically sound and content-focused
+                                search strategies.
+
+                            </p>
+
                         </div>
+
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-4  bg-opacity-5 border-start border-info border-5 rounded-2 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px; min-width: 50px;">
-                                <i class="fas fa-share-alt fs-6"></i>
+
+
+                    {{-- Content --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-pen-nib"></i>
+
                             </div>
-                            <div>
-                                <h5 class="fw-bold mb-2">Social Media Presence</h5>
-                                <p class="text-muted mb-0">Community building, brand engagement, strategic campaigns, and viral content across Instagram, Facebook, LinkedIn, TikTok, and Twitter.</p>
-                            </div>
+
+                            <span>02</span>
+
+                            <h3>Content</h3>
+
+                            <p>
+
+                                Create useful content that supports
+                                search visibility, authority, and
+                                customer decisions.
+
+                            </p>
+
                         </div>
+
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-4  bg-opacity-5 border-start border-warning border-5 rounded-2 h-100">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px; min-width: 50px;">
-                                <i class="fas fa-chart-line fs-6"></i>
+
+
+                    {{-- Paid Search --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-bullseye"></i>
+
                             </div>
-                            <div>
-                                <h5 class="fw-bold mb-2">Measurable Results & Analytics</h5>
-                                <p class="text-muted mb-0">Comprehensive reporting, KPI tracking, and data-driven strategy optimization with transparent monthly dashboards and actionable insights.</p>
-                            </div>
+
+                            <span>03</span>
+
+                            <h3>Search</h3>
+
+                            <p>
+
+                                Reach high-intent audiences through
+                                focused search and paid advertising
+                                strategies.
+
+                            </p>
+
                         </div>
+
                     </div>
+
+
+                    {{-- Analytics --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-chart-line"></i>
+
+                            </div>
+
+                            <span>04</span>
+
+                            <h3>Analytics</h3>
+
+                            <p>
+
+                                Measure traffic, engagement, conversions,
+                                and campaign performance to improve
+                                marketing decisions.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
 
-            <!-- Digital Marketing Benefits FAQ -->
-            <div class="bg-light rounded-3 p-4">
-                <h3 class="fw-bold mb-4">Frequently Asked Questions About Digital Marketing</h3>
-                <div class="accordion" id="marketingFaq">
-                    <div class="accordion-item border-0">
-                        <h2 class="accordion-header" id="faqOne">
-                            <button class="accordion-button bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <i class="fas fa-question-circle text-primary me-2"></i>How long does it take to see SEO results?
-                            </button>
+        </section>
+
+
+        {{-- =========================================================
+        CORE DIGITAL MARKETING SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            What We Do
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Digital marketing services
+                            <span>built around your goals.</span>
+
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#marketingFaq">
-                            <div class="accordion-body text-muted bg-white rounded">SEO is a long-term strategy with compound results. You can typically expect to see initial improvements in 3-6 months, with significant ranking growth and traffic increases in 6-12 months. Meanwhile, PPC campaigns show immediate results within days.</div>
-                        </div>
+
                     </div>
-                    <div class="accordion-item border-0">
-                        <h2 class="accordion-header" id="faqTwo">
-                            <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fas fa-question-circle text-primary me-2"></i>What's the typical cost of digital marketing services?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#marketingFaq">
-                            <div class="accordion-body text-muted bg-white rounded">Costs vary based on services, goals, and competition level. We offer flexible packages starting from basic SEO audits ($500-2000) to comprehensive integrated strategies ($2000-10000+ monthly). Let's discuss your budget and business objectives to create a customized plan.</div>
-                        </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Choose the channels and capabilities that
+                            matter most to your business. Combine them
+                            into one connected growth strategy.
+
+                        </p>
+
                     </div>
-                    <div class="accordion-item border-0">
-                        <h2 class="accordion-header" id="faqThree">
-                            <button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <i class="fas fa-question-circle text-primary me-2"></i>How do you measure marketing ROI and success?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#marketingFaq">
-                            <div class="accordion-body text-muted bg-white rounded">We track KPIs like organic traffic growth, conversion rates, ROAS, lead quality, customer acquisition cost, and revenue impact. Monthly transparent reports provide actionable insights for ongoing optimization and strategy refinement based on real data.</div>
-                        </div>
-                    </div>
+
                 </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- SEO --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-search"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Organic Growth
+                                </span>
+
+
+                                <h3>
+                                    Search Engine Optimization
+                                </h3>
+
+
+                                <p>
+
+                                    Improve your website's organic visibility
+                                    through technical foundations, keyword
+                                    strategy, content optimization, internal
+                                    linking, and search-focused improvements.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Technical SEO</span>
+                                    <span>On-Page SEO</span>
+                                    <span>Content</span>
+                                    <span>Local SEO</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('seo-company-kolkata') }}" class="fc-service-link">
+
+                                Explore SEO
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- CONTENT --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-file-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Content Marketing
+                                </span>
+
+
+                                <h3>
+                                    Content Strategy & Marketing
+                                </h3>
+
+
+                                <p>
+
+                                    Create useful, relevant content that
+                                    supports search visibility, communicates
+                                    expertise, answers customer questions,
+                                    and moves prospects toward action.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Strategy</span>
+                                    <span>Blog Content</span>
+                                    <span>Landing Pages</span>
+                                    <span>Content SEO</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Content
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- PPC --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-bullseye"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Paid Search
+                                </span>
+
+
+                                <h3>
+                                    Search & PPC Marketing
+                                </h3>
+
+
+                                <p>
+
+                                    Build focused paid search campaigns
+                                    around relevant audiences, search intent,
+                                    landing pages, conversion tracking,
+                                    and ongoing campaign optimization.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Search Ads</span>
+                                    <span>PPC</span>
+                                    <span>Campaigns</span>
+                                    <span>Conversion</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss PPC
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- SOCIAL --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-share-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Social Media
+                                </span>
+
+
+                                <h3>
+                                    Social Media Marketing
+                                </h3>
+
+
+                                <p>
+
+                                    Build a consistent social presence with
+                                    platform-focused content, creative direction,
+                                    audience engagement, and campaigns designed
+                                    around your business objectives.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Social Strategy</span>
+                                    <span>Content</span>
+                                    <span>Campaigns</span>
+                                    <span>Engagement</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Social Marketing
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- LOCAL --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    05
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-map-marker-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Local Growth
+                                </span>
+
+
+                                <h3>
+                                    Local Digital Marketing
+                                </h3>
+
+
+                                <p>
+
+                                    Strengthen your local digital presence
+                                    with location-focused content, business
+                                    profile optimization, local search
+                                    signals, and relevant customer touchpoints.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Local Search</span>
+                                    <span>Kolkata</span>
+                                    <span>Visibility</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Local Growth
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- ANALYTICS --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    06
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-chart-bar"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Measurement
+                                </span>
+
+
+                                <h3>
+                                    Analytics & Conversion Tracking
+                                </h3>
+
+
+                                <p>
+
+                                    Understand where visitors come from,
+                                    what they do on your website, and which
+                                    marketing activities contribute to
+                                    meaningful business actions.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Analytics</span>
+                                    <span>Events</span>
+                                    <span>Conversions</span>
+                                    <span>Reporting</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Analytics
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
             </div>
-        </div>
-    </section>
 
-    <!-- Why Choose Us -->
-    @include('includes.why-choose-us')
+        </section>
 
-    <!-- Call To Action -->
-    <section class="position-relative py-5 py-lg-6 text-white overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        <div class="container position-relative">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="display-5 fw-bold mb-3">Ready to Grow Your Business with Digital Marketing?</h2>
-                    <p class="lead mb-4 opacity-90">Let's create a data-driven marketing strategy that drives organic traffic, generates qualified leads, increases conversions, and maximizes your marketing ROI for sustainable growth.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">
-                            <i class="fas fa-chart-line me-2"></i>Get Marketing Audit
+
+        {{-- =========================================================
+        HOW MARKETING WORKS
+    ========================================================== --}}
+        <section class="fc-work-section">
+
+            <div class="container">
+
+                <div class="fc-work-header">
+
+                    <div class="fc-work-eyebrow">
+
+                        <span class="fc-work-eyebrow-line"></span>
+                        How We Work
+
+                    </div>
+
+
+                    <div class="row align-items-end g-4">
+
+                        <div class="col-lg-7">
+
+                            <h2 class="fc-work-title">
+
+                                From visibility to
+                                <span>growth.</span>
+
+                            </h2>
+
+                        </div>
+
+
+                        <div class="col-lg-5">
+
+                            <p class="fc-work-intro">
+
+                                We connect research, strategy, execution,
+                                measurement, and continuous improvement
+                                instead of treating every marketing channel
+                                as a separate activity.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4 fc-work-process">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card fc-work-card-featured">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-search"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Discover
+                                </span>
+
+
+                                <h3>
+                                    Understand
+                                </h3>
+
+
+                                <p>
+
+                                    Learn about your market, audience,
+                                    competitors, existing visibility,
+                                    and business objectives.
+
+                                </p>
+
+                            </div>
+
+
+                            <span class="fc-work-card-accent"></span>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-bullseye"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Strategy
+                                </span>
+
+
+                                <h3>
+                                    Prioritize
+                                </h3>
+
+
+                                <p>
+
+                                    Identify the channels, audiences,
+                                    content opportunities, and campaigns
+                                    that best fit your goals.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-rocket"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Execute
+                                </span>
+
+
+                                <h3>
+                                    Launch
+                                </h3>
+
+
+                                <p>
+
+                                    Put the strategy into action across
+                                    search, content, social, campaigns,
+                                    and conversion touchpoints.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-chart-line"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Improve
+                                </span>
+
+
+                                <h3>
+                                    Measure
+                                </h3>
+
+
+                                <p>
+
+                                    Review performance, understand
+                                    what is working, and continuously
+                                    improve the strategy.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHAT YOU GET
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            What You Get
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            A connected approach to
+                            <span>digital growth.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Marketing activity should connect back to
+                            measurable business objectives rather than
+                            simply generating more traffic or impressions.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-eye"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Visibility
+                                </span>
+
+
+                                <h3>
+                                    Stronger Online Presence
+                                </h3>
+
+
+                                <p>
+
+                                    Improve how your business appears
+                                    across search, content, social,
+                                    and other relevant digital channels.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-users"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Audience
+                                </span>
+
+
+                                <h3>
+                                    Better Audience Reach
+                                </h3>
+
+
+                                <p>
+
+                                    Reach people through channels and
+                                    messages that align with their
+                                    needs, intent, and stage of the
+                                    buying journey.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-filter"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Conversion
+                                </span>
+
+
+                                <h3>
+                                    Better Customer Journeys
+                                </h3>
+
+
+                                <p>
+
+                                    Connect landing pages, content,
+                                    campaigns, calls to action, and
+                                    analytics into a clearer journey
+                                    toward conversion.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-chart-pie"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Insights
+                                </span>
+
+
+                                <h3>
+                                    Actionable Reporting
+                                </h3>
+
+
+                                <p>
+
+                                    Use meaningful performance data to
+                                    understand marketing activity and
+                                    identify opportunities for improvement.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        FAQ
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-7">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Frequently Asked Questions
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Digital marketing
+                            <span>questions.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-5">
+
+                        <p class="fc-services-list-intro">
+
+                            Some common questions businesses ask before
+                            starting a digital marketing engagement.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <div class="col-12">
+
+                        <div class="accordion" id="digitalMarketingFaq">
+
+
+                            {{-- FAQ 01 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqOne">
+
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseOne" aria-expanded="true"
+                                        aria-controls="digitalCollapseOne">
+
+                                        What digital marketing services do you offer?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="digitalFaqOne" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        We can combine SEO, content marketing,
+                                        search and PPC campaigns, social media,
+                                        local digital marketing, analytics, and
+                                        conversion-focused strategy depending on
+                                        your business requirements.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 02 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqTwo">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseTwo" aria-expanded="false"
+                                        aria-controls="digitalCollapseTwo">
+
+                                        Is SEO included in digital marketing?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="digitalFaqTwo" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        SEO can be an important part of a broader
+                                        digital marketing strategy. For businesses
+                                        primarily looking for SEO, we also provide
+                                        a dedicated SEO service focused specifically
+                                        on organic search visibility.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 03 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqThree">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseThree" aria-expanded="false"
+                                        aria-controls="digitalCollapseThree">
+
+                                        How do you measure digital marketing performance?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="digitalFaqThree" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        Measurement depends on the campaign and
+                                        business objectives. We can track relevant
+                                        traffic, engagement, enquiries, conversions,
+                                        campaign performance, and other agreed
+                                        business actions.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 04 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqFour">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseFour" aria-expanded="false"
+                                        aria-controls="digitalCollapseFour">
+
+                                        Can digital marketing help a local business?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="digitalFaqFour" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Local businesses can combine local
+                                        search visibility, useful content, social
+                                        media, paid campaigns, and conversion-focused
+                                        landing pages to reach relevant audiences.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 05 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqFive">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseFive" aria-expanded="false"
+                                        aria-controls="digitalCollapseFive">
+
+                                        Do you provide ongoing marketing support?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseFive" class="accordion-collapse collapse"
+                                    aria-labelledby="digitalFaqFive" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Marketing can be structured around
+                                        ongoing strategy, content, optimization,
+                                        campaign management, reporting, and
+                                        continuous improvement.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 06 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="digitalFaqSix">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#digitalCollapseSix" aria-expanded="false"
+                                        aria-controls="digitalCollapseSix">
+
+                                        Do you offer customized marketing strategies?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="digitalCollapseSix" class="accordion-collapse collapse"
+                                    aria-labelledby="digitalFaqSix" data-bs-parent="#digitalMarketingFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. The right mix of channels depends
+                                        on your market, audience, existing digital
+                                        presence, objectives, and available
+                                        resources.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHY FUSIONCENTRIX
+    ========================================================== --}}
+        @include('includes.why-choose-us')
+
+
+        {{-- =========================================================
+        CTA
+    ========================================================== --}}
+        <section class="fc-services-cta">
+
+            <div class="fc-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-services-cta-inner">
+
+                    <div class="fc-section-eyebrow fc-section-eyebrow-light">
+
+                        <span></span>
+                        Ready to Grow?
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-cta-title">
+
+                        Let's turn your digital presence into
+                        <span>real opportunity.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-cta-text">
+
+                        Tell us about your business, your audience,
+                        and where you want to go. We'll help identify
+                        the digital marketing opportunities that make
+                        sense for you.
+
+                    </p>
+
+
+                    <div class="fc-services-cta-actions">
+
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary fc-btn-large">
+
+                            <i class="fas fa-comments me-2"></i>
+                            Start a Conversation
+
                         </a>
-                        <a href="{{ url('contact-us') }}" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
-                            <i class="fas fa-phone me-2"></i>Schedule Consultation
+
+
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline fc-btn-large">
+
+                            View Our Work
+
                         </a>
+
                     </div>
-                    <div class="mt-4">
-                        <small class="opacity-85"><i class="fas fa-check-circle me-2"></i>Free digital marketing audit <i class="fas fa-check-circle mx-2"></i>Customized strategy included <i class="fas fa-check-circle mx-2"></i>No commitment required</small>
-                    </div>
+
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Related Services -->
-    <section class="services py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-heading">Other Services</h2>
-                <p class="section-description text-muted">
-                    We empower businesses through expertly crafted <strong>web & app development</strong>,
-                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
-                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
-                    scalable and performance-driven digital services tailored to your vision.
-                </p>
             </div>
-            @include('includes.services')
-        </div>
-    </section>
 
+        </section>
+
+
+        {{-- =========================================================
+        RELATED SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        Explore More
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        More ways to
+                        <span>move your business forward.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Combine marketing with development, e-commerce,
+                        software, design, and branding to build a stronger
+                        digital ecosystem around your business.
+
+                    </p>
+
+                </div>
+
+
+                <div class="mt-5">
+
+                    @include('includes.services')
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 @endsection
-

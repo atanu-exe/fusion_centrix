@@ -1,561 +1,2025 @@
 @extends('layouts.app')
 
-
-
 @section('content')
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/services.css') }}">
 
-    <!-- Hero Banner -->
+    <main>
 
- <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>Professional UI/UX Design Services</h1>
-                <p>Create <b>intuitive web and mobile interfaces</b> with <b>UX research, wireframing, prototyping, and design systems</b> for businesses in the US, Canada, India, and globally. We focus on <b>user engagement, accessibility, and SEO-friendly design</b>.
-                </p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / <a href="{{ route('services') }}">Services </a> / <span>UI/UX Design</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        {{-- =========================================================
+        HERO
+    ========================================================== --}}
+        <section class="fc-services-hero">
 
-    <!-- Service Overview -->
+            <div class="fc-hero-grid"></div>
 
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">Web & Mobile Design</span> --}}
+            <div class="container">
+
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-eyebrow">
+
+                            <span></span>
+                            UI/UX Design
+
+                        </div>
+
+
+                        <h1 class="fc-services-title">
+
+                            Digital experiences
+                            <span>designed</span> for
+                            <strong>people.</strong>
+
+                        </h1>
+
+
+                        <p class="fc-services-description">
+
+                            Create intuitive digital products with
+                            <strong>user-focused UX strategy, thoughtful
+                                interface design, responsive experiences, and
+                                scalable design systems</strong> that make complex
+                            products easier to understand and use.
+
+                        </p>
+
+
+                        <div class="fc-services-actions">
+
+                            <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+
+                                Start a Conversation
+
+                            </a>
+
+
+                            <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
+
+                                Explore Our Work
+
+                            </a>
+
+                        </div>
+
                     </div>
-                    <h2 class="display-6 fw-bold mb-3">Web & Mobile UI Design</h2>
-                    <p class="text-muted lead mb-3">
-                        Craft <strong>visually stunning web and mobile interfaces</strong> that enhance user experience and strengthen brand identity.
-                    </p>
-                    <p class="text-muted mb-4">
-                        Every design is <strong>responsive, intuitive, and SEO-friendly</strong>, ensuring optimal performance across all devices and screen sizes.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Mobile-first, accessibility-focused design approach</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Brand-aligned visual language and consistency</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Performance-optimized for faster load times</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-desktop"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Web Design</h6>
-                                        <small class="text-muted">Responsive, modern UX</small>
-                                    </div>
-                                </div>
+
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-orbit" aria-hidden="true">
+
+                            <div class="fc-orbit orbit-one"></div>
+                            <div class="fc-orbit orbit-two"></div>
+
+                            <div class="fc-orbit-line line-one"></div>
+                            <div class="fc-orbit-line line-two"></div>
+                            <div class="fc-orbit-line line-three"></div>
+
+                            <span class="fc-orbit-dot dot-one"></span>
+                            <span class="fc-orbit-dot dot-two"></span>
+                            <span class="fc-orbit-dot dot-three"></span>
+                            <span class="fc-orbit-dot dot-four"></span>
+
+
+                            <div class="fc-orbit-center">
+
+                                <strong>FC</strong>
+                                <span>DESIGN</span>
+
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-mobile-alt"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Mobile Design</h6>
-                                        <small class="text-muted">Touch-friendly interfaces</small>
-                                    </div>
-                                </div>
+
+
+                            <div class="fc-orbit-card orbit-design">
+
+                                <i class="fas fa-users"></i>
+                                <span>Research</span>
+
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-palette"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Visual Design</h6>
-                                        <small class="text-muted">Brand-aligned aesthetics</small>
-                                    </div>
-                                </div>
+
+
+                            <div class="fc-orbit-card orbit-development">
+
+                                <i class="fas fa-pencil-ruler"></i>
+                                <span>Interface</span>
+
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-universal-access"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Accessibility</h6>
-                                        <small class="text-muted">WCAG compliant</small>
-                                    </div>
-                                </div>
+
+
+                            <div class="fc-orbit-card orbit-growth">
+
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive</span>
+
                             </div>
+
+
+                            <div class="fc-orbit-card orbit-intelligence">
+
+                                <i class="fas fa-sitemap"></i>
+                                <span>Systems</span>
+
+                            </div>
+
                         </div>
+
                     </div>
+
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">UX Research & Strategy</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">UX Research, Wireframing & User Journey Mapping</h2>
-                    <p class="text-muted lead mb-3">
-                        Conduct <strong>in-depth UX research</strong>, create detailed <strong>wireframes</strong>, and map <strong>user journeys</strong> to deliver intuitive experiences.
-                    </p>
-                    <p class="text-muted mb-4">
-                        Our research-backed process ensures <strong>SEO-friendly design structure, smooth navigation, and improved conversion rates</strong>.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>User interviews, surveys, and analytics-driven insights</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Persona development and journey mapping workshops</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Low-fidelity and high-fidelity wireframes</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">User Research</h6>
-                                        <small class="text-muted">Interviews, surveys, tests</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-project-diagram"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Journey Mapping</h6>
-                                        <small class="text-muted">User flows, touchpoints</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-pencil-ruler"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Wireframing</h6>
-                                        <small class="text-muted">Lo-fi & hi-fi layouts</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Personas</h6>
-                                        <small class="text-muted">Target audience analysis</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 py-lg-6">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">Interactive Prototyping</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">Prototyping with Figma & Adobe XD</h2>
-                    <p class="text-muted lead mb-3">
-                        Build <strong>interactive prototypes</strong> using <strong>Figma</strong> and <strong>Adobe XD</strong> to visualize design flows and test usability.
-                    </p>
-                    <p class="text-muted mb-4">
-                        Our prototypes optimize <strong>responsive interactions, navigation patterns, and conversion funnels</strong>, reducing iterations and accelerating development.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>High-fidelity interactive prototypes with realistic animations</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Usability testing and feedback integration</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Developer-ready handoff and documentation</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fab fa-figma"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Figma Design</h6>
-                                        <small class="text-muted">Collaborative design tool</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-tools"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Adobe XD</h6>
-                                        <small class="text-muted">Professional prototyping</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-mouse"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Interactive Flows</h6>
-                                        <small class="text-muted">Micro-interactions</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-vial"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Usability Testing</h6>
-                                        <small class="text-muted">Validation & feedback</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="row align-items-start g-5">
-                <!-- Text Column -->
-                <div class="col-lg-6 order-1 order-lg-1">
-                    <div class="mb-3">
-                        {{-- <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill">Component Library</span> --}}
-                    </div>
-                    <h2 class="display-6 fw-bold mb-3">Design System & Component Library</h2>
-                    <p class="text-muted lead mb-3">
-                        Develop comprehensive <strong>design systems</strong> that standardize UI components, typography, color schemes, and patterns.
-                    </p>
-                    <p class="text-muted mb-4">
-                        A scalable design system ensures <strong>consistency, faster development, brand alignment, and maintainability</strong> across all platforms.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Reusable component libraries and pattern documentation</span>
-                        </li>
-                        <li class="d-flex align-items-start mb-2">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Comprehensive brand guidelines and design tokens</span>
-                        </li>
-                        <li class="d-flex align-items-start">
-                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                            <span>Developer handoff and component specification</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Icon Grid Column -->
-                <div class="col-lg-6 order-2 order-lg-2">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-cube"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Components</h6>
-                                        <small class="text-muted">Reusable, modular parts</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-font"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Typography</h6>
-                                        <small class="text-muted">Font scale & hierarchy</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-palette"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Color Palette</h6>
-                                        <small class="text-muted">Brand-aligned colors</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                        <i class="fas fa-book"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-1">Documentation</h6>
-                                        <small class="text-muted">Usage guidelines</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-    <!-- What You Get -->
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-4">
-                {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 rounded-pill">Key Benefits</span> --}}
-                <h3 class="fw-bold">What You Get</h3>
-                <p class="text-muted mx-auto" style="max-width: 720px;">Comprehensive UI/UX design services that combine research, strategy, and modern design tools to create delightful user experiences.</p>
             </div>
 
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Intuitive Web & Mobile UI</h5>
-                            <p class="text-muted mb-0">Engaging, responsive interfaces that enhance user experience across all devices.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Research-Driven Design</h5>
-                            <p class="text-muted mb-0">UX research, user personas, and journey maps inform every design decision.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Design Systems & Components</h5>
-                            <p class="text-muted mb-0">Scalable, reusable component libraries for consistency and faster development.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Developer-Ready Handoff</h5>
-                            <p class="text-muted mb-0">Complete documentation, specs, and Figma/XD files for seamless development.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </section>
 
-            <!-- Quick FAQ -->
-            <div class="accordion mt-4" id="uiuxFaq">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            How long does a typical UI/UX design project take?
-                        </button>
+
+        {{-- =========================================================
+        DESIGN FOUNDATION
+    ========================================================== --}}
+        <section class="fc-services-intro">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        User Experience
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        Design that connects
+                        <span>users and business goals.</span>
+
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#uiuxFaq">
-                        <div class="accordion-body text-muted">Timelines vary based on scope. A typical project takes 4-8 weeks for discovery, design, prototyping, and testing. We'll provide a detailed timeline during the initial consultation.</div>
-                    </div>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Good UI/UX is more than making an interface look
+                        polished. We focus on understanding users, simplifying
+                        journeys, organizing information, and creating
+                        interfaces that are clear, accessible, and useful.
+
+                    </p>
+
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Do you provide design systems for existing products?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#uiuxFaq">
-                        <div class="accordion-body text-muted">Yes! We audit existing designs, create component libraries, and establish design governance systems for mature products and teams.</div>
+
+
+                <div class="row g-4 fc-capability-row">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-users"></i>
+
+                            </div>
+
+                            <span>01</span>
+
+                            <h3>User Research</h3>
+
+                            <p>
+
+                                Understand users, their goals,
+                                expectations, pain points, and
+                                interactions with your product.
+
+                            </p>
+
+                        </div>
+
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Can you test our designs with real users?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#uiuxFaq">
-                        <div class="accordion-body text-muted">Absolutely. We conduct moderated and unmoderated usability testing, A/B testing, and gather user feedback to validate and iterate on designs.</div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-route"></i>
+
+                            </div>
+
+                            <span>02</span>
+
+                            <h3>UX Strategy</h3>
+
+                            <p>
+
+                                Map user journeys and information
+                                architecture to create clearer
+                                product experiences.
+
+                            </p>
+
+                        </div>
+
                     </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-pencil-ruler"></i>
+
+                            </div>
+
+                            <span>03</span>
+
+                            <h3>UI Design</h3>
+
+                            <p>
+
+                                Create polished interfaces with
+                                consistent layouts, typography,
+                                components, and visual hierarchy.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-mobile-alt"></i>
+
+                            </div>
+
+                            <span>04</span>
+
+                            <h3>Responsive Design</h3>
+
+                            <p>
+
+                                Design experiences that remain
+                                intuitive and usable across
+                                desktops, tablets, and mobile devices.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
-        </div>
-    </section>
+
+        </section>
 
 
+        {{-- =========================================================
+        CORE UI/UX SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            What We Do
+
+                        </div>
 
 
+                        <h2 class="fc-services-list-title">
+
+                            UI/UX design services
+                            <span>for modern digital products.</span>
+
+                        </h2>
+
+                    </div>
 
 
+                    <div class="col-lg-4">
 
-    <!-- Why Choose Us -->
+                        <p class="fc-services-list-intro">
 
-    @include('includes.why-choose-us')
+                            From early product concepts to polished
+                            interfaces and reusable systems, we design
+                            experiences around the people using them.
+
+                        </p>
+
+                    </div>
+
+                </div>
 
 
+                <div class="row g-4">
 
 
+                    {{-- UX Research --}}
+                    <div class="col-12 col-lg-6">
 
-    <!-- Call To Action -->
-    <section class="position-relative py-5 py-lg-6 text-white overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        <div class="container position-relative">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h4 class="display-6 fw-bold mb-3">Ready to Transform Your Digital Experience?</h4>
-                    <p class="lead mb-4">Let's create intuitive, beautiful interfaces that delight your users and drive results.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">
-                            <i class="fas fa-pencil-ruler me-2"></i>Start Your Design
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-users"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    User Experience
+                                </span>
+
+
+                                <h3>
+                                    UX Research & Discovery
+                                </h3>
+
+
+                                <p>
+
+                                    Understand your users, product goals,
+                                    existing workflows, and usability
+                                    challenges before defining the
+                                    experience.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>User Research</span>
+                                    <span>Personas</span>
+                                    <span>Interviews</span>
+                                    <span>Usability</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss UX Research
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- UX Strategy --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-route"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    UX Strategy
+                                </span>
+
+
+                                <h3>
+                                    User Flows & Information Architecture
+                                </h3>
+
+
+                                <p>
+
+                                    Organize information and map user journeys
+                                    so people can understand your product and
+                                    complete important tasks with less friction.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>User Flows</span>
+                                    <span>IA</span>
+                                    <span>Wireframes</span>
+                                    <span>Journeys</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Plan Your Experience
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- UI Design --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-pencil-ruler"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Interface Design
+                                </span>
+
+
+                                <h3>
+                                    UI Design
+                                </h3>
+
+
+                                <p>
+
+                                    Design clear and visually consistent
+                                    interfaces with thoughtful hierarchy,
+                                    typography, spacing, components,
+                                    and interaction patterns.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Web UI</span>
+                                    <span>App UI</span>
+                                    <span>Visual Design</span>
+                                    <span>Prototypes</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Start Your UI Design
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Web Design --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-desktop"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Digital Experiences
+                                </span>
+
+
+                                <h3>
+                                    Website & Web App Design
+                                </h3>
+
+
+                                <p>
+
+                                    Design modern websites and web applications
+                                    that balance brand presentation, usability,
+                                    performance considerations, and clear
+                                    conversion paths.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Websites</span>
+                                    <span>Web Apps</span>
+                                    <span>Landing Pages</span>
+                                    <span>UX</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Design Your Website
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Mobile --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    05
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-mobile-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Mobile Experience
+                                </span>
+
+
+                                <h3>
+                                    Mobile App UI/UX Design
+                                </h3>
+
+
+                                <p>
+
+                                    Create mobile experiences with intuitive
+                                    navigation, touch-friendly interactions,
+                                    readable layouts, and flows designed
+                                    around real user tasks.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Mobile UI</span>
+                                    <span>iOS</span>
+                                    <span>Android</span>
+                                    <span>Prototype</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Design Your App
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Design System --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    06
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-layer-group"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Design Systems
+                                </span>
+
+
+                                <h3>
+                                    Design Systems & Components
+                                </h3>
+
+
+                                <p>
+
+                                    Create reusable design components,
+                                    patterns, and guidelines that keep
+                                    products consistent while making
+                                    future design and development easier.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Components</span>
+                                    <span>Design Tokens</span>
+                                    <span>Guidelines</span>
+                                    <span>Systems</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Build Your Design System
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        DESIGN FOR DIFFERENT PRODUCTS
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Product Design
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Design experiences for
+                            <span>every digital touchpoint.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Different products require different
+                            experiences. We adapt the design process
+                            around the platform, audience, and complexity
+                            of your product.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- Website --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-globe"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Websites
+                                </span>
+
+
+                                <h3>
+                                    Business Websites
+                                </h3>
+
+
+                                <p>
+
+                                    Clear, responsive websites that
+                                    communicate your brand and guide
+                                    visitors toward meaningful actions.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Corporate</span>
+                                    <span>Marketing</span>
+                                    <span>Responsive</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- SaaS --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-cloud"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    SaaS
+                                </span>
+
+
+                                <h3>
+                                    SaaS Product Design
+                                </h3>
+
+
+                                <p>
+
+                                    Simplify complex software products
+                                    with structured navigation, dashboards,
+                                    workflows, and reusable interfaces.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>SaaS</span>
+                                    <span>Dashboards</span>
+                                    <span>Workflows</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- E-commerce --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-shopping-cart"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Commerce
+                                </span>
+
+
+                                <h3>
+                                    E-commerce UX
+                                </h3>
+
+
+                                <p>
+
+                                    Design product discovery, product
+                                    pages, cart, checkout, and customer
+                                    journeys around a smooth shopping
+                                    experience.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Shopping</span>
+                                    <span>Checkout</span>
+                                    <span>Conversion</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Mobile --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-mobile-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Mobile
+                                </span>
+
+
+                                <h3>
+                                    Mobile Applications
+                                </h3>
+
+
+                                <p>
+
+                                    Design mobile journeys that make
+                                    important actions simple, accessible,
+                                    and comfortable for touch interaction.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>iOS</span>
+                                    <span>Android</span>
+                                    <span>Mobile UX</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Admin --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    05
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-tachometer-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Business Tools
+                                </span>
+
+
+                                <h3>
+                                    Admin & Dashboard UX
+                                </h3>
+
+
+                                <p>
+
+                                    Make data-heavy interfaces easier to
+                                    navigate with structured dashboards,
+                                    filters, tables, workflows, and
+                                    role-based experiences.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Dashboards</span>
+                                    <span>Admin</span>
+                                    <span>Data</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Portals --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    06
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-user-circle"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Portals
+                                </span>
+
+
+                                <h3>
+                                    Customer & User Portals
+                                </h3>
+
+
+                                <p>
+
+                                    Design self-service portals that help
+                                    customers and users manage accounts,
+                                    information, requests, and workflows.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Portals</span>
+                                    <span>Accounts</span>
+                                    <span>Self-Service</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        DESIGN PROCESS
+    ========================================================== --}}
+        <section class="fc-work-section">
+
+            <div class="container">
+
+                <div class="fc-work-header">
+
+                    <div class="fc-work-eyebrow">
+
+                        <span class="fc-work-eyebrow-line"></span>
+                        How We Work
+
+                    </div>
+
+
+                    <div class="row align-items-end g-4">
+
+                        <div class="col-lg-7">
+
+                            <h2 class="fc-work-title">
+
+                                From research to
+                                <span>refined experience.</span>
+
+                            </h2>
+
+                        </div>
+
+
+                        <div class="col-lg-5">
+
+                            <p class="fc-work-intro">
+
+                                We move from understanding the problem
+                                to mapping the experience, designing the
+                                interface, and validating the result
+                                before development.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4 fc-work-process">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card fc-work-card-featured">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-search"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Discover
+                                </span>
+
+
+                                <h3>
+                                    Understand
+                                </h3>
+
+
+                                <p>
+
+                                    Understand users, business goals,
+                                    existing products, workflows,
+                                    and the problems we need to solve.
+
+                                </p>
+
+                            </div>
+
+
+                            <span class="fc-work-card-accent"></span>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-sitemap"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Structure
+                                </span>
+
+
+                                <h3>
+                                    Map
+                                </h3>
+
+
+                                <p>
+
+                                    Create information architecture,
+                                    user flows, wireframes, and journeys
+                                    that establish the product structure.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-pencil-ruler"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Design
+                                </span>
+
+
+                                <h3>
+                                    Refine
+                                </h3>
+
+
+                                <p>
+
+                                    Turn the structure into polished
+                                    interfaces, components, interactions,
+                                    and responsive experiences.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-check-circle"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Validate
+                                </span>
+
+
+                                <h3>
+                                    Improve
+                                </h3>
+
+
+                                <p>
+
+                                    Review the experience, identify
+                                    usability issues, and refine the
+                                    design before implementation.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHAT YOU GET
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            What You Get
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            A design system built for
+                            <span>clarity and consistency.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Good design should not stop at individual screens.
+                            We create reusable thinking and components that
+                            help your product stay consistent as it grows.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-layer-group"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Consistency
+                                </span>
+
+
+                                <h3>
+                                    Reusable Components
+                                </h3>
+
+
+                                <p>
+
+                                    Build reusable interface components
+                                    and patterns that create consistency
+                                    across pages, screens, and products.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-universal-access"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Accessibility
+                                </span>
+
+
+                                <h3>
+                                    More Inclusive Experiences
+                                </h3>
+
+
+                                <p>
+
+                                    Consider readability, interaction,
+                                    navigation, contrast, and other
+                                    accessibility factors throughout
+                                    the design process.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-mobile-alt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Responsive
+                                </span>
+
+
+                                <h3>
+                                    Cross-device Experiences
+                                </h3>
+
+
+                                <p>
+
+                                    Design layouts and interactions that
+                                    adapt across different screen sizes
+                                    and device contexts.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-code"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Development Ready
+                                </span>
+
+
+                                <h3>
+                                    Developer-friendly Designs
+                                </h3>
+
+
+                                <p>
+
+                                    Provide structured designs, components,
+                                    states, and interaction details that
+                                    make implementation clearer for
+                                    development teams.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        FAQ
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-7">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Frequently Asked Questions
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Questions about
+                            <span>UI/UX design.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-5">
+
+                        <p class="fc-services-list-intro">
+
+                            A few common questions about our approach
+                            to designing websites, applications, and
+                            digital products.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <div class="col-12">
+
+                        <div class="accordion" id="uiUxFaq">
+
+
+                            {{-- FAQ 01 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqOne">
+
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseOne" aria-expanded="true"
+                                        aria-controls="uiUxCollapseOne">
+
+                                        What is included in UI/UX design?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="uiUxFaqOne" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Depending on the project, UI/UX work
+                                        can include research, user flows,
+                                        information architecture, wireframes,
+                                        interface design, prototypes,
+                                        responsive layouts, and design systems.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 02 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqTwo">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseTwo" aria-expanded="false"
+                                        aria-controls="uiUxCollapseTwo">
+
+                                        Do you design websites and web applications?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="uiUxFaqTwo" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. We design business websites,
+                                        web applications, SaaS products,
+                                        dashboards, portals, and other
+                                        browser-based digital experiences.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 03 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqThree">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseThree" aria-expanded="false"
+                                        aria-controls="uiUxCollapseThree">
+
+                                        Can you design mobile applications?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="uiUxFaqThree" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Mobile UI/UX can include user
+                                        flows, navigation, screen design,
+                                        touch interactions, responsive
+                                        considerations, and prototypes
+                                        for application development.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 04 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqFour">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseFour" aria-expanded="false"
+                                        aria-controls="uiUxCollapseFour">
+
+                                        Do you work with an existing design?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="uiUxFaqFour" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. We can work with an existing
+                                        interface or product and focus on
+                                        improving usability, visual consistency,
+                                        responsive behavior, or specific
+                                        user journeys.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 05 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqFive">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseFive" aria-expanded="false"
+                                        aria-controls="uiUxCollapseFive">
+
+                                        Do you create design systems?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseFive" class="accordion-collapse collapse"
+                                    aria-labelledby="uiUxFaqFive" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. We can define reusable components,
+                                        patterns, typography, spacing, states,
+                                        and guidelines to help maintain
+                                        consistency across a digital product.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 06 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="uiUxFaqSix">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#uiUxCollapseSix" aria-expanded="false"
+                                        aria-controls="uiUxCollapseSix">
+
+                                        Can you work with our development team?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="uiUxCollapseSix" class="accordion-collapse collapse"
+                                    aria-labelledby="uiUxFaqSix" data-bs-parent="#uiUxFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Designs can be structured with
+                                        reusable components, responsive states,
+                                        interaction details, and clear handoff
+                                        information for development teams.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHY CHOOSE US
+    ========================================================== --}}
+        @include('includes.why-choose-us')
+
+
+        {{-- =========================================================
+        CTA
+    ========================================================== --}}
+        <section class="fc-services-cta">
+
+            <div class="fc-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-services-cta-inner">
+
+                    <div class="fc-section-eyebrow fc-section-eyebrow-light">
+
+                        <span></span>
+                        Have a Design Project in Mind?
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-cta-title">
+
+                        Let's create an experience
+                        <span>people enjoy using.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-cta-text">
+
+                        Tell us about your website, application, or
+                        digital product. We'll help turn your requirements
+                        into a clear and thoughtful user experience.
+
+                    </p>
+
+
+                    <div class="fc-services-cta-actions">
+
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary fc-btn-large">
+
+                            <i class="fas fa-comments me-2"></i>
+                            Start a Conversation
+
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
-                            <i class="fas fa-phone me-2"></i>Schedule a Call
+
+
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline fc-btn-large">
+
+                            View Our Work
+
                         </a>
+
                     </div>
-                    <div class="mt-3">
-                        <small class="opacity-75"><i class="fas fa-check-circle me-2"></i>Free design consultation <i class="fas fa-check-circle mx-2"></i>Portfolio examples included</small>
-                    </div>
+
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Related Services -->
-
-          <section class="services py-5 bg-light">
-
-        <div class="container">
-
-            <div class="text-center mb-5">
-
-                <h2 class="section-heading">Other Services</h2>
-
-                <p class="section-description text-muted">
-
-                    We empower businesses through expertly crafted <strong>web & app development</strong>,
-
-                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
-
-                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
-
-                    scalable and performance-driven digital services tailored to your vision.
-
-                </p>
 
             </div>
 
-            @include('includes.services')
+        </section>
 
-        </div>
 
-    </section>
+        {{-- =========================================================
+        RELATED SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
 
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        Explore More
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        More ways to build your
+                        <span>digital presence.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Combine UI/UX design with development, e-commerce,
+                        software, digital marketing, and branding to create
+                        a complete digital experience.
+
+                    </p>
+
+                </div>
+
+
+                <div class="mt-5">
+
+                    @include('includes.services')
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 @endsection
-

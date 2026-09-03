@@ -1,354 +1,707 @@
 @extends('layouts.app')
 
-@section('meta')
-    <meta name="description" content="{{ $seoData['description'] }}">
-    <meta name="keywords" content="{{ $seoData['keywords'] }}">
-    <meta name="author" content="{{ $seoData['author'] }}">
-    <meta property="og:title" content="{{ $seoData['title'] }}">
-    <meta property="og:description" content="{{ $seoData['description'] }}">
-    <meta property="og:image" content="{{ $seoData['image'] }}">
-    <meta property="og:url" content="{{ $seoData['url'] }}">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="{{ $seoData['publishedDate'] }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $seoData['title'] }}">
-    <meta name="twitter:description" content="{{ $seoData['description'] }}">
-    <meta name="twitter:image" content="{{ $seoData['image'] }}">
-    <link rel="canonical" href="{{ $seoData['url'] }}">
-@endsection
-
 @section('content')
-    <div class="fc-blog-detail">
 
-        <!-- BLOG DETAIL HEADER -->
-        <section class="fc-header">
-            <div class="container">
-                <div class="fc-header-content">
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/blog.css') }}">
 
-                    <h1 class="mb-3">{{ $blog->title }}</h1>
-                    <p class="mb-4 ">{{ $blog->meta_description }}</p>
 
-                    <div class="d-flex flex-wrap align-items-center gap-3">
-                        {{-- <div class="d-flex align-items-center gap-2">
-                            <img src="{{ $blog->creator?->profile_photo_url ?? asset('assets/img/default-avatar.png') }}" loading="lazy"
-                                alt="Author" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover;">
-                            <div>
-                                <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
-                                <div class="fw-semibold">{{ $blog->creator?->name ?? 'Admin' }}</div>
-                                <div class="text-muted small">Author</div>
-                            </div>
-                        </div> --}}
-                        {{-- <span class="text-muted">•</span> --}}
-                        <div class="d-flex flex-wrap align-items-center gap-2 text-muted small">
-                            <span class="badge bg-light text-dark border">📅
-                                {{ $blog->published_at?->format('M d, Y') ?? 'Draft' }}</span>
-                            <span class="badge bg-light text-dark border">👁️ {{ number_format($blog->views) }}
-                                views</span>
-                            <span class="badge bg-light text-dark border">⏱️ {{ $blog->reading_time }} min read</span>
-                        </div>
-                    </div>
+    <main class="fc-blog-detail">
 
-                    <!-- ARTICLE CATEGORIES -->
-                    @if ($blog->categories->isNotEmpty())
-                        <div class="mt-3 d-flex flex-wrap gap-2">
+        {{-- =========================================================
+         BLOG HERO
+    ========================================================== --}}
+        <header class="fc-blog-hero">
+
+            <div class="fc-blog-hero-grid"></div>
+
+            <div class="container position-relative">
+
+                {{-- Breadcrumb --}}
+                <nav class="fc-blog-breadcrumb" aria-label="Breadcrumb">
+
+                    <a href="{{ url('/') }}">
+                        Home
+                    </a>
+
+                    <span class="fc-breadcrumb-separator">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <a href="{{ route('blog.index') }}">
+                        Blog
+                    </a>
+
+                    <span class="fc-breadcrumb-separator">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+
+                    <span class="fc-breadcrumb-current">
+                        {{ $blog->title }}
+                    </span>
+
+                </nav>
+
+
+                <div class="fc-blog-hero-inner">
+
+                    {{-- Categories --}}
+                    @if ($blog->categories && $blog->categories->count())
+                        <div class="fc-blog-categories">
+
                             @foreach ($blog->categories as $category)
-                                <a href="{{ route('blog.category', $category->slug) }}" class="fc-category-tag">
-                                    {{ $category->icon ?? '📌' }} {{ $category->name }}
+                                <a href="{{ route('blog.category', $category->slug) }}" class="fc-blog-category"
+                                    @if ($category->color) style="--category-color: {{ $category->color }}" @endif>
+
+                                    @if ($category->icon)
+                                        <i class="{{ $category->icon }}"></i>
+                                    @endif
+
+                                    {{ $category->name }}
+
                                 </a>
                             @endforeach
+
                         </div>
                     @endif
-                    <div class="fc-breadcrumb">
-                        <a href="/">Home</a> / <a href="{{ route('blog.index') }}">Blog</a> /
-                        <span>{{ $blog->title }}</span>
+
+
+                    {{-- Title --}}
+                    <h1 class="fc-blog-title">
+                        {{ $blog->title }}
+                    </h1>
+
+
+                    {{-- Description --}}
+                    @if ($blog->meta_description)
+                        <p class="fc-blog-excerpt">
+                            {{ $blog->meta_description }}
+                        </p>
+                    @endif
+
+
+                    {{-- Meta --}}
+                    <div class="fc-blog-meta">
+
+                        @if ($blog->published_at)
+                            <span class="fc-blog-meta-item">
+
+                                <i class="far fa-calendar-alt"></i>
+
+                                <time datetime="{{ $blog->published_at }}">
+                                    {{ \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') }}
+                                </time>
+
+                            </span>
+                        @endif
+
+
+                        @if (isset($blog->views))
+                            <span class="fc-blog-meta-item">
+
+                                <i class="far fa-eye"></i>
+
+                                {{ number_format($blog->views) }} views
+
+                            </span>
+                        @endif
+
+
+                        @if (isset($blog->reading_time))
+                            <span class="fc-blog-meta-item">
+
+                                <i class="far fa-clock"></i>
+
+                                {{ $blog->reading_time }} min read
+
+                            </span>
+                        @endif
+
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- FEATURED IMAGE -->
-        <section class="fc-detail-featured-image">
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        {{-- =========================================================
+         FEATURED IMAGE
+    ========================================================== --}}
+        <section class="fc-blog-featured-section">
+
             <div class="container">
-                <div class="bg-white rounded-4 shadow-sm overflow-hidden">
-                    <img src="{{ $blog->featured_image_url ?? asset('assets/images/blog-default-featured-image.png') . '?text=' . urlencode($blog->title) }}"
-                        loading="lazy" alt="{{ $blog->title }}" class="w-100"
-                        style="max-height: 520px; object-fit: cover;">
-                </div>
+
+                <figure class="fc-blog-featured">
+
+                    <img src="{{ $blog->featured_image_url ?? asset('assets/images/blog-default-feature-image.png') }}"
+                        alt="{{ $blog->title }}" class="img-fluid" width="1600" height="900" fetchpriority="high"
+                        decoding="async">
+
+                </figure>
+
             </div>
+
         </section>
 
-        <!-- MAIN CONTENT -->
-        <div class="container">
-            <div class="row g-4">
 
-                <!-- ARTICLE CONTENT -->
-                <div class="col-lg-8">
-                    <article class="bg-white rounded-4 shadow-sm p-4 p-lg-5">
-                        <!-- ARTICLE BODY -->
-                        <div class="fc-article-content">
-                            {!! $blog->content !!}
-                        </div>
 
-                        <!-- ARTICLE FOOTER -->
-                        <div class="fc-article-footer mt-5">
-                            <div class="fc-article-sharing mb-4">
-                                <span class="fc-share-label d-block mb-2">Share this article:</span>
-                                <div class="d-flex flex-wrap gap-2">
+        {{-- =========================================================
+         ARTICLE + SIDEBAR
+    ========================================================== --}}
+        <section class="fc-blog-body">
 
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($seoData['url']) }}&text={{ urlencode($blog->title) }}"
-                                        class="btn btn-outline-dark btn-sm" title="Share on Twitter" target="_blank"
-                                        rel="noopener noreferrer">
-                                        𝕏 Twitter
+            <div class="container">
+
+                <div class="row g-4 g-xl-5 align-items-start">
+
+
+                    {{-- =================================================
+                     ARTICLE
+                ================================================== --}}
+                    <div class="col-12 col-lg-8">
+
+                        <article class="fc-article">
+
+                            {{-- WYSIWYG CONTENT --}}
+                            <div class="fc-article-content">
+
+                                {!! $blog->content !!}
+
+                            </div>
+
+
+                            {{-- =================================================
+                             SHARE
+                        ================================================== --}}
+                            <div class="fc-article-share">
+
+                                <span class="fc-share-label">
+                                    Share this article
+                                </span>
+
+
+                                <div class="fc-share-actions">
+
+                                    {{-- X --}}
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($blog->title) }}"
+                                        target="_blank" rel="noopener noreferrer" class="fc-share-btn"
+                                        aria-label="Share on X">
+
+                                        <i class="fab fa-x-twitter"></i>
+
                                     </a>
 
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($seoData['url']) }}"
-                                        class="btn btn-outline-primary btn-sm" title="Share on Facebook" target="_blank"
-                                        rel="noopener noreferrer">
-                                        Facebook
+
+                                    {{-- Facebook --}}
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                        target="_blank" rel="noopener noreferrer" class="fc-share-btn fc-share-facebook"
+                                        aria-label="Share on Facebook">
+
+                                        <i class="fab fa-facebook-f"></i>
+
                                     </a>
 
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($seoData['url']) }}"
-                                        class="btn btn-outline-info btn-sm" title="Share on LinkedIn" target="_blank"
-                                        rel="noopener noreferrer">
-                                        LinkedIn
+
+                                    {{-- LinkedIn --}}
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}"
+                                        target="_blank" rel="noopener noreferrer" class="fc-share-btn"
+                                        aria-label="Share on LinkedIn">
+
+                                        <i class="fab fa-linkedin-in"></i>
+
                                     </a>
 
-                                    <a href="#" class="btn btn-outline-secondary btn-sm fc-share-copy"
-                                        title="Copy link" data-url="{{ $seoData['url'] }}">
-                                        🔗 Copy Link
-                                    </a>
+
+                                    {{-- Copy --}}
+                                    <button type="button" class="fc-share-btn fc-share-copy"
+                                        data-url="{{ url()->current() }}" aria-label="Copy article link">
+
+                                        <i class="fas fa-link"></i>
+
+                                    </button>
 
                                 </div>
+
                             </div>
 
-                            {{-- <div class="d-flex align-items-center gap-3 p-3 border rounded-3 bg-light">
-                                <img src="{{ $blog->creator?->profile_photo_url ?? asset('assets/img/default-avatar.png') }}" loading="lazy"
-                                    alt="Author" class="rounded-circle" style="width: 72px; height: 72px; object-fit: cover;">
-                                    <div>
-                                        <h5 class="mb-1">{{ $blog->creator?->name ?? 'Admin' }}</h5>
-                                        <p class="mb-0 text-muted small">{{ $blog->creator?->bio ?? 'Content Author' }}</p>
-                                    </div>
-                            </div> --}}
-                        </div>
+                        </article>
 
-                    </article>
+                    </div>
+
+
+
+                    {{-- =================================================
+                     SIDEBAR
+                ================================================== --}}
+                    <div class="col-12 col-lg-4">
+
+                        <aside class="fc-blog-sidebar">
+
+
+                            {{-- ===============================
+                             SEARCH
+                        ================================ --}}
+                            <div class="fc-sidebar-card">
+
+                                <h2 class="fc-sidebar-title">
+                                    Search Articles
+                                </h2>
+
+                                <form action="{{ route('blog.index') }}" method="GET" class="fc-blog-search">
+
+                                    <label for="blog-search" class="visually-hidden">
+                                        Search articles
+                                    </label>
+
+                                    <div class="fc-search-input">
+
+                                        <i class="fas fa-search"></i>
+
+                                        <input type="search" id="blog-search" name="search"
+                                            placeholder="Search articles..." autocomplete="off">
+
+                                    </div>
+
+                                    <button type="submit" class="fc-search-button">
+
+                                        Search
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+
+
+                            {{-- ===============================
+                             CATEGORIES
+                        ================================ --}}
+                            @if ($blog->categories && $blog->categories->count())
+                                <div class="fc-sidebar-card">
+
+                                    <h2 class="fc-sidebar-title">
+                                        Categories
+                                    </h2>
+
+                                    <div class="fc-category-list">
+
+                                        @foreach ($blog->categories as $category)
+                                            <a href="{{ route('blog.category', $category->slug) }}"
+                                                class="fc-category-item">
+
+                                                <span class="fc-category-name">
+
+                                                    @if ($category->icon)
+                                                        <i class="{{ $category->icon }}"></i>
+                                                    @endif
+
+                                                    {{ $category->name }}
+
+                                                </span>
+
+
+                                                <span class="fc-category-count">
+
+                                                    {{ $category->publishedBlogs()->count() }}
+
+                                                </span>
+
+                                            </a>
+                                        @endforeach
+
+                                    </div>
+
+                                </div>
+                            @endif
+
+
+
+                            {{-- ===============================
+                             POPULAR / RELATED
+                        ================================ --}}
+                            @if ($relatedArticles && $relatedArticles->count())
+                                <div class="fc-sidebar-card">
+
+                                    <div class="fc-sidebar-heading-row">
+
+                                        <h2 class="fc-sidebar-title mb-0">
+                                            Popular Articles
+                                        </h2>
+
+                                    </div>
+
+
+                                    <div class="fc-popular-list">
+
+                                        @foreach ($relatedArticles->take(3) as $article)
+                                            <a href="{{ route('blog.show', $article->slug) }}" class="fc-popular-item">
+
+
+                                                <div class="fc-popular-image">
+
+                                                    <img src="{{ $article->featured_image_url ?? asset('assets/images/blog-default-featured-image.png') }}"
+                                                        alt="{{ $article->title }}" loading="lazy" decoding="async">
+
+                                                </div>
+
+
+                                                <div class="fc-popular-content">
+
+                                                    <h3>
+                                                        {{ $article->title }}
+                                                    </h3>
+
+                                                    <span>
+
+                                                        <i class="far fa-eye"></i>
+
+                                                        {{ number_format($article->views ?? 0) }}
+
+                                                    </span>
+
+                                                </div>
+
+                                            </a>
+                                        @endforeach
+
+                                    </div>
+
+                                </div>
+                            @endif
+
+
+
+                            {{-- ===============================
+                             NEWSLETTER
+                        ================================ --}}
+                            <div class="fc-sidebar-card fc-newsletter-card">
+
+                                <div class="fc-newsletter-icon">
+
+                                    <i class="far fa-envelope"></i>
+
+                                </div>
+
+
+                                <h2 class="fc-sidebar-title">
+                                    Stay Updated
+                                </h2>
+
+
+                                <p class="fc-newsletter-text">
+                                    Get the latest insights, tips and updates
+                                    delivered straight to your inbox.
+                                </p>
+
+
+                                <form action="{{ route('subscribe') }}" method="POST" class="fc-newsletter-form"
+                                    id="fc-newsletter-form">
+
+                                    @csrf
+
+                                    <label for="newsletter-email" class="visually-hidden">
+                                        Email address
+                                    </label>
+
+                                    <input type="email" id="newsletter-email" name="email" class="form-control"
+                                        placeholder="Your email address" required>
+
+
+                                    <button type="submit" class="fc-newsletter-button">
+
+                                        Subscribe
+
+                                    </button>
+
+
+                                    <div id="fc-newsletter-message" class="fc-newsletter-message" role="status">
+                                    </div>
+
+
+                                    <div id="fc-newsletter-error" class="fc-newsletter-error" role="alert">
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
                 </div>
 
-                <!-- SIDEBAR -->
-                <aside class="col-lg-4">
-
-                    <!-- SEARCH BOX -->
-                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
-                        <div class="card-body">
-                            <form action="{{ route('blog.index') }}" method="GET">
-                                <input type="text" name="search" placeholder="Search articles..." class="form-control">
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- CATEGORIES -->
-                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
-                        <div class="card-body">
-                            <h4 class="fc-widget-title">Categories</h4>
-                            <ul class="list-unstyled mb-0 fc-category-list">
-                                @foreach ($blog->categories as $category)
-                                    <li class="mb-2">
-                                        <a href="{{ route('blog.category', $category->slug) }}"
-                                            style="color: {{ $category->color }};"
-                                            class="d-flex justify-content-between align-items-center">
-                                            <span>{{ $category->icon ?? '📌' }} {{ $category->name }}</span>
-                                            <span
-                                                class="badge bg-light text-dark border">{{ $category->publishedBlogs()->count() }}</span>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- POPULAR POSTS -->
-                    <div class="fc-sidebar-widget card shadow-sm border-0 mb-3">
-                        <div class="card-body">
-                            <h4 class="fc-widget-title">Popular Posts</h4>
-                            <div class="fc-popular-posts">
-                                @forelse($relatedArticles->take(3) as $related)
-                                    <a href="{{ route('blog.show', $related->slug) }}"
-                                        class="fc-popular-post d-flex gap-3 align-items-center py-2">
-                                        <img src="{{ $related->small_image_url ?? asset('assets/img/default-thumb.png') }}"
-                                            loading="lazy" alt="{{ $related->title }}" class="rounded"
-                                            style="width: 64px; height: 64px; object-fit: cover;">
-                                        <div>
-                                            <h6 class="mb-1">{{ Str::limit($related->title, 40) }}</h6>
-                                            <span
-                                                class="fc-post-meta text-muted small">{{ number_format($related->views) }}
-                                                views</span>
-                                        </div>
-                                    </a>
-                                @empty
-                                    <p class="text-muted">No posts available.</p>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NEWSLETTER -->
-                    <div class="fc-sidebar-widget card shadow-sm border-0">
-                        <div class="card-body">
-                            <h4 class="fc-widget-title">Subscribe to Updates</h4>
-                            <p class="fc-newsletter-desc">Get the latest articles delivered to your inbox</p>
-                            <div id="newsletter-message"></div>
-                            <form class="fc-newsletter-form" method="POST" action="{{ route('subscribe') }}">
-                                @csrf
-                                <input type="email" name="email" placeholder="Enter your email"
-                                    class="form-control mb-2" required>
-                                <div class="text-danger small mb-2" id="newsletter-error"></div>
-                                <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-
-                </aside>
-
             </div>
-        </div>
 
-        <!-- RELATED ARTICLES -->
-        <section class="fc-related-articles">
-            <div class="container">
-                <h3 class="fc-title mb-4">Related Articles</h3>
-                <div class="row g-4">
-                    @forelse($relatedArticles as $related)
-                        <div class="col-md-6 col-lg-4">
-                            <a href="{{ route('blog.show', $related->slug) }}" class="fc-related-card">
-                                <img src="{{ $related->small_image_url ?? asset('assets/img/default-featured.png') }}"
-                                    loading="lazy" alt="{{ $related->title }}">
-                                <div class="fc-related-body">
-                                    <h5>{{ $related->title }}</h5>
-                                    <p class="text-muted small">{{ Str::limit($related->meta_description, 80) }}</p>
-                                    <div class="fc-related-meta">
-                                        {{ $related->published_at?->format('M d, Y') ?? 'Draft' }}
-                                        @if ($related->categories->isNotEmpty())
-                                            • {{ $related->categories->first()->name }}
+        </section>
+
+
+
+        {{-- =========================================================
+         RELATED ARTICLES
+    ========================================================== --}}
+        @if ($relatedArticles && $relatedArticles->count())
+            <section class="fc-related-section">
+
+                <div class="container">
+
+                    <div class="fc-section-heading">
+
+                        <span class="fc-section-eyebrow">
+                            Keep Reading
+                        </span>
+
+                        <h2>
+                            Related Articles
+                        </h2>
+
+                        <p>
+                            Continue exploring our latest insights and
+                            resources.
+                        </p>
+
+                    </div>
+
+
+                    <div class="row g-4">
+
+                        @foreach ($relatedArticles as $article)
+                            <div class="col-12 col-md-6 col-lg-4">
+
+                                <article class="fc-related-card">
+
+                                    <a href="{{ route('blog.show', $article->slug) }}" class="fc-related-image">
+
+                                        <img src="{{ $article->featured_image_url ?? asset('assets/images/blog-default-feature-image.png') }}"
+                                            alt="{{ $article->title }}" loading="lazy" decoding="async">
+
+                                    </a>
+
+
+                                    <div class="fc-related-content">
+
+                                        {{-- Categories --}}
+                                        @if ($article->categories && $article->categories->count())
+                                            <div class="fc-related-category">
+
+                                                {{ $article->categories->first()->name }}
+
+                                            </div>
                                         @endif
+
+
+                                        <h3>
+
+                                            <a href="{{ route('blog.show', $article->slug) }}">
+
+                                                {{ $article->title }}
+
+                                            </a>
+
+                                        </h3>
+
+
+                                        <div class="fc-related-meta">
+
+                                            @if ($article->published_at)
+                                                <span>
+
+                                                    <i class="far fa-calendar-alt"></i>
+
+                                                    {{ \Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}
+
+                                                </span>
+                                            @endif
+
+
+                                            <span>
+
+                                                <i class="far fa-eye"></i>
+
+                                                {{ number_format($article->views ?? 0) }}
+
+                                            </span>
+
+                                        </div>
+
+
+                                        <a href="{{ route('blog.show', $article->slug) }}" class="fc-related-read">
+
+                                            Read article
+
+                                            <i class="fas fa-arrow-right"></i>
+
+                                        </a>
+
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @empty
-                        <div class="col-12">
-                            <p class="text-muted text-center">No related articles found.</p>
-                        </div>
-                    @endforelse
+
+                                </article>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+
                 </div>
-            </div>
-        </section>
 
-    </div>
+            </section>
+        @endif
 
+    </main>
+
+
+
+    {{-- =============================================================
+     JAVASCRIPT
+============================================================= --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Copy link functionality
-            const shareCopyBtn = document.querySelector('.fc-share-copy');
-            if (shareCopyBtn) {
-                shareCopyBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const url = this.getAttribute('data-url');
-                    navigator.clipboard.writeText(url).then(() => {
-                        this.innerHTML = '<span>✓ Copied!</span>';
+
+            /*
+            |--------------------------------------------------------------------------
+            | COPY ARTICLE LINK
+            |--------------------------------------------------------------------------
+            */
+
+            document.querySelectorAll('.fc-share-copy').forEach(function(button) {
+
+                button.addEventListener('click', async function() {
+
+                    const url = this.dataset.url;
+                    const originalIcon = this.innerHTML;
+
+                    try {
+
+                        if (navigator.clipboard) {
+
+                            await navigator.clipboard.writeText(url);
+
+                        } else {
+
+                            const textarea = document.createElement('textarea');
+
+                            textarea.value = url;
+                            textarea.style.position = 'fixed';
+                            textarea.style.opacity = '0';
+
+                            document.body.appendChild(textarea);
+
+                            textarea.select();
+                            document.execCommand('copy');
+
+                            textarea.remove();
+
+                        }
+
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+
                         setTimeout(() => {
-                            this.innerHTML = '<span>🔗 Copy Link</span>';
-                        }, 2000);
-                    });
+
+                            this.innerHTML = originalIcon;
+
+                        }, 1500);
+
+                    } catch (error) {
+
+                        console.error('Unable to copy link:', error);
+
+                    }
+
                 });
+
+            });
+
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | NEWSLETTER
+            |--------------------------------------------------------------------------
+            */
+
+            const newsletterForm =
+                document.getElementById('fc-newsletter-form');
+
+            if (newsletterForm) {
+
+                newsletterForm.addEventListener('submit', function(event) {
+
+                    event.preventDefault();
+
+                    const form = this;
+
+                    const message =
+                        document.getElementById('fc-newsletter-message');
+
+                    const error =
+                        document.getElementById('fc-newsletter-error');
+
+                    const button =
+                        form.querySelector('button[type="submit"]');
+
+
+                    message.textContent = '';
+                    error.textContent = '';
+
+                    button.disabled = true;
+                    button.textContent = 'Subscribing...';
+
+
+                    fetch(form.action, {
+
+                            method: 'POST',
+
+                            headers: {
+
+                                'X-CSRF-TOKEN': form.querySelector('[name="_token"]').value,
+
+                                'Accept': 'application/json',
+
+                                'X-Requested-With': 'XMLHttpRequest'
+
+                            },
+
+                            body: new FormData(form)
+
+                        })
+                        .then(function(response) {
+
+                            if (!response.ok) {
+                                throw new Error('Subscription failed.');
+                            }
+
+                            return response.json();
+
+                        })
+                        .then(function(data) {
+
+                            message.textContent =
+                                data.message || 'Successfully subscribed!';
+
+                            form.reset();
+
+                        })
+                        .catch(function() {
+
+                            error.textContent =
+                                'Something went wrong. Please try again.';
+
+                        })
+                        .finally(function() {
+
+                            button.disabled = false;
+                            button.textContent = 'Subscribe';
+
+                        });
+
+                });
+
             }
 
-            // Newsletter form AJAX submit
-            const newsletterForm = document.querySelector('.fc-newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const form = this;
-                    const formData = new FormData(form);
-                    const messageDiv = document.getElementById('newsletter-message');
-                    const errorDiv = document.getElementById('newsletter-error');
-                    messageDiv.innerHTML = '';
-                    errorDiv.innerHTML = '';
-                    fetch(form.action, {
-                            method: 'POST',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': form.querySelector('[name=_token]').value
-                            },
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                messageDiv.innerHTML = '<div class="alert alert-success">' + data
-                                    .success + '</div>';
-                                form.reset();
-                            } else if (data.errors && data.errors.email) {
-                                errorDiv.innerHTML = data.errors.email[0];
-                            } else {
-                                messageDiv.innerHTML =
-                                    '<div class="alert alert-danger">Something went wrong. Please try again.</div>';
-                            }
-                        })
-                        .catch(() => {
-                            messageDiv.innerHTML =
-                                '<div class="alert alert-danger">Server error. Please try again later.</div>';
-                        });
-                });
-            }
         });
     </script>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
 
-    const facebookBtn = document.querySelector('.fc-share-facebook');
-
-    if (!facebookBtn) {
-        return;
-    }
-
-    facebookBtn.addEventListener('click', async function (e) {
-
-        const url = this.dataset.url;
-        const title = this.dataset.title;
-
-        // Check whether native sharing is available
-        if (navigator.share) {
-            e.preventDefault();
-
-            try {
-                await navigator.share({
-                    title: title,
-                    text: title,
-                    url: url
-                });
-
-                console.log('Native share opened');
-
-            } catch (error) {
-
-                // User cancelled the share sheet
-                if (error.name === 'AbortError') {
-                    return;
-                }
-
-                console.error('Native share failed:', error);
-
-                // Fallback to Facebook
-                window.location.href =
-                    'https://www.facebook.com/sharer/sharer.php?u=' +
-                    encodeURIComponent(url);
-            }
-        }
-
-        // If navigator.share doesn't exist,
-        // normal <a href=""> Facebook URL works automatically.
-    });
-
-});
-</script>
 @endsection

@@ -32,15 +32,10 @@
 .fc-services-hero {
     position: relative;
     overflow: hidden;
-
     min-height: 720px;
-
     display: flex;
     align-items: center;
-
-    padding:
-        90px 0 105px;
-
+    padding: 90px 0 105px;
     color: #fff;
 
     background:
@@ -54,14 +49,14 @@
 }
 
 
-/* Grid */
+/* ============================================================
+   HERO GRID
+   ============================================================ */
 
 .fc-hero-grid {
     position: absolute;
     inset: 0;
-
     pointer-events: none;
-
     opacity: .55;
 
     background-image:
@@ -77,23 +72,27 @@
         linear-gradient(to right,
             black,
             transparent 90%);
+
+    -webkit-mask-image:
+        linear-gradient(to right,
+            black,
+            transparent 90%);
 }
 
 
-/* Eyebrow */
+/* ============================================================
+   HERO EYEBROW
+   ============================================================ */
 
 .fc-services-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 11px;
-
     margin-bottom: 25px;
 
     color: var(--fc-cyan);
-
     font-size: 12px;
     font-weight: 800;
-
     letter-spacing: .16em;
     text-transform: uppercase;
 }
@@ -101,8 +100,8 @@
 .fc-services-eyebrow span {
     width: 32px;
     height: 2px;
-
     display: block;
+    flex-shrink: 0;
 
     border-radius: 99px;
 
@@ -113,11 +112,12 @@
 }
 
 
-/* Hero title */
+/* ============================================================
+   HERO TITLE
+   ============================================================ */
 
 .fc-services-title {
     max-width: 620px;
-
     margin: 0;
 
     color: #fff !important;
@@ -126,21 +126,16 @@
         clamp(52px, 7vw, 92px) !important;
 
     font-weight: 800 !important;
-
     line-height: .93 !important;
-
     letter-spacing: -.065em !important;
 }
 
 .fc-services-title span {
     display: block;
-
     color: #fff !important;
 }
 
 .fc-services-title strong {
-    display: block;
-
     font-weight: inherit;
 
     background:
@@ -150,12 +145,13 @@
 
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
 
-/* Description */
+/* ============================================================
+   HERO DESCRIPTION
+   ============================================================ */
 
 .fc-services-description {
     max-width: 620px;
@@ -167,16 +163,18 @@
         rgba(255, 255, 255, .72) !important;
 
     font-size: 18px !important;
-
     line-height: 1.75 !important;
 }
 
 
-/* Actions */
+/* ============================================================
+   HERO ACTIONS
+   ============================================================ */
 
 .fc-services-actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 14px;
 
     margin-top: 38px;
@@ -197,7 +195,9 @@
 }
 
 
-/* Rings */
+/* ============================================================
+   ORBIT RINGS
+   ============================================================ */
 
 .fc-orbit {
     position: absolute;
@@ -207,7 +207,8 @@
 
     border-radius: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 }
 
 .orbit-one {
@@ -227,7 +228,9 @@
 }
 
 
-/* Connecting lines */
+/* ============================================================
+   ORBIT CONNECTING LINES
+   ============================================================ */
 
 .fc-orbit-line {
     position: absolute;
@@ -236,7 +239,6 @@
     left: 50%;
 
     width: 42%;
-
     height: 1px;
 
     transform-origin: left center;
@@ -260,7 +262,9 @@
 }
 
 
-/* Center */
+/* ============================================================
+   ORBIT CENTER
+   ============================================================ */
 
 .fc-orbit-center {
     position: absolute;
@@ -273,11 +277,11 @@
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border:
         1px solid rgba(0, 194, 255, .45);
@@ -298,7 +302,6 @@
 
     font-size: 34px;
     font-weight: 800;
-
     line-height: 1;
 }
 
@@ -309,19 +312,20 @@
 
     font-size: 9px;
     font-weight: 800;
-
     letter-spacing: .18em;
 }
 
 
-/* Orbit cards */
+/* ============================================================
+   ORBIT CARDS
+   ============================================================ */
 
 .fc-orbit-card {
     position: absolute;
 
     display: flex;
-
     align-items: center;
+
     gap: 11px;
 
     padding:
@@ -341,11 +345,15 @@
         0 15px 35px rgba(0, 0, 0, .18);
 
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    white-space: nowrap;
 }
 
 .fc-orbit-card i {
-    color: var(--fc-cyan);
+    flex-shrink: 0;
 
+    color: var(--fc-cyan);
     font-size: 14px;
 }
 
@@ -353,6 +361,11 @@
     font-size: 13px;
     font-weight: 700;
 }
+
+
+/* ============================================================
+   ORBIT CARD POSITIONS
+   ============================================================ */
 
 .orbit-design {
     top: 42%;
@@ -375,7 +388,9 @@
 }
 
 
-/* Dots */
+/* ============================================================
+   ORBIT DOTS
+   ============================================================ */
 
 .fc-orbit-dot {
     position: absolute;
@@ -407,8 +422,8 @@
 }
 
 .dot-four {
-    bottom: 32%;
     right: 20%;
+    bottom: 32%;
 }
 
 
@@ -424,11 +439,12 @@
 }
 
 
-/* Generic eyebrow */
+/* ============================================================
+   GENERIC EYEBROW
+   ============================================================ */
 
 .fc-section-eyebrow {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
@@ -440,9 +456,7 @@
 
     font-size: 12px;
     font-weight: 800;
-
     letter-spacing: .15em;
-
     text-transform: uppercase;
 }
 
@@ -461,7 +475,9 @@
 }
 
 
-/* Intro title */
+/* ============================================================
+   INTRO TITLE
+   ============================================================ */
 
 .fc-services-intro-title {
     max-width: 900px;
@@ -474,9 +490,7 @@
         clamp(42px, 5vw, 68px) !important;
 
     font-weight: 800 !important;
-
     line-height: 1 !important;
-
     letter-spacing: -.055em !important;
 }
 
@@ -488,12 +502,13 @@
 
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
 
-/* Intro text */
+/* ============================================================
+   INTRO TEXT
+   ============================================================ */
 
 .fc-services-intro-text {
     max-width: 720px;
@@ -504,12 +519,13 @@
     color: #405A78 !important;
 
     font-size: 17px !important;
-
     line-height: 1.75 !important;
 }
 
 
-/* Capability */
+/* ============================================================
+   CAPABILITY
+   ============================================================ */
 
 .fc-capability-row {
     margin-top: 70px;
@@ -527,10 +543,11 @@
 }
 
 
-/* Connector */
+/* ============================================================
+   CAPABILITY CONNECTOR
+   ============================================================ */
 
 .fc-capability-row>div:not(:last-child) .fc-capability::after {
-
     content: "";
 
     position: absolute;
@@ -539,15 +556,15 @@
     left: calc(50% + 55px);
 
     width: calc(100% - 110px);
-
     height: 1px;
 
-    background:
-        #DDE6F2;
+    background: #DDE6F2;
 }
 
 
-/* Icon */
+/* ============================================================
+   CAPABILITY ICON
+   ============================================================ */
 
 .fc-capability-icon {
     position: relative;
@@ -557,11 +574,11 @@
     height: 64px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    margin: 0 auto 20px;
+    margin:
+        0 auto 20px;
 
     border:
         1px solid rgba(21, 101, 255, .20);
@@ -609,7 +626,6 @@
     color: #526B88;
 
     font-size: 14px;
-
     line-height: 1.6;
 }
 
@@ -622,12 +638,13 @@
     padding:
         clamp(75px, 9vw, 120px) 0;
 
-    background:
-        #F7F9FC;
+    background: #F7F9FC;
 }
 
 
-/* Header */
+/* ============================================================
+   SERVICES LIST HEADER
+   ============================================================ */
 
 .fc-services-list-header {
     margin-bottom: 55px;
@@ -648,9 +665,7 @@
         clamp(40px, 5vw, 66px) !important;
 
     font-weight: 800 !important;
-
     line-height: 1 !important;
-
     letter-spacing: -.055em !important;
 }
 
@@ -662,7 +677,6 @@
 
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
@@ -675,7 +689,6 @@
     color: #405A78 !important;
 
     font-size: 16px !important;
-
     line-height: 1.7 !important;
 }
 
@@ -692,8 +705,7 @@
     display: flex;
     flex-direction: column;
 
-    padding:
-        38px;
+    padding: 38px;
 
     overflow: hidden;
 
@@ -714,7 +726,9 @@
 }
 
 
-/* Top brand line */
+/* ============================================================
+   CARD BRAND LINE
+   ============================================================ */
 
 .fc-service-card::before {
     content: "";
@@ -734,7 +748,9 @@
 }
 
 
-/* Dark card */
+/* ============================================================
+   DARK CARD
+   ============================================================ */
 
 .fc-service-card-dark {
     color: #fff;
@@ -752,17 +768,20 @@
 }
 
 
-/* Card top */
+/* ============================================================
+   CARD TOP
+   ============================================================ */
 
 .fc-service-card-top {
     display: flex;
-
     align-items: flex-start;
     justify-content: space-between;
 }
 
 
-/* Number */
+/* ============================================================
+   CARD NUMBER
+   ============================================================ */
 
 .fc-service-number {
     color: var(--fc-blue);
@@ -770,9 +789,7 @@
     font-family: var(--fc-font-mono);
 
     font-size: 13px;
-
     font-weight: 800;
-
     letter-spacing: .05em;
 }
 
@@ -781,14 +798,15 @@
 }
 
 
-/* Icon */
+/* ============================================================
+   SERVICE ICON
+   ============================================================ */
 
 .fc-service-icon {
     width: 64px;
     height: 64px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -820,14 +838,18 @@
 }
 
 
-/* Content */
+/* ============================================================
+   CARD CONTENT
+   ============================================================ */
 
 .fc-service-card-content {
     margin-top: 62px;
 }
 
 
-/* Category */
+/* ============================================================
+   CATEGORY
+   ============================================================ */
 
 .fc-service-category {
     display: block;
@@ -837,11 +859,8 @@
     color: var(--fc-blue);
 
     font-size: 11px;
-
     font-weight: 800;
-
     letter-spacing: .14em;
-
     text-transform: uppercase;
 }
 
@@ -850,7 +869,9 @@
 }
 
 
-/* Title */
+/* ============================================================
+   SERVICE TITLE
+   ============================================================ */
 
 .fc-service-card h3 {
     margin: 0;
@@ -861,9 +882,7 @@
         clamp(25px, 2.5vw, 31px) !important;
 
     font-weight: 800 !important;
-
     line-height: 1.12 !important;
-
     letter-spacing: -.035em !important;
 }
 
@@ -872,7 +891,9 @@
 }
 
 
-/* Description */
+/* ============================================================
+   SERVICE DESCRIPTION
+   ============================================================ */
 
 .fc-service-card-content p {
     max-width: 570px;
@@ -883,7 +904,6 @@
     color: #526B88 !important;
 
     font-size: 16px !important;
-
     line-height: 1.7 !important;
 }
 
@@ -893,11 +913,12 @@
 }
 
 
-/* Tags */
+/* ============================================================
+   SERVICE TAGS
+   ============================================================ */
 
 .fc-service-tags {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 8px;
@@ -919,7 +940,6 @@
     background: #F5F8FF;
 
     font-size: 11px;
-
     font-weight: 700;
 }
 
@@ -934,11 +954,12 @@
 }
 
 
-/* Service link */
+/* ============================================================
+   SERVICE LINK
+   ============================================================ */
 
 .fc-service-link {
     display: inline-flex;
-
     align-items: center;
 
     width: fit-content;
@@ -949,7 +970,6 @@
     color: var(--fc-blue) !important;
 
     font-size: 13px;
-
     font-weight: 800;
 
     text-decoration: none;
@@ -965,12 +985,13 @@
 
 .fc-service-link:hover {
     color: var(--fc-cyan) !important;
-
     transform: translateX(4px);
 }
 
 
-/* Card hover */
+/* ============================================================
+   CARD HOVER
+   ============================================================ */
 
 .fc-service-card:hover {
     transform: translateY(-7px);
@@ -1011,15 +1032,17 @@
 }
 
 
+/* ============================================================
+   WORK HEADER
+   ============================================================ */
+
 .fc-work-header {
     margin-bottom:
         clamp(45px, 6vw, 70px);
 }
 
-
 .fc-work-eyebrow {
     display: inline-flex;
-
     align-items: center;
 
     gap: 11px;
@@ -1029,14 +1052,10 @@
     color: var(--fc-blue);
 
     font-size: 12px;
-
     font-weight: 800;
-
     letter-spacing: .16em;
-
     text-transform: uppercase;
 }
-
 
 .fc-work-eyebrow-line {
     width: 32px;
@@ -1051,6 +1070,10 @@
 }
 
 
+/* ============================================================
+   WORK TITLE
+   ============================================================ */
+
 .fc-work-title {
     margin: 0 !important;
 
@@ -1060,9 +1083,7 @@
         clamp(42px, 5vw, 72px) !important;
 
     font-weight: 800 !important;
-
     line-height: .98 !important;
-
     letter-spacing: -.055em !important;
 }
 
@@ -1074,10 +1095,13 @@
 
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
+
+/* ============================================================
+   WORK INTRO
+   ============================================================ */
 
 .fc-work-intro {
     max-width: 500px;
@@ -1087,24 +1111,25 @@
     color: #405A78 !important;
 
     font-size: 17px !important;
-
     line-height: 1.7 !important;
 }
 
 
-/* Process card */
+/* ============================================================
+   PROCESS CARD
+   ============================================================ */
 
 .fc-work-card {
     position: relative;
 
     width: 100%;
     height: 100%;
+
     min-height: 405px;
 
     overflow: hidden;
 
-    padding:
-        28px;
+    padding: 28px;
 
     border:
         1px solid rgba(7, 20, 43, .10);
@@ -1123,7 +1148,9 @@
 }
 
 
-/* First process card */
+/* ============================================================
+   FEATURED PROCESS CARD
+   ============================================================ */
 
 .fc-work-card-featured {
     border-color:
@@ -1139,14 +1166,20 @@
 }
 
 
+/* ============================================================
+   WORK CARD TOP
+   ============================================================ */
+
 .fc-work-card-top {
     display: flex;
-
     align-items: flex-start;
-
     justify-content: space-between;
 }
 
+
+/* ============================================================
+   WORK NUMBER
+   ============================================================ */
 
 .fc-work-number {
     color: var(--fc-blue);
@@ -1154,7 +1187,6 @@
     font-family: var(--fc-font-mono);
 
     font-size: 13px;
-
     font-weight: 800;
 }
 
@@ -1163,14 +1195,15 @@
 }
 
 
-/* Work icon */
+/* ============================================================
+   WORK ICON
+   ============================================================ */
 
 .fc-work-icon {
     width: 58px;
     height: 58px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -1204,12 +1237,18 @@
 }
 
 
-/* Work content */
+/* ============================================================
+   WORK CONTENT
+   ============================================================ */
 
 .fc-work-card-content {
     margin-top: 62px;
 }
 
+
+/* ============================================================
+   WORK LABEL
+   ============================================================ */
 
 .fc-work-label {
     display: block;
@@ -1219,11 +1258,8 @@
     color: var(--fc-blue);
 
     font-size: 11px;
-
     font-weight: 800;
-
     letter-spacing: .14em;
-
     text-transform: uppercase;
 }
 
@@ -1232,15 +1268,17 @@
 }
 
 
+/* ============================================================
+   WORK TITLE
+   ============================================================ */
+
 .fc-work-card h3 {
     margin: 0 !important;
 
     color: var(--fc-navy) !important;
 
     font-size: 23px !important;
-
     font-weight: 800 !important;
-
     line-height: 1.2 !important;
 }
 
@@ -1248,6 +1286,10 @@
     color: #fff !important;
 }
 
+
+/* ============================================================
+   WORK DESCRIPTION
+   ============================================================ */
 
 .fc-work-card p {
     max-width: 280px;
@@ -1258,7 +1300,6 @@
     color: #526B88 !important;
 
     font-size: 15px !important;
-
     line-height: 1.7 !important;
 }
 
@@ -1268,7 +1309,9 @@
 }
 
 
-/* Bottom line */
+/* ============================================================
+   WORK CARD ACCENT
+   ============================================================ */
 
 .fc-work-card-accent {
     position: absolute;
@@ -1289,7 +1332,9 @@
 }
 
 
-/* Hover */
+/* ============================================================
+   WORK CARD HOVER
+   ============================================================ */
 
 .fc-work-card:hover {
     transform: translateY(-7px);
@@ -1333,11 +1378,14 @@
 }
 
 
+/* ============================================================
+   CTA GRID
+   ============================================================ */
+
 .fc-services-cta::before {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     pointer-events: none;
@@ -1354,6 +1402,10 @@
     background-size: 60px 60px;
 }
 
+
+/* ============================================================
+   CTA GLOW
+   ============================================================ */
 
 .fc-cta-glow {
     position: absolute;
@@ -1378,6 +1430,10 @@
 }
 
 
+/* ============================================================
+   CTA INNER
+   ============================================================ */
+
 .fc-services-cta-inner {
     position: relative;
     z-index: 2;
@@ -1390,10 +1446,18 @@
 }
 
 
+/* ============================================================
+   CTA EYEBROW
+   ============================================================ */
+
 .fc-section-eyebrow-light {
     color: var(--fc-cyan);
 }
 
+
+/* ============================================================
+   CTA TITLE
+   ============================================================ */
 
 .fc-services-cta-title {
     margin: 0;
@@ -1404,12 +1468,9 @@
         clamp(43px, 6vw, 78px) !important;
 
     font-weight: 800 !important;
-
     line-height: .98 !important;
-
     letter-spacing: -.055em !important;
 }
-
 
 .fc-services-cta-title span {
     display: block;
@@ -1421,10 +1482,13 @@
 
     -webkit-background-clip: text;
     background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
+
+/* ============================================================
+   CTA TEXT
+   ============================================================ */
 
 .fc-services-cta-text {
     max-width: 650px;
@@ -1436,17 +1500,18 @@
         rgba(255, 255, 255, .70) !important;
 
     font-size: 17px !important;
-
     line-height: 1.7 !important;
 }
 
 
+/* ============================================================
+   CTA ACTIONS
+   ============================================================ */
+
 .fc-services-cta-actions {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     flex-wrap: wrap;
 
     gap: 14px;
@@ -1468,27 +1533,28 @@
 
 
 /* ============================================================
-   TABLET
+   LARGE TABLET / SMALL DESKTOP
    ============================================================ */
 
 @media (max-width: 1199.98px) {
 
     .fc-services-hero {
         min-height: auto;
-
-        padding:
-            90px 0;
+        padding: 90px 0;
     }
 
     .fc-services-title {
         font-size:
-            clamp(50px, 7vw, 78px) !important;
+            clamp(50px, 6.5vw, 78px) !important;
+    }
+
+    .fc-services-orbit {
+        width: min(100%, 500px);
     }
 
     .fc-service-card {
         min-height: 460px;
     }
-
 }
 
 
@@ -1499,28 +1565,74 @@
 @media (max-width: 991.98px) {
 
     .fc-services-hero {
-        padding:
-            80px 0;
+        padding: 75px 0 85px;
     }
+
+    .fc-services-hero .row {
+        --bs-gutter-y: 45px;
+    }
+
+    /*
+     * Center hero content on tablet.
+     */
+
+    .fc-services-hero .col-lg-6:first-child {
+        text-align: center;
+    }
+
+    .fc-services-eyebrow {
+        justify-content: center;
+    }
+
+    .fc-services-title {
+        max-width: 760px;
+        margin-inline: auto;
+
+        font-size:
+            clamp(52px, 8vw, 72px) !important;
+    }
+
+    .fc-services-description {
+        max-width: 650px;
+        margin-inline: auto;
+    }
+
+    .fc-services-actions {
+        justify-content: center;
+    }
+
+    /*
+     * Orbit
+     */
 
     .fc-services-orbit {
-        max-width: 520px;
-
-        margin-top: 25px;
+        width: min(100%, 500px);
+        margin: 10px auto 0;
     }
 
-    .fc-services-list-intro {
-        margin-left: 0;
-    }
+    /*
+     * Capability connectors
+     */
 
     .fc-capability-row>div:nth-child(2) .fc-capability::after {
         display: none;
     }
 
+    /*
+     * Service list intro
+     */
+
+    .fc-services-list-intro {
+        margin-left: 0;
+    }
+
+    /*
+     * Work cards
+     */
+
     .fc-work-card {
         min-height: 370px;
     }
-
 }
 
 
@@ -1530,34 +1642,84 @@
 
 @media (max-width: 767.98px) {
 
+    /* --------------------------------------------------------
+       HERO
+       -------------------------------------------------------- */
+
     .fc-services-hero {
-        padding:
-            65px 0 75px;
+        padding: 60px 0 70px;
+    }
+
+    .fc-services-hero .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .fc-services-hero .row {
+        --bs-gutter-y: 35px;
+    }
+
+    .fc-services-eyebrow {
+        gap: 9px;
+
+        margin-bottom: 20px;
+
+        font-size: 11px;
+        letter-spacing: .14em;
+    }
+
+    .fc-services-eyebrow span {
+        width: 25px;
     }
 
     .fc-services-title {
+        max-width: 100%;
+
         font-size:
-            clamp(48px, 13vw, 66px) !important;
+            clamp(44px, 12vw, 62px) !important;
+
+        line-height: .96 !important;
+        letter-spacing: -.055em !important;
     }
 
     .fc-services-description {
-        font-size:
-            16px !important;
+        max-width: 100%;
+
+        margin-top: 24px;
+
+        font-size: 16px !important;
+        line-height: 1.7 !important;
     }
 
+    /*
+     * Buttons become full-width.
+     */
+
     .fc-services-actions {
-        align-items: stretch;
+        width: 100%;
+
         flex-direction: column;
+        align-items: stretch;
+
+        gap: 11px;
+
+        margin-top: 30px;
     }
 
     .fc-services-actions .fc-btn {
         width: 100%;
+
+        justify-content: center;
     }
 
-    .fc-services-orbit {
-        width: 100%;
+    /*
+     * Orbit
+     */
 
-        margin-top: 20px;
+    .fc-services-orbit {
+        width: min(100%, 430px);
+
+        margin: 5px auto 0;
     }
 
     .fc-orbit-center {
@@ -1569,30 +1731,62 @@
         font-size: 28px;
     }
 
+    .fc-orbit-center span {
+        margin-top: 5px;
+
+        font-size: 8px;
+    }
+
     .fc-orbit-card {
+        gap: 8px;
+
         padding:
             9px 12px;
+
+        border-radius: 11px;
+    }
+
+    .fc-orbit-card i {
+        font-size: 12px;
     }
 
     .fc-orbit-card span {
-        font-size: 11px;
+        font-size: 10px;
     }
 
+    /*
+     * Keep orbit cards safely inside the visual.
+     */
+
     .orbit-design {
-        left: 0;
+        top: 41%;
+        left: 1%;
     }
 
     .orbit-development {
-        right: 0;
+        top: 11%;
+        right: 1%;
     }
 
     .orbit-growth {
-        right: 0;
+        right: 1%;
+        bottom: 13%;
     }
 
     .orbit-intelligence {
-        left: 0;
+        bottom: 28%;
+        left: 2%;
     }
+
+    .fc-orbit-dot {
+        width: 5px;
+        height: 5px;
+    }
+
+
+    /* --------------------------------------------------------
+       INTRO
+       -------------------------------------------------------- */
 
     .fc-services-intro-title,
     .fc-services-list-title {
@@ -1613,6 +1807,11 @@
         display: none;
     }
 
+
+    /* --------------------------------------------------------
+       SERVICE CARDS
+       -------------------------------------------------------- */
+
     .fc-service-card {
         min-height: 420px;
 
@@ -1623,6 +1822,11 @@
     .fc-service-card-content {
         margin-top: 45px;
     }
+
+
+    /* --------------------------------------------------------
+       WORK
+       -------------------------------------------------------- */
 
     .fc-work-title {
         font-size:
@@ -1647,6 +1851,11 @@
         margin-top: 42px;
     }
 
+
+    /* --------------------------------------------------------
+       CTA
+       -------------------------------------------------------- */
+
     .fc-services-cta-title {
         font-size:
             clamp(42px, 11vw, 58px) !important;
@@ -1659,7 +1868,6 @@
     .fc-services-cta-actions .fc-btn {
         width: 100%;
     }
-
 }
 
 
@@ -1669,9 +1877,17 @@
 
 @media (max-width: 575.98px) {
 
+    /* --------------------------------------------------------
+       HERO
+       -------------------------------------------------------- */
+
     .fc-services-hero {
-        padding:
-            55px 0 65px;
+        padding: 50px 0 60px;
+    }
+
+    .fc-services-hero .container {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .fc-services-eyebrow {
@@ -1680,30 +1896,88 @@
 
     .fc-services-title {
         font-size:
-            47px !important;
+            clamp(40px, 12.5vw, 52px) !important;
 
-        line-height:
-            .95 !important;
+        line-height: .97 !important;
     }
 
+    .fc-services-description {
+        margin-top: 22px;
+
+        font-size:
+            15.5px !important;
+
+        line-height: 1.65 !important;
+    }
+
+    .fc-services-actions {
+        margin-top: 27px;
+    }
+
+    /*
+     * Smaller orbit.
+     */
+
     .fc-services-orbit {
-        width: 100%;
+        width: min(100%, 350px);
+    }
+
+    .fc-orbit-center {
+        width: 90px;
+        height: 90px;
+    }
+
+    .fc-orbit-center strong {
+        font-size: 24px;
+    }
+
+    .fc-orbit-center span {
+        font-size: 7px;
     }
 
     .fc-orbit-card {
-        gap: 7px;
+        gap: 6px;
 
         padding:
-            8px 10px;
+            7px 9px;
+
+        border-radius: 9px;
     }
 
     .fc-orbit-card i {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .fc-orbit-card span {
-        font-size: 10px;
+        font-size: 9px;
+
+        white-space: nowrap;
     }
+
+    .orbit-design {
+        left: 0;
+    }
+
+    .orbit-development {
+        right: 0;
+    }
+
+    .orbit-growth {
+        right: 0;
+    }
+
+    .orbit-intelligence {
+        left: 0;
+    }
+
+    .fc-orbit-line {
+        width: 38%;
+    }
+
+
+    /* --------------------------------------------------------
+       SERVICE CARDS
+       -------------------------------------------------------- */
 
     .fc-service-card {
         min-height: 400px;
@@ -1721,6 +1995,11 @@
             15px !important;
     }
 
+
+    /* --------------------------------------------------------
+       WORK CARDS
+       -------------------------------------------------------- */
+
     .fc-work-card {
         min-height: 325px;
 
@@ -1732,32 +2011,764 @@
             22px !important;
     }
 
+
+    /* --------------------------------------------------------
+       CTA
+       -------------------------------------------------------- */
+
     .fc-services-cta {
         padding:
             75px 0 80px;
+    }
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE — 320px / 360px
+   ============================================================ */
+
+@media (max-width: 375px) {
+
+    .fc-services-hero {
+        padding: 45px 0 55px;
+    }
+
+    .fc-services-hero .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .fc-services-title {
+        font-size:
+            40px !important;
+
+        line-height: .98 !important;
+        letter-spacing: -.05em !important;
+    }
+
+    .fc-services-description {
+        font-size:
+            15px !important;
+    }
+
+    .fc-services-actions .fc-btn {
+        min-height: 48px;
+
+        padding:
+            12px 18px;
+    }
+
+    .fc-services-orbit {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .fc-orbit-center {
+        width: 82px;
+        height: 82px;
+    }
+
+    .fc-orbit-center strong {
+        font-size: 21px;
+    }
+
+    .fc-orbit-card {
+        padding:
+            6px 8px;
+    }
+
+    .fc-orbit-card i {
+        font-size: 9px;
+    }
+
+    .fc-orbit-card span {
+        font-size: 8px;
+    }
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   Avoid sticky hover transforms on touch screens.
+   ============================================================ */
+
+@media (hover: none) {
+
+    .fc-service-card:hover,
+    .fc-work-card:hover {
+        transform: none;
+    }
+
+    .fc-service-link:hover {
+        transform: none;
+    }
+
+    .fc-work-card:hover .fc-work-icon {
+        transform: none;
+    }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fc-services-hero *,
+    .fc-services-hero *::before,
+    .fc-services-hero *::after,
+    .fc-service-card,
+    .fc-service-link,
+    .fc-work-card,
+    .fc-work-icon {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   FusionCentrix - Related Services Component
+   Scoped to #common-service-block
+========================================================= */
+
+#common-service-block {
+    position: relative;
+    overflow: hidden;
+    padding: 90px 0;
+    background: var(--fc-navy, #07111f);
+    color: var(--fc-white, #ffffff);
+}
+
+/* Subtle background effect */
+#common-service-block::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    right: -160px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(0, 200, 255, 0.12) 0%,
+            rgba(0, 200, 255, 0) 70%);
+    pointer-events: none;
+}
+
+#common-service-block::after {
+    content: "";
+    position: absolute;
+    bottom: -220px;
+    left: -180px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(77, 92, 255, 0.10) 0%,
+            rgba(77, 92, 255, 0) 70%);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LEDE
+========================================================= */
+
+#common-service-block .service-lede {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto 50px;
+    padding: 0 24px;
+    text-align: center;
+}
+
+#common-service-block .service-lede h2 {
+    margin: 0 0 16px;
+    color: var(--fc-white, #ffffff);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+#common-service-block .lede-copy {
+    max-width: 650px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   SERVICE GRID
+========================================================= */
+
+#common-service-block .service-tiles {
+    position: relative;
+    z-index: 1;
+
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================================
+   SERVICE TILE
+========================================================= */
+
+#common-service-block .service-tile {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 320px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: var(--fc-radius-lg, 20px);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s var(--fc-ease, ease),
+        border-color 0.3s var(--fc-ease, ease),
+        background 0.3s var(--fc-ease, ease),
+        box-shadow 0.3s var(--fc-ease, ease);
+}
+
+#common-service-block .service-tile:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(0, 200, 255, 0.35);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.20),
+        0 0 30px rgba(0, 200, 255, 0.06);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+#common-service-block .service-icon-bubble {
+    width: 54px;
+    height: 54px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    font-size: 1.15rem;
+
+    transition:
+        transform 0.3s var(--fc-ease, ease),
+        background 0.3s var(--fc-ease, ease);
+}
+
+#common-service-block .service-tile:hover .service-icon-bubble {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.13);
+}
+
+
+/* =========================================================
+   SERVICE META
+========================================================= */
+
+#common-service-block .service-meta {
+    margin-bottom: 10px;
+}
+
+#common-service-block .service-tag {
+    display: inline-block;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+#common-service-block .service-tile h3 {
+    margin: 0 0 12px;
+
+    color: var(--fc-white, #ffffff);
+
+    font-size: 1.35rem;
+    font-weight: 650;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+#common-service-block .service-tile>p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LINK
+========================================================= */
+
+#common-service-block .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: auto;
+    padding-top: 24px;
+
+    color: var(--fc-cyan, #00c8ff);
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        gap 0.25s var(--fc-ease, ease),
+        color 0.25s var(--fc-ease, ease);
+}
+
+#common-service-block .service-link i {
+    font-size: 0.75rem;
+
+    transition: transform 0.25s var(--fc-ease, ease);
+}
+
+#common-service-block .service-link:hover {
+    color: #ffffff;
+    gap: 13px;
+}
+
+#common-service-block .service-link:hover i {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   BOOTSTRAP TEXT COLORS
+   Keep your existing icon color classes but make them
+   slightly more polished on the dark V2 section.
+========================================================= */
+
+#common-service-block .text-primary {
+    color: #5aa9ff !important;
+}
+
+#common-service-block .text-warning {
+    color: #ffc857 !important;
+}
+
+#common-service-block .text-danger {
+    color: #ff6b81 !important;
+}
+
+#common-service-block .text-info {
+    color: #35d4e8 !important;
+}
+
+#common-service-block .text-secondary {
+    color: #b8a7ff !important;
+}
+
+#common-service-block .text-success {
+    color: #4ddc91 !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    #common-service-block {
+        padding: 75px 0;
+    }
+
+    #common-service-block .service-tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
 
 
-/* ============================================================
-   VERY SMALL
-   ============================================================ */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media (max-width: 375px) {
+@media (max-width: 575.98px) {
 
-    .fc-services-title {
-        font-size:
-            42px !important;
+    #common-service-block {
+        padding: 65px 0;
     }
 
-    .fc-orbit-card {
-        padding:
-            7px 8px;
+    #common-service-block .service-lede {
+        margin-bottom: 35px;
+        padding: 0 20px;
     }
 
-    .fc-orbit-card span {
-        font-size: 9px;
+    #common-service-block .service-lede h2 {
+        font-size: 2rem;
+    }
+
+    #common-service-block .lede-copy {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    #common-service-block .service-tiles {
+        width: calc(100% - 30px);
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #common-service-block .service-tile {
+        min-height: 0;
+        padding: 25px;
+    }
+
+    #common-service-block .service-icon-bubble {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    #common-service-block .service-tile h3 {
+        font-size: 1.2rem;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #common-service-block .service-tile,
+    #common-service-block .service-icon-bubble,
+    #common-service-block .service-link,
+    #common-service-block .service-link i {
+        transition: none;
+    }
+
+    #common-service-block .service-tile:hover {
+        transform: none;
+    }
+
+}
+
+/* =========================================================
+   FusionCentrix V2 - Why Choose Us
+========================================================= */
+
+#why-choose-us.why-choose-steps {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 !important;
+    background: var(--fc-surface, #f7f9fc);
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+#why-choose-us .section-heading {
+    margin: 0 0 16px;
+
+    color: var(--fc-navy, #07111f);
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+#why-choose-us .section-description {
+    max-width: 460px;
+    margin-bottom: 28px !important;
+
+    color: var(--fc-text-muted, #687386) !important;
+
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+#why-choose-us .btn-gradient {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 12px 24px;
+
+    border: 0;
+    border-radius: var(--fc-radius-sm, 10px);
+
+    background: var(--fc-gradient-primary,
+            linear-gradient(135deg, #1769ff, #00c8ff));
+
+    color: #fff;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow: 0 10px 25px rgba(23, 105, 255, 0.16);
+
+    transition:
+        transform 0.3s var(--fc-ease, ease),
+        box-shadow 0.3s var(--fc-ease, ease);
+}
+
+#why-choose-us .btn-gradient:hover {
+    color: #fff;
+    transform: translateY(-2px);
+
+    box-shadow: 0 14px 32px rgba(23, 105, 255, 0.24);
+}
+
+
+/* =========================================================
+   WHY GRID
+========================================================= */
+
+#why-choose-us .why-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   WHY CARD
+========================================================= */
+
+#why-choose-us .why-card {
+    position: relative;
+
+    min-height: 190px;
+    padding: 26px;
+
+    background: #fff;
+
+    border: 1px solid var(--fc-border, #e7ebf2);
+    border-radius: var(--fc-radius-lg, 20px);
+
+    box-shadow: var(--fc-shadow-sm,
+            0 8px 25px rgba(7, 17, 31, 0.05));
+
+    transition:
+        transform 0.3s var(--fc-ease, ease),
+        border-color 0.3s var(--fc-ease, ease),
+        box-shadow 0.3s var(--fc-ease, ease);
+}
+
+#why-choose-us .why-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(23, 105, 255, 0.18);
+
+    box-shadow: var(--fc-shadow-md,
+            0 16px 40px rgba(7, 17, 31, 0.09));
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+#why-choose-us .why-icon {
+    width: 48px;
+    height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    font-size: 1rem;
+}
+
+#why-choose-us .why-icon i {
+    line-height: 1;
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+#why-choose-us .why-card h5 {
+    margin: 0 0 8px;
+
+    color: var(--fc-navy, #07111f);
+
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+#why-choose-us .why-card p {
+    margin: 0;
+
+    color: var(--fc-text-muted, #687386);
+
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   SUBTLE ACCENT
+========================================================= */
+
+#why-choose-us .why-card::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 45px;
+    height: 3px;
+
+    border-radius: 3px 0 0 0;
+
+    background: var(--fc-gradient-primary, #1769ff);
+
+    opacity: 0;
+
+    transition: opacity 0.3s var(--fc-ease, ease);
+}
+
+#why-choose-us .why-card:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    #why-choose-us.why-choose-steps {
+        padding: 80px 0 !important;
+    }
+
+    #why-choose-us .section-description {
+        max-width: 600px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 575.98px) {
+
+    #why-choose-us.why-choose-steps {
+        padding: 65px 0 !important;
+    }
+
+    #why-choose-us .section-heading {
+        font-size: 2rem;
+    }
+
+    #why-choose-us .section-description {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    #why-choose-us .why-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    #why-choose-us .why-card {
+        min-height: auto;
+        padding: 23px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #why-choose-us .why-card,
+    #why-choose-us .btn-gradient,
+    #why-choose-us .why-card::after {
+        transition: none;
+    }
+
+    #why-choose-us .why-card:hover,
+    #why-choose-us .btn-gradient:hover {
+        transform: none;
     }
 
 }

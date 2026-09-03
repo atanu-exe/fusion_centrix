@@ -298,7 +298,7 @@
 
                                             <div class="fc-blog-card-image">
 
-                                                <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-feture-image.png') }}"
+                                                <img src="{{ $article->thumbnail_image_url ?? asset('assets/images/blog-default-feature-image.png') }}"
                                                     alt="{{ $article->title }}" loading="lazy">
 
                                                 <div class="fc-blog-card-image-overlay"></div>
@@ -931,7 +931,7 @@
                                     <div class="fc-blog-card-image">
 
                                         <img
-                                            src="${article.thumbnail_image_url || '{{ asset('assets/images/blog-default-feture-image.png') }}'}"
+                                            src="${article.thumbnail_image_url || '{{ asset('assets/images/blog-default-feature-image.png') }}'}"
                                             alt="${article.title}"
                                             loading="lazy">
 

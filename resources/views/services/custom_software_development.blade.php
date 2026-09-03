@@ -1,469 +1,1843 @@
 @extends('layouts.app')
 
-
-
 @section('content')
+    <link rel="stylesheet" href="{{ asset('assets/css/v2/services.css') }}">
 
-    <!-- Hero Banner -->
+    <main>
 
+        {{-- =========================================================
+        HERO
+    ========================================================== --}}
+        <section class="fc-services-hero">
 
- <section class="fc-header">
-        <div class="container">
-            <div class="fc-header-content">
-                <h1>Tailored Custom Software Development Services</h1>
-                <p>Delivering <b>CRM, ERP, SaaS applications, LMS, and custom software solutions</b> for businesses in the US, Canada, India, and worldwide. Our software ensures <b>scalability, efficiency, and SEO-friendly integrations</b> to streamline operations.
-                </p>
-                <div class="fc-breadcrumb">
-                    <a href="/">Home</a> / / <a href="{{ route('services') }}">Services </a> / <span>Custom Software Development</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="fc-hero-grid"></div>
 
+            <div class="container">
 
-    <!-- Service Overview -->
-<section class="py-5 py-lg-6">
-    <div class="container">
-        <div class="row align-items-start g-5">
-            <!-- Text Column -->
-            <div class="col-lg-6 order-1 order-lg-1">
-                <div class="mb-3">
-                    {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">Enterprise Solutions</span> --}}
-                </div>
-                <h2 class="display-6 fw-bold mb-3">Enterprise & Business Applications</h2>
-                <p class="text-muted lead mb-3">
-                    Develop robust <strong>CRM</strong>, <strong>ERP</strong>, <strong>HR & Payroll</strong>, and <strong>Inventory & Billing systems</strong> to streamline operations and improve efficiency.
-                </p>
-                <p class="text-muted mb-4">
-                    Built for <strong>scalability</strong>, <strong>security</strong>, and <strong>SEO-friendly interfaces</strong>, enabling better decision-making and enhanced productivity.
-                </p>
-                <ul class="list-unstyled">
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Role-based access, audit trails, and compliance-ready workflows</span>
-                    </li>
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Custom dashboards and reporting for actionable insights</span>
-                    </li>
-                    <li class="d-flex align-items-start">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Integrations with accounting, ERP, and third-party APIs</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Icon Grid Column -->
-            <div class="col-lg-6 order-2 order-lg-2">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-users-cog"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">CRM</h6>
-                                    <small class="text-muted">Leads, pipelines, automation</small>
-                                </div>
-                            </div>
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-eyebrow">
+
+                            <span></span>
+                            Custom Software Development
+
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-industry"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">ERP</h6>
-                                    <small class="text-muted">Operations, inventory, finance</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-user-tie"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">HR & Payroll</h6>
-                                    <small class="text-muted">Attendance, payroll, policies</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-receipt"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">Inventory & Billing</h6>
-                                    <small class="text-muted">Stock, invoices, GST/VAT</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="py-5 py-lg-6 bg-light">
-    <div class="container">
-        <div class="row align-items-start g-5">
-            <!-- Text Column -->
-            <div class="col-lg-6 order-1 order-lg-1">
-                <div class="mb-3">
-                    {{-- <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">SaaS & Custom Apps</span> --}}
+
+                        <h1 class="fc-services-title">
+
+                            Software <span>built around</span>
+                            the way your
+                            <strong>business works.</strong>
+
+                        </h1>
+
+
+                        <p class="fc-services-description">
+
+                            Build custom software solutions designed around your
+                            workflows, teams, customers, and business requirements.
+                            From internal business systems to customer-facing
+                            platforms, we create <strong>scalable, secure, and
+                                maintainable software</strong> that grows with you.
+
+                        </p>
+
+
+                        <div class="fc-services-actions">
+
+                            <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
+
+                                Start a Conversation
+
+                            </a>
+
+
+                            <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
+
+                                Explore Our Work
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6">
+
+                        <div class="fc-services-orbit" aria-hidden="true">
+
+                            <div class="fc-orbit orbit-one"></div>
+                            <div class="fc-orbit orbit-two"></div>
+
+                            <div class="fc-orbit-line line-one"></div>
+                            <div class="fc-orbit-line line-two"></div>
+                            <div class="fc-orbit-line line-three"></div>
+
+                            <span class="fc-orbit-dot dot-one"></span>
+                            <span class="fc-orbit-dot dot-two"></span>
+                            <span class="fc-orbit-dot dot-three"></span>
+                            <span class="fc-orbit-dot dot-four"></span>
+
+
+                            <div class="fc-orbit-center">
+
+                                <strong>FC</strong>
+                                <span>SOFTWARE</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-design">
+
+                                <i class="fas fa-cogs"></i>
+                                <span>Systems</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-development">
+
+                                <i class="fas fa-code"></i>
+                                <span>Development</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-growth">
+
+                                <i class="fas fa-chart-line"></i>
+                                <span>Insights</span>
+
+                            </div>
+
+
+                            <div class="fc-orbit-card orbit-intelligence">
+
+                                <i class="fas fa-robot"></i>
+                                <span>Automation</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <h2 class="display-6 fw-bold mb-3">SaaS & Custom Applications</h2>
-                <p class="text-muted lead mb-3">
-                    Create scalable <strong>SaaS</strong>, <strong>LMS</strong>, and <strong>Booking & Reservation</strong> systems tailored to your users’ needs.
-                </p>
-                <p class="text-muted mb-4">
-                    Built for <strong>user-friendly experience</strong>, <strong>mobile responsiveness</strong>, and <strong>SEO optimization</strong> to drive adoption.
-                </p>
-                <ul class="list-unstyled">
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Multi-tenant architectures with secure data isolation</span>
-                    </li>
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Subscription billing, trials, and usage-based pricing</span>
-                    </li>
-                    <li class="d-flex align-items-start">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Admin portals, roles, and analytics dashboards</span>
-                    </li>
-                </ul>
+
             </div>
-            <!-- Icon Grid Column -->
-            <div class="col-lg-6 order-2 order-lg-2">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+
+        </section>
+
+
+        {{-- =========================================================
+        SOFTWARE FOUNDATION
+    ========================================================== --}}
+        <section class="fc-services-intro">
+
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        Custom Software Solutions
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        Technology designed around
+                        <span>your processes.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Off-the-shelf software does not always fit the way a
+                        business operates. We build custom applications that
+                        connect your workflows, data, users, and systems into
+                        software that works around your actual requirements.
+
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4 fc-capability-row">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-project-diagram"></i>
+
+                            </div>
+
+                            <span>01</span>
+
+                            <h3>Business Systems</h3>
+
+                            <p>
+
+                                Replace disconnected processes with
+                                software designed around your team's
+                                day-to-day operations.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-layer-group"></i>
+
+                            </div>
+
+                            <span>02</span>
+
+                            <h3>Scalable Architecture</h3>
+
+                            <p>
+
+                                Build modular applications that can
+                                evolve as your users, features, and
+                                business requirements grow.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-plug"></i>
+
+                            </div>
+
+                            <span>03</span>
+
+                            <h3>Integrations</h3>
+
+                            <p>
+
+                                Connect APIs, third-party platforms,
+                                payment systems, business tools,
+                                and internal applications.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <div class="fc-capability">
+
+                            <div class="fc-capability-icon">
+
+                                <i class="fas fa-shield-alt"></i>
+
+                            </div>
+
+                            <span>04</span>
+
+                            <h3>Secure Software</h3>
+
+                            <p>
+
+                                Build applications with appropriate
+                                authentication, permissions, validation,
+                                and data protection.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        CORE SOFTWARE SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            What We Build
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Software solutions for
+                            <span>real business needs.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            From internal platforms and dashboards to
+                            customer-facing applications and integrations,
+                            we build software around your specific use case.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- Business Applications --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-cogs"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Business Systems
+                                </span>
+
+
+                                <h3>
+                                    Custom Business Applications
+                                </h3>
+
+
+                                <p>
+
+                                    Build software around your internal
+                                    workflows, approvals, operations,
+                                    teams, and business processes instead
+                                    of forcing your processes into generic tools.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Business Apps</span>
+                                    <span>Workflows</span>
+                                    <span>Operations</span>
+                                    <span>Automation</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Your System
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- SaaS --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
                                     <i class="fas fa-cloud"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">SaaS</h6>
-                                    <small class="text-muted">Multi-tenant, subscriptions</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">LMS</h6>
-                                    <small class="text-muted">Courses, quizzes, certs</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">Booking</h6>
-                                    <small class="text-muted">Slots, payments, reminders</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div>
-                                    <h6 class="mb-1">Security</h6>
-                                    <small class="text-muted">Auth, RBAC, compliance</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="py-5 py-lg-6">
-    <div class="container">
-        <div class="row align-items-start g-5">
-            <!-- Text Column -->
-            <div class="col-lg-6 order-1 order-lg-1">
-                <div class="mb-3">
-                    {{-- <span class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill">Data & Legacy</span> --}}
-                </div>
-                <h2 class="display-6 fw-bold mb-3">Data & Legacy Solutions</h2>
-                <p class="text-muted lead mb-3">
-                    Modernize <strong>legacy software</strong> and integrate <strong>custom APIs</strong>, <strong>middleware</strong>, and <strong>analytics dashboards</strong> for smarter insights.
-                </p>
-                <p class="text-muted mb-4">
-                    Empower teams with <strong>actionable analytics</strong>, <strong>seamless integrations</strong>, and <strong>efficient workflows</strong> — all performance-tuned.
-                </p>
-                <ul class="list-unstyled">
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>Legacy migration with minimal downtime</span>
-                    </li>
-                    <li class="d-flex align-items-start mb-2">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>ETL pipelines and data warehousing</span>
-                    </li>
-                    <li class="d-flex align-items-start">
-                        <i class="fas fa-check-circle text-success me-2 mt-1"></i>
-                        <span>API-first integration strategy</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- Icon Grid Column -->
-            <div class="col-lg-6 order-2 order-lg-2">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-database"></i>
                                 </div>
-                                <div>
-                                    <h6 class="mb-1">Data Pipelines</h6>
-                                    <small class="text-muted">ETL, warehousing</small>
-                                </div>
+
                             </div>
-                        </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    SaaS Platforms
+                                </span>
+
+
+                                <h3>
+                                    SaaS Application Development
+                                </h3>
+
+
+                                <p>
+
+                                    Create cloud-based software products
+                                    with user accounts, subscription
+                                    workflows, dashboards, permissions,
+                                    integrations, and product-specific
+                                    functionality.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>SaaS</span>
+                                    <span>Dashboards</span>
+                                    <span>Subscriptions</span>
+                                    <span>APIs</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Build Your SaaS
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
                     </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+
+
+                    {{-- Dashboards --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-chart-bar"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Data & Insights
+                                </span>
+
+
+                                <h3>
+                                    Dashboards & Admin Systems
+                                </h3>
+
+
+                                <p>
+
+                                    Turn operational data into useful
+                                    dashboards and administrative systems
+                                    that help teams manage users, records,
+                                    workflows, and business activity.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Admin Panels</span>
+                                    <span>Dashboards</span>
+                                    <span>Reports</span>
+                                    <span>Analytics</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Your Dashboard
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- API --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
                                     <i class="fas fa-plug"></i>
+
                                 </div>
-                                <div>
-                                    <h6 class="mb-1">API Integrations</h6>
-                                    <small class="text-muted">REST, GraphQL</small>
-                                </div>
+
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                                    <i class="fas fa-chart-pie"></i>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Integrations
+                                </span>
+
+
+                                <h3>
+                                    API & Third-party Integrations
+                                </h3>
+
+
+                                <p>
+
+                                    Connect your application with
+                                    payment gateways, CRMs, accounting
+                                    systems, external APIs, communication
+                                    tools, and other business platforms.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>REST APIs</span>
+                                    <span>Integrations</span>
+                                    <span>Payments</span>
+                                    <span>Automation</span>
+
                                 </div>
-                                <div>
-                                    <h6 class="mb-1">Dashboards</h6>
-                                    <small class="text-muted">KPIs, reports</small>
-                                </div>
+
                             </div>
-                        </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Discuss Integrations
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
                     </div>
-                    <div class="col-sm-6">
-                        <div class="p-3 bg-white shadow-sm rounded-3 h-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+
+
+                    {{-- Automation --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    05
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-robot"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Automation
+                                </span>
+
+
+                                <h3>
+                                    Workflow Automation
+                                </h3>
+
+
+                                <p>
+
+                                    Reduce repetitive manual work by
+                                    connecting business rules, approvals,
+                                    notifications, data processing, and
+                                    system-to-system workflows.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Automation</span>
+                                    <span>Workflows</span>
+                                    <span>Notifications</span>
+                                    <span>Processes</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Automate Your Workflow
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Legacy --}}
+                    <div class="col-12 col-lg-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    06
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
                                     <i class="fas fa-sync-alt"></i>
+
                                 </div>
-                                <div>
-                                    <h6 class="mb-1">Modernization</h6>
-                                    <small class="text-muted">Refactor, migrate</small>
-                                </div>
+
                             </div>
-                        </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Modernization
+                                </span>
+
+
+                                <h3>
+                                    Software Modernization
+                                </h3>
+
+
+                                <p>
+
+                                    Improve existing applications by
+                                    modernizing architecture, improving
+                                    maintainability, introducing better
+                                    workflows, and connecting modern systems.
+
+                                </p>
+
+
+                                <div class="fc-service-tags">
+
+                                    <span>Modernization</span>
+                                    <span>Refactoring</span>
+                                    <span>APIs</span>
+                                    <span>Maintenance</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <a href="{{ url('contact-us') }}" class="fc-service-link">
+
+                                Modernize Your Software
+                                <i class="fas fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
                     </div>
+
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-
-
-
-
-
-
-    <!-- What You Get -->
-    <section class="py-5 py-lg-6 bg-light">
-        <div class="container">
-            <div class="text-center mb-4">
-                {{-- <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 rounded-pill">Key Benefits</span> --}}
-                <h3 class="fw-bold">What You Get</h3>
-                <p class="text-muted mx-auto" style="max-width: 720px;">A quick, skimmable overview with clear icons and short explanations — no heavy images, just simple stripes and FAQs.</p>
-            </div>
-
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Business Automation</h5>
-                            <p class="text-muted mb-0">CRM, ERP, SaaS, and custom workflows to automate operations.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Data & Insights</h5>
-                            <p class="text-muted mb-0">Dashboards and analytics for smarter, data-driven decisions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-info bg-opacity-10 text-info rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">Secure & Scalable</h5>
-                            <p class="text-muted mb-0">Compliance-ready security, performance, and cloud-native scalability.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-3 p-md-4 bg-white shadow-sm rounded-3 d-flex align-items-start gap-3 h-100">
-                        <div class="bg-warning bg-opacity-10 text-warning rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-1">User-Centric UX</h5>
-                            <p class="text-muted mb-0">Mobile-first, accessible interfaces that make complex tasks simple.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Quick FAQ -->
-            <div class="accordion mt-4" id="softwareFaq">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Can you integrate with our existing systems?
-                        </button>
+        </section>
+
+
+        {{-- =========================================================
+        TECHNOLOGY
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Technology
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            The right technology for
+                            <span>the right problem.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Technology choices should follow the requirements
+                            of the product. We select practical technologies
+                            based on functionality, integrations, scalability,
+                            and long-term maintainability.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- Laravel --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fab fa-laravel"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Backend
+                                </span>
+
+                                <h3>
+                                    Laravel Development
+                                </h3>
+
+                                <p>
+
+                                    Build structured web applications,
+                                    APIs, admin systems, and business
+                                    platforms using Laravel.
+
+                                </p>
+
+                                <div class="fc-service-tags">
+
+                                    <span>Laravel</span>
+                                    <span>PHP</span>
+                                    <span>APIs</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- React --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fab fa-react"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Frontend
+                                </span>
+
+                                <h3>
+                                    React Development
+                                </h3>
+
+                                <p>
+
+                                    Create responsive interfaces and
+                                    interactive applications for modern
+                                    web products and business platforms.
+
+                                </p>
+
+                                <div class="fc-service-tags">
+
+                                    <span>React</span>
+                                    <span>JavaScript</span>
+                                    <span>UI</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- Database --}}
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-database"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Data
+                                </span>
+
+                                <h3>
+                                    Database & Data Systems
+                                </h3>
+
+                                <p>
+
+                                    Design structured data models and
+                                    application workflows that keep
+                                    business information organized and
+                                    accessible.
+
+                                </p>
+
+                                <div class="fc-service-tags">
+
+                                    <span>MySQL</span>
+                                    <span>Data Models</span>
+                                    <span>Reporting</span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        HOW WE WORK
+    ========================================================== --}}
+        <section class="fc-work-section">
+
+            <div class="container">
+
+                <div class="fc-work-header">
+
+                    <div class="fc-work-eyebrow">
+
+                        <span class="fc-work-eyebrow-line"></span>
+                        How We Work
+
+                    </div>
+
+
+                    <div class="row align-items-end g-4">
+
+                        <div class="col-lg-7">
+
+                            <h2 class="fc-work-title">
+
+                                From business problem to
+                                <span>working software.</span>
+
+                            </h2>
+
+                        </div>
+
+
+                        <div class="col-lg-5">
+
+                            <p class="fc-work-intro">
+
+                                We focus on understanding the problem first,
+                                then design and build software that is practical
+                                for the people who will actually use it.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4 fc-work-process">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card fc-work-card-featured">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-search"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Discover
+                                </span>
+
+
+                                <h3>
+                                    Understand
+                                </h3>
+
+
+                                <p>
+
+                                    Understand your existing process,
+                                    users, requirements, challenges,
+                                    and desired outcomes.
+
+                                </p>
+
+                            </div>
+
+
+                            <span class="fc-work-card-accent"></span>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-sitemap"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Plan
+                                </span>
+
+
+                                <h3>
+                                    Architect
+                                </h3>
+
+
+                                <p>
+
+                                    Define the application's structure,
+                                    workflows, data model, integrations,
+                                    and technical direction.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-code"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Build
+                                </span>
+
+
+                                <h3>
+                                    Develop
+                                </h3>
+
+
+                                <p>
+
+                                    Develop the application in manageable
+                                    stages with testing, integration,
+                                    and continuous feedback.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
+
+                        <article class="fc-work-card">
+
+                            <div class="fc-work-card-top">
+
+                                <span class="fc-work-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-work-icon">
+
+                                    <i class="fas fa-rocket"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-work-card-content">
+
+                                <span class="fc-work-label">
+                                    Launch
+                                </span>
+
+
+                                <h3>
+                                    Improve
+                                </h3>
+
+
+                                <p>
+
+                                    Launch the software, gather feedback,
+                                    monitor usage, and continue improving
+                                    as your business evolves.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        BENEFITS
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-8">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Why Custom Software
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Software that fits your
+                            <span>business, not the other way around.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-4">
+
+                        <p class="fc-services-list-intro">
+
+                            Custom software gives you control over the
+                            workflows, features, integrations, and experiences
+                            that matter most to your organization.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    {{-- 01 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    01
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-sliders-h"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Flexibility
+                                </span>
+
+
+                                <h3>
+                                    Built Around Your Workflow
+                                </h3>
+
+
+                                <p>
+
+                                    Design features and workflows around
+                                    how your business actually operates,
+                                    rather than adapting your processes
+                                    to generic software.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 02 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    02
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-link"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Connectivity
+                                </span>
+
+
+                                <h3>
+                                    Connected Business Systems
+                                </h3>
+
+
+                                <p>
+
+                                    Bring data and processes together by
+                                    connecting internal tools and external
+                                    services through APIs and integrations.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 03 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card fc-service-card-dark">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    03
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-bolt"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Efficiency
+                                </span>
+
+
+                                <h3>
+                                    Less Manual Work
+                                </h3>
+
+
+                                <p>
+
+                                    Automate repetitive processes,
+                                    notifications, approvals, and
+                                    data handling so teams can spend
+                                    more time on valuable work.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    {{-- 04 --}}
+                    <div class="col-12 col-md-6">
+
+                        <article class="fc-service-card">
+
+                            <div class="fc-service-card-top">
+
+                                <span class="fc-service-number">
+                                    04
+                                </span>
+
+
+                                <div class="fc-service-icon">
+
+                                    <i class="fas fa-layer-group"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fc-service-card-content">
+
+                                <span class="fc-service-category">
+                                    Growth
+                                </span>
+
+
+                                <h3>
+                                    Ready to Evolve
+                                </h3>
+
+
+                                <p>
+
+                                    Start with the features you need today
+                                    while keeping the architecture flexible
+                                    enough to support future requirements.
+
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        FAQ
+    ========================================================== --}}
+        <section class="fc-services-list">
+
+            <div class="container">
+
+                <div class="row align-items-end g-4 fc-services-list-header">
+
+                    <div class="col-lg-7">
+
+                        <div class="fc-section-eyebrow fc-section-eyebrow-left">
+
+                            <span></span>
+                            Frequently Asked Questions
+
+                        </div>
+
+
+                        <h2 class="fc-services-list-title">
+
+                            Questions about
+                            <span>custom software.</span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <div class="col-lg-5">
+
+                        <p class="fc-services-list-intro">
+
+                            A few common questions businesses ask before
+                            starting a custom software development project.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <div class="col-12">
+
+                        <div class="accordion" id="customSoftwareFaq">
+
+
+                            {{-- FAQ 01 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqOne">
+
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseOne" aria-expanded="true"
+                                        aria-controls="softwareCollapseOne">
+
+                                        When should a business consider custom software?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="softwareFaqOne" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Custom software can make sense when
+                                        existing tools do not fit your workflows,
+                                        require too many workarounds, or cannot
+                                        provide the integrations and functionality
+                                        your business needs.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 02 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqTwo">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseTwo" aria-expanded="false"
+                                        aria-controls="softwareCollapseTwo">
+
+                                        Can you integrate existing business systems?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="softwareFaqTwo" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Depending on the available
+                                        integration methods, we can connect
+                                        APIs, payment systems, CRMs, business
+                                        tools, databases, and other services.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 03 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqThree">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseThree" aria-expanded="false"
+                                        aria-controls="softwareCollapseThree">
+
+                                        Can you build admin dashboards and portals?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="softwareFaqThree" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. We can build role-based admin
+                                        dashboards, internal portals, reporting
+                                        systems, customer portals, and other
+                                        application interfaces.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 04 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqFour">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseFour" aria-expanded="false"
+                                        aria-controls="softwareCollapseFour">
+
+                                        Can you modernize an existing application?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="softwareFaqFour" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Yes. Existing software can be reviewed
+                                        and gradually improved through
+                                        refactoring, architectural changes,
+                                        new integrations, interface improvements,
+                                        and feature development.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 05 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqFive">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseFive" aria-expanded="false"
+                                        aria-controls="softwareCollapseFive">
+
+                                        What technologies do you use?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseFive" class="accordion-collapse collapse"
+                                    aria-labelledby="softwareFaqFive" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Technology depends on the project.
+                                        Our development work can include
+                                        technologies such as Laravel, PHP,
+                                        React, JavaScript, APIs, and database
+                                        technologies based on the application's
+                                        requirements.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- FAQ 06 --}}
+                            <div class="accordion-item">
+
+                                <h3 class="accordion-header" id="softwareFaqSix">
+
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#softwareCollapseSix" aria-expanded="false"
+                                        aria-controls="softwareCollapseSix">
+
+                                        Do you provide ongoing support?
+
+                                    </button>
+
+                                </h3>
+
+
+                                <div id="softwareCollapseSix" class="accordion-collapse collapse"
+                                    aria-labelledby="softwareFaqSix" data-bs-parent="#customSoftwareFaq">
+
+                                    <div class="accordion-body">
+
+                                        Ongoing support can include maintenance,
+                                        updates, improvements, troubleshooting,
+                                        performance work, and additional feature
+                                        development as the software evolves.
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        {{-- =========================================================
+        WHY CHOOSE US
+    ========================================================== --}}
+        @include('includes.why-choose-us')
+
+
+        {{-- =========================================================
+        CTA
+    ========================================================== --}}
+        <section class="fc-services-cta">
+
+            <div class="fc-cta-glow"></div>
+
+            <div class="container">
+
+                <div class="fc-services-cta-inner">
+
+                    <div class="fc-section-eyebrow fc-section-eyebrow-light">
+
+                        <span></span>
+                        Have a Software Project in Mind?
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-cta-title">
+
+                        Let's build software that
+                        <span>works for your business.</span>
+
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#softwareFaq">
-                        <div class="accordion-body text-muted">Yes — we follow an API-first approach to connect ERPs, CRMs, accounting suites, and custom services.</div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            How do you ensure performance and security?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#softwareFaq">
-                        <div class="accordion-body text-muted">We ship optimized queries, caching, CDN, SSL, RBAC, audit logs, and align with PCI/GDPR where applicable.</div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Do you support cloud deployment?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#softwareFaq">
-                        <div class="accordion-body text-muted">Absolutely — we deploy on AWS, Azure, or GCP with CI/CD pipelines and observability.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
+                    <p class="fc-services-cta-text">
+
+                        Tell us about your workflow, the problem you're
+                        trying to solve, and where you want to take your
+                        business. We'll help turn the requirement into
+                        a practical software solution.
+
+                    </p>
 
 
+                    <div class="fc-services-cta-actions">
 
+                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary fc-btn-large">
 
+                            <i class="fas fa-comments me-2"></i>
+                            Start a Conversation
 
-    <!-- Why Choose Us -->
-
-    @include('includes.why-choose-us')
-
-
-
-
-
-    <!-- Call To Action -->
-    <section class="position-relative py-5 py-lg-6 text-white overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        <div class="container position-relative">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h4 class="display-6 fw-bold mb-3">Ready to Build Your Custom Software?</h4>
-                    <p class="lead mb-4">From concept to launch, we deliver secure, scalable, and user-centric software tailored to your operations.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="{{ url('contact-us') }}" class="btn btn-light btn-lg text-primary fw-bold px-5 py-3 rounded-pill shadow-lg">
-                            <i class="fas fa-rocket me-2"></i>Let's Get Started
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5 py-3 rounded-pill" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/fusioncentrix/30min?hide_event_type_details=1&hide_gdpr_banner=1'});return false;">
-                            <i class="fas fa-phone me-2"></i>Schedule a Call
+
+
+                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline fc-btn-large">
+
+                            View Our Work
+
                         </a>
+
                     </div>
-                    <div class="mt-3">
-                        <small class="opacity-75"><i class="fas fa-check-circle me-2"></i>Free consultation <i class="fas fa-check-circle mx-2"></i>No commitment required</small>
-                    </div>
+
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Related Services -->
-
-         <section class="services py-5 bg-light">
-
-        <div class="container">
-
-            <div class="text-center mb-5">
-
-                <h2 class="section-heading">Other Services</h2>
-
-                <p class="section-description text-muted">
-
-                    We empower businesses through expertly crafted <strong>web & app development</strong>,
-
-                    <strong>SEO</strong>, <strong>branding</strong>, and <strong>marketing strategies</strong>. From
-
-                    startups to large-scale enterprises in the US, Canada, and beyond, Fusioncentrix Solutions delivers
-
-                    scalable and performance-driven digital services tailored to your vision.
-
-                </p>
 
             </div>
 
-            @include('includes.services')
+        </section>
 
-        </div>
 
-    </section>
+        {{-- =========================================================
+        RELATED SERVICES
+    ========================================================== --}}
+        <section class="fc-services-list">
 
+            <div class="container">
+
+                <div class="text-center">
+
+                    <div class="fc-section-eyebrow">
+
+                        <span></span>
+                        Explore More
+                        <span></span>
+
+                    </div>
+
+
+                    <h2 class="fc-services-intro-title">
+
+                        More ways to build your
+                        <span>digital business.</span>
+
+                    </h2>
+
+
+                    <p class="fc-services-intro-text">
+
+                        Combine custom software with web development,
+                        e-commerce, digital marketing, UI/UX, and branding
+                        to create a complete digital presence.
+
+                    </p>
+
+                </div>
+
+
+                <div class="mt-5">
+
+                    @include('includes.services')
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
 @endsection
-
