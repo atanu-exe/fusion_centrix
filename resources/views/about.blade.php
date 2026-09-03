@@ -1,102 +1,96 @@
+
 @extends('layouts.app')
+
 @section('content')
- <link rel="stylesheet" href="{{ asset('assets/css/v2/about.css') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/css/v2/about.css') }}">
+
+<main id="main-content" class="fc-about-page">
+
     {{-- ============================================================
-     FUSIONCENTRIX V2 — ABOUT PAGE
-     ============================================================ --}}
+         01. HERO
+         ============================================================ --}}
 
-    <main id="main-content" class="fc-about-page">
+    <section class="fc-about-hero"
+             aria-labelledby="about-hero-title">
 
+        <div class="fc-about-hero-glow fc-about-hero-glow-one"
+             aria-hidden="true"></div>
 
-        {{-- ========================================================
-         01. ABOUT HERO
-         ======================================================== --}}
+        <div class="fc-about-hero-glow fc-about-hero-glow-two"
+             aria-hidden="true"></div>
 
-        <section class="fc-about-hero" aria-labelledby="about-hero-title">
+        <div class="container">
 
-            <div class="fc-about-hero-glow fc-about-hero-glow-one" aria-hidden="true">
-            </div>
+            <div class="fc-about-hero-content">
 
-            <div class="fc-about-hero-glow fc-about-hero-glow-two" aria-hidden="true">
-            </div>
+                <span class="fc-eyebrow">
+                    About FusionCentrix
+                </span>
 
+                <h1 id="about-hero-title"
+                    class="fc-about-hero-title">
 
-            <div class="container">
+                    We build digital solutions
+                    <span>with purpose.</span>
 
-                <div class="fc-about-hero-content">
+                </h1>
 
-                    <span class="fc-eyebrow">
-                        About FusionCentrix
-                    </span>
+                <p class="fc-about-hero-description">
+                    FusionCentrix is a digital solutions partner helping
+                    businesses turn ideas into reliable, scalable, and
+                    growth-focused digital experiences.
+                </p>
 
+                <div class="fc-about-hero-actions">
 
-                    <h1 id="about-hero-title" class="fc-about-hero-title">
+                    <a href="{{ url('contact-us') }}"
+                       class="fc-btn fc-btn-primary">
+                        Start a Conversation
+                    </a>
 
-                        We build digital solutions
-                        <span>with purpose.</span>
-
-                    </h1>
-
-
-                    <p class="fc-about-hero-description">
-
-                        FusionCentrix is a digital solutions partner
-                        helping businesses turn ideas into reliable,
-                        scalable, and growth-focused digital experiences.
-
-                    </p>
-
-
-                    <div class="fc-about-hero-actions">
-
-                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
-
-                            Start a Conversation
-
-                        </a>
-
-
-                        <a href="{{ url('services') }}" class="fc-btn fc-btn-outline">
-
-                            Explore Our Services
-
-                        </a>
-
-                    </div>
+                    <a href="{{ url('services') }}"
+                       class="fc-btn fc-btn-outline">
+                        Explore Our Services
+                    </a>
 
                 </div>
 
             </div>
 
+        </div>
 
-            <div class="fc-about-hero-bottom" aria-hidden="true">
+        <div class="fc-about-hero-bottom"
+             aria-hidden="true">
 
-                <span>Strategy</span>
-                <i></i>
+            <span>Strategy</span>
+            <i></i>
 
-                <span>Technology</span>
-                <i></i>
+            <span>Technology</span>
+            <i></i>
 
-                <span>Design</span>
-                <i></i>
+            <span>Design</span>
+            <i></i>
 
-                <span>Growth</span>
+            <span>Growth</span>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
 
-
-        {{-- ========================================================
+    {{-- ============================================================
          02. WHO WE ARE
-         ======================================================== --}}
+         ============================================================ --}}
 
-        <section class="fc-about-intro fc-section" aria-labelledby="about-intro-title">
+    <section class="fc-about-intro fc-section"
+             aria-labelledby="about-intro-title">
 
-            <div class="container">
+        <div class="container">
 
-                <div class="fc-about-intro-grid">
+            <div class="row g-4 g-lg-5">
+
+                <div class="col-12 col-lg-5">
 
                     <div class="fc-about-intro-heading">
 
@@ -104,8 +98,8 @@
                             Who We Are
                         </span>
 
-
-                        <h2 id="about-intro-title" class="fc-section-title">
+                        <h2 id="about-intro-title"
+                            class="fc-section-title">
 
                             One partner.
                             <span class="fc-gradient-text">
@@ -116,35 +110,30 @@
 
                     </div>
 
+                </div>
+
+                <div class="col-12 col-lg-7">
 
                     <div class="fc-about-intro-content">
 
                         <p class="fc-about-intro-lead">
-
                             Businesses shouldn't have to coordinate
                             disconnected teams for every part of their
                             digital journey.
-
                         </p>
 
-
                         <p>
-
                             At FusionCentrix, we bring development,
                             design, SEO, digital marketing, branding,
                             and technology solutions together under
                             one team.
-
                         </p>
 
-
                         <p>
-
                             Our goal is simple: understand the business
                             behind the project, build the right digital
                             solution, and create an experience that can
                             continue to evolve as the business grows.
-
                         </p>
 
                     </div>
@@ -153,50 +142,49 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-
-        {{-- ========================================================
+    {{-- ============================================================
          03. WHAT WE BELIEVE
-         ======================================================== --}}
+         ============================================================ --}}
 
-        <section class="fc-about-beliefs fc-section-soft fc-section" aria-labelledby="beliefs-title">
+    <section class="fc-about-beliefs fc-section-soft fc-section"
+             aria-labelledby="beliefs-title">
 
-            <div class="container">
+        <div class="container">
 
-                <div class="fc-about-beliefs-header">
+            <header class="fc-about-section-header">
 
-                    <span class="fc-eyebrow">
-                        What We Believe
+                <span class="fc-eyebrow">
+                    What We Believe
+                </span>
+
+                <h2 id="beliefs-title"
+                    class="fc-section-title">
+
+                    Technology should
+                    <span class="fc-gradient-text">
+                        solve real problems.
                     </span>
 
+                </h2>
 
-                    <h2 id="beliefs-title" class="fc-section-title">
+                <p class="fc-section-description">
+                    We focus on useful technology, thoughtful design,
+                    and measurable outcomes instead of building digital
+                    products simply for the sake of technology.
+                </p>
 
-                        Technology should
-                        <span class="fc-gradient-text">
-                            solve real problems.
-                        </span>
-
-                    </h2>
-
-
-                    <p class="fc-section-description">
-
-                        We focus on useful technology, thoughtful design,
-                        and measurable outcomes instead of building
-                        digital products simply for the sake of technology.
-
-                    </p>
-
-                </div>
+            </header>
 
 
-                <div class="fc-about-beliefs-grid">
+            <div class="row g-0 fc-about-beliefs-grid">
 
+                <div class="col-12 col-md-6 col-xl-3">
 
-                    {{-- Belief 01 --}}
                     <article class="fc-about-belief">
 
                         <span class="fc-about-belief-number">
@@ -214,8 +202,11 @@
 
                     </article>
 
+                </div>
 
-                    {{-- Belief 02 --}}
+
+                <div class="col-12 col-md-6 col-xl-3">
+
                     <article class="fc-about-belief">
 
                         <span class="fc-about-belief-number">
@@ -233,8 +224,11 @@
 
                     </article>
 
+                </div>
 
-                    {{-- Belief 03 --}}
+
+                <div class="col-12 col-md-6 col-xl-3">
+
                     <article class="fc-about-belief">
 
                         <span class="fc-about-belief-number">
@@ -252,8 +246,11 @@
 
                     </article>
 
+                </div>
 
-                    {{-- Belief 04 --}}
+
+                <div class="col-12 col-md-6 col-xl-3">
+
                     <article class="fc-about-belief">
 
                         <span class="fc-about-belief-number">
@@ -275,28 +272,32 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    {{-- ============================================================
+         04. WHAT WE DO
+         ============================================================ --}}
 
-        {{-- ========================================================
-         04. WHAT WE BRING TOGETHER
-         ======================================================== --}}
+    <section class="fc-about-capabilities fc-section"
+             aria-labelledby="capabilities-title">
 
-        <section class="fc-about-capabilities fc-section" aria-labelledby="capabilities-title">
+        <div class="container">
 
-            <div class="container">
+            <div class="row g-4 g-lg-5 align-items-center">
 
-                <div class="fc-about-capabilities-grid">
+                <div class="col-12 col-lg-5">
 
                     <div class="fc-about-capabilities-content">
 
                         <span class="fc-eyebrow">
-                            Our Capabilities
+                            What We Do
                         </span>
 
-
-                        <h2 id="capabilities-title" class="fc-section-title">
+                        <h2 id="capabilities-title"
+                            class="fc-section-title">
 
                             Different disciplines.
                             <span class="fc-gradient-text">
@@ -305,106 +306,90 @@
 
                         </h2>
 
-
                         <p class="fc-section-description">
-
-                            From the first strategy discussion to launch
-                            and continued growth, our capabilities work
-                            together instead of operating in isolation.
-
+                            From strategy and design to development,
+                            visibility, and continued optimization,
+                            our capabilities work together to solve
+                            real business requirements.
                         </p>
 
-
-                        <a href="{{ url('services') }}" class="fc-btn fc-btn-primary fc-about-capabilities-btn">
-
+                        <a href="{{ url('services') }}"
+                           class="fc-btn fc-btn-primary fc-about-capabilities-btn">
                             Explore Services
-
                         </a>
 
                     </div>
 
+                </div>
+
+
+                <div class="col-12 col-lg-7">
 
                     <div class="fc-about-capability-list">
 
-
-                        <div class="fc-about-capability">
+                        <article class="fc-about-capability">
 
                             <span>01</span>
 
                             <div>
-
-                                <h3>
-                                    Development
-                                </h3>
+                                <h3>Development</h3>
 
                                 <p>
-                                    Websites, applications, e-commerce,
-                                    and custom software solutions.
+                                    Websites, web applications, e-commerce,
+                                    SaaS products, and custom software solutions.
                                 </p>
-
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-capability">
+                        <article class="fc-about-capability">
 
                             <span>02</span>
 
                             <div>
-
-                                <h3>
-                                    Design
-                                </h3>
+                                <h3>Design</h3>
 
                                 <p>
-                                    User experiences, interfaces,
-                                    visual systems, and brand identity.
+                                    User experiences, interfaces, visual
+                                    systems, and brand identity.
                                 </p>
-
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-capability">
+                        <article class="fc-about-capability">
 
                             <span>03</span>
 
                             <div>
-
-                                <h3>
-                                    Growth
-                                </h3>
+                                <h3>Growth</h3>
 
                                 <p>
                                     SEO, digital marketing, content,
-                                    and strategies designed for visibility.
+                                    and strategies designed to improve
+                                    online visibility.
                                 </p>
-
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-capability">
+                        <article class="fc-about-capability">
 
                             <span>04</span>
 
                             <div>
-
-                                <h3>
-                                    Technology
-                                </h3>
+                                <h3>Technology</h3>
 
                                 <p>
-                                    Practical technology solutions,
-                                    integrations, automation, and optimization.
+                                    Integrations, automation, optimization,
+                                    and practical technology solutions.
                                 </p>
-
                             </div>
 
-                        </div>
+                        </article>
 
                     </div>
 
@@ -412,39 +397,48 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    {{-- ============================================================
+         05. HOW WE WORK
+         ============================================================ --}}
 
-        {{-- ========================================================
-         05. OUR APPROACH
-         ======================================================== --}}
+    <section class="fc-about-approach fc-section-dark fc-section"
+             aria-labelledby="approach-title">
 
-        <section class="fc-about-approach fc-section-dark fc-section" aria-labelledby="approach-title">
+        <div class="container">
 
-            <div class="container">
+            <header class="fc-about-approach-header">
 
-                <div class="fc-about-approach-header">
+                <span class="fc-eyebrow">
+                    How We Work
+                </span>
 
-                    <span class="fc-eyebrow">
-                        Our Approach
+                <h2 id="approach-title"
+                    class="fc-section-title">
+
+                    Clear thinking.
+                    <span class="fc-gradient-text">
+                        Better execution.
                     </span>
 
+                </h2>
 
-                    <h2 id="approach-title" class="fc-section-title">
+                <p class="fc-section-description fc-about-approach-description">
+                    We follow a practical process that keeps business
+                    objectives, users, technology, and long-term growth
+                    connected from beginning to launch and beyond.
+                </p>
 
-                        Clear thinking.
-                        <span class="fc-gradient-text">
-                            Better execution.
-                        </span>
-
-                    </h2>
-
-                </div>
+            </header>
 
 
-                <div class="fc-about-approach-grid">
+            <div class="row g-0 fc-about-approach-grid">
 
+                <div class="col-12 col-md-6 col-xl-3">
 
                     <article class="fc-about-approach-item">
 
@@ -463,6 +457,10 @@
 
                     </article>
 
+                </div>
+
+
+                <div class="col-12 col-md-6 col-xl-3">
 
                     <article class="fc-about-approach-item">
 
@@ -481,6 +479,10 @@
 
                     </article>
 
+                </div>
+
+
+                <div class="col-12 col-md-6 col-xl-3">
 
                     <article class="fc-about-approach-item">
 
@@ -499,6 +501,10 @@
 
                     </article>
 
+                </div>
+
+
+                <div class="col-12 col-md-6 col-xl-3">
 
                     <article class="fc-about-approach-item">
 
@@ -521,192 +527,159 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    {{-- ============================================================
+         06. OUR PEOPLE
+         ============================================================ --}}
 
-        {{-- ========================================================
-         06. MEET OUR EXPERTS
-         ======================================================== --}}
+    <section class="fc-about-team fc-section"
+             aria-labelledby="team-title">
 
-        <section class="fc-about-team fc-section" aria-labelledby="team-title">
+        <div class="container">
 
-            <div class="container">
+            <div class="row g-4 align-items-end fc-about-team-header">
 
-                <div class="fc-about-team-header">
+                <div class="col-12 col-lg-8">
 
-                    <div>
+                    <span class="fc-eyebrow">
+                        Our People
+                    </span>
 
-                        <span class="fc-eyebrow">
-                            Meet Our Experts
+                    <h2 id="team-title"
+                        class="fc-section-title">
+
+                        The people behind
+                        <span class="fc-gradient-text">
+                            the solutions.
                         </span>
 
-
-                        <h2 id="team-title" class="fc-section-title">
-
-                            The people behind
-                            <span class="fc-gradient-text">
-                                the solutions.
-                            </span>
-
-                        </h2>
-
-                    </div>
-
-
-                    <p>
-
-                        A multidisciplinary team bringing together
-                        technology, design, strategy, and growth.
-
-                    </p>
+                    </h2>
 
                 </div>
 
+                <div class="col-12 col-lg-4">
 
-                <div class="fc-about-team-grid">
-
-
-                    {{-- Expert 01 --}}
-                    <article class="fc-about-team-card">
-
-                        <div class="fc-about-team-image">
-
-                            <img src="{{ asset('assets/images/team/expert-1.webp') }}" alt="FusionCentrix team expert"
-                                loading="lazy">
-
-                        </div>
-
-                        <div class="fc-about-team-content">
-
-                            <h3>
-                                Expert Name
-                            </h3>
-
-                            <span>
-                                Founder &amp; Digital Strategist
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-                    {{-- Expert 02 --}}
-                    <article class="fc-about-team-card">
-
-                        <div class="fc-about-team-image">
-
-                            <img src="{{ asset('assets/images/team/expert-2.webp') }}" alt="FusionCentrix team expert"
-                                loading="lazy">
-
-                        </div>
-
-                        <div class="fc-about-team-content">
-
-                            <h3>
-                                Expert Name
-                            </h3>
-
-                            <span>
-                                Technology &amp; Development
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-                    {{-- Expert 03 --}}
-                    <article class="fc-about-team-card">
-
-                        <div class="fc-about-team-image">
-
-                            <img src="{{ asset('assets/images/team/expert-3.webp') }}" alt="FusionCentrix team expert"
-                                loading="lazy">
-
-                        </div>
-
-                        <div class="fc-about-team-content">
-
-                            <h3>
-                                Expert Name
-                            </h3>
-
-                            <span>
-                                SEO &amp; Growth
-                            </span>
-
-                        </div>
-
-                    </article>
-
-
-                    {{-- Expert 04 --}}
-                    <article class="fc-about-team-card">
-
-                        <div class="fc-about-team-image">
-
-                            <img src="{{ asset('assets/images/team/expert-4.webp') }}" alt="FusionCentrix team expert"
-                                loading="lazy">
-
-                        </div>
-
-                        <div class="fc-about-team-content">
-
-                            <h3>
-                                Expert Name
-                            </h3>
-
-                            <span>
-                                Design &amp; Branding
-                            </span>
-
-                        </div>
-
-                    </article>
+                    <p>
+                        A multidisciplinary team bringing together
+                        technology, design, strategy, and growth.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+
+            <div class="row g-3 g-lg-4">
+
+                @php
+                    $teamMembers = [
+                        [
+                            'image' => 'expert-1.webp',
+                            'name' => 'Expert Name',
+                            'role' => 'Founder & Digital Strategist',
+                        ],
+                        [
+                            'image' => 'expert-2.webp',
+                            'name' => 'Expert Name',
+                            'role' => 'Technology & Development',
+                        ],
+                        [
+                            'image' => 'expert-3.webp',
+                            'name' => 'Expert Name',
+                            'role' => 'SEO & Growth',
+                        ],
+                        [
+                            'image' => 'expert-4.webp',
+                            'name' => 'Expert Name',
+                            'role' => 'Design & Branding',
+                        ],
+                    ];
+                @endphp
 
 
+                @foreach ($teamMembers as $member)
 
-        {{-- ========================================================
-         07. WHY FUSIONCENTRIX
-         ======================================================== --}}
+                    <div class="col-12 col-sm-6 col-xl-3">
 
-        <section class="fc-about-why fc-section-soft fc-section" aria-labelledby="why-title">
+                        <article class="fc-about-team-card">
 
-            <div class="container">
+                            <div class="fc-about-team-image">
 
-                <div class="fc-about-why-grid">
+                                <img
+                                    src="{{ asset('assets/images/team/' . $member['image']) }}"
+                                    alt="{{ $member['name'] }} - {{ $member['role'] }} at FusionCentrix"
+                                    width="600"
+                                    height="660"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
 
-                    <div>
+                            </div>
 
-                        <span class="fc-eyebrow">
-                            Why FusionCentrix
-                        </span>
+                            <div class="fc-about-team-content">
 
+                                <h3>
+                                    {{ $member['name'] }}
+                                </h3>
 
-                        <h2 id="why-title" class="fc-section-title">
+                                <span>
+                                    {{ $member['role'] }}
+                                </span>
 
-                            A partner that sees
-                            <span class="fc-gradient-text">
-                                the bigger picture.
-                            </span>
+                            </div>
 
-                        </h2>
+                        </article>
 
                     </div>
 
+                @endforeach
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {{-- ============================================================
+         07. WHY FUSIONCENTRIX
+         ============================================================ --}}
+
+    <section class="fc-about-why fc-section-soft fc-section"
+             aria-labelledby="why-title">
+
+        <div class="container">
+
+            <div class="row g-4 g-lg-5 align-items-start">
+
+                <div class="col-12 col-lg-5">
+
+                    <span class="fc-eyebrow">
+                        Why FusionCentrix
+                    </span>
+
+                    <h2 id="why-title"
+                        class="fc-section-title">
+
+                        A partner that sees
+                        <span class="fc-gradient-text">
+                            the bigger picture.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="col-12 col-lg-7">
 
                     <div class="fc-about-why-list">
 
-
-                        <div class="fc-about-why-item">
+                        <article class="fc-about-why-item">
 
                             <span class="fc-about-why-icon">
                                 01
@@ -725,10 +698,10 @@
 
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-why-item">
+                        <article class="fc-about-why-item">
 
                             <span class="fc-about-why-icon">
                                 02
@@ -747,10 +720,10 @@
 
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-why-item">
+                        <article class="fc-about-why-item">
 
                             <span class="fc-about-why-icon">
                                 03
@@ -769,10 +742,10 @@
 
                             </div>
 
-                        </div>
+                        </article>
 
 
-                        <div class="fc-about-why-item">
+                        <article class="fc-about-why-item">
 
                             <span class="fc-about-why-icon">
                                 04
@@ -791,7 +764,7 @@
 
                             </div>
 
-                        </div>
+                        </article>
 
                     </div>
 
@@ -799,68 +772,62 @@
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    {{-- ============================================================
+         08. CTA
+         ============================================================ --}}
 
-        {{-- ========================================================
-         08. FINAL CTA
-         ======================================================== --}}
+    <section class="fc-about-cta"
+             aria-labelledby="about-cta-title">
 
-        <section class="fc-about-cta" aria-labelledby="about-cta-title">
+        <div class="fc-about-cta-glow"
+             aria-hidden="true"></div>
 
-            <div class="fc-about-cta-glow"></div>
+        <div class="container">
 
-            <div class="container">
+            <div class="fc-about-cta-inner">
 
-                <div class="fc-about-cta-inner">
+                <span class="fc-about-cta-eyebrow">
+                    Let's Work Together
+                </span>
 
-                    <span class="fc-about-cta-eyebrow">
-                        Let's Work Together
-                    </span>
+                <h2 id="about-cta-title"
+                    class="fc-about-cta-title">
 
+                    Have an idea?
+                    <span>Let's build it.</span>
 
-                    <h2 id="about-cta-title" class="fc-about-cta-title">
+                </h2>
 
-                        Have an idea?
-                        <span>
-                            Let's build it.
-                        </span>
+                <p>
+                    Tell us what you're working on and let's explore
+                    how FusionCentrix can help.
+                </p>
 
-                    </h2>
+                <div class="fc-about-cta-actions">
 
+                    <a href="{{ url('contact-us') }}"
+                       class="fc-btn fc-btn-primary">
+                        Start a Conversation
+                    </a>
 
-                    <p>
-
-                        Tell us what you're working on and
-                        let's explore how FusionCentrix can help.
-
-                    </p>
-
-
-                    <div class="fc-about-cta-actions">
-
-                        <a href="{{ url('contact-us') }}" class="fc-btn fc-btn-primary">
-
-                            Start a Conversation
-
-                        </a>
-
-
-                        <a href="{{ url('portfolio') }}" class="fc-btn fc-btn-dark-outline">
-
-                            View Our Work
-
-                        </a>
-
-                    </div>
+                    <a href="{{ url('portfolio') }}"
+                       class="fc-btn fc-btn-outline">
+                        View Our Work
+                    </a>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
+    </section>
 
-    </main>
+</main>
+
 @endsection
